@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUnit default="1" id="CoopGlobalCaster">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit default="1" id="ExtendingBridge">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit default="1" id="ExtendingBridgeNoMinimap">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit default="1" id="SMSET">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNE10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNE12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNE8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNW10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNW12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNW8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeAbandonedNW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNE10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNE12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNE8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNW10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNW12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNW8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurLightBridgeNW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleNE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleNE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleNE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleNW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleNW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleNW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleSE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleSE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleSE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleSW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleSW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeDestructibleSW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeNE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeNE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeNE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeNW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeNW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AiurTempleBridgeNW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="AutoTestAttackTargetAir">
+        <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="AutoTestAttackTargetGround">
+        <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="AutoTestAttacker">
+        <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="BypassArmorDrone">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="CausticSprayMissile">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="CorruptionWeapon">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="CorsairMP">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="DefilerMP">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="DefilerMPBurrowed">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="DefilerMPDarkSwarmWeapon">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="DefilerMPPlagueWeapon">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="DevourerCocoonMP">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="DevourerMPWeaponMissile">
+        <Race value="Zerg"/>
+    </CUnit>
+    <CUnit id="Elsecaro_Colonist_Hut">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNEWide10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNEWide10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNEWide12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNEWide12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNEWide8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNEWide8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNWWide10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNWWide10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNWWide12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNWWide12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNWWide8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ExtendingBridgeNWWide8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="FungalGrowthMissile">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="GuardianCocoonMP">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="HERC">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="HERCPlacement">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="HighTemplarSkinPreview">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="IceProtossCrates">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="InfestedAcidSpinesWeapon">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="InfestedTerransEgg">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="InfestedTerransEggPlacement">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="InfestedTerransWeapon">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="InfestorTerran">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="InfestorTerranBurrowed">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="InfestorTerransWeapon">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="KD8Charge">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="LiberatorSkinPreview">
+        <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="MothershipCore">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="NydusCanalAttackerWeapon">
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Projectile"/>
+    </CUnit>
+    <CUnit id="NydusCanalCreeper">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="ParasiticBombDummy">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="ParasiticBombMissile">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="PointDefenseDrone">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitE10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitE12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitE8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitN10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitN10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitN12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitN12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitN8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitN8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNE10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNE12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNE8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNW10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNW12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNW8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitNW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitS10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitS10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitS12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitS12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitS8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitS8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSE10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSE12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSE8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSW10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSW12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSW8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitSW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitW10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitW12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitW8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PortCity_Bridge_UnitW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PreviewBunkerUpgraded">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ProtossCrates">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="PylonOvercharged">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
+    </CUnit>
+                <CUnit id="QueenMP">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="QueenMPEnsnareMissile">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="QueenMPSpawnBroodlingsMissile">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="ReaperPlaceholder">
+        <EditorCategories value="ObjectType:Other,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="ReleaseInterceptorsBeacon">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="RenegadeMissileTurret">
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
+    </CUnit>
+                                                                                                                                                                                                                                                                                                            <CUnit id="ResourceBlocker">
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Other"/>
+            </CUnit>
+    <CUnit id="ScopeTest">
+        <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+                <CUnit id="ScourgeMP">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+                                                                                                                                                                                                                                                                                                            <CUnit id="SeekerMissile">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNE10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNE12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNE8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNW10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNW12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNW8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="ShakurasLightBridgeNW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="SiegeTankSkinPreview">
+        <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="SnowRefinery_Terran_ExtendingBridgeNEShort8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="SnowRefinery_Terran_ExtendingBridgeNEShort8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="SnowRefinery_Terran_ExtendingBridgeNWShort8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="SnowRefinery_Terran_ExtendingBridgeNWShort8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="Viking">
+        <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="WarpPrismSkinPreview">
+        <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="WidowMine">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="WidowMineBurrowed">
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeH10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeH10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeH12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeH12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeH8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeH8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNE10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNE10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNE12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNE12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNE8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNE8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNW10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNW10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNW12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNW12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNW8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeNW8Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeV10">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeV10Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeV12">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeV12Out">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeV8">
+        <Race value="Neut"/>
+    </CUnit>
+    <CUnit id="XelNaga_Caverns_Floating_BridgeV8Out">
+        <Race value="Neut"/>
+    </CUnit>
+</Catalog>

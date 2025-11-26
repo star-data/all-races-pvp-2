@@ -1,0 +1,1812 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUser id="AIBuildOrders">
+        <Fields>
+            <Id value="Race"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Race"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="Diff" Type="String" EditorColumn="2"/>
+        <Fields Id="State" Type="String" EditorColumn="3"/>
+        <Fields Id="Build" Type="String" EditorColumn="4"/>
+        <Fields Id="Stage" Type="String" EditorColumn="5"/>
+        <Fields>
+            <Id value="Unit"/>
+            <Type value="Unit"/>
+            <Count value="10"/>
+            <EditorColumn value="7"/>
+        </Fields>
+        <Fields>
+            <Id value="Count"/>
+            <Type value="Int"/>
+            <Count value="10"/>
+            <EditorColumn value="8"/>
+        </Fields>
+        <Fields>
+            <Id value="Command"/>
+            <Type value="String"/>
+            <Count value="10"/>
+            <EditorColumn value="12"/>
+        </Fields>
+        <Fields>
+            <Id value="Condition"/>
+            <Type value="Unit"/>
+            <Count value="10"/>
+            <EditorColumn value="9"/>
+        </Fields>
+        <Fields>
+            <Id value="ConditionCount"/>
+            <Type value="Int"/>
+            <Count value="10"/>
+            <EditorColumn value="11"/>
+        </Fields>
+        <Fields>
+            <Id value="Upgrade"/>
+            <Type value="Upgrade"/>
+            <Count value="10"/>
+            <EditorColumn value="7"/>
+        </Fields>
+        <Instances Id="[Default]">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="ConditionCount"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="1"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="2"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="3"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="4"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="9"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="5"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="6"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="7"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="8"/></Int>
+            <String String="stock"><Field Id="Command"/></String>
+            <String String="Any"><Field Id="Diff"/></String>
+            <String String="stock"><Field Id="Command" Index="1"/></String>
+            <String String="stock"><Field Id="Command" Index="2"/></String>
+            <String String="stock"><Field Id="Command" Index="3"/></String>
+            <String String="stock"><Field Id="Command" Index="4"/></String>
+            <String String="stock"><Field Id="Command" Index="5"/></String>
+            <String String="stock"><Field Id="Command" Index="6"/></String>
+            <String String="stock"><Field Id="Command" Index="7"/></String>
+            <String String="stock"><Field Id="Command" Index="8"/></String>
+            <String String="stock"><Field Id="Command" Index="9"/></String>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Any"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$Null"><Field Id="Condition"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="5"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="6"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="7"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="8"/></Unit>
+            <Unit Unit="$Null"><Field Id="Condition" Index="9"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit" Index="9"/></Unit>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="8"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="9"/></Upgrade>
+        </Instances>
+        <Instances Id="Terr Open Rush|Power|Timing Initial">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="10"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="12"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="14"><Field Id="Count" Index="5"/></Int>
+            <Int Int="1"><Field Id="Count" Index="6"/></Int>
+            <Int Int="16"><Field Id="Count" Index="7"/></Int>
+            <Int Int="1"><Field Id="Count" Index="8"/></Int>
+            <Int Int="1"><Field Id="Count" Index="9"/></Int>
+            <String String="Rush Power Timing"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Barracks"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Warrior"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Terr Open Macro Initial">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="10"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="12"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="16"><Field Id="Count" Index="5"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Barracks"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+        </Instances>
+        <Instances Id="Terr Open Macro AfterExpand">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="17"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <Int Int="1"><Field Id="Count" Index="5"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="$Warrior"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Warrior"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="5"/></Unit>
+        </Instances>
+        <Instances Id="Terr Open Timing|Power AfterFarms">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <String String="Timing Power"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <Unit Unit="Barracks"><Field Id="Unit"/></Unit>
+            <Unit Unit="BarracksTechLab"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Terr Open Macro AfterFarms">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="30"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <String String="stockNext"><Field Id="Command" Index="2"/></String>
+            <Unit Unit="$Worker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Barracks"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="BarracksTechLab"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Terr Open Air Initial">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="10"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="15"><Field Id="Count" Index="3"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Terr Open Air AfterExpand">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="16"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="17"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="18"><Field Id="Count" Index="4"/></Int>
+            <Int Int="2"><Field Id="Count" Index="5"/></Int>
+            <Int Int="19"><Field Id="Count" Index="6"/></Int>
+            <Int Int="2"><Field Id="Count" Index="7"/></Int>
+            <Int Int="1"><Field Id="Count" Index="8"/></Int>
+            <Int Int="1"><Field Id="Count" Index="9"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="$Worker"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="Barracks"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="Factory"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Terr Open Air AfterFarms">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <Unit Unit="Starport"><Field Id="Unit"/></Unit>
+            <Unit Unit="StarportTechLab"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Terr Mid Rush Initial">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <String String="Rush"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <String String="stockNext"><Field Id="Command" Index="1"/></String>
+            <String String="stockNext"><Field Id="Command" Index="2"/></String>
+            <String String="stockNext"><Field Id="Command" Index="3"/></String>
+            <Unit Unit="Barracks"><Field Id="Unit"/></Unit>
+            <Unit Unit="BarracksTechLab"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Factory"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="FactoryTechLab"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Terr Mid Timing|Power|Macro Initial">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <Int Int="2"><Field Id="Count" Index="5"/></Int>
+            <String String="Timing Power Macro"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <String String="stockNext"><Field Id="Command" Index="1"/></String>
+            <Unit Unit="Barracks"><Field Id="Unit"/></Unit>
+            <Unit Unit="BarracksTechLab"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Factory"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="FactoryTechLab"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Starport"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="StarportTechLab"><Field Id="Unit" Index="5"/></Unit>
+        </Instances>
+        <Instances Id="Terr Mid Air Initial">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="Starport"><Field Id="Unit"/></Unit>
+            <Unit Unit="StarportTechLab"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Medivac"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Terr Mid Any ArmyScale100">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="ArmyScale100"><Field Id="Stage"/></String>
+            <Unit Unit="$Detector"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Terr Late Air Initial">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="Medivac"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Terr Late Any AfterExpand">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="3"><Field Id="Count" Index="3"/></Int>
+            <Int Int="3"><Field Id="Count" Index="4"/></Int>
+            <Int Int="3"><Field Id="Count" Index="5"/></Int>
+            <Int Int="2"><Field Id="Count" Index="6"/></Int>
+            <Int Int="1"><Field Id="Count" Index="7"/></Int>
+            <Int Int="2"><Field Id="Count" Index="8"/></Int>
+            <Int Int="1"><Field Id="Count" Index="9"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="Barracks"><Field Id="Unit"/></Unit>
+            <Unit Unit="BarracksTechLab"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="BarracksReactor"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="Factory"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="FactoryTechLab"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="Starport"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="StarportTechLab"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="StarportReactor"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Detector"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Terr Late Any ArmyScale70">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <Int Int="3"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="ArmyScale70"><Field Id="Stage"/></String>
+            <Unit Unit="Medivac"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Detector"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="MissileTurret"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Terr TechupOpen">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <Unit Unit="Barracks"><Field Id="Unit"/></Unit>
+            <Unit Unit="BarracksTechLab"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="EngineeringBay"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Terr TechupMid">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="1"><Field Id="Count" Index="5"/></Int>
+            <Int Int="3"><Field Id="Count" Index="6"/></Int>
+            <Int Int="2"><Field Id="Count" Index="7"/></Int>
+            <Int Int="1"><Field Id="Count" Index="8"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <Unit Unit="Factory"><Field Id="Unit"/></Unit>
+            <Unit Unit="FactoryTechLab"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="SensorTower"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="Armory"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Starport"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="StarportTechLab"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="Barracks"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="BarracksTechLab"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="BarracksReactor"><Field Id="Unit" Index="8"/></Unit>
+        </Instances>
+        <Instances Id="Terr TechupLate">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <Int Int="1"><Field Id="Count" Index="5"/></Int>
+            <Int Int="2"><Field Id="Count" Index="6"/></Int>
+            <Int Int="1"><Field Id="Count" Index="7"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <Unit Unit="GhostAcademy"><Field Id="Unit"/></Unit>
+            <Unit Unit="FusionCore"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="EngineeringBay"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="Armory"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Factory"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="FactoryReactor"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="Starport"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="StarportReactor"><Field Id="Unit" Index="7"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Open Rush|Timing|Power Initial">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="9"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <Int Int="13"><Field Id="Count" Index="5"/></Int>
+            <Int Int="1"><Field Id="Count" Index="6"/></Int>
+            <Int Int="15"><Field Id="Count" Index="7"/></Int>
+            <Int Int="1"><Field Id="Count" Index="8"/></Int>
+            <Int Int="16"><Field Id="Count" Index="9"/></Int>
+            <String String="Rush Timing Power"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="SpawningPool"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Open Macro|Air Initial">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="9"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <Int Int="15"><Field Id="Count" Index="5"/></Int>
+            <String String="Macro Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Open Macro AfterExpand">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="16"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="17"><Field Id="Count" Index="3"/></Int>
+            <Int Int="3"><Field Id="Count" Index="4"/></Int>
+            <Int Int="18"><Field Id="Count" Index="5"/></Int>
+            <Int Int="1"><Field Id="Count" Index="6"/></Int>
+            <Int Int="4"><Field Id="Count" Index="7"/></Int>
+            <Int Int="1"><Field Id="Count" Index="8"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="SpawningPool"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="Queen"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="RoachWarren"><Field Id="Unit" Index="8"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Open Macro AfterFarms">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="30"><Field Id="Count"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <Unit Unit="$Worker"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Open Air AfterExpand">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="16"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="3"><Field Id="Count" Index="3"/></Int>
+            <Int Int="18"><Field Id="Count" Index="4"/></Int>
+            <Int Int="1"><Field Id="Count" Index="5"/></Int>
+            <Int Int="20"><Field Id="Count" Index="6"/></Int>
+            <Int Int="1"><Field Id="Count" Index="7"/></Int>
+            <Int Int="4"><Field Id="Count" Index="8"/></Int>
+            <Int Int="1"><Field Id="Count" Index="9"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="SpawningPool"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="Queen"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="Lair"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="Spire"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Mid Air Initial">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$SupplyTransport"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Mid Any ArmyScale35">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="ArmyScale35"><Field Id="Stage"/></String>
+            <Unit Unit="Queen"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Mid Any ArmyScale100">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="ArmyScale100"><Field Id="Stage"/></String>
+            <Unit Unit="$Detector"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Late Any ArmyScale35">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="ArmyScale35"><Field Id="Stage"/></String>
+            <Unit Unit="Queen"><Field Id="Unit"/></Unit>
+            <Unit Unit="EvolutionChamber"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Overseer"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Late Any ArmyScale70">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="3"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="ArmyScale70"><Field Id="Stage"/></String>
+            <Unit Unit="$SupplyTransport"><Field Id="Unit"/></Unit>
+            <Unit Unit="Overseer"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="SporeCrawler"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Zerg TechupOpen">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <Unit Unit="SpawningPool"><Field Id="Unit"/></Unit>
+            <Unit Unit="RoachWarren"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="BanelingNest"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="EvolutionChamber"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Zerg TechupMid">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <Unit Unit="HydraliskDen"><Field Id="Unit"/></Unit>
+            <Unit Unit="InfestationPit"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Spire"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="EvolutionChamber"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Zerg TechupLate">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <Unit Unit="UltraliskCavern"><Field Id="Unit"/></Unit>
+            <Unit Unit="GreaterSpire"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Spire"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="Hatchery"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Rush Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="9"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="13"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="14"><Field Id="Count" Index="5"/></Int>
+            <Int Int="1"><Field Id="Count" Index="6"/></Int>
+            <Int Int="1"><Field Id="Count" Index="7"/></Int>
+            <Int Int="16"><Field Id="Count" Index="8"/></Int>
+            <Int Int="2"><Field Id="Count" Index="9"/></Int>
+            <String String="Rush"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Rush AfterFarms">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <String String="Rush"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <Unit Unit="Stalker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Timing Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="9"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="13"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="14"><Field Id="Count" Index="5"/></Int>
+            <Int Int="1"><Field Id="Count" Index="6"/></Int>
+            <Int Int="16"><Field Id="Count" Index="7"/></Int>
+            <Int Int="2"><Field Id="Count" Index="8"/></Int>
+            <Int Int="18"><Field Id="Count" Index="9"/></Int>
+            <String String="Timing"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Timing AfterFarms">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="Timing"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <Unit Unit="Stalker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Power Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="9"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="13"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="14"><Field Id="Count" Index="5"/></Int>
+            <Int Int="1"><Field Id="Count" Index="6"/></Int>
+            <Int Int="16"><Field Id="Count" Index="7"/></Int>
+            <Int Int="2"><Field Id="Count" Index="8"/></Int>
+            <Int Int="18"><Field Id="Count" Index="9"/></Int>
+            <String String="Power"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Power AfterFarms">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="Power"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <Unit Unit="Stalker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Macro Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="9"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="13"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="16"><Field Id="Count" Index="5"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="5"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Macro AfterExpand">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="18"><Field Id="Count" Index="4"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="Zealot"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="CyberneticsCore"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="4"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Macro AfterFarms">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="30"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <Unit Unit="$Worker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Air Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="9"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="15"><Field Id="Count" Index="3"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Air AfterExpand">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="16"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="17"><Field Id="Count" Index="4"/></Int>
+            <Int Int="2"><Field Id="Count" Index="5"/></Int>
+            <Int Int="18"><Field Id="Count" Index="6"/></Int>
+            <Int Int="2"><Field Id="Count" Index="7"/></Int>
+            <Int Int="30"><Field Id="Count" Index="8"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command" Index="8"/></String>
+            <Unit Unit="$$Refinery"><Field Id="Unit"/></Unit>
+            <Unit Unit="WarpPrism"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$$Refinery"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="8"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Air AfterFarms">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="3"><Field Id="Count" Index="2"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <Unit Unit="CyberneticsCore"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stargate"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Prot Open Air AfterTechup">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterTechup"><Field Id="Stage"/></String>
+            <Unit Unit="WarpPrism"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Prot Mid Ground Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <String String="Ground"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$Supply"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Prot Mid Air Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$Supply"><Field Id="Unit"/></Unit>
+            <Unit Unit="WarpPrism"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Prot Mid Ground AfterExpand">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <String String="Ground"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <Unit Unit="Gateway"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Prot Mid Air AfterExpand">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <Unit Unit="Stargate"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Prot Mid Any ArmyScale100">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="ArmyScale100"><Field Id="Stage"/></String>
+            <Unit Unit="$Detector"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Prot Late Ground Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <String String="Ground"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$Supply"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Prot Late Air Initial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$Supply"><Field Id="Unit"/></Unit>
+            <Unit Unit="WarpPrism"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Prot Late Ground AfterExpand">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="5"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="3"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <String String="Ground"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <String String="stockNext"><Field Id="Command" Index="1"/></String>
+            <String String="stockNext"><Field Id="Command" Index="2"/></String>
+            <Unit Unit="Gateway"><Field Id="Unit"/></Unit>
+            <Unit Unit="RoboticsFacility"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Stargate"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Detector"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Prot Late Air AfterExpand">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="5"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <String String="stockNext"><Field Id="Command" Index="1"/></String>
+            <String String="stockNext"><Field Id="Command" Index="2"/></String>
+            <Unit Unit="Gateway"><Field Id="Unit"/></Unit>
+            <Unit Unit="RoboticsFacility"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Stargate"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Detector"><Field Id="Unit" Index="3"/></Unit>
+        </Instances>
+        <Instances Id="Prot Late Any ArmyScale70">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <Int Int="3"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="ArmyScale70"><Field Id="Stage"/></String>
+            <Unit Unit="WarpPrism"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Detector"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$StaticDetector"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Prot TechupOpen">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <Unit Unit="Gateway"><Field Id="Unit"/></Unit>
+            <Unit Unit="CyberneticsCore"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Forge"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Prot TechupMid">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="3"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <Unit Unit="RoboticsFacility"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stargate"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="TwilightCouncil"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="Forge"><Field Id="Unit" Index="4"/></Unit>
+        </Instances>
+        <Instances Id="Prot TechupLate">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <Int Int="2"><Field Id="Count" Index="5"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <Unit Unit="TemplarArchive"><Field Id="Unit"/></Unit>
+            <Unit Unit="RoboticsBay"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="DarkShrine"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="FleetBeacon"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="RoboticsFacility"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="Stargate"><Field Id="Unit" Index="5"/></Unit>
+        </Instances>
+        <Instances Id="Zerg DefenseInitial">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="6"><Field Id="Count" Index="1"/></Int>
+            <Int Int="12"><Field Id="Count" Index="2"/></Int>
+            <String String="DefenseInitial"><Field Id="Stage"/></String>
+            <String String="stock"><Field Id="Command"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="1"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="2"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="4"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="6"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="7"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="8"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="Queen"><Field Id="Unit"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Zerg DefenseLate">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="6"><Field Id="Count"/></Int>
+            <Int Int="6"><Field Id="Count" Index="1"/></Int>
+            <String String="DefenseLate"><Field Id="Stage"/></String>
+            <String String="stockEmergency"><Field Id="Command"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="1"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="2"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="4"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="5"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="6"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="7"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="8"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="Roach"><Field Id="Unit"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Detection">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <String String="Detection"><Field Id="Stage"/></String>
+            <Unit Unit="Overseer"><Field Id="Unit"/></Unit>
+            <Unit Unit="SporeCrawler"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Zerg AtEachTown">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <String String="AtEachTown"><Field Id="Stage"/></String>
+            <String String="exResourceDefense"><Field Id="Command"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="1"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="2"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="3"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="4"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="5"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="6"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="7"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="8"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="SpineCrawler"><Field Id="Unit"/></Unit>
+            <Unit Unit="SporeCrawler"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Terr DefenseInitial">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="8"><Field Id="Count"/></Int>
+            <String String="DefenseInitial"><Field Id="Stage"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="1"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="2"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="4"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="6"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="7"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="8"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="$Warrior"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Terr DefenseLate">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="4"><Field Id="Count"/></Int>
+            <Int Int="4"><Field Id="Count" Index="1"/></Int>
+            <Int Int="4"><Field Id="Count" Index="2"/></Int>
+            <String String="DefenseLate"><Field Id="Stage"/></String>
+            <String String="stockEmergency"><Field Id="Command"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="1"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="2"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="4"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="5"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="6"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="7"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="8"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="VikingFighter"><Field Id="Unit"/></Unit>
+            <Unit Unit="Hellion"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Terr Detection">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="Detection"><Field Id="Stage"/></String>
+            <Unit Unit="$Detector"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="MissileTurret"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Terr AtEachTown">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <String String="AtEachTown"><Field Id="Stage"/></String>
+            <String String="exResourceDefense"><Field Id="Command"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="1"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="2"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="3"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="4"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="5"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="6"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="7"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="8"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="Bunker"><Field Id="Unit"/></Unit>
+            <Unit Unit="MissileTurret"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Prot DefenseInitial">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="6"><Field Id="Count"/></Int>
+            <Int Int="4"><Field Id="Count" Index="1"/></Int>
+            <String String="DefenseInitial"><Field Id="Stage"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="1"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="2"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="4"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="6"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="7"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="8"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="Stalker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Prot DefenseLate">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="4"><Field Id="Count"/></Int>
+            <Int Int="4"><Field Id="Count" Index="1"/></Int>
+            <String String="DefenseLate"><Field Id="Stage"/></String>
+            <String String="stockEmergency"><Field Id="Command"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="1"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="2"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="4"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="5"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="6"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="7"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="8"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="VoidRay"><Field Id="Unit"/></Unit>
+            <Unit Unit="Immortal"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Prot Detection">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <String String="Detection"><Field Id="Stage"/></String>
+            <Unit Unit="$Detector"><Field Id="Unit"/></Unit>
+            <Unit Unit="$StaticDetector"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Prot AtEachTown">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="AtEachTown"><Field Id="Stage"/></String>
+            <String String="expanPower"><Field Id="Command"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="1"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="2"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="3"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="4"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="5"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="6"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="7"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="8"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="$Power"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Power"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="PhotonCannon"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Common Open Rush|Power|Timing Initial">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="10"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="12"><Field Id="Count" Index="4"/></Int>
+            <Int Int="1"><Field Id="Count" Index="5"/></Int>
+            <Int Int="14"><Field Id="Count" Index="6"/></Int>
+            <Int Int="1"><Field Id="Count" Index="7"/></Int>
+            <Int Int="16"><Field Id="Count" Index="8"/></Int>
+            <Int Int="1"><Field Id="Count" Index="9"/></Int>
+            <Int Int="1"><Field Id="Count" Index="10"/></Int>
+            <String String="Rush Power Timing"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Builder"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$ProductionLight"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$Warrior"><Field Id="Unit" Index="9"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="10"/></Unit>
+        </Instances>
+        <Instances Id="Common Open Macro Initial">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="10"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="12"><Field Id="Count" Index="4"/></Int>
+            <Int Int="1"><Field Id="Count" Index="5"/></Int>
+            <Int Int="16"><Field Id="Count" Index="6"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Builder"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$ProductionLight"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="6"/></Unit>
+        </Instances>
+        <Instances Id="Common Open Macro AfterExpand">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="17"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <Int Int="2"><Field Id="Count" Index="5"/></Int>
+            <Int Int="1"><Field Id="Count" Index="6"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="$Warrior"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Guard"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Warrior"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="6"/></Unit>
+        </Instances>
+        <Instances Id="Common Open Timing|Power AfterFarms">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <String String="Timing Power"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <Unit Unit="$ProductionLight"><Field Id="Unit"/></Unit>
+            <Unit Unit="$TechLight"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Common Open Macro AfterFarms">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="30"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <String String="stockNext"><Field Id="Command" Index="2"/></String>
+            <Unit Unit="$Worker"><Field Id="Unit"/></Unit>
+            <Unit Unit="$ProductionLight"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$TechLight"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Common Open Air Initial">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="10"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="15"><Field Id="Count" Index="4"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$DropOff"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Builder"><Field Id="Unit"  Index="1"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="4"/></Unit>
+        </Instances>
+        <Instances Id="Common Open Air AfterExpand">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="16"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="17"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="18"><Field Id="Count" Index="4"/></Int>
+            <Int Int="2"><Field Id="Count" Index="5"/></Int>
+            <Int Int="19"><Field Id="Count" Index="6"/></Int>
+            <Int Int="1"><Field Id="Count" Index="7"/></Int>
+            <Int Int="2"><Field Id="Count" Index="8"/></Int>
+            <Int Int="1"><Field Id="Count" Index="9"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="$Worker"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$ProductionLight"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$Refinery"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$Worker"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Guard"><Field Id="Unit" Index="7"/></Unit>
+            <Unit Unit="$Supply"><Field Id="Unit" Index="8"/></Unit>
+            <Unit Unit="$ProductionHeavy"><Field Id="Unit" Index="9"/></Unit>
+        </Instances>
+        <Instances Id="Common Open Air AfterFarms">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="AfterFarms"><Field Id="Stage"/></String>
+            <Unit Unit="$ProductionAir"><Field Id="Unit"/></Unit>
+            <Unit Unit="$TechAir"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Common Mid Initial">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <Int Int="2"><Field Id="Count" Index="4"/></Int>
+            <Int Int="2"><Field Id="Count" Index="5"/></Int>
+            <Int Int="2"><Field Id="Count" Index="6"/></Int>
+            <Int Int="2"><Field Id="Count" Index="7"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <String String="stockNext"><Field Id="Command"/></String>
+            <String String="stockNext"><Field Id="Command" Index="1"/></String>
+            <Unit Unit="$Builder"><Field Id="Unit"/></Unit>
+            <Unit Unit="$ProductionLight"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$TechLight"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$ProductionHeavy"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$TechHeavy"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$ProductionAir"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$TechAir"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Support"><Field Id="Unit" Index="7"/></Unit>
+        </Instances>
+        <Instances Id="Common Mid Any ArmyScale100">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="ArmyScale100"><Field Id="Stage"/></String>
+            <Unit Unit="$Detector"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Common Late Any Initial">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="3"><Field Id="Count" Index="1"/></Int>
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Initial"><Field Id="Stage"/></String>
+            <Unit Unit="$Support"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Builder"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Common Late Any AfterExpand">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="Count"/></Int>
+            <Int Int="2"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="3"><Field Id="Count" Index="3"/></Int>
+            <Int Int="3"><Field Id="Count" Index="4"/></Int>
+            <Int Int="3"><Field Id="Count" Index="5"/></Int>
+            <Int Int="2"><Field Id="Count" Index="6"/></Int>
+            <Int Int="1"><Field Id="Count" Index="7"/></Int>
+            <Int Int="1"><Field Id="Count" Index="8"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="AfterExpand"><Field Id="Stage"/></String>
+            <Unit Unit="$ProductionLight"><Field Id="Unit"/></Unit>
+            <Unit Unit="$TechLight"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$ProductionHeavy"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$TechHeavy"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$ProductionAir"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$TechAir"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$Detector"><Field Id="Unit" Index="8"/></Unit>
+        </Instances>
+        <Instances Id="Common Late Any ArmyScale70">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="ArmyScale70"><Field Id="Stage"/></String>
+            <Unit Unit="$Support"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Transport"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Detector"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Defense"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Common TechupOpen">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <Unit Unit="$ProductionLight"><Field Id="Unit"/></Unit>
+            <Unit Unit="$TechLight"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Tech"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Common TechupMid">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="1"><Field Id="Count" Index="2"/></Int>
+            <Int Int="1"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="1"><Field Id="Count" Index="5"/></Int>
+            <Int Int="3"><Field Id="Count" Index="6"/></Int>
+            <Int Int="2"><Field Id="Count" Index="7"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <Unit Unit="$ProductionHeavy"><Field Id="Unit"/></Unit>
+            <Unit Unit="$TechHeavy"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Radar"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Tech"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$ProductionAir"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$TechAir"><Field Id="Unit" Index="5"/></Unit>
+            <Unit Unit="$ProductionLight"><Field Id="Unit" Index="6"/></Unit>
+            <Unit Unit="$TechLight"><Field Id="Unit" Index="7"/></Unit>
+        </Instances>
+        <Instances Id="Common TechupLate">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <Int Int="2"><Field Id="Count" Index="3"/></Int>
+            <Int Int="1"><Field Id="Count" Index="4"/></Int>
+            <Int Int="1"><Field Id="Count" Index="5"/></Int>
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <Unit Unit="$Tech"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Tech"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Tech"><Field Id="Unit" Index="2"/></Unit>
+            <Unit Unit="$Tech"><Field Id="Unit" Index="3"/></Unit>
+            <Unit Unit="$ProductionHeavy"><Field Id="Unit" Index="4"/></Unit>
+            <Unit Unit="$ProductionAir"><Field Id="Unit" Index="5"/></Unit>
+        </Instances>
+        <Instances Id="Common Mid|Late Any ArmyScale35">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Mid Late"><Field Id="State"/></String>
+            <String String="ArmyScale35"><Field Id="Stage"/></String>
+            <Unit Unit="$Guard"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Common DefenseInitial">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="10"><Field Id="Count" Index="1"/></Int>
+            <String String="DefenseInitial"><Field Id="Stage"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="1"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="2"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="4"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="6"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="7"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="8"/></String>
+            <String String="stockEmergencySkipCheck"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="$Guard"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Combat1"><Field Id="Unit" Index="1"/></Unit>
+        </Instances>
+        <Instances Id="Common DefenseLate">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="10"><Field Id="Count"/></Int>
+            <String String="DefenseLate"><Field Id="Stage"/></String>
+            <String String="stockEmergency"><Field Id="Command"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="1"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="2"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="4"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="5"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="6"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="7"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="8"/></String>
+            <String String="stockEmergency"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="$Combat2"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Common Detection">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="Count"/></Int>
+            <Int Int="1"><Field Id="Count" Index="1"/></Int>
+            <Int Int="2"><Field Id="Count" Index="2"/></Int>
+            <String String="Detection"><Field Id="Stage"/></String>
+            <Unit Unit="$Detector"><Field Id="Unit"/></Unit>
+            <Unit Unit="$Macro"><Field Id="Unit" Index="1"/></Unit>
+            <Unit Unit="$Defense"><Field Id="Unit" Index="2"/></Unit>
+        </Instances>
+        <Instances Id="Common AtEachTown">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="Count"/></Int>
+            <String String="AtEachTown"><Field Id="Stage"/></String>
+            <String String="exResourceDefense"><Field Id="Command"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="1"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="2"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="3"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="4"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="5"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="6"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="7"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="8"/></String>
+            <String String="exResourceDefense"><Field Id="Command" Index="9"/></String>
+            <Unit Unit="$Defense"><Field Id="Unit"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Open Ground Upgrades">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="ConditionCount"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Zergling"><Field Id="Condition"/></Unit>
+            <Upgrade Upgrade="zerglingmovementspeed"><Field Id="Upgrade"/></Upgrade>
+        </Instances>
+        <Instances Id="Zerg Mid Ground Upgrades">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="4"><Field Id="ConditionCount" Index="3"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Baneling"><Field Id="Condition" Index="3"/></Unit>
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel1"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsLevel1"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsLevel1"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="CentrificalHooks"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="Burrow"><Field Id="Upgrade" Index="4"/></Upgrade>
+        </Instances>
+        <Instances Id="Zerg Mid Air Upgrades">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Upgrade Upgrade="ZergFlyerWeaponsLevel1"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsLevel1"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="overlordspeed"><Field Id="Upgrade" Index="2"/></Upgrade>
+        </Instances>
+        <Instances Id="Zerg Late Ground Upgrades">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="4"><Field Id="ConditionCount" Index="3"/></Int>
+            <Int Int="4"><Field Id="ConditionCount" Index="4"/></Int>
+            <Int Int="3"><Field Id="ConditionCount" Index="5"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Infestor"><Field Id="Condition" Index="3"/></Unit>
+            <Unit Unit="Roach"><Field Id="Condition" Index="4"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="Condition" Index="5"/></Unit>
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel2"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsLevel2"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsLevel2"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="InfestorEnergyUpgrade"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="GlialReconstitution"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="hydraliskspeed"><Field Id="Upgrade" Index="5"/></Upgrade>
+        </Instances>
+        <Instances Id="Zerg Late Air Upgrades">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="ConditionCount" Index="2"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Unit Unit="Hydralisk"><Field Id="Condition" Index="2"/></Unit>
+            <Upgrade Upgrade="ZergFlyerWeaponsLevel2"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsLevel2"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="hydraliskspeed"><Field Id="Upgrade" Index="2"/></Upgrade>
+        </Instances>
+        <Instances Id="Zerg Final Ground Upgrades">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="8"><Field Id="ConditionCount"/></Int>
+            <Int Int="4"><Field Id="ConditionCount" Index="1"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="5"/></Int>
+            <Int Int="4"><Field Id="ConditionCount" Index="6"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Final"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Zergling"><Field Id="Condition"/></Unit>
+            <Unit Unit="Infestor"><Field Id="Condition" Index="1"/></Unit>
+            <Unit Unit="Ultralisk"><Field Id="Condition" Index="5"/></Unit>
+            <Unit Unit="Roach"><Field Id="Condition" Index="6"/></Unit>
+            <Upgrade Upgrade="zerglingattackspeed"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="NeuralParasite"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel3"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsLevel3"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsLevel3"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="ChitinousPlating"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="TunnelingClaws"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerWeaponsLevel3"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsLevel3"><Field Id="Upgrade" Index="8"/></Upgrade>
+        </Instances>
+        <Instances Id="Zerg Final Air Upgrades">
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Int Int="8"><Field Id="ConditionCount" Index="2"/></Int>
+            <Int Int="4"><Field Id="ConditionCount" Index="3"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="5"/></Int>
+            <Int Int="4"><Field Id="ConditionCount" Index="6"/></Int>
+            <Int Int="8"><Field Id="ConditionCount" Index="7"/></Int>
+            <Int Int="4"><Field Id="ConditionCount" Index="8"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Final"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Unit Unit="Zergling"><Field Id="Condition" Index="2"/></Unit>
+            <Unit Unit="Baneling"><Field Id="Condition" Index="3"/></Unit>
+            <Unit Unit="Infestor"><Field Id="Condition" Index="5"/></Unit>
+            <Unit Unit="Roach"><Field Id="Condition" Index="6"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Condition" Index="7"/></Unit>
+            <Unit Unit="Infestor"><Field Id="Condition" Index="8"/></Unit>
+            <Upgrade Upgrade="ZergFlyerWeaponsLevel3"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsLevel3"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="zerglingmovementspeed"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="CentrificalHooks"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="Burrow"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="InfestorEnergyUpgrade"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="GlialReconstitution"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="zerglingattackspeed"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="NeuralParasite"><Field Id="Upgrade" Index="8"/></Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsLevel3"><Field Id="Upgrade" Index="9"/></Upgrade>
+        </Instances>
+        <Instances Id="Terr Mid Ground Upgrades">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="ConditionCount" Index="2"/></Int>
+            <Int Int="3"><Field Id="ConditionCount" Index="3"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Marauder"><Field Id="Condition" Index="2"/></Unit>
+            <Unit Unit="Banshee"><Field Id="Condition" Index="3"/></Unit>
+            <Upgrade Upgrade="Stimpack"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ShieldWall"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="PunisherGrenades"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="BansheeCloak"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryWeaponsLevel1"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryArmorsLevel1"><Field Id="Upgrade" Index="5"/></Upgrade>
+        </Instances>
+        <Instances Id="Terr Mid Air Upgrades">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="ConditionCount" Index="2"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Unit Unit="MissileTurret"><Field Id="Condition" Index="2"/></Unit>
+            <Upgrade Upgrade="TerranShipWeaponsLevel1"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="TerranShipArmorsLevel1"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="HiSecAutoTracking"><Field Id="Upgrade" Index="2"/></Upgrade>
+        </Instances>
+        <Instances Id="Terr Late Ground Upgrades">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="4"><Field Id="ConditionCount" Index="2"/></Int>
+            <Int Int="3"><Field Id="ConditionCount" Index="3"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Hellion"><Field Id="Condition" Index="2"/></Unit>
+            <Unit Unit="Ghost"><Field Id="Condition" Index="3"/></Unit>
+            <Upgrade Upgrade="TerranInfantryWeaponsLevel2"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryArmorsLevel2"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="HighCapacityBarrels"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="PersonalCloaking"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleWeaponsLevel1"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleAndShipArmorsLevel1"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="TerranShipWeaponsLevel1"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="TerranShipArmorsLevel1"><Field Id="Upgrade" Index="7"/></Upgrade>
+        </Instances>
+        <Instances Id="Terr Late Air Upgrades">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="ConditionCount"/></Int>
+            <Int Int="8"><Field Id="ConditionCount" Index="2"/></Int>
+            <Int Int="8"><Field Id="ConditionCount" Index="3"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Unit Unit="Battlecruiser"><Field Id="Condition"/></Unit>
+            <Unit Unit="Marine"><Field Id="Condition" Index="2"/></Unit>
+            <Unit Unit="Marine"><Field Id="Condition" Index="3"/></Unit>
+            <Upgrade Upgrade="BattlecruiserEnableSpecializations"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="TerranShipWeaponsLevel2"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="Stimpack"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="ShieldWall"><Field Id="Upgrade" Index="3"/></Upgrade>
+        </Instances>
+        <Instances Id="Terr Final Ground Upgrades">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="ConditionCount"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Final"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Battlecruiser"><Field Id="Condition"/></Unit>
+            <Upgrade Upgrade="BattlecruiserEnableSpecializations"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryWeaponsLevel3"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryArmorsLevel3"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleWeaponsLevel3"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleAndShipArmorsLevel3"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="TerranShipWeaponsLevel3"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="NeosteelFrame"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="HiSecAutoTracking"><Field Id="Upgrade" Index="7"/></Upgrade>
+        </Instances>
+        <Instances Id="Terr Final Air Upgrades">
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Int Int="3"><Field Id="ConditionCount" Index="1"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="6"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="7"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Final"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Unit Unit="Marauder"><Field Id="Condition" Index="1"/></Unit>
+            <Unit Unit="Hellion"><Field Id="Condition" Index="6"/></Unit>
+            <Unit Unit="Ghost"><Field Id="Condition" Index="7"/></Unit>
+            <Upgrade Upgrade="TerranShipWeaponsLevel3"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="PunisherGrenades"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryWeaponsLevel3"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryArmorsLevel3"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleWeaponsLevel3"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleAndShipArmorsLevel3"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="HighCapacityBarrels"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="PersonalCloaking"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="NeosteelFrame"><Field Id="Upgrade" Index="8"/></Upgrade>
+            <Upgrade Upgrade="HiSecAutoTracking"><Field Id="Upgrade" Index="9"/></Upgrade>
+        </Instances>
+        <Instances Id="Prot Open Ground Upgrades">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="1"><Field Id="ConditionCount"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="CyberneticsCore"><Field Id="Condition"/></Unit>
+            <Upgrade Upgrade="WarpGateResearch"><Field Id="Upgrade"/></Upgrade>
+        </Instances>
+        <Instances Id="Prot Mid Ground Upgrades">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="8"><Field Id="ConditionCount" Index="2"/></Int>
+            <Int Int="6"><Field Id="ConditionCount" Index="3"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Zealot"><Field Id="Condition" Index="2"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Condition" Index="3"/></Unit>
+            <Upgrade Upgrade="ProtossGroundWeaponsLevel1"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundArmorsLevel1"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="Charge"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="BlinkTech"><Field Id="Upgrade" Index="3"/></Upgrade>
+        </Instances>
+        <Instances Id="Prot Mid Air Upgrades">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Upgrade Upgrade="ProtossAirWeaponsLevel1"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsLevel1"><Field Id="Upgrade" Index="1"/></Upgrade>
+        </Instances>
+        <Instances Id="Prot Late Ground Upgrades">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Upgrade Upgrade="ProtossGroundWeaponsLevel2"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundArmorsLevel2"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="ProtossShieldsLevel2"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="ObserverGraviticBooster"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="GraviticDrive"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsLevel1"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsLevel1"><Field Id="Upgrade" Index="6"/></Upgrade>
+        </Instances>
+        <Instances Id="Prot Late Air Upgrades">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="4"><Field Id="ConditionCount" Index="2"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Unit Unit="Phoenix"><Field Id="Condition" Index="2"/></Unit>
+            <Upgrade Upgrade="ObserverGraviticBooster"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="GraviticDrive"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="PhoenixRangeUpgrade"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsLevel2"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsLevel2"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="ProtossShieldsLevel2"><Field Id="Upgrade" Index="5"/></Upgrade>
+        </Instances>
+        <Instances Id="Prot Final Ground Upgrades">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="2"><Field Id="ConditionCount"/></Int>
+            <Int Int="1"><Field Id="ConditionCount" Index="1"/></Int>
+            <Int Int="4"><Field Id="ConditionCount" Index="5"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Final"><Field Id="State"/></String>
+            <String String="Ground"><Field Id="Build"/></String>
+            <Unit Unit="Colossus"><Field Id="Condition"/></Unit>
+            <Unit Unit="HighTemplar"><Field Id="Condition" Index="1"/></Unit>
+            <Unit Unit="Phoenix"><Field Id="Condition" Index="5"/></Unit>
+            <Upgrade Upgrade="ExtendedThermalLance"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="PsiStormTech"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundWeaponsLevel3"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundArmorsLevel3"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="ProtossShieldsLevel3"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="PhoenixRangeUpgrade"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsLevel3"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsLevel3"><Field Id="Upgrade" Index="7"/></Upgrade>
+        </Instances>
+        <Instances Id="Prot Final Air Upgrades">
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Int Int="6"><Field Id="ConditionCount" Index="4"/></Int>
+            <Int Int="6"><Field Id="ConditionCount" Index="5"/></Int>
+            <Int Int="2"><Field Id="ConditionCount" Index="6"/></Int>
+            <Int Int="2"><Field Id="ConditionCount" Index="7"/></Int>
+            <String String="Upgrades"><Field Id="Stage"/></String>
+            <String String="Final"><Field Id="State"/></String>
+            <String String="Air"><Field Id="Build"/></String>
+            <Unit Unit="Zealot"><Field Id="Condition" Index="4"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Condition" Index="5"/></Unit>
+            <Unit Unit="Colossus"><Field Id="Condition" Index="6"/></Unit>
+            <Unit Unit="HighTemplar"><Field Id="Condition" Index="7"/></Unit>
+            <Upgrade Upgrade="ProtossAirWeaponsLevel3"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsLevel3"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="ProtossShieldsLevel3"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="WarpGateResearch"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="Charge"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="BlinkTech"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="ExtendedThermalLance"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="PsiStormTech"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundWeaponsLevel3"><Field Id="Upgrade" Index="8"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundArmorsLevel3"><Field Id="Upgrade" Index="9"/></Upgrade>
+        </Instances>
+    </CUser>
+</Catalog>

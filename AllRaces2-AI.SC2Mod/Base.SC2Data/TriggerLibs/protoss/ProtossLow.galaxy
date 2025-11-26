@@ -1,0 +1,159 @@
+
+
+//--------------------------------------------------------------------------------------------------
+//  ProtossBasicEconomy
+//--------------------------------------------------------------------------------------------------
+void ProtossBasicEconomy (int player, int tier, int minWorkers) {
+    int econMin = AIGetMinPeonCount(player, c_townMax);
+    if (minWorkers > econMin) {
+        minWorkers = econMin;
+    }
+
+    AIDefaultEconomy(player, c_PB_Nexus, c_PB_Assimilator, c_PB_Pylon, c_PU_Probe, minWorkers, c_stockAlways);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ProtossBasicExpansion
+//--------------------------------------------------------------------------------------------------
+void ProtossBasicExpansion (int player, int tier, int minerals, int gas) {
+    AIDefaultExpansion(player, c_PB_Nexus, minerals, gas, c_expandDefault);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ProtossGeneralBuild
+//--------------------------------------------------------------------------------------------------
+void ProtossGeneralBuild (int player, int tier) {
+    if (tier >= c_ldPhaseMid) {
+        if (PlayerBeaconIsSet(player, c_beaconDetect)) {
+            AISetStock( player, 1, c_PU_Observer );
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ProtossMacroExpand
+//--------------------------------------------------------------------------------------------------
+bool ProtossMacroExpand (int player) {
+    fixed defenseEval = 0;
+
+    if (AITechCount(player, c_PU_Probe, c_techCountQueuedOrBetter) < 14) {
+        return false;
+    }
+    if (AITechCount(player, c_PB_Nexus, c_techCountQueuedOrBetter) >= 2) {
+        return false;
+    }
+    
+    defenseEval = AISelfDefenseThreatEval(c_dtRealSelfThreat, player);
+    if (defenseEval >= 120) {
+        // don't expand if currently under attack
+        return false;
+    }
+
+    if (!AIIsExpandingOrHasExpanded(player)) {
+        if (!AIHasNearbyOpenExpansion(player)) {
+            return false;
+        }
+        if (!AIHasRes(player,300,0)) {
+            AIEnableStock(player);
+            return true;
+        }
+
+        // we should try to expand
+        AIExpand(player, AIGetTownLocation(player, c_townMain), c_PB_Nexus);
+    }
+
+    // currently expanding see if we need to save minerals
+    if (!AIHasRes(player,500,0)) {
+        AIEnableStock(player);
+        return true;
+    }
+    return false; // already saved enough, we're allowed to continure the stock
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ProtossAtEachTown
+//--------------------------------------------------------------------------------------------------
+void ProtossAtEachTown (int player, int tier) {
+    int i = 0;
+    int town;
+
+    while (i < c_townMax) {
+        town = i;
+        i = i + 1;
+
+        if (AIGetTownState(player, town) != c_townStateEstablished) {
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_PB_Nexus, c_techCountCompleteOnly) < 1) {
+            continue;
+        }
+
+        // make 2 pylons in each town
+        if (AIGetBuildingCountInTown(player, town, c_PB_Pylon, c_techCountCompleteOnly) < 2) {
+            AISetStockEx(player, town, 1, c_PB_Pylon, c_makeExpanPower, 0);
+            AISetStockEx(player, town, 2, c_PB_Pylon, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_PB_PhotonCannon, c_techCountCompleteOnly) < 2) {
+            AISetStockEx(player, town, 2, c_PB_PhotonCannon, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ProtossTechUp
+//--------------------------------------------------------------------------------------------------
+void ProtossTechUp (int player, int tier) {
+    int diff = AIPlayerDifficulty(player);
+
+    if (diff < c_skirMedium) {
+        // don't build extra buildings below medium
+        return;
+    }
+
+    AISetStock( player, 2, c_PB_Assimilator );
+    AISetStock( player, 1, c_PB_Gateway );
+    AISetStock( player, 1, c_PB_CyberneticsCore );
+    AISetStock( player, 1, c_PB_Forge );
+
+    if (tier >= c_ldPhaseMid) {
+        ProtossAtEachTown(player, tier);
+        AISetStock( player, 1, c_PB_RoboticsFacility );
+        AISetStock( player, 1, c_PB_Stargate );
+        AISetStock( player, 1, c_PB_TwilightCouncil );
+        AISetStock( player, 3, c_PB_Gateway );
+        AISetStock( player, 2, c_PB_Forge );
+
+        if (tier >= c_ldPhaseLate) {
+            AISetStock( player, 1, c_PB_TemplarArchives );
+            AISetStock( player, 1, c_PB_RoboticsBay );
+            AISetStock( player, 1, c_PB_DarkShrine );
+            AISetStock( player, 1, c_PB_FleetBeacon );
+            AISetStock( player, 2, c_PB_RoboticsFacility );
+            AISetStock( player, 2, c_PB_Stargate );
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ProtossBasicDefenseStock
+//--------------------------------------------------------------------------------------------------
+void ProtossBasicDefenseStock (int player) {
+    if (!AINeedsDefending(player)) {
+        return;
+    }
+    
+    AISetStockFarms( player, c_PB_Pylon, c_stockNormalFarms);
+    AIAddEmergencyDefenseStock(player, 6, c_PU_Stalker, false);
+    if (AIPlayerDifficulty(player) >= c_skirHard) {
+        AISetStock( player, 1, c_PU_MothershipCore );
+    }
+    AIAddEmergencyDefenseStock(player, 4, c_PU_Zealot, false);
+    AISetStock( player, 1, c_PB_Assimilator );
+    AIAddEmergencyDefenseStock(player, 4, c_PU_VoidRay, true);
+    AIAddEmergencyDefenseStock(player, 4, c_PU_Immortal, true);
+    AIAddEmergencyDefenseStock(player, 20, c_PU_Probe, true);
+}

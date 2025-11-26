@@ -1,0 +1,341 @@
+include "TriggerLibs/NativeLib"
+
+include "LibUPLR_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - UPL
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libUPLR_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Variable Initialization
+bool libUPLR_InitVariables_completed = false;
+
+void libUPLR_InitVariables () {
+    if (libUPLR_InitVariables_completed) {
+        return;
+    }
+
+    libUPLR_InitVariables_completed = true;
+
+}
+
+// Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: RangeValueToRange
+//--------------------------------------------------------------------------------------------------
+fixed data_RangeValueToRange (fixed value, fixed newMin, fixed newMax, fixed oldMin, fixed oldMax) {
+    return ((((value - oldMin) * (newMax - newMin)) / (oldMax - oldMin)) + newMin);
+}
+
+void libUPLR_InitCustomScript () {
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Initialize UPL Race
+//--------------------------------------------------------------------------------------------------
+bool libUPLR_gt_InitializeUPLRace_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto8A7C6E27_g;
+    int auto8A7C6E27_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto8A7C6E27_g = PlayerGroupAll();
+    auto8A7C6E27_var = -1;
+    while (true) {
+        auto8A7C6E27_var = PlayerGroupNextPlayer(auto8A7C6E27_g, auto8A7C6E27_var);
+        if (auto8A7C6E27_var < 0) { break; }
+        if ((PlayerRace(auto8A7C6E27_var) == "UPL")) {
+            PlayerApplySkin(auto8A7C6E27_var, "UPLAnnouncer", true);
+        }
+
+    }
+    TriggerEnable(libUPLR_gt_CM_NovaPsiStrike, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libUPLR_gt_InitializeUPLRace_Init () {
+    libUPLR_gt_InitializeUPLRace = TriggerCreate("libUPLR_gt_InitializeUPLRace_Func");
+    TriggerAddEventGeneric(libUPLR_gt_InitializeUPLRace, "GAME START UPL");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: CM_Nova Psi Strike
+//--------------------------------------------------------------------------------------------------
+bool libUPLR_gt_CM_NovaPsiStrike_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    point lv_k;
+    point lv_t;
+    point lv_finalT;
+    fixed lv_facing;
+    fixed lv_distance;
+    bool lv_goodPositionFound;
+    int lv_i;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    const int auto79412B90_ae = 14;
+    const int auto79412B90_ai = 1;
+
+    // Variable Initialization
+    lv_k = UnitGetPosition(EventUnit());
+    lv_t = EventUnitTargetPoint();
+    lv_facing = AngleBetweenPoints(UnitGetPosition(EventUnit()), EventUnitTargetPoint());
+    lv_distance = 8.0;
+    lv_player = UnitGetOwner(EventUnit());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_t = libNtve_gf_PointOffsetTowardsPoint(lv_k, 8.0, lv_t);
+    lv_finalT = lv_t;
+    while ((lv_distance >= 0.6) && (lv_goodPositionFound == false)) {
+        lv_t = libNtve_gf_PointOffsetTowardsPoint(lv_k, lv_distance, lv_t);
+        if ((PointPathingCost(lv_k, lv_t) <= FixedToInt((lv_distance * 1.5))) && (WorldHeight(c_heightMapGround, lv_k) < (WorldHeight(c_heightMapGround, lv_t) + 1.0)) && (WorldHeight(c_heightMapGround, lv_k) > (WorldHeight(c_heightMapGround, lv_t) - 1.0))) {
+            lv_goodPositionFound = true;
+        }
+
+        lv_distance -= 0.5;
+    }
+    Wait(0.0625, c_timeGame);
+    if ((lv_goodPositionFound == true)) {
+        UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("move", 0), lv_t), c_orderQueueReplace);
+        UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("move", 0), lv_finalT), c_orderQueueAddToEnd);
+    }
+    else {
+        UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("move", 0), lv_finalT), c_orderQueueReplace);
+    }
+    Wait(0.1875, c_timeGame);
+    lv_i = 1;
+    for ( ; ( (auto79412B90_ai >= 0 && lv_i <= auto79412B90_ae) || (auto79412B90_ai < 0 && lv_i >= auto79412B90_ae) ) ; lv_i += auto79412B90_ai ) {
+        libUPLR_gv_UPLZ2DashFacing[lv_player] = UnitGetFacing(EventUnit());
+        if ((lv_facing > 90.0)) {
+            if (((libUPLR_gv_UPLZ2DashFacing[lv_player] < (lv_facing - 90.0)) && (libUPLR_gv_UPLZ2DashFacing[lv_player] > (lv_facing - 270.0)))) {
+                UnitBehaviorRemove(EventUnit(), "UPLZ2DashWalkSpeed", 1);
+                break;
+            }
+
+        }
+        else {
+            if ((lv_facing < -90.0)) {
+                if (((libUPLR_gv_UPLZ2DashFacing[lv_player] > (lv_facing + 90.0)) && (libUPLR_gv_UPLZ2DashFacing[lv_player] < (lv_facing + 270.0)))) {
+                    UnitBehaviorRemove(EventUnit(), "UPLZ2DashWalkSpeed", 1);
+                    break;
+                }
+
+            }
+            else {
+                if (((libUPLR_gv_UPLZ2DashFacing[lv_player] > (lv_facing + 90.0)) || (libUPLR_gv_UPLZ2DashFacing[lv_player] < (lv_facing - 90.0)))) {
+                    UnitBehaviorRemove(EventUnit(), "UPLZ2DashWalkSpeed", 1);
+                    break;
+                }
+
+            }
+        }
+        Wait(0.0625, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libUPLR_gt_CM_NovaPsiStrike_Init () {
+    libUPLR_gt_CM_NovaPsiStrike = TriggerCreate("libUPLR_gt_CM_NovaPsiStrike_Func");
+    TriggerEnable(libUPLR_gt_CM_NovaPsiStrike, false);
+    TriggerAddEventUnitAbility(libUPLR_gt_CM_NovaPsiStrike, null, AbilityCommand("UPLDash", 0), c_abilEffectStageCast, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ClaymoreMinePlaceDummy
+//--------------------------------------------------------------------------------------------------
+bool libUPLR_gt_ClaymoreMinePlaceDummy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    bool lv_queued;
+    unitgroup lv_ug;
+    unit lv_caster;
+    unit lv_claymorePH;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_queued = OrderGetFlag(EventUnitOrder(), c_cmdQueued);
+    lv_ug = UnitGroupEmpty();
+    lv_caster = EventUnit();
+    lv_player = 1;
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(lv_caster) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_queued == true)) {
+        UnitBehaviorAdd(lv_caster, "ClaymoreMineQueued", lv_caster, 1);
+    }
+
+    libNtve_gf_MakeUnitUncommandable(EventUnit(), true);
+    UnitCreateEffectPoint(lv_caster, "ClaymoreMineMakeDummy", OrderGetTargetPosition(EventUnitOrder()));
+    libNtve_gf_MakeUnitUncommandable(EventUnit(), false);
+    if ((OrderGetFlag(EventUnitOrder(), c_cmdUser) == true)) {
+        lv_ug = UnitGetTrackedUnitGroup(lv_caster, "ClaymoreMineTracker");
+        if ((UnitGroupCount(lv_ug, c_unitCountAlive) > 0)) {
+            lv_claymorePH = UnitGroupUnit(lv_ug, UnitGroupCount(lv_ug, c_unitCountAlive));
+            if ((lv_queued == true)) {
+                UnitBehaviorAdd(lv_claymorePH, "ClaymoreMineQueued", lv_caster, 1);
+            }
+
+            lv_ug = libNtve_gf_ConvertUnitToUnitGroup(lv_claymorePH);
+            if ((UnitIsValid(lv_caster) == true) && (UnitIsValid(lv_claymorePH) == true)) {
+                UISetTargetingOrder(PlayerGroupSingle(lv_player), lv_ug, OrderTargetingPoint(AbilityCommand("ClaymoreMineSetDirection", 0), UnitGetPosition(lv_claymorePH)), false);
+                while ((UnitIsValid(lv_caster) == true) && (UnitIsValid(lv_claymorePH) == true)) {
+                    Wait(0.0625, c_timeGame);
+                }
+            }
+
+        }
+        else {
+            TriggerDebugOutput(1, StringExternal("Param/Value/lib_UPLR_1F1EC273"), false);
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libUPLR_gt_ClaymoreMinePlaceDummy_Init () {
+    libUPLR_gt_ClaymoreMinePlaceDummy = TriggerCreate("libUPLR_gt_ClaymoreMinePlaceDummy_Func");
+    TriggerEnable(libUPLR_gt_ClaymoreMinePlaceDummy, false);
+    TriggerAddEventUnitOrder(libUPLR_gt_ClaymoreMinePlaceDummy, null, AbilityCommand("ClaymoreMineDummy", 0));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ClaymoreMineSetDirection
+//--------------------------------------------------------------------------------------------------
+bool libUPLR_gt_ClaymoreMineSetDirection_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_caster;
+    unitgroup lv_ug;
+    int lv_player;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_ug = UnitGroupEmpty();
+    lv_player = EventPlayer();
+
+    // Conditions
+    if (testConds) {
+        if (!((OrderGetFlag(EventUnitOrder(), c_cmdUser) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_ug = UnitGetTrackedUnitGroup(EventUnit(), "ClaymoreMineTracker");
+    if ((UnitGroupCount(lv_ug, c_unitCountAlive) > 0)) {
+        lv_caster = UnitGroupUnit(lv_ug, 1);
+        if ((UnitIsValid(lv_caster) == true)) {
+            UnitCreateEffectUnit(EventUnit(), "ClaymoreMineSignalReady", lv_caster);
+            if ((UnitHasBehavior2(EventUnit(), "ClaymoreMineQueued") == true)) {
+                lv_ug = UnitGroupSelected(lv_player);
+                UISetTargetingOrder(PlayerGroupSingle(lv_player), lv_ug, OrderTargetingPoint(AbilityCommand("ClaymoreMineDummy", 0), UnitGetPosition(lv_caster)), false);
+                Wait(30.0, c_timeReal);
+                return true;
+            }
+
+        }
+
+    }
+
+    UISetTargetingOrder(PlayerGroupSingle(lv_player), libNtve_gf_ConvertUnitToUnitGroup(EventUnit()), null, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libUPLR_gt_ClaymoreMineSetDirection_Init () {
+    libUPLR_gt_ClaymoreMineSetDirection = TriggerCreate("libUPLR_gt_ClaymoreMineSetDirection_Func");
+    TriggerEnable(libUPLR_gt_ClaymoreMineSetDirection, false);
+    TriggerAddEventUnitOrder(libUPLR_gt_ClaymoreMineSetDirection, null, AbilityCommand("ClaymoreMineSetDirection", 0));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: ClaymoreMineSetDirectionCancel
+//--------------------------------------------------------------------------------------------------
+bool libUPLR_gt_ClaymoreMineSetDirectionCancel_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+
+    // Automatic Variable Declarations
+    unitgroup auto1DED529D_g;
+    int auto1DED529D_u;
+    unit auto1DED529D_var;
+
+    // Variable Initialization
+    lv_player = EventPlayer();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto1DED529D_g = UnitGroupSelected(lv_player);
+    auto1DED529D_u = UnitGroupCount(auto1DED529D_g, c_unitCountAll);
+    for (;; auto1DED529D_u -= 1) {
+        auto1DED529D_var = UnitGroupUnitFromEnd(auto1DED529D_g, auto1DED529D_u);
+        if (auto1DED529D_var == null) { break; }
+        PlayerCreateEffectUnit(lv_player, "ClaymoreMineCancelChannelOrder", auto1DED529D_var);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libUPLR_gt_ClaymoreMineSetDirectionCancel_Init () {
+    libUPLR_gt_ClaymoreMineSetDirectionCancel = TriggerCreate("libUPLR_gt_ClaymoreMineSetDirectionCancel_Func");
+    TriggerEnable(libUPLR_gt_ClaymoreMineSetDirectionCancel, false);
+    TriggerAddEventTargetModeUpdate(libUPLR_gt_ClaymoreMineSetDirectionCancel, c_playerAny, AbilityCommand("ClaymoreMineSetDirection", 0), c_targetModeStateOff);
+}
+
+void libUPLR_InitTriggers () {
+    libUPLR_gt_InitializeUPLRace_Init();
+    libUPLR_gt_CM_NovaPsiStrike_Init();
+    libUPLR_gt_ClaymoreMinePlaceDummy_Init();
+    libUPLR_gt_ClaymoreMineSetDirection_Init();
+    libUPLR_gt_ClaymoreMineSetDirectionCancel_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libUPLR_InitLib_completed = false;
+
+void libUPLR_InitLib () {
+    if (libUPLR_InitLib_completed) {
+        return;
+    }
+
+    libUPLR_InitLib_completed = true;
+
+    libUPLR_InitLibraries();
+    libUPLR_InitVariables();
+    libUPLR_InitCustomScript();
+    libUPLR_InitTriggers();
+}
+

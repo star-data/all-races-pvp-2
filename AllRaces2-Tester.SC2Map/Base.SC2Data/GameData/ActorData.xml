@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorUnit id="RichMineralField">
+        <PlacementModel value="HighYieldMineralField"/>
+    </CActorUnit>
+    <CActorAction id="UnitTesterActor" parent="GenericAttack">
+        <On Terms="UnitBirth.UnitTesterCaster" Send="Create"/>
+    </CActorAction>
+</Catalog>

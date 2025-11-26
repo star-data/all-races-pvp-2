@@ -1,0 +1,517 @@
+﻿Abil/Name/CustomBuild=Custom Build
+Abil/Name/UnitTesterBuild=UnitTesterBuild
+Abil/Name/ZergBuildCustom=Morph Unit (Drone -> Zerg Buildings)
+Button/Name/AccelerationZone=AccelerationZone
+Button/Name/BuildDestructibleRock=Build Destructible Rock
+Button/Name/BuildMineralField=Build Mineral Field
+Button/Name/BuildMineralField2=Build Rich Mineral Field
+Button/Name/BuildNeutralStructure=Build Neutral Structure
+Button/Name/BuildNeutralSupplyDepot=Build Neutral Supply Depot
+Button/Name/BuildVespeneGeyser=Build Vespene Geyser
+Button/Name/BuildVespeneGeyser2=Build Rich Vespene Geyser
+Button/Name/BuildXelNagaTower=Build Xel'naga Tower
+Button/Name/InhibitorZone=InhibitorZone
+Button/Name/UnitTesterBuild=UnitTesterBuild
+Button/Tooltip/BuildDestructibleRock=Destructible Rocks are neutral structures placed on maps usually to initially block paths or expansion areas.
+Button/Tooltip/BuildNeutralSupplyDepot=Neutral supply depots are used to prevent offensive ramp blocks.
+Button/Tooltip/BuildXelnagaTower=Creates a neutral Xel'Naga Tower.  Xel'Naga Towers provide vision to nearby units.
+DocInfo/DescLong=<n/>
+DocInfo/Name=Unit Tester - ALL RACES PVP 2
+DocInfo/Website=https://discord.gg/tR6958REu2
+LoadingScreen/Subtitle=ALL RACES Edition
+LoadingScreen/TextBody=<s val="StandardTooltipHeader">Description</s><n/>Unit tester for one or two players.  Easy to use unit creator, resource spending tracker, different arenas, and many options. Compare unit compositions and costs, or practice your micro with friends<n/></n><s val="StandardTooltipHeader">Instructions</s><n/>To create units:<n/><c val="00FFFF">Click</c> an icon to create one unit<n/><c val="00FFFF">Shift</c> + <c val="00FFFF">click</c> to create five units<n/><c val="00FFFF">Backspace</c> will delete selected units<n/></n></n><s val="StandardButton">All Races Coop version by Visceroid</s>
+LoadingScreen/Title=Unit Tester Online
+MapInfo/Player03/Name=Player 3
+MapInfo/Player04/Name=Player 4
+MapInfo/Player05/Name=Player 5
+MapInfo/Player06/Name=Player 6
+MapInfo/Player07/Name=Player 7
+MapInfo/Player08/Name=Player 8
+MapInfo/Player09/Name=Red
+MapInfo/Player10/Name=Blue
+Param/Expression/34413191=<s val="StandardTooltipHeader_Terr">~name~</s><n/><n/>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~ ~food_icon~ ~food_val~<n/><n/>~desc~
+Param/Expression/36AC98E8=Invalid Upgrade ~A~
+Param/Expression/47F0C004=~A~ can control <c val="50A050">Unit Creator</c>, <c val="FF0000">Red</c> and <c val="0000FF">Blue</c> units
+Param/Expression/589D10F5=<s val="StandardTooltipHeader_Terr">~name~</s></n></n>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~</n></n>~desc~
+Param/Expression/5AD5F175=<s val="StandardTooltipHeader_Terr">~name~</s><n/><n/>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~ ~food_icon~ ~food_val~<n/><n/>~desc~
+Param/Expression/613515FF=<s val="StandardTooltipHeader_Terr">~name~</s></n></n>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~</n></n>~desc~
+Param/Expression/6EB53217=<s val="StandardTooltipHeader_Terr">~name~</s></n></n>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~</n></n>~desc~
+Param/Expression/87955CB4=Invalid Upgrade ~A~
+Param/Expression/9CBCCFDB=<s val="StandardTooltipHeader_Terr">~name~</s></n></n>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~</n></n>~desc~
+Param/Expression/9F3E093E=<s val="StandardTooltipHeader_Terr">~name~</s></n></n>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~</n></n>~desc~
+Param/Expression/A0DACC17=~A~ has won the battle with ~B~ units remaining.<n/>~C~ ~D~ ~E~ ~F~ ~G~ ~H~
+Param/Expression/B8379136=<s val="StandardTooltipHeader_Terr">~name~</s>
+Param/Expression/C392C4C8=~A~ can control <c val="50A050">Unit Creator</c> and <c val="FF0000">Red</c> units
+Param/Expression/CA86A5E2=<s val="StandardTooltipHeader_Terr">~name~</s>
+Param/Expression/D989841D=Too many upgrades
+Param/Expression/DAE99A1C=~A~ can control <c val="50A050">Unit Creator</c> and <c val="FF0000">Blue</c> units
+Param/Expression/EF018B24=<s val="StandardTooltipHeader_Terr">~name~</s></n></n>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~</n></n>~desc~
+Param/Expression/lib_1_04B5BD30=~A~ can control <c val="50A050">Unit Creator</c>, <c val="FF0000">Red</c> and <c val="0000FF">Blue</c> units
+Param/Expression/lib_1_04F7B285=<c val="FF8040">Removing all units at screen of player ~A~</c>
+Param/Expression/lib_1_06CDF8B1=<c val="[d Player='~ID~' GameValue='PlayerColor'/]">~PLAYER~</c> wants to harvest these resources!
+Param/Expression/lib_1_07EE0082=Behavior: ~A~
+Param/Expression/lib_1_0E274DF2=Validator: ~A~
+Param/Expression/lib_1_105094A8=vb: ~A~
+Param/Expression/lib_1_11766AF4=~A~ (~B~)
+Param/Expression/lib_1_12A21D1A=<s val="StandardTooltipHeader_Terr">~name~</s><n/><n/>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~ ~food_icon~ ~food_val~<n/><n/>~desc~
+Param/Expression/lib_1_134CEECC=<c val="[d Player='~ID~' GameValue='PlayerColor'/]">~PLAYER~</c> wants to attack!
+Param/Expression/lib_1_1477AE93=<n/><s val="AchievementFrameName_Prot"><c val="668aff">~A~</c><c val="FFFFFF"> -</c> <c val="FF9D3C">~D~%</c><c val="8D8D8D"> (~C~)</c></s>
+Param/Expression/lib_1_15CF0020=~A~~B~~C~
+Param/Expression/lib_1_17B3DA3C=Effect: ~A~
+Param/Expression/lib_1_1A6AD2B3=Effect: ~A~ | DMG: ~B~
+Param/Expression/lib_1_1E541B03=Attack ~A~
+Param/Expression/lib_1_21B287EB=UNIT ARMED  ~A~
+Param/Expression/lib_1_272924CC=~A~:~B~
+Param/Expression/lib_1_2E734F6C=Upgrade: ~A~ ~B~ for ~C~
+Param/Expression/lib_1_2F5731F3=DPS (5s): <c val="FF8000">~A~</c><n/>DPS (~B~s): <c val="485AFF ">~C~</c>
+Param/Expression/lib_1_33E6B4EB=Setting ability ~A~ range to ~C~
+Param/Expression/lib_1_34331342=UNIT DISARMED  ~A~
+Param/Expression/lib_1_353C5E68=~A~ (~B~) - hidden
+Param/Expression/lib_1_36A23080=Button: ~A~
+Param/Expression/lib_1_3B6FB432=<c val="[d Player='~ID~' GameValue='PlayerColor'/]">~PLAYER~</c> wants to defend!
+Param/Expression/lib_1_3D18CE68=BEHAVIOR  ~A~ REMOVED from ~B~
+Param/Expression/lib_1_44D2F784=~A~ (~B~)
+Param/Expression/lib_1_483D28C2=Pathing cost between points: ~B~<n/>Unit can path to point (1-1000): ~C~<n/>AI Pathing Cost Unit: ~G~<n/>Points connected by pathing: ~A~<n/>Point is passable: ~E~<n/>Ground type at point: ~D~<n/>---
+Param/Expression/lib_1_4E4CD7C0=Computer ~A~ surrendering as requested by ~B~.
+Param/Expression/lib_1_51554BD1=dead: ~A~ (~B~)  (~C~,~D~)
+Param/Expression/lib_1_541A2EC4=Died: ~C~ (~D~) (~A~,~B~)
+Param/Expression/lib_1_54ECD22B=Created: ~C~ (~D~) (~A~,~B~)
+Param/Expression/lib_1_558D79CF=~B~</n>~A~~C~~D~
+Param/Expression/lib_1_5F203DED=<s val="StandardTooltipHeader_Terr">~name~</s><n/><n/>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~ ~food_icon~ ~food_val~<n/><n/>~desc~
+Param/Expression/lib_1_6210C0FF=~C~:~A~:~B~
+Param/Expression/lib_1_64DCD5DF=Ability: ~A~
+Param/Expression/lib_1_666BB948=Changing hotkey for <c val="FF8040">~A~</c> to <c val="FF8040">~B~</c>
+Param/Expression/lib_1_69F0DD47=<c val="485AFF">Avg: ~A~</c><n/><c val="FF8000">Now: ~B~</c>
+Param/Expression/lib_1_6B66786A=<s val="StandardTooltipHeader_Terr">~name~</s>
+Param/Expression/lib_1_733A1341=Behavior: ~A~ ~B~ on ~C~
+Param/Expression/lib_1_734A7303=<c val="79B8F7">~A~</c> (~B~)
+Param/Expression/lib_1_78404E9E=<c val="[d Player='~ID~' GameValue='PlayerColor'/]">~PLAYER~</c> is on the way!
+Param/Expression/lib_1_793ECA30=target is hidden: ~A~<n/>target is invulnerable: ~B~
+Param/Expression/lib_1_7CFEB626=~A~~B~~C~
+Param/Expression/lib_1_7D51CF5E=<c val="FF8040">Setting sight range to selected units to: ~A~</c>
+Param/Expression/lib_1_80B9714F=Harvest ~A~
+Param/Expression/lib_1_80DC79D3=Player: ~A~ (~D~) <c val="FF0000">Supply: ~B~</c> <c val="00FF00">Total Cost: ~C~</c>
+Param/Expression/lib_1_824471A4=Requirement: ~A~
+Param/Expression/lib_1_892687A8=hidden: ~A~ (~B~) -- (~C~,~D~)
+Param/Expression/lib_1_897B2B85=<c val="FF8000">Timescale set to ~A~</c>
+Param/Expression/lib_1_8B5E54EA=~A~/~B~ at ~C~
+Param/Expression/lib_1_8E4D43B3=ABILITY MODIFY EFFECT: ~A~
+Param/Expression/lib_1_91F4F842=Weapon: ~A~
+Param/Expression/lib_1_92318303=<c val="FF0000">~A~</c>/<c val="00FF00">~B~</c>
+Param/Expression/lib_1_93B1A779=missile: ~A~ (~B~)  (~C~,~D~)
+Param/Expression/lib_1_94C3DB21=<c val="FF8000">ALL (~A~)</c>
+Param/Expression/lib_1_94EDCF4D=~A~ for ~B~
+Param/Expression/lib_1_97BABC56=damage point: ~A~
+Param/Expression/lib_1_981A9EF0=Button: ~A~ | Hotkey: ~B~
+Param/Expression/lib_1_9C1542A5=~A~ has won the battle with ~B~ units remaining.<n/>~C~ ~D~ ~E~ ~F~ ~G~ ~H~
+Param/Expression/lib_1_9CA550EF=<n/><s val="AchievementFrameName_Prot"><c val="668aff">~A~</c><c val="FFFFFF"> -</c> <c val="00CE00">~D~%</c><c val="8D8D8D"> (~C~)</c></s>
+Param/Expression/lib_1_9E2DFDB2=<c val="777777"> (~A~s)</c>
+Param/Expression/lib_1_A1BE99DF=<c val="[d Player='~ID~' GameValue='PlayerColor'/]">~PLAYER~</c> wants to attack <c val="[d Player='~ENEMYID~' GameValue='PlayerColor'/]">~ENEMY~</c>!
+Param/Expression/lib_1_A22E497E=~B~ -hidden
+Param/Expression/lib_1_A3BB8555=<c val="FF8000">Timescale set to ~A~</c>
+Param/Expression/lib_1_A7377775=Revived: ~C~ (~D~) (~A~,~B~)
+Param/Expression/lib_1_A89B73BA=<s val="StandardTooltipHeader_Terr">~name~</s></n></n>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~</n></n>~desc~
+Param/Expression/lib_1_A9FC91C3=Unit: ~A~
+Param/Expression/lib_1_AAA36C8E=~A~ can control <c val="50A050">Unit Creator</c> and <c val="FF0000">Blue</c> units
+Param/Expression/lib_1_ABBE3822=~A~: ~B~
+Param/Expression/lib_1_AE0404E9=ABILITY ~A~ REMOVED from ~B~
+Param/Expression/lib_1_AE3F9CA3=Upgrade: ~A~
+Param/Expression/lib_1_AE8756E8=<s val="MapName"><c val="FF7700">~B~</c></s>  (preplaced units and structures: ~A~)
+Param/Expression/lib_1_AECFC1AE=DAMAGE EFFECT: ~A~
+Param/Expression/lib_1_B5FDF173=Setting ability ~A~ range to ~C~
+Param/Expression/lib_1_B808EE7B=APPLIED TO ENEMY: ~A~
+Param/Expression/lib_1_BAAF0138=<c val="[d Player='~ID~' GameValue='PlayerColor'/]">~PLAYER~</c> wants to defend <c val="[d Player='~ENEMYID~' GameValue='PlayerColor'/]">~ENEMY~</c>!
+Param/Expression/lib_1_BDB58250=<c val="[d Player='~ID~' GameValue='PlayerColor'/]">~PLAYER~</c> wants to attack <c val="[d Player='~ENEMYID~' GameValue='PlayerColor'/]">~ENEMY~</c>!
+Param/Expression/lib_1_BFE222F2= [~A~]
+Param/Expression/lib_1_C03D0380=<c val="FF8040">Radius set to ~A~<n/>(Use negative value to reset)</c>
+Param/Expression/lib_1_C0E0FFC2=~B~</n><c val="777777">~A~~C~~D~</c>
+Param/Expression/lib_1_C25234A7=period: ~A~
+Param/Expression/lib_1_C3CDCF9F=Defend ~A~
+Param/Expression/lib_1_C75B3850=<c val="485AFF">Avg: ~A~</c><n/><c val="FF8000">Now: </c>
+Param/Expression/lib_1_C7D1B34A=<c val="FF8000"> ~A~</c>
+Param/Expression/lib_1_C92E4370=???: ~A~
+Param/Expression/lib_1_C9D010B3=hidden: ~A~ (~B~) -- (~C~,~D~) -- cargo
+Param/Expression/lib_1_CAFF1908=Ability: ~A~ (~B~)
+Param/Expression/lib_1_CCF5F290=Effect: ~A~
+Param/Expression/lib_1_D122C768=<c val="FF8000">Supply limit set to ~A~</c>
+Param/Expression/lib_1_D27098B1=~A~: ~B~
+Param/Expression/lib_1_D80199D2=~A~ -dead
+Param/Expression/lib_1_D9FAEDCE=Full saturation at ~A~
+Param/Expression/lib_1_DD5AC1B6=Out of Bounds: List ~A~ get ~C~ of ~B~
+Param/Expression/lib_1_DE5D7AAE=<c val="[d Player='~ID~' GameValue='PlayerColor'/]">~PLAYER~</c> signals to retreat!
+Param/Expression/lib_1_DFDEF41B=<c val="B0B0B0">DPS (5s): ~A~<n/>DPS (~B~s): ~C~</c>
+Param/Expression/lib_1_E12E8669=Requirement Node: ~A~
+Param/Expression/lib_1_E9292990=<s val="StandardTooltipHeader_Terr">~name~</s>
+Param/Expression/lib_1_EC797054=<c val="FF8040">Removing all unselectable units</c>
+Param/Expression/lib_1_F0A3828A=~A~ -missile
+Param/Expression/lib_1_F5006E98=Total - <c val="FF0000">Supply: ~B~</c> <c val="00FF00">Total Cost: ~C~</c>
+Param/Expression/lib_1_F903D6BF=UNIT DISARMED  ~A~
+Param/Expression/lib_1_F99B0312=~A~ can control <c val="50A050">Unit Creator</c> and <c val="FF0000">Red</c> units
+Param/Expression/lib_1_FA672BE2=any: ~A~ (~B~)  (~C~,~D~) ~E~
+Param/Expression/lib_1_FB54A91E=~A~ (~B~,~C~)
+Param/Expression/lib_1_FEDAD893=Effect: ~A~
+Param/Expression/lib_UTES_184EC65F=<s val="StandardTooltipHeader_Terr">~name~</s></n></n>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~</n></n>~desc~
+Param/Expression/lib_UTES_18E1D0F3=~A~ can control <c val="50A050">Unit Creator</c> and <c val="FF0000">Blue</c> units
+Param/Expression/lib_UTES_1C6CE802=<s val="StandardTooltipHeader_Terr">~name~</s><n/><n/>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~ ~food_icon~ ~food_val~<n/><n/>~desc~
+Param/Expression/lib_UTES_25AF8D9F=~A~ has won the battle with ~B~ units remaining.<n/>~C~ ~D~ ~E~ ~F~ ~G~ ~H~
+Param/Expression/lib_UTES_2F4AB64B=<s val="StandardTooltipHeader_Terr">~name~</s>
+Param/Expression/lib_UTES_6FEEED46=<s val="StandardTooltipHeader_Terr">~name~</s><n/><n/>~min_icon~ ~min_val~ ~gas_icon~ ~gas_val~ ~food_icon~ ~food_val~<n/><n/>~desc~
+Param/Expression/lib_UTES_8E0A5477=~A~ can control <c val="50A050">Unit Creator</c>, <c val="FF0000">Red</c> and <c val="0000FF">Blue</c> units
+Param/Expression/lib_UTES_DBA7EE2D=~A~ can control <c val="50A050">Unit Creator</c> and <c val="FF0000">Red</c> units
+Param/Expression/lib_UTES_E1CC6A25=<s val="StandardTooltipHeader_Terr">~name~</s>
+Param/Value/0D9105C6=<s val="Warning">Mirroring...</s>
+Param/Value/0E44AFCC=All researches ON
+Param/Value/13AC5AB2=<s val="Warning">Starting...</s>
+Param/Value/19FA4295=<s val="Warning"> DOUBLE K.O. !!!</s>
+Param/Value/1E69A04A=Multiplayer mode
+Param/Value/2AE87FDB=Too many Amon Factions
+Param/Value/2EE0B551=Use the options to access game options and alliance settings.<n/>Options can be changed by anyone.<n/>Alliance allows you to enable or disable control for up to 8 players of the unit creator, red units, or blue units.
+Param/Value/2F4E700D=All researches OFF
+Param/Value/360D5A78=Buildings
+Param/Value/3C205BF3=<s val="Warning">Game Paused</s>
+Param/Value/45BDFD34=<s val="StandardLargePanelButton"><c val="FF0000">Red</c></s>
+Param/Value/4C0FAC9F=<s val="Warning">All attacking!</s>
+Param/Value/52215AD1=<s val="Warning">Back to Unit Creator...</s>
+Param/Value/5F6637DC=<s val="Warning"><c val="FF0000">Red </c>attacking!</s>
+Param/Value/5F7EF792=Buildings
+Param/Value/60FF29AC=Revealers ON
+Param/Value/6A22DC1A=Units
+Param/Value/71304DB0=Attack
+Param/Value/74E601C0=All upgrades to level 0
+Param/Value/7609EB00=Options
+Param/Value/7671B960=Revealers OFF
+Param/Value/77748292=Units
+Param/Value/7CC782AB=All upgrades to level 1
+Param/Value/835495DE=Use the unit creator to research upgrades.<n/><c val="00FFFF">Click twice</c> on the Protoss, Terran, or Zerg icon.<n/>To enable an upgrade, click any colored upgrade.<n/>To disable an upgrade, click any grayed-out upgrade.
+Param/Value/84753A09=Upgrades
+Param/Value/8505CDAE=The attack mode buttons are visible when you click "Start"<n/><s val="StandardTooltipHeader">Pause</s> [Hotkey: <c val="00FFFF">Minus (-)</c>]: Pause all units.  You can still issue commands<n/><s val="StandardTooltipHeader">Reset</s> [Hotkey: <c val="00FFFF">Plus (+)</c>]: Respawns starting units and structures</n><s val="StandardTooltipHeader">Attack </s>[Hotkey:<c val="00FFFF"> Period (.)</c>]: Order all units to attack<n/><c val="00FFFF">+Shift</c>: Order Red units to attack<n/><c val="00FFFF">+Ctrl</c>: Order Blue units to attack
+Param/Value/8776C53A=All upgrades to level 2
+Param/Value/8BB03241=Terrain
+Param/Value/A92CE37C=All upgrades to level 3
+Param/Value/AE6B3501=<s val="Warning">Clearing...</s>
+Param/Value/AFED49D2=Use the builders to construct structures.<n/><c val="00FFFF">Select </c>the appropriate builder from the area on the right.  <n/>If constructed while the unit creator is open, the building will be added to the leaderboard and its position will be saved.<n/>If constructed during attack mode, the building will not be added to the leaderboard and will not respawn.
+Param/Value/B3C36D45=<s val="Warning"><c val="0000FF">Blue </c>attacking!</s>
+Param/Value/BB04D88D=Units
+Param/Value/BC265421=Use the unit creator to create units.<n/><c val="00FFFF">Click</c> an icon to create one unit.<n/><c val="00FFFF">Shift</c> + <c val="00FFFF">click</c> to create five units.<n/><c val="00FFFF">Backspace</c> will delete selected units.
+Param/Value/C495EE40=<s val="Warning">Game Resumed</s>
+Param/Value/DC8D7B25=Terrain
+Param/Value/E1DCD971=<s val="StandardLargePanelButton"><c val="0000FF">Blue</c></s>
+Param/Value/E290031F=<s val="Warning">Respawning...</s>
+Param/Value/E2C6AD8A=Upgrades
+Param/Value/E36ADE65=Use the options panel to choose a different area. Units and structures are moved to the new location, but their positions will be changed.
+Param/Value/E8430A46=<c val="FF0000">Red</c>
+Param/Value/EA1EC491=<c val="0000FF">Blue</c>
+Param/Value/F44778EB=Attack
+Param/Value/FB563591=Options
+Param/Value/FF76445C=Single player mode
+Param/Value/lib_1_004B2BBF=All upgrades to level 3
+Param/Value/lib_1_023476AF=<s val="StandardLargePanelButton"><c val="FF0000">Red</c></s>
+Param/Value/lib_1_0347A8EB=Error in Dynamic Int Array - Remove: Trying to remove a value in the index
+Param/Value/lib_1_03B1161E=Buildings
+Param/Value/lib_1_06851008=<c val="FF8000">Copy-paste enabled. <n/>Units will be created in the center of your screen.</c>
+Param/Value/lib_1_08B61BBA=<c val="ff0000">You have pinged too much.  Please wait a while before pinging again.</c>
+Param/Value/lib_1_099408E9=Couldn't create the database
+Param/Value/lib_1_0AF59233=Error in Dynamic Int Array - Get: Trying to get a value in the index
+Param/Value/lib_1_0B2DBA6E=<s val="StandardLargePanelButton"><c val="0000FF">Blue</c></s>
+Param/Value/lib_1_0D6CE665=Attack
+Param/Value/lib_1_0F0931A2=Error in Dynamic Int Array - Remove: Trying to remove a value in the index
+Param/Value/lib_1_105E1F27= while the dynamic array has a size of
+Param/Value/lib_1_106DB4AE=<c val="FF8000">Disabling button monitoring</c>
+Param/Value/lib_1_12C3060A=<c val="FF8000">Camera reset</c>
+Param/Value/lib_1_12DC60F1=Error in Dynamic Point Array - Get: Trying to get a value in the index
+Param/Value/lib_1_136D91C0=<c val="FF8000">Resetting ability ranges.</c>
+Param/Value/lib_1_1455D096=<c val="FF8040">Radius reset</c>
+Param/Value/lib_1_146DB04D=Error in Dynamic Point Array - Remove: Trying to remove a value in the index
+Param/Value/lib_1_151BC372= while the dynamic array has a size of
+Param/Value/lib_1_170C04AD=Revealers OFF
+Param/Value/lib_1_18212F0E=<c val="FF8000">Speed set to normal</c>
+Param/Value/lib_1_1A926107=Error in Dynamic Point Array - Set: Trying to set a point in the index
+Param/Value/lib_1_1AEA54A6=<c val="FF8000">Speed set to fast</c>
+Param/Value/lib_1_1C0FF851=<c val="FF8000">HIDDEN UNITS</c>
+Param/Value/lib_1_1FAC4A2C= while the dynamic array has a size of
+Param/Value/lib_1_201C2075=<s val="Warning">Mirroring...</s>
+Param/Value/lib_1_205076C9=<s val="ArmyCustomizationSelectedUnitDescriptionName"><c val="FFFFFF">Damage log</s></c> <s val="AchievementFrameName_Prot"><c val="FFFFFF">(total:
+Param/Value/lib_1_20A0955A=All researches OFF
+Param/Value/lib_1_20B9A843=Options
+Param/Value/lib_1_20DC256C=Error in Dynamic Int Array - Set: Trying to set value
+Param/Value/lib_1_21962E88=Units
+Param/Value/lib_1_22406E19=Attack
+Param/Value/lib_1_269CFA73=<c val="FF8000">Speed set to slower</c>
+Param/Value/lib_1_275B6371=<c val="FF8000">Log cleared</c>
+Param/Value/lib_1_2A657ACB=Create
+Param/Value/lib_1_2C2B2C85= because it already exists!
+Param/Value/lib_1_2C8E9B75=Multiplayer mode
+Param/Value/lib_1_3099869C=<c val="FF8000">Controlling allied/neutral players</c>
+Param/Value/lib_1_36465233= while the dynamic array has a size of
+Param/Value/lib_1_36FBE6EB=Economy test enabled<n/>
+Param/Value/lib_1_39FEB863=)</c></s>
+Param/Value/lib_1_3BAE9C76= while the dynamic array has a size of
+Param/Value/lib_1_3CF6B2EB=-hidden
+Param/Value/lib_1_3D34AE81=<c val="FF0000">Warning: May causes some performance degradation</c>
+Param/Value/lib_1_3EC8B6C9=Use the options panel to choose a different area. Units and structures are moved to the new location, but their positions will be changed.
+Param/Value/lib_1_3F07C5DB=<c val="FF0000">Damage logging overflow</c>
+Param/Value/lib_1_40896ACF=<c val="FF8000">Check pathing from selected unit to camera center with TAB key</c>
+Param/Value/lib_1_4161ABCF=No
+Param/Value/lib_1_42D898F8=<c val="FF8000">AI paused</c>
+Param/Value/lib_1_4326F1E0=<s val="Warning">Game Paused</s>
+Param/Value/lib_1_447469C0=<s val="Warning">Game Resumed</s>
+Param/Value/lib_1_46F165D7=<c val="FF8000">Fast build enabled</c>
+Param/Value/lib_1_471EEE6D=<c val="FF8000">Speed set to slow</c>
+Param/Value/lib_1_48B1E00A=The attack mode buttons are visible when you click "Start"<n/><s val="StandardTooltipHeader">Pause</s> [Hotkey: <c val="00FFFF">Minus (-)</c>]: Pause all units.  You can still issue commands<n/><s val="StandardTooltipHeader">Reset</s> [Hotkey: <c val="00FFFF">Plus (+)</c>]: Respawns starting units and structures</n><s val="StandardTooltipHeader">Attack </s>[Hotkey:<c val="00FFFF"> Period (.)</c>]: Order all units to attack<n/><c val="00FFFF">+Shift</c>: Order Red units to attack<n/><c val="00FFFF">+Ctrl</c>: Order Blue units to attack
+Param/Value/lib_1_4B941A05=Empty List Name is Not Allowed
+Param/Value/lib_1_4ED4505D=Upgrades
+Param/Value/lib_1_4F608885=<c val="FF8000">Tracing disabled</c>
+Param/Value/lib_1_50ABB27D=Activate
+Param/Value/lib_1_518429B2=Error in Dynamic Int Array - Add: Trying to add value
+Param/Value/lib_1_535DF71F= wishes to surrender.
+Param/Value/lib_1_53B44744=<s val="Warning">Back to Unit Creator...</s>
+Param/Value/lib_1_53ECD43A=Deactivate
+Param/Value/lib_1_55C43747= while the dynamic array has a size of
+Param/Value/lib_1_55DD8059=<c val="FF8000">Copy-paste disabled.</c>
+Param/Value/lib_1_56623D8E= while the dynamic array has a size of
+Param/Value/lib_1_5A12F661=<c val="FF8000">Show/Hide UI with Ctrl+H</c>
+Param/Value/lib_1_5F347A0D=<n/><n/>
+Param/Value/lib_1_6053374D=Defend
+Param/Value/lib_1_613D18AE=Error in Dynamic Int Array - Add: Trying to add value
+Param/Value/lib_1_63A37A91= while the dynamic array has a size of
+Param/Value/lib_1_672296C9=<c val="FF8000">Fast build disabled</c>
+Param/Value/lib_1_690EB27F=Units
+Param/Value/lib_1_6959161D= in the index
+Param/Value/lib_1_6B4F1363=List is not initialized. Creating it
+Param/Value/lib_1_6BCFEC60=Revealers ON
+Param/Value/lib_1_6C5679AE= while the dynamic array has a size of
+Param/Value/lib_1_6CCD3EEC=Error in Dynamic Int Array - Remove: Trying to remove a value in the index
+Param/Value/lib_1_6D14FD39=Yes
+Param/Value/lib_1_6E6C6D7C=Attack
+Param/Value/lib_1_6F726E60=Error in Dynamic Int Array - Get: Trying to get a value in the index
+Param/Value/lib_1_71325F2C=<c val="FF0000">Healing logging overflow</c>
+Param/Value/lib_1_7428F281=Error in Dynamic Int Array - Set: Trying to set value
+Param/Value/lib_1_74C64055=Ground
+Param/Value/lib_1_799545B6=Upgrades
+Param/Value/lib_1_7ED5D442=All upgrades to level 1
+Param/Value/lib_1_8031AF85=Error in Dynamic Int Array - Add: Trying to add value
+Param/Value/lib_1_82CC4C4A=<c val="B0B0B0">DPS (5s): <n/>DPS (?s): </c>
+Param/Value/lib_1_84A75D43=Use the options to access game options and alliance settings.<n/>Options can be changed by anyone.<n/>Alliance allows you to enable or disable control for up to 8 players of the unit creator, red units, or blue units.
+Param/Value/lib_1_8533152D=<c val="FF8000">Tracing enabled<n/>(works only when the map is launched from the editor)</c>
+Param/Value/lib_1_86582682=<s val="Warning">Starting...</s>
+Param/Value/lib_1_88E23323= while the dynamic array has a size of
+Param/Value/lib_1_8A312681= while the dynamic array has a size of
+Param/Value/lib_1_8AAEB775=Unpathable
+Param/Value/lib_1_8C3C7AE4=<c val="FF8000">Enemy control disabled</c>
+Param/Value/lib_1_8D447C8D=Error at Dynamic Int Array - Pop Back: The array is already empty!
+Param/Value/lib_1_8DC60159=Terrain
+Param/Value/lib_1_8E6638DE=<c val="FF8000">Units paused</c>
+Param/Value/lib_1_8E95B936=)</c></s>
+Param/Value/lib_1_8E9FFC91= in the index
+Param/Value/lib_1_8EC712D1= while the dynamic array has a size of
+Param/Value/lib_1_90329AD1=<img path="Assets\TwitchEmotes\goose.dds" alignment="absolutemiddle"/> Already honked recently! <img  path="Assets\TwitchEmotes\goose.dds"  alignment="absolutemiddle"/>
+Param/Value/lib_1_924E5FFB=Retreat
+Param/Value/lib_1_954BA468=Error in Dynamic Point Array - Add: Trying to add a point in the index
+Param/Value/lib_1_96AC64FD= while the dynamic array has a size of
+Param/Value/lib_1_9813BB19= while the dynamic array has a size of
+Param/Value/lib_1_9A1E4A7A= in the index
+Param/Value/lib_1_9B106371=Terrain
+Param/Value/lib_1_9B83B133=All upgrades to level 0
+Param/Value/lib_1_9BAA14E4=On My Way
+Param/Value/lib_1_9C5978BA= while the dynamic array has a size of
+Param/Value/lib_1_9C9B8206=<c val="FF8000">Lighting modification disabled</c>
+Param/Value/lib_1_9C9E35D5=<c val="FF8000">Controlling enemy</c>
+Param/Value/lib_1_9D606F6D=Other emotes
+Param/Value/lib_1_9FA5E105=Building
+Param/Value/lib_1_A4715E57=<s val="ArmyCustomizationSelectedUnitDescriptionName"><c val="FFFFFF">Healing log</c></s> <s val="AchievementFrameName_Prot"><c val="FFFFFF">(total:
+Param/Value/lib_1_A74903A2= in the index
+Param/Value/lib_1_A7E05522=Single player mode
+Param/Value/lib_1_AA54187F=<c val="FF8000">Ctrl+H shortcut disabled for UI toggle</c>
+Param/Value/lib_1_ABAC3023=<c val="FF8000">Godmode enabled</c>
+Param/Value/lib_1_ACC632BF=Do you want to accept?
+Param/Value/lib_1_AE184DAD=Refresh
+Param/Value/lib_1_AFD4776B=Units
+Param/Value/lib_1_AFFD90C4= while the dynamic array has a size of
+Param/Value/lib_1_B024B942=Error in Dynamic Int Array - Remove: Trying to remove a value in the index
+Param/Value/lib_1_B16198B6=Decrease
+Param/Value/lib_1_B2770361=CLOSE
+Param/Value/lib_1_B40BB1C5=<c val="FF8000">DEAD UNITS</c>
+Param/Value/lib_1_B5C9BFD3= because it already exists!
+Param/Value/lib_1_B735BE2C=<c val="FF8000">Starting to monitor buttons</c>
+Param/Value/lib_1_B780F17D=Any
+Param/Value/lib_1_B78FE1F5=<c val="FF8000">Change lighting with "+" or "-" keys</c>
+Param/Value/lib_1_B8A04B14= in the index
+Param/Value/lib_1_B9A9C00F=<c val="FF8000">Camera control enabled</c> (Q,E = zoom; A,D = rotation; W,S = pitch)
+Param/Value/lib_1_B9FDEC66= while the dynamic array has a size of
+Param/Value/lib_1_BB060475=<c val="FF8000">MISSILE</c>
+Param/Value/lib_1_BB781B1F= while the dynamic array has a size of
+Param/Value/lib_1_BC2F2848= in the index
+Param/Value/lib_1_BC66C957=10
+Param/Value/lib_1_BD2143A3=<s val="Warning"><c val="0000FF">Blue </c>attacking!</s>
+Param/Value/lib_1_BE14BC8C=<c val="FF8000">Logging stopped</c>
+Param/Value/lib_1_BED554A3=Error in Dynamic Int Array - Set: Trying to set value
+Param/Value/lib_1_C0582BBA=<s val="Warning">All attacking!</s>
+Param/Value/lib_1_C190B91C=Destroy
+Param/Value/lib_1_C2CF7F93=Economy test disabled
+Param/Value/lib_1_C64F2CCD=Error in Dynamic Int Array - Add: Trying to add value
+Param/Value/lib_1_C731BF49= in the index
+Param/Value/lib_1_C908D994=Error in Dynamic Int Array - Get: Trying to get a value in the index
+Param/Value/lib_1_CF4624F1=Attack
+Param/Value/lib_1_D1AFB49A=Error in Dynamic Int Array - Set: Trying to set value
+Param/Value/lib_1_D2179A9B=Type -val for economy value at any time
+Param/Value/lib_1_D455DE84=All researches ON
+Param/Value/lib_1_D4919715= while the dynamic array has a size of
+Param/Value/lib_1_D5BCDAE9= while the dynamic array has a size of
+Param/Value/lib_1_D69DECB5=Options
+Param/Value/lib_1_D7138021=<s val="Warning"><c val="FF0000">Red </c>attacking!</s>
+Param/Value/lib_1_D7E8E323=Buildings
+Param/Value/lib_1_D829C31E=<s val="Warning">Clearing...</s>
+Param/Value/lib_1_D91352D6=All upgrades to level 2
+Param/Value/lib_1_D96F7499=Use the unit creator to create units.<n/><c val="00FFFF">Click</c> an icon to create one unit.<n/><c val="00FFFF">Shift</c> + <c val="00FFFF">click</c> to create five units.<n/><c val="00FFFF">Backspace</c> will delete selected units.
+Param/Value/lib_1_D98DF3D1=<s val="Warning">Respawning...</s>
+Param/Value/lib_1_D9AC74FF=<c val="FF8000">PathCheck disabled</c>
+Param/Value/lib_1_DAFA1818=Error in Dynamic Int Array - Get: Trying to get a value in the index
+Param/Value/lib_1_DB006650=StarCraft emotes
+Param/Value/lib_1_DC986F2F=<c val="FF0000">Keyboard modifiers are not supported</c>
+Param/Value/lib_1_E018B77E=Cliff
+Param/Value/lib_1_E3A4ED11=<c val="FF8000">Godmode Disabled<n/></c>
+Param/Value/lib_1_E3B1183F= while the dynamic array has a size of
+Param/Value/lib_1_E462AA45=<c val="FF8000">AI unpaused</c>
+Param/Value/lib_1_E62EA0AE=Numbers hidden
+Param/Value/lib_1_E6424086=Use the builders to construct structures.<n/><c val="00FFFF">Select </c>the appropriate builder from the area on the right.  <n/>If constructed while the unit creator is open, the building will be added to the leaderboard and its position will be saved.<n/>If constructed during attack mode, the building will not be added to the leaderboard and will not respawn.
+Param/Value/lib_1_E7BB2F21= in the index
+Param/Value/lib_1_E7BC3401=<c val="FF8000">Camera control disabled</c>
+Param/Value/lib_1_E7D041FC=<s val="Warning"> DOUBLE K.O. !!!</s>
+Param/Value/lib_1_EDA6C2D2=<c val="FF0000">Red</c>
+Param/Value/lib_1_EF7FA2FB=Increase
+Param/Value/lib_1_F2AA9007=<c val="485AFF">Avg: --</c><n/><c val="FF8000">Now: </c>
+Param/Value/lib_1_F3FED900=Error in Dynamic Int Array - Remove: Trying to remove a value in the index
+Param/Value/lib_1_F47401FC=<c val="FF8000">Units unpaused</c>
+Param/Value/lib_1_F4DAC380=<c val="FF8000">Speed set to faster</c>
+Param/Value/lib_1_F9E7DCA3=Use the unit creator to research upgrades.<n/><c val="00FFFF">Click twice</c> on the Protoss, Terran, or Zerg icon.<n/>To enable an upgrade, click any colored upgrade.<n/>To disable an upgrade, click any grayed-out upgrade.
+Param/Value/lib_1_FAC3C8B1=Overriding List Data Type
+Param/Value/lib_1_FAC65340=Error in Dynamic Int Array - Remove: Trying to remove a value in the index
+Param/Value/lib_1_FC45E740=Error in Dynamic Int Array - Get: Trying to get a value in the index
+Param/Value/lib_1_FC575A4C= while the dynamic array has a size of
+Param/Value/lib_1_FCB8663B= while the dynamic array has a size of
+Param/Value/lib_1_FF5DB947=<c val="0000FF">Blue</c>
+Param/Value/lib_UTES_035C840F=All researches OFF
+Param/Value/lib_UTES_038EABAA=Options
+Param/Value/lib_UTES_07D4D50B=Buildings
+Param/Value/lib_UTES_101B5689=Buildings
+Param/Value/lib_UTES_1468DB84=All researches ON
+Param/Value/lib_UTES_18ADA5AB=Multiplayer mode
+Param/Value/lib_UTES_1C94AC8C=Use the builders to construct structures.<n/><c val="00FFFF">Select </c>the appropriate builder from the area on the right.  <n/>If constructed while the unit creator is open, the building will be added to the leaderboard and its position will be saved.<n/>If constructed during attack mode, the building will not be added to the leaderboard and will not respawn.
+Param/Value/lib_UTES_25397E08=<s val="StandardLargePanelButton"><c val="0000FF">Blue</c></s>
+Param/Value/lib_UTES_2D70F97A=<c val="0000FF">Blue</c>
+Param/Value/lib_UTES_2DEE567E=Terrain
+Param/Value/lib_UTES_33DA1E45=Use the options panel to choose a different area. Units and structures are moved to the new location, but their positions will be changed.
+Param/Value/lib_UTES_47EB8B3F=<s val="Warning">Game Resumed</s>
+Param/Value/lib_UTES_4894E696=The attack mode buttons are visible when you click "Start"<n/><s val="StandardTooltipHeader">Pause</s> [Hotkey: <c val="00FFFF">Minus (-)</c>]: Pause all units.  You can still issue commands<n/><s val="StandardTooltipHeader">Reset</s> [Hotkey: <c val="00FFFF">Plus (+)</c>]: Respawns starting units and structures</n><s val="StandardTooltipHeader">Attack </s>[Hotkey:<c val="00FFFF"> Period (.)</c>]: Order all units to attack<n/><c val="00FFFF">+Shift</c>: Order Red units to attack<n/><c val="00FFFF">+Ctrl</c>: Order Blue units to attack
+Param/Value/lib_UTES_4AF5713F=Units
+Param/Value/lib_UTES_5173F782=Revealers ON
+Param/Value/lib_UTES_5395B634=Upgrades
+Param/Value/lib_UTES_5467C758=Attack
+Param/Value/lib_UTES_5C38B5CF=Use the unit creator to create units.<n/><c val="00FFFF">Click</c> an icon to create one unit.<n/><c val="00FFFF">Shift</c> + <c val="00FFFF">click</c> to create five units.<n/><c val="00FFFF">Backspace</c> will delete selected units.
+Param/Value/lib_UTES_601FD090=All upgrades to level 0
+Param/Value/lib_UTES_658E1BD4=Attack
+Param/Value/lib_UTES_689F4412=All upgrades to level 2
+Param/Value/lib_UTES_69CF76D7=Use the unit creator to research upgrades.<n/><c val="00FFFF">Click twice</c> on the Protoss, Terran, or Zerg icon.<n/>To enable an upgrade, click any colored upgrade.<n/>To disable an upgrade, click any grayed-out upgrade.
+Param/Value/lib_UTES_73A4267C=Units
+Param/Value/lib_UTES_75DED011=<s val="StandardLargePanelButton"><c val="FF0000">Red</c></s>
+Param/Value/lib_UTES_7A6C95DA=<c val="FF0000">Red</c>
+Param/Value/lib_UTES_7CF58325=<s val="Warning">Starting...</s>
+Param/Value/lib_UTES_811083A4=<s val="Warning">Clearing...</s>
+Param/Value/lib_UTES_921B3ED5=Terrain
+Param/Value/lib_UTES_9297BD25=<s val="Warning">Back to Unit Creator...</s>
+Param/Value/lib_UTES_9469DCCF=Units
+Param/Value/lib_UTES_A061D0E7=<s val="Warning"><c val="0000FF">Blue </c>attacking!</s>
+Param/Value/lib_UTES_ABE77259=All upgrades to level 3
+Param/Value/lib_UTES_C1E9B1B4=<s val="Warning">All attacking!</s>
+Param/Value/lib_UTES_C5E29F8C=<s val="Warning">Mirroring...</s>
+Param/Value/lib_UTES_C836995F=Single player mode
+Param/Value/lib_UTES_D29299D2=<s val="Warning"> DOUBLE K.O. !!!</s>
+Param/Value/lib_UTES_D371E110=<s val="Warning"><c val="FF0000">Red </c>attacking!</s>
+Param/Value/lib_UTES_D71D1374=<s val="Warning">Respawning...</s>
+Param/Value/lib_UTES_DAA77A49=Options
+Param/Value/lib_UTES_DD703A7F=Use the options to access game options and alliance settings.<n/>Options can be changed by anyone.<n/>Alliance allows you to enable or disable control for up to 8 players of the unit creator, red units, or blue units.
+Param/Value/lib_UTES_E7CF7E3F=Upgrades
+Param/Value/lib_UTES_F044DF2B=All upgrades to level 1
+Param/Value/lib_UTES_FE1D6778=<s val="Warning">Game Paused</s>
+Param/Value/lib_UTES_FFD4A8DD=Revealers OFF
+UI/Icon22_Minerals=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-mineral"/>
+UI/Icon22_Minerals_Gen=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-mineral-terran.dds"/>
+UI/Icon22_Minerals_Keir=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-mineral-keiron.dds"/>
+UI/Icon22_Minerals_Prot=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-mineral-protoss.dds"/>
+UI/Icon22_Minerals_Terr=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-mineral-terran.dds"/>
+UI/Icon22_Minerals_Xayi=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-mineral-zerg.dds"/>
+UI/Icon22_Minerals_Zerg=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-mineral-zerg.dds"/>
+UI/Icon22_Supply=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-supply"/>
+UI/Icon22_Supply_Gen=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-supply-terran.dds"/>
+UI/Icon22_Supply_Keir=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-supply-keiron.dds"/>
+UI/Icon22_Supply_Prot=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-supply-protoss.dds"/>
+UI/Icon22_Supply_Terr=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-supply-terran.dds"/>
+UI/Icon22_Supply_Xayi=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-supply-zerg.dds"/>
+UI/Icon22_Supply_Zerg=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-supply-zerg.dds"/>
+UI/Icon22_Vespene=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-gas"/>
+UI/Icon22_Vespene_Gen=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-gas-terran.dds"/>
+UI/Icon22_Vespene_Keir=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-gas-keiron.dds"/>
+UI/Icon22_Vespene_Prot=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-gas-protoss.dds"/>
+UI/Icon22_Vespene_Terr=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-gas-terran.dds"/>
+UI/Icon22_Vespene_Xayi=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-gas-zerg.dds"/>
+UI/Icon22_Vespene_Zerg=<img width="22" height="22" alignment="absolutemiddle" path="Assets\Textures\icon-gas-zerg.dds"/>
+UI/MenuBar/DiscordButton=All Races Discord Link (Opens a new Window)
+UI/TesterMenuClearButton=Clears all existing units and built structures.
+UI/TesterMenuCreatorButton=Display the unit creation panel.
+UI/TesterMenuMirrorButton=Mirror. Makes each players forces identical to each other.
+UI/TesterMenuPauseButton=Pause. Freezes all units. You can still issue commands.
+UI/TesterMenuResetButton=Reset. Respawn startings units and structures.
+UI/TesterMenuSettingsButton=Display the settings panel.
+UI/TesterOption/Access/Label=Player Access
+UI/TesterOption/Generic/Off=Off
+UI/TesterOption/Generic/On=On
+UI/TesterOption/Research/Label=All Researches
+UI/TesterOption/Terrain/Label=Terrain
+UI/TesterOption/Terrain/Terrain0/Desc=Good area for small fights.
+UI/TesterOption/Terrain/Terrain0/Name=Arena
+UI/TesterOption/Terrain/Terrain1/Desc=Narrow corridor with little room for maneuvering.
+UI/TesterOption/Terrain/Terrain1/Name=Corridor
+UI/TesterOption/Terrain/Terrain2/Desc=Narrow pass, allowing fewer units to move through.
+UI/TesterOption/Terrain/Terrain2/Name=Small Choke
+UI/TesterOption/Terrain/Terrain3/Desc=Normal pass, allowing few units to move through.
+UI/TesterOption/Terrain/Terrain3/Name=Normal Choke
+UI/TesterOption/Terrain/Terrain4/Desc=Large open field with no obstacles.  Good for bigger battles.
+UI/TesterOption/Terrain/Terrain4/Name=Large Arena
+UI/TesterOption/Terrain/Terrain5/Desc=Narrow ramp, giving units at high ground a great advantage.
+UI/TesterOption/Terrain/Terrain5/Name=Small Ramp
+UI/TesterOption/Terrain/Terrain6/Desc=Wide ramp, giving units at high ground a small advantage.
+UI/TesterOption/Terrain/Terrain6/Name=Wide Ramp
+UI/TesterOption/Terrain/Terrain7/Desc=A wide pass somewhat constricted by walls.  Larger than a choke but smaller than an open field, this arena is typical in ladder maps.
+UI/TesterOption/Terrain/Terrain7/Name=Pass
+UI/TesterOption/Terrain/Terrain8/Desc=Mineral resources on high ground, accessible by air or ground.  Defend the expansion or harass it.
+UI/TesterOption/Terrain/Terrain8/Name=Natural Base
+UI/TesterOption/Terrain/Terrain9/Desc=You can get to the top, but can you stay there?
+UI/TesterOption/Terrain/Terrain9/Name=King of the Hill
+UI/TesterOption/UpgradeLevel/Label=Upgrade Level
+UI/TesterOption/UpgradeLevel/Level0=Off
+UI/TesterOption/UpgradeLevel/Level1=+1
+UI/TesterOption/UpgradeLevel/Level2=+2
+UI/TesterOption/UpgradeLevel/Level3=+3
+UI/TesterOption/Vision/Label=Global Vision
+UI/TesterRaceButton_Gen=Display Genetron units. Press again to show upgrades.
+UI/TesterRaceButton_Keir=Display Keiron units. Press again to show upgrades.
+UI/TesterRaceButton_Prot=Display Protoss units. Press again to show upgrades.
+UI/TesterRaceButton_Terr=Display Terran units. Press again to show upgrades.
+UI/TesterRaceButton_Xayi=Display Xayid units. Press again to show upgrades.
+UI/TesterRaceButton_Zerg=Display Zerg units. Press again to show upgrades.
+Unit/Name/DominionBuilder=Dominion Builder
+Unit/Name/GenetronBuilder=Genetron Builder
+Unit/Name/HybridsBuilder=Hybrids Builder
+Unit/Name/IhanriiBuilder=Ihanrii Builder
+Unit/Name/KeironBuilder=Keiron Builder
+Unit/Name/MarauderBuilder=Marauder Builder
+Unit/Name/OutlawBuilder=Outlaw Builder
+Unit/Name/PrimalBuilder=Primal Builder
+Unit/Name/ProbeBuilder=Protoss Builder
+Unit/Name/SimulantBuilder=Simulant Builder
+Unit/Name/TerranBuilder=Terran Builder
+Unit/Name/TestBuilder=Builder
+Unit/Name/UEDBuilder=UED Builder
+Unit/Name/UnitTesterCaster=UnitTesterCaster
+Unit/Name/XayidBuilder=Xayid Builder
+Unit/Name/ZergBuilder=Zerg Builder

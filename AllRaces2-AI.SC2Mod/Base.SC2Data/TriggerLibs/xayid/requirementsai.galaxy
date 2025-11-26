@@ -1,0 +1,99 @@
+
+//--------------------------------------------------------------------------------------------------
+//  Xayid Units
+//--------------------------------------------------------------------------------------------------
+
+const string c_XU_Assailant             = "Assailtant";
+const string c_XU_Casnolisk             = "Casnolisk";
+const string c_XU_Eroder                = "Eroder";
+const string c_XU_Exterminator          = "Exterminator";
+const string c_XU_Ferrion               = "Ferrion";
+const string c_XU_Grub                  = "Grub";
+const string c_XU_Kraken                = "Kraken";
+const string c_XU_Massalisk             = "Massalisk";
+const string c_XU_MassaliskHunkered     = "MassaliskHunkered";
+const string c_XU_Massalisk_Alias       = "Alias_Massalisk";
+const string c_XU_Mendling              = "Mendling";
+const string c_XU_Prowler               = "Prowler";
+const string c_XU_Raptor                = "Raptor";
+const string c_XU_Reviler               = "Reviler";
+const string c_XU_Roamer                = "Roamer";
+const string c_XU_Scavenger             = "Scavenger";
+const string c_XU_Scorpalisk            = "Scorpalisk";
+const string c_XU_Spitter               = "Spitter";
+const string c_XU_Wasp                  = "Wasp";
+const string c_XU_Worm                  = "Worm";
+const string c_XU_Xayidling             = "Xayidling";
+const string c_XU_Xayithoan             = "Xayithoan";
+
+//--------------------------------------------------------------------------------------------------
+//  Xayid Buildings
+//--------------------------------------------------------------------------------------------------
+
+const string c_XB_AvianNest             = "AvianNest";
+const string c_XB_BilePit               = "BilePit";
+const string c_XB_BiomassCavern         = "BiomassCavern";
+const string c_XB_BiomassHatchery       = "BiomassHatchery";
+const string c_XB_CasnoliskDen          = "CasnoliskDen";
+const string c_XB_CatalystPit           = "CatalystPit";
+const string c_XB_FeedingPool           = "FeedingPool";
+const string c_XB_MutagenChamber        = "MutagenChamber";
+const string c_XB_ScavengerNest         = "ScavengerNest";
+const string c_XB_Siphoner              = "Siphoner";
+const string c_XB_SunkenWarren          = "SunkenWarren";
+const string c_XB_XayidDen              = "XayidDen";
+
+//--------------------------------------------------------------------------------------------------
+//  Xayid Research Upgrades
+//--------------------------------------------------------------------------------------------------
+
+const string c_XR_FlyerAttacks1         = "XayidFlyerAttacksLevel1";
+const string c_XR_FlyerAttacks2         = "XayidFlyerAttacksLevel2";
+const string c_XR_FlyerAttacks3         = "XayidFlyerAttacksLevel3";
+const string c_XR_FlyerCarapace1        = "XayidFlyerCarapaceLevel1";
+const string c_XR_FlyerCarapace2        = "XayidFlyerCarapaceLevel2";
+const string c_XR_FlyerCarapace3        = "XayidFlyerCarapaceLevel3";
+const string c_XR_GroundAttacks1        = "XayidGroundAttacksLevel1";
+const string c_XR_GroundAttacks2        = "XayidGroundAttacksLevel2";
+const string c_XR_GroundAttacks3        = "XayidGroundAttacksLevel3";
+const string c_XR_GroundCarapace1       = "XayidGroundCarapaceLevel1";
+const string c_XR_GroundCarapace2       = "XayidGroundCarapaceLevel2";
+const string c_XR_GroundCarapace3       = "XayidGroundCarapaceLevel3";
+const string c_XR_BattleFrenzy          = "BattleFrenzy";
+const string c_XR_BileDucts             = "BileDucts";
+const string c_XR_CalcifiedHusk         = "CalcifiedHusk";
+const string c_XR_CleavingSpores        = "CleavingSpores";
+const string c_XR_DexterousJoints       = "DexterousJoints";
+const string c_XR_Hunker                = "Hunker";                       //Obsolete
+const string c_XR_IncendiaryInfusion    = "IncendiaryInfusion";           //Obsolete
+const string c_XR_OcularAcuity          = "OcularAcuity";
+const string c_XR_PiercingThrust        = "PiercingThrust";               //Obsolete
+const string c_XR_PersistantSpores      = "PersistantSpores";
+const string c_XR_ProlongedSpores       = "ProlongedSpores";
+const string c_XR_RefinedExcretion      = "RefixedExcretion";             //Obsolete
+const string c_XR_ResidualAcid          = "ResidualAcid";                 //Obsolete
+const string c_XR_ScorpaliskSpeed       = "ScorpaliskMetabolics";
+const string c_XR_VolatileDischarge     = "VolatileDischarge";
+
+//--------------------------------------------------------------------------------------------------
+//  Effects
+//--------------------------------------------------------------------------------------------------
+const string c_EF_ExplosiveGlobArea         = "ExplosiveGlobImpactSearch";
+const string c_EF_StagnatingBileArea        = "StagnatingBileSA";
+
+//--------------------------------------------------------------------------------------------------
+//  Buffs
+//--------------------------------------------------------------------------------------------------
+const string c_BF_AdaptiveInjectionFrenzy   = "FrenzyInjection";
+const string c_BF_AdaptiveInjectionSink     = "FrenzySink";
+
+//--------------------------------------------------------------------------------------------------
+//  Markers
+//--------------------------------------------------------------------------------------------------
+const string c_MK_AdaptiveInjection         = "Abil/AdaptiveInjection/AI";
+//--------------------------------------------------------------------------------------------------
+//  Abilities
+//--------------------------------------------------------------------------------------------------
+const string c_AB_AdaptiveInjection         = "AdaptiveInjection";
+const string c_AB_ExplosiveGlob             = "ExplosiveGlob";
+const string c_AB_StagnatingBile            = "StagnatingBile";

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Attributes>
+    <Attribute>
+        <Id Value="16"/>
+        <Type Value="Player"/>
+        <Name Value="Attribute016/Name"/>
+        <Availability Value="All"/>
+        <Visibility Value="All"/>
+        <Access Value="Self"/>
+        <Value>
+            <Id Value="1"/>
+            <Name Value="Attribute016/Value001/Name"/>
+            <Description Value="Attribute016/Value001/Desc"/>
+        </Value>
+        <Value>
+            <Id Value="2"/>
+            <Name Value="Attribute016/Value002/Name"/>
+            <Icon Value="Assets\icons\genetron-color.dds"/>
+        </Value>
+        <Value>
+            <Id Value="3"/>
+            <Name Value="Attribute016/Value003/Name"/>
+            <Icon Value="Assets\icons\xayid-color.dds"/>
+        </Value>
+        <Value>
+            <Id Value="4"/>
+            <Name Value="Attribute016/Value004/Name"/>
+            <Icon Value="Assets\icons\keiron-color.dds"/>
+        </Value>
+        <Value>
+            <Id Value="5"/>
+            <Name Value="Attribute016/Value005/Name"/>
+            <Icon Value="Assets\Icons\ueds.dds"/>
+        </Value>
+        <Value>
+            <Id Value="6"/>
+            <Name Value="Attribute016/Value006/Name"/>
+            <Icon Value="Assets\icons\hybrid-color.dds"/>
+        </Value>
+        <Value>
+            <Id Value="18"/>
+            <Name Value="Attribute016/Value018/Name"/>
+            <Icon Value="Assets\UI\lobbyrace-dragon.dds"/>
+        </Value>
+        <Value>
+            <Id Value="7"/>
+            <Name Value="Attribute016/Value007/Name"/>
+            <Icon Value="Assets\Icons\upl.dds"/>
+        </Value>
+        <Value>
+            <Id Value="8"/>
+            <Name Value="Attribute016/Value008/Name"/>
+            <Icon Value="Assets\Icons\Synoid.dds"/>
+        </Value>
+        <Value>
+            <Id Value="9"/>
+            <Name Value="Attribute016/Value009/Name"/>
+            <Icon Value="Assets\Textures\decal_terran_0050_02.dds"/>
+        </Value>
+        <Value>
+            <Id Value="10"/>
+            <Name Value="Attribute016/Value010/Name"/>
+            <Icon Value="Assets\Icons\taldarim-color.dds"/>
+        </Value>
+        <Value>
+            <Id Value="11"/>
+            <Name Value="Attribute016/Value011/Name"/>
+            <Icon Value="Assets\Textures\icon-1v1-BWTerran.dds"/>
+        </Value>
+        <Value>
+            <Id Value="12"/>
+            <Name Value="Attribute016/Value012/Name"/>
+            <Icon Value="Assets\Textures\icon-1v1-BWZerg.dds"/>
+        </Value>
+        <Value>
+            <Id Value="13"/>
+            <Name Value="Attribute016/Value013/Name"/>
+            <Icon Value="Assets\Textures\icon-1v1-BWProtoss.dds"/>
+        </Value>
+        <Value>
+            <Id Value="14"/>
+            <Name Value="Attribute016/Value014/Name"/>
+            <Icon Value="Assets\Textures\ui_glues_help_armyicon_terran.dds"/>
+        </Value>
+        <Value>
+            <Id Value="15"/>
+            <Name Value="Attribute016/Value015/Name"/>
+            <Icon Value="Assets\Textures\ui_glues_help_armyicon_zerg.dds"/>
+        </Value>
+        <Value>
+            <Id Value="16"/>
+            <Name Value="Attribute016/Value016/Name"/>
+            <Icon Value="Assets\Textures\ui_glues_help_armyicon_protoss.dds"/>
+        </Value>
+        <Value>
+            <Id Value="17"/>
+            <Name Value="Attribute016/Value017/Name"/>
+            <Icon Value="Assets\Textures\sc2_ui_loadingscreen_playercard_raceindicator_random.dds"/>
+        </Value>
+        <Default>
+            <Slot Id="0"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="1"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="2"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="3"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="4"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="5"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="6"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="7"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="8"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="9"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="10"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="11"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="12"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="13"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="14"/>
+            <Value Id="1"/>
+        </Default>
+        <Default>
+            <Slot Id="15"/>
+            <Value Id="1"/>
+        </Default>
+    </Attribute>
+    <Attribute>
+        <Id Value="3"/>
+        <Type Value="Global"/>
+        <Name Value="Attribute003/Name"/>
+        <Availability Value="All"/>
+        <Visibility Value="All"/>
+        <Access Value="Host"/>
+        <PublicLocked/>
+        <Value>
+            <Id Value="1"/>
+            <Name Value="Attribute003/Value001/Name"/>
+            <Icon Value="Assets\Textures\icon-mineral-nobg.dds"/>
+        </Value>
+        <Value>
+            <Id Value="2"/>
+            <Name Value="Attribute003/Value002/Name"/>
+            <Icon Value="Assets\Textures\icon-mineral-zerg.dds"/>
+        </Value>
+        <Value>
+            <Id Value="3"/>
+            <Name Value="Attribute003/Value003/Name"/>
+            <Icon Value="Assets\Textures\icon-highyieldmineral-nobg.dds"/>
+        </Value>
+        <Value>
+            <Id Value="4"/>
+            <Name Value="Attribute003/Value004/Name"/>
+            <Icon Value="Assets\Textures\icon-highyieldmineral-zerg.dds"/>
+        </Value>
+        <Default>
+            <Slot Id="Global"/>
+            <Value Id="1"/>
+        </Default>
+    </Attribute>
+    <Attribute>
+        <Id Value="2"/>
+        <Type Value="Global"/>
+        <Name Value="Attribute002/Name"/>
+        <Availability Value="All"/>
+        <Visibility Value="All"/>
+        <Access Value="Host"/>
+        <PublicLocked/>
+        <Value>
+            <Id Value="2"/>
+            <Name Value="Attribute002/Value002/Name"/>
+        </Value>
+        <Value>
+            <Id Value="1"/>
+            <Name Value="Attribute002/Value001/Name"/>
+        </Value>
+        <Value>
+            <Id Value="3"/>
+            <Name Value="Attribute002/Value003/Name"/>
+        </Value>
+        <Value>
+            <Id Value="5"/>
+            <Name Value="Attribute002/Value005/Name"/>
+        </Value>
+        <Value>
+            <Id Value="4"/>
+            <Name Value="Attribute002/Value004/Name"/>
+        </Value>
+        <Value>
+            <Id Value="6"/>
+            <Name Value="Attribute002/Value006/Name"/>
+        </Value>
+        <Default>
+            <Slot Id="Global"/>
+            <Value Id="2"/>
+        </Default>
+    </Attribute>
+    <Attribute>
+        <Id Value="5"/>
+        <Type Value="Global"/>
+        <Name Value="Attribute005/Name"/>
+        <Availability Value="All"/>
+        <Visibility Value="All"/>
+        <Access Value="Host"/>
+        <PublicLocked/>
+        <Value>
+            <Id Value="1"/>
+            <Name Value="Attribute005/Value001/Name"/>
+        </Value>
+        <Value>
+            <Id Value="2"/>
+            <Name Value="Attribute005/Value002/Name"/>
+        </Value>
+        <Value>
+            <Id Value="3"/>
+            <Name Value="Attribute005/Value003/Name"/>
+        </Value>
+        <Default>
+            <Slot Id="Global"/>
+            <Value Id="1"/>
+        </Default>
+    </Attribute>
+    <DefaultVariants Value="1"/>
+</Attributes>

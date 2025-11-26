@@ -1,0 +1,542 @@
+include "TriggerLibs/NativeLib"
+
+include "LibEA49549C_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - Tal'Darim
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libEA49549C_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Variable Initialization
+bool libEA49549C_InitVariables_completed = false;
+
+void libEA49549C_InitVariables () {
+    if (libEA49549C_InitVariables_completed) {
+        return;
+    }
+
+    libEA49549C_InitVariables_completed = true;
+
+    libEA49549C_gv_deathStarList = UnitGroupEmpty();
+    libEA49549C_gv_energyPerStack = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogEffect, "TalDarimSoulLeechLocustGainEnergy20", "VitalArray[" + IntToString(c_unitVitalEnergy) + "].Change", c_playerAny);
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Ini
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimIni_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_index;
+
+    // Automatic Variable Declarations
+    playergroup autoD454588D_g;
+    int autoD454588D_var;
+    const int auto7654AB76_ae = 200;
+    const int auto7654AB76_ai = 1;
+    unitgroup auto4FE82D3F_g;
+    int auto4FE82D3F_u;
+    unit auto4FE82D3F_var;
+    unitgroup autoF0837D2B_g;
+    int autoF0837D2B_u;
+    unit autoF0837D2B_var;
+    unitgroup auto802FFDE2_g;
+    int auto802FFDE2_u;
+    unit auto802FFDE2_var;
+    unitgroup autoC739F44F_g;
+    int autoC739F44F_u;
+    unit autoC739F44F_var;
+    unitgroup auto9740683D_g;
+    int auto9740683D_u;
+    unit auto9740683D_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoD454588D_g = PlayerGroupActive();
+    autoD454588D_var = -1;
+    while (true) {
+        autoD454588D_var = PlayerGroupNextPlayer(autoD454588D_g, autoD454588D_var);
+        if (autoD454588D_var < 0) { break; }
+        lv_index = 1;
+        for ( ; ( (auto7654AB76_ai >= 0 && lv_index <= auto7654AB76_ae) || (auto7654AB76_ai < 0 && lv_index >= auto7654AB76_ae) ) ; lv_index += auto7654AB76_ai ) {
+            libEA49549C_gv_talDarimSoulLeechPriority[autoD454588D_var][lv_index] = 2;
+        }
+        libEA49549C_gv_talDarimSoulLeechPriority[autoD454588D_var][10] = 1;
+        libEA49549C_gv_talDarimSoulLeechPriority[autoD454588D_var][90] = 1;
+        libEA49549C_gv_talDarimSoulLeechPriority[autoD454588D_var][190] = 3;
+    }
+    Wait(0.0, c_timeReal);
+    auto4FE82D3F_g = UnitGroup("TalDarimWarmistress", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto4FE82D3F_u = UnitGroupCount(auto4FE82D3F_g, c_unitCountAll);
+    for (;; auto4FE82D3F_u -= 1) {
+        auto4FE82D3F_var = UnitGroupUnitFromEnd(auto4FE82D3F_g, auto4FE82D3F_u);
+        if (auto4FE82D3F_var == null) { break; }
+        UnitBehaviorAdd(auto4FE82D3F_var, "TalDarimSoulDrinkerPriorityHigh", auto4FE82D3F_var, 1);
+    }
+    autoF0837D2B_g = UnitGroup("TalDarimMonitor", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoF0837D2B_u = UnitGroupCount(autoF0837D2B_g, c_unitCountAll);
+    for (;; autoF0837D2B_u -= 1) {
+        autoF0837D2B_var = UnitGroupUnitFromEnd(autoF0837D2B_g, autoF0837D2B_u);
+        if (autoF0837D2B_var == null) { break; }
+        UnitBehaviorAdd(autoF0837D2B_var, "TalDarimSoulDrinkerPriorityLow", autoF0837D2B_var, 1);
+    }
+    auto802FFDE2_g = UnitGroup("TalDarimLocust", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto802FFDE2_u = UnitGroupCount(auto802FFDE2_g, c_unitCountAll);
+    for (;; auto802FFDE2_u -= 1) {
+        auto802FFDE2_var = UnitGroupUnitFromEnd(auto802FFDE2_g, auto802FFDE2_u);
+        if (auto802FFDE2_var == null) { break; }
+        UnitBehaviorAdd(auto802FFDE2_var, "TalDarimSoulDrinkerPriorityLow", auto802FFDE2_var, 1);
+    }
+    UnitGroupAddUnitGroup(libEA49549C_gv_deathStarList, UnitGroup("TalDarimDeathStar", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    autoC739F44F_g = libEA49549C_gv_deathStarList;
+    autoC739F44F_u = UnitGroupCount(autoC739F44F_g, c_unitCountAll);
+    for (;; autoC739F44F_u -= 1) {
+        autoC739F44F_var = UnitGroupUnitFromEnd(autoC739F44F_g, autoC739F44F_u);
+        if (autoC739F44F_var == null) { break; }
+        UnitSetCustomValue(autoC739F44F_var, 0, 0.0);
+    }
+    if ((UnitGroupCount(libEA49549C_gv_deathStarList, c_unitCountAlive) >= 1)) {
+        TriggerEnable(libEA49549C_gt_TalDarimDeathStarLevel, true);
+    }
+
+    auto9740683D_g = UnitGroup("TalDarimCynosure", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto9740683D_u = UnitGroupCount(auto9740683D_g, c_unitCountAll);
+    for (;; auto9740683D_u -= 1) {
+        auto9740683D_var = UnitGroupUnitFromEnd(auto9740683D_g, auto9740683D_u);
+        if (auto9740683D_var == null) { break; }
+        UnitSetPropertyFixed(auto9740683D_var, c_unitPropEnergy, 0.0);
+    }
+    TriggerEnable(libEA49549C_gt_TalDarimDeathStarAddGroup, true);
+    TriggerEnable(libEA49549C_gt_TalDarimDeathStarRemGroup, true);
+    TriggerEnable(libEA49549C_gt_TalDarimLocustEnergy, true);
+    TriggerEnable(libEA49549C_gt_TalDarimMonitorHeightReset, true);
+    TriggerEnable(libEA49549C_gt_TalDarimNewunit, true);
+    TriggerEnable(libEA49549C_gt_TalDarimPriorityHigh, true);
+    TriggerEnable(libEA49549C_gt_TalDarimPriorityLow, true);
+    TriggerEnable(libEA49549C_gt_TalDarimPriorityMedium, true);
+    TriggerEnable(libEA49549C_gt_TalDarimSoulsCountingdown, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimIni_Init () {
+    libEA49549C_gt_TalDarimIni = TriggerCreate("libEA49549C_gt_TalDarimIni_Func");
+    TriggerAddEventGeneric(libEA49549C_gt_TalDarimIni, "GAME START PrTD");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Death Star Level
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimDeathStarLevel_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_loop;
+
+    // Automatic Variable Declarations
+    unitgroup auto93B72D03_g;
+    int auto93B72D03_u;
+    unit auto93B72D03_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto93B72D03_g = libEA49549C_gv_deathStarList;
+    auto93B72D03_u = UnitGroupCount(auto93B72D03_g, c_unitCountAll);
+    for (;; auto93B72D03_u -= 1) {
+        auto93B72D03_var = UnitGroupUnitFromEnd(auto93B72D03_g, auto93B72D03_u);
+        if (auto93B72D03_var == null) { break; }
+        if ((UnitGetCustomValue(auto93B72D03_var, 0) != UnitMagazineCount(auto93B72D03_var, "TalDarimDeathStarDestroyerEscort"))) {
+            UnitAbilityChangeLevel(auto93B72D03_var, "TalDarimDeathStarVaporize", (UnitMagazineCount(auto93B72D03_var, "TalDarimDeathStarDestroyerEscort")-FixedToInt(UnitGetCustomValue(auto93B72D03_var, 0))));
+            UnitSetCustomValue(auto93B72D03_var, 0, UnitMagazineCount(auto93B72D03_var, "TalDarimDeathStarDestroyerEscort"));
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimDeathStarLevel_Init () {
+    libEA49549C_gt_TalDarimDeathStarLevel = TriggerCreate("libEA49549C_gt_TalDarimDeathStarLevel_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimDeathStarLevel, false);
+    TriggerAddEventTimePeriodic(libEA49549C_gt_TalDarimDeathStarLevel, 0.5, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Death Star Add Group
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimDeathStarAddGroup_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnitProgressUnit()) == "TalDarimDeathStar"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupAdd(libEA49549C_gv_deathStarList, EventUnitProgressUnit());
+    UnitSetCustomValue(EventUnitProgressUnit(), 0, 0.0);
+    if ((UnitGroupCount(libEA49549C_gv_deathStarList, c_unitCountAlive) == 1)) {
+        TriggerEnable(libEA49549C_gt_TalDarimDeathStarLevel, true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimDeathStarAddGroup_Init () {
+    libEA49549C_gt_TalDarimDeathStarAddGroup = TriggerCreate("libEA49549C_gt_TalDarimDeathStarAddGroup_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimDeathStarAddGroup, false);
+    TriggerAddEventUnitTrainProgress(libEA49549C_gt_TalDarimDeathStarAddGroup, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Death Star Rem Group
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimDeathStarRemGroup_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "TalDarimDeathStar"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupRemove(libEA49549C_gv_deathStarList, EventUnit());
+    if ((UnitGroupCount(libEA49549C_gv_deathStarList, c_unitCountAlive) == 0)) {
+        TriggerEnable(libEA49549C_gt_TalDarimDeathStarLevel, false);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimDeathStarRemGroup_Init () {
+    libEA49549C_gt_TalDarimDeathStarRemGroup = TriggerCreate("libEA49549C_gt_TalDarimDeathStarRemGroup_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimDeathStarRemGroup, false);
+    TriggerAddEventUnitDied(libEA49549C_gt_TalDarimDeathStarRemGroup, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Locust Energy
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimLocustEnergy_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_locustEnergy;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_locustEnergy = UnitGetPropertyFixed(EventUnit(), c_unitPropEnergy, c_unitPropCurrent);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "TalDarimLocust"))) {
+            return false;
+        }
+
+        if (!((UnitHasBehavior2(EventUnit(), "TalDarimLocustEnergyCharged") == true))) {
+            return false;
+        }
+
+        if (!((lv_locustEnergy <= ((UnitBehaviorCount(EventUnit(), "TalDarimLocustEnergyCharged")-1)*libEA49549C_gv_energyPerStack)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_SetBehaviorCount(EventUnit(), "TalDarimLocustEnergyCharged", EventUnit(), libNtve_gf_ArithmeticIntClamp(FloorI(((lv_locustEnergy/libEA49549C_gv_energyPerStack)+1)), 0, 5));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimLocustEnergy_Init () {
+    libEA49549C_gt_TalDarimLocustEnergy = TriggerCreate("libEA49549C_gt_TalDarimLocustEnergy_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimLocustEnergy, false);
+    TriggerAddEventUnitProperty(libEA49549C_gt_TalDarimLocustEnergy, null, c_unitPropEnergy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Souls Counting down
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimSoulsCountingdown_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_numberOfSouls;
+    fixed lv_unitTriggerIndex;
+    fixed lv_baseDuration;
+    int lv_index;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_numberOfSouls = UnitBehaviorCount(EventUnit(), EventUnitBehavior());
+    lv_unitTriggerIndex = (UnitGetCustomValue(EventUnit(), 1)+0.01);
+    lv_baseDuration = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogBehavior, EventUnitBehavior(), "Duration", UnitGetOwner(EventUnit()));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetCustomValue(EventUnit(), 1, lv_unitTriggerIndex);
+    UnitBehaviorSetDuration(EventUnit(), EventUnitBehavior(), (lv_numberOfSouls*lv_baseDuration));
+    Wait(lv_baseDuration, c_timeGame);
+    if ((UnitGetCustomValue(EventUnit(), 1) == lv_unitTriggerIndex) && (UnitBehaviorCount(EventUnit(), EventUnitBehavior()) >= 1)) {
+        libNtve_gf_SetBehaviorCount(EventUnit(), EventUnitBehavior(), EventUnit(), (UnitBehaviorCount(EventUnit(), EventUnitBehavior())-1));
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimSoulsCountingdown_Init () {
+    libEA49549C_gt_TalDarimSoulsCountingdown = TriggerCreate("libEA49549C_gt_TalDarimSoulsCountingdown_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimSoulsCountingdown, false);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimAscendantSoulPower", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimBloodHunterSoulShardCharge", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimChampionBurstofSpeed", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimDeathStarDeathCharge", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimDestroyerBloodCharge", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimDreadnoughtBeetlesArmed", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimOutriderSoulsWeapon", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimRiddlerHarmonization", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimSlayerEntropicShieldCharge", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimVanguardSoulArmour", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimWarPrismBloodShield", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimWarmistressSoulsOvercharge", c_unitBehaviorChangeAny);
+    TriggerAddEventUnitBehaviorChange(libEA49549C_gt_TalDarimSoulsCountingdown, null, "TalDarimWrathwalkerSoulsWeapon", c_unitBehaviorChangeAny);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - New unit
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimNewunit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    int auto62869BCA_val;
+
+    // Conditions
+    if (testConds) {
+        if (!(((UnitHasBehavior2(EventUnitProgressUnit(), "TalDarimSoulDrinker") == true) || (UnitHasBehavior2(EventUnitProgressUnit(), "TalDarimSoulDrinkerSP") == true)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto62869BCA_val = libEA49549C_gv_talDarimSoulLeechPriority[EventPlayer()][CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(EventUnitProgressUnit()), "GlossaryPriority", c_playerAny)];
+    if (auto62869BCA_val == 1) {
+        UnitBehaviorAdd(EventUnitProgressUnit(), "TalDarimSoulDrinkerPriorityLow", EventUnitProgressUnit(), 1);
+    }
+    else if (auto62869BCA_val == 3) {
+        UnitBehaviorAdd(EventUnitProgressUnit(), "TalDarimSoulDrinkerPriorityHigh", EventUnitProgressUnit(), 1);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimNewunit_Init () {
+    libEA49549C_gt_TalDarimNewunit = TriggerCreate("libEA49549C_gt_TalDarimNewunit_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimNewunit, false);
+    TriggerAddEventUnitTrainProgress(libEA49549C_gt_TalDarimNewunit, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Priority Low
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimPriorityLow_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_casterType;
+
+    // Automatic Variable Declarations
+    unitgroup autoFFF53C07_g;
+    int autoFFF53C07_u;
+    unit autoFFF53C07_var;
+
+    // Variable Initialization
+    lv_casterType = UnitGetType(EventPlayerEffectUsedUnitLaunch());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libEA49549C_gv_talDarimSoulLeechPriority[EventPlayer()][CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_casterType, "GlossaryPriority", c_playerAny)] = 1;
+    autoFFF53C07_g = UnitGroup(lv_casterType, EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoFFF53C07_u = UnitGroupCount(autoFFF53C07_g, c_unitCountAll);
+    for (;; autoFFF53C07_u -= 1) {
+        autoFFF53C07_var = UnitGroupUnitFromEnd(autoFFF53C07_g, autoFFF53C07_u);
+        if (autoFFF53C07_var == null) { break; }
+        UnitBehaviorAdd(autoFFF53C07_var, "TalDarimSoulDrinkerPriorityLow", autoFFF53C07_var, 1);
+        UnitBehaviorRemove(autoFFF53C07_var, "TalDarimSoulDrinkerPriorityHigh", 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimPriorityLow_Init () {
+    libEA49549C_gt_TalDarimPriorityLow = TriggerCreate("libEA49549C_gt_TalDarimPriorityLow_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimPriorityLow, false);
+    TriggerAddEventPlayerEffectUsed(libEA49549C_gt_TalDarimPriorityLow, c_playerAny, "TalDarimSoulLeechPriorityLow");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Priority Medium
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimPriorityMedium_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_casterType;
+
+    // Automatic Variable Declarations
+    unitgroup auto6FE40AD6_g;
+    int auto6FE40AD6_u;
+    unit auto6FE40AD6_var;
+
+    // Variable Initialization
+    lv_casterType = UnitGetType(EventPlayerEffectUsedUnitLaunch());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libEA49549C_gv_talDarimSoulLeechPriority[EventPlayer()][CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_casterType, "GlossaryPriority", c_playerAny)] = 2;
+    auto6FE40AD6_g = UnitGroup(lv_casterType, EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto6FE40AD6_u = UnitGroupCount(auto6FE40AD6_g, c_unitCountAll);
+    for (;; auto6FE40AD6_u -= 1) {
+        auto6FE40AD6_var = UnitGroupUnitFromEnd(auto6FE40AD6_g, auto6FE40AD6_u);
+        if (auto6FE40AD6_var == null) { break; }
+        UnitBehaviorRemove(auto6FE40AD6_var, "TalDarimSoulDrinkerPriorityLow", 1);
+        UnitBehaviorRemove(auto6FE40AD6_var, "TalDarimSoulDrinkerPriorityHigh", 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimPriorityMedium_Init () {
+    libEA49549C_gt_TalDarimPriorityMedium = TriggerCreate("libEA49549C_gt_TalDarimPriorityMedium_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimPriorityMedium, false);
+    TriggerAddEventPlayerEffectUsed(libEA49549C_gt_TalDarimPriorityMedium, c_playerAny, "TalDarimSoulLeechPriorityMedium");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Priority High
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimPriorityHigh_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_casterType;
+
+    // Automatic Variable Declarations
+    unitgroup auto55155ED0_g;
+    int auto55155ED0_u;
+    unit auto55155ED0_var;
+
+    // Variable Initialization
+    lv_casterType = UnitGetType(EventPlayerEffectUsedUnitLaunch());
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libEA49549C_gv_talDarimSoulLeechPriority[EventPlayer()][CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_casterType, "GlossaryPriority", c_playerAny)] = 3;
+    auto55155ED0_g = UnitGroup(lv_casterType, EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto55155ED0_u = UnitGroupCount(auto55155ED0_g, c_unitCountAll);
+    for (;; auto55155ED0_u -= 1) {
+        auto55155ED0_var = UnitGroupUnitFromEnd(auto55155ED0_g, auto55155ED0_u);
+        if (auto55155ED0_var == null) { break; }
+        UnitBehaviorRemove(auto55155ED0_var, "TalDarimSoulDrinkerPriorityLow", 1);
+        UnitBehaviorAdd(auto55155ED0_var, "TalDarimSoulDrinkerPriorityHigh", auto55155ED0_var, 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimPriorityHigh_Init () {
+    libEA49549C_gt_TalDarimPriorityHigh = TriggerCreate("libEA49549C_gt_TalDarimPriorityHigh_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimPriorityHigh, false);
+    TriggerAddEventPlayerEffectUsed(libEA49549C_gt_TalDarimPriorityHigh, c_playerAny, "TalDarimSoulLeechPriorityHigh");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tal'Darim - Monitor Height Reset
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_gt_TalDarimMonitorHeightReset_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(1.0, c_timeGame);
+    if ((UnitIsAlive(EventPlayerEffectUsedUnitLaunch()) == true) && (UnitGetHeight(EventPlayerEffectUsedUnitLaunch()) < 3.0)) {
+        UnitSetHeight(EventPlayerEffectUsedUnitLaunch(), libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogUnit, "TalDarimMonitor", "Height", c_playerAny), 0.5);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libEA49549C_gt_TalDarimMonitorHeightReset_Init () {
+    libEA49549C_gt_TalDarimMonitorHeightReset = TriggerCreate("libEA49549C_gt_TalDarimMonitorHeightReset_Func");
+    TriggerEnable(libEA49549C_gt_TalDarimMonitorHeightReset, false);
+    TriggerAddEventPlayerEffectUsed(libEA49549C_gt_TalDarimMonitorHeightReset, c_playerAny, "TalDarimMonitorDetonationLM");
+}
+
+void libEA49549C_InitTriggers () {
+    libEA49549C_gt_TalDarimIni_Init();
+    libEA49549C_gt_TalDarimDeathStarLevel_Init();
+    libEA49549C_gt_TalDarimDeathStarAddGroup_Init();
+    libEA49549C_gt_TalDarimDeathStarRemGroup_Init();
+    libEA49549C_gt_TalDarimLocustEnergy_Init();
+    libEA49549C_gt_TalDarimSoulsCountingdown_Init();
+    libEA49549C_gt_TalDarimNewunit_Init();
+    libEA49549C_gt_TalDarimPriorityLow_Init();
+    libEA49549C_gt_TalDarimPriorityMedium_Init();
+    libEA49549C_gt_TalDarimPriorityHigh_Init();
+    libEA49549C_gt_TalDarimMonitorHeightReset_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libEA49549C_InitLib_completed = false;
+
+void libEA49549C_InitLib () {
+    if (libEA49549C_InitLib_completed) {
+        return;
+    }
+
+    libEA49549C_InitLib_completed = true;
+
+    libEA49549C_InitLibraries();
+    libEA49549C_InitVariables();
+    libEA49549C_InitTriggers();
+}
+

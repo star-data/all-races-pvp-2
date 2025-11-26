@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Catalog>
+<CCommander id="DragonCommander"/>
+<CCommander id="UED">
+  <AttributeId value="UED"/>
+  <Race value="UED"/>
+  <ConsoleSkin value="ConsoleUED"/>
+  <Color value="255,255,255,0"/>
+</CCommander>
+<CCommander id="ZHBRCommon">
+  <Race value="ZHBR"/>
+  <ConsoleSkin value="ConsoleProtoss_Ihanrii"/>
+</CCommander>
+
+</Catalog>

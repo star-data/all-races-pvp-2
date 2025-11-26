@@ -1,0 +1,1234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Catalog>
+<CAccumulatorConstant id="12">
+  <Amount value="12"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="10">
+  <Amount value="10"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="11">
+  <Amount value="11"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="7">
+  <Amount value="7"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="9">
+  <Amount value="9"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="4">
+  <Amount value="4"/>
+  <Amount value="4"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="5">
+  <Amount value="5"/>
+  <Amount value="5"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="6">
+  <Amount value="6"/>
+</CAccumulatorConstant>
+<CAccumulatorArithmetic id="SCBW_IncomingDamage_Param">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_IncomingDamage"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_SplashFactor_Switch"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorUserData id="SCBW_LifeArmorSource">
+  <Key value="LifeArmor"/>
+  <BehaviorScope Value="Source" Behavior="SCBW_FractionalArmor"/>
+</CAccumulatorUserData>
+<CAccumulatorConstant id="2">
+  <Amount value="2"/>
+  <Amount value="2"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="3">
+  <Amount value="3"/>
+  <Amount value="3"/>
+</CAccumulatorConstant>
+<CAccumulatorEffectAmount id="DamageAbsorbed">
+  <AmountType value="Absorbed"/>
+</CAccumulatorEffectAmount>
+<CAccumulatorArithmetic id="SCBW_DamageFormula_Expl_Param1">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_IncomingDamage_Param"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_ShieldSwitch_Expl"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_LifeArmor_Expl_Switch"/>
+  </Parameters>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="SCBW_DamageFormula_Conc_Param1">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_IncomingDamage_Param"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_ShieldSwitch_Conc"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_LifeArmor_Conc_Switch"/>
+  </Parameters>
+</CAccumulatorArithmetic>
+<CAccumulatorConstant id="SCBW_Fraction_Conc_Default">
+  <Amount value="0.5"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_Fraction_Expl_Light">
+  <Amount value="0.5"/>
+  <Amount value="0.625"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_Fraction_Expl_Default">
+  <Amount value="0.75"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_Fraction_Conc_Light">
+  <Amount value="1"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="SCBW_Fraction_Conc">
+  <CaseArray Validator="UnitIsArmored" Accumulator="SCBW_Fraction_Conc_Armored"/>
+  <CaseArray Validator="UnitIsLight" Accumulator="SCBW_Fraction_Conc_Light"/>
+  <CaseDefault value="SCBW_Fraction_Conc_Default"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="SCBW_Fraction_Expl_Armored">
+  <Amount value="1"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="SCBW_Fraction_Expl">
+  <CaseArray Validator="UnitIsArmored" Accumulator="SCBW_Fraction_Expl_Armored"/>
+  <CaseArray Validator="UnitIsLight" Accumulator="SCBW_Fraction_Expl_Light"/>
+  <CaseDefault value="SCBW_Fraction_Expl_Default"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="SCBW_Fraction_Conc_Armored">
+  <Amount value="0.25"/>
+  <Amount value="0.375"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="SCBW_LifeArmor_Conc_Switch">
+  <CaseArray Validator="SCBW_DamagePassesShields" Accumulator="SCBW_LifeArmor_Conc"/>
+  <CaseDefault value="Zero"/>
+</CAccumulatorSwitch>
+<CAccumulatorSwitch id="SCBW_LifeArmor_Expl_Switch">
+  <CaseArray Validator="SCBW_DamagePassesShields" Accumulator="SCBW_LifeArmor_Expl"/>
+  <CaseDefault value="Zero"/>
+</CAccumulatorSwitch>
+<CAccumulatorSwitch id="SCBW_MissChance_Formula">
+  <CaseArray Validator="UnderDarkSwarmCombine" Accumulator="1"/>
+  <CaseArray Validator="SCBW_MissCheck" Accumulator="SCBW_MissChance"/>
+  <CaseDefault value="Zero"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="SCBW_MissChance">
+  <Amount value="0.4687"/>
+</CAccumulatorConstant>
+<CAccumulatorUserData id="SCBW_ShieldArmor">
+  <Key value="ShieldArmor"/>
+  <BehaviorScope Value="Target" Behavior="SCBW_FractionalArmor"/>
+</CAccumulatorUserData>
+<CAccumulatorSwitch id="SCBW_ShieldFactorSwitchAdd_Expl">
+  <CaseArray Validator="UnitIsArmored" Accumulator="SCBW_ShieldFactor_Expl_Armored"/>
+  <CaseArray Validator="UnitIsLight" Accumulator="SCBW_ShieldFactor_Expl_Light"/>
+  <CaseDefault value="SCBW_ShieldFactor_Expl_Default"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="SCBW_ShieldsMinusIncomingDamage">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_ShieldCombine"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_IncomingDamage_Param"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorSwitch id="SCBW_ShieldsParam_Formula">
+  <CaseArray Validator="SCBW_HasShieldsOrMatrix" Accumulator="SCBW_ShieldsMinusIncomingDamage"/>
+  <CaseDefault value="Minus1"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="SCBW_ShieldsPlusShieldArmor">
+  <Parameters value="0">
+    <AccumulatorArray value="UnitVital_ShieldsCurr_Target"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_ShieldArmor"/>
+  </Parameters>
+  <MinAccumulation value="0"/>
+</CAccumulatorArithmetic>
+<CAccumulatorConstant id="SCBW_SplashFactor_Mid">
+  <Amount value="0.5"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_SplashFactor_Outer">
+  <Amount value="0.25"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_SplashFactor_Inner">
+  <Amount value="1"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="SCBW_SplashFactor_Switch">
+  <CaseArray Validator="SCBW_SplashFactor_Mid" Accumulator="SCBW_SplashFactor_Mid"/>
+  <CaseArray Validator="SCBW_SplashFactor_Outer" Accumulator="SCBW_SplashFactor_Outer"/>
+  <CaseDefault value="SCBW_SplashFactor_Inner"/>
+</CAccumulatorSwitch>
+<CAccumulatorVitals id="UnitVital_LifeMax_Target">
+  <Ratio value="1"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorSwitch id="UnitVital_ShieldsMaxCheck_Target">
+  <CaseArray Validator="SCBW_CanHaveShields" Accumulator="UnitVital_ShieldsMax_Target"/>
+  <CaseDefault value="Zero"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="UnitVital_LifeShieldsCombine_Target">
+  <Parameters value="0">
+    <AccumulatorArray value="UnitVital_ShieldsMaxCheck_Target"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="UnitVital_LifeMax_Target"/>
+  </Parameters>
+</CAccumulatorArithmetic>
+<CAccumulatorVitals id="UnitVital_LifeCurr_Target">
+  <Ratio value="1"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorArithmetic id="SCBW_DamageFormula_Conc">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_DamageFormula_Conc_Param1"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_Fraction_Conc"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="SCBW_FractionShields_Conc">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_MinimumDamage"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_ShieldFactorSwitch_Conc"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorSwitch id="SCBW_ShieldSwitch_Conc">
+  <CaseArray Validator="SCBW_HasShieldsOrMatrix" Accumulator="SCBW_FractionShields_Conc"/>
+  <CaseDefault value="Zero"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="SCBW_FractionShields_Expl">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_MinimumDamage"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_ShieldFactorSwitch_Expl"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="SCBW_DamageFormula_Expl">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_DamageFormula_Expl_Param1"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_Fraction_Expl"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorUserData id="SCBW_IncomingDamage">
+  <Key value="IncomingDamage"/>
+</CAccumulatorUserData>
+<CAccumulatorArithmetic id="SCBW_MinimumDamage">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_IncomingDamage_Param"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_ShieldCombine"/>
+  </Parameters>
+  <Operation value="Minimum"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="SCBW_ShieldCombine">
+  <MinAccumulation value="0"/>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_ShieldsPlusShieldArmor"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="ScienceVesselSCBWDefensiveMatrix@Remaining"/>
+  </Parameters>
+</CAccumulatorArithmetic>
+<CAccumulatorSwitch id="SCBW_ShieldSwitch_Expl">
+  <CaseArray Validator="SCBW_HasShieldsOrMatrix" Accumulator="SCBW_FractionShields_Expl"/>
+  <CaseDefault value="Zero"/>
+</CAccumulatorSwitch>
+<CAccumulatorEffectAmount id="InheritedDamage">
+  <AmountType value="DamageInherited"/>
+</CAccumulatorEffectAmount>
+<CAccumulatorEffectAmount id="InheritedDamageMultiply">
+  <ApplicationRule value="Multiply"/>
+  <AmountType value="DamageInherited"/>
+</CAccumulatorEffectAmount>
+<CAccumulatorSwitch id="SCBW_ShieldFactorSwitch_Expl">
+  <ApplicationRule value="Multiply"/>
+  <CaseArray Validator="UnitIsArmored" Accumulator="SCBW_ShieldFactor_Expl_Armored"/>
+  <CaseArray Validator="UnitIsLight" Accumulator="SCBW_ShieldFactor_Expl_Light"/>
+  <CaseDefault value="SCBW_ShieldFactor_Expl_Default"/>
+</CAccumulatorSwitch>
+<CAccumulatorSwitch id="SCBW_ShieldFactorSwitch_Conc" parent="SCBW_ShieldFactorSwitch_Expl">
+  <CaseArray index="0" Validator="UnitIsLight" Accumulator="SCBW_ShieldFactor_Conc_Light"/>
+  <CaseArray index="1" Validator="UnitIsArmored" Accumulator="SCBW_ShieldFactor_Conc_Armored"/>
+  <CaseDefault value="SCBW_ShieldFactor_Conc_Default"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="SCBW_ShieldFactor_Expl_Default">
+  <Amount value="0.3334"/>
+  <Amount value="0.067"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_ShieldFactor_Conc_Default" parent="SCBW_ShieldFactor_Expl_Default">
+  <Amount value="1"/>
+  <Amount value="0.6"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_ShieldFactor_Conc_Armored">
+  <Amount value="3"/>
+  <Amount value="1.134"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_ShieldFactor_Conc_Light"/>
+<CAccumulatorConstant id="SCBW_ShieldFactor_Expl_Armored"/>
+<CAccumulatorConstant id="SCBW_ShieldFactor_Expl_Light">
+  <Amount value="1"/>
+  <Amount value="0.28"/>
+</CAccumulatorConstant>
+<CAccumulatorEffectAmount id="DamageInherited">
+  <AmountType value="DamageInherited"/>
+</CAccumulatorEffectAmount>
+<CAccumulatorVitals id="UnitVital_ShieldsCurr_Target">
+  <VitalType value="Shields"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnit"/>
+  <Ratio value="1"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UnitVital_ShieldsCurr_Caster">
+  <VitalType value="Shields"/>
+  <ModificationType value="PerUnit"/>
+  <Ratio value="1"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UnitVital_ShieldsMax_Target">
+  <VitalType value="Shields"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+  <Ratio value="1"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UnitVital_ShieldsMax_Caster">
+  <VitalType value="Shields"/>
+  <ModificationType value="PerUnitMaxVital"/>
+  <Ratio value="1"/>
+</CAccumulatorVitals>
+<CAccumulatorConstant id="Zero"/>
+<CAccumulatorConstant id="1">
+  <Amount value="1"/>
+  <Amount value="1"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="Minus1">
+  <Amount value="-1"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="SCBW_LifeArmor_Conc_Fraction">
+  <CaseArray Validator="UnitIsArmored" Accumulator="SCBW_LifeArmor_Conc_Fraction_Armored"/>
+  <CaseArray Validator="UnitIsLight" Accumulator="SCBW_LifeArmor_Conc_Fraction_Light"/>
+  <CaseDefault value="SCBW_LifeArmor_Conc_Fraction_Default"/>
+  <ApplicationRule value="Multiply"/>
+</CAccumulatorSwitch>
+<CAccumulatorUserData id="SCBW_LifeArmor">
+  <Key value="LifeArmor"/>
+  <BehaviorScope Value="Target" Behavior="SCBW_FractionalArmor"/>
+</CAccumulatorUserData>
+<CAccumulatorConstant id="SCBW_LifeArmor_Conc_Fraction_Default">
+  <Amount value="1"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_LifeArmor_Conc_Fraction_Light"/>
+<CAccumulatorArithmetic id="SCBW_LifeArmor_Expl">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_LifeArmor"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_LifeArmor_Expl_Fraction"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="SCBW_LifeArmor_Conc">
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_LifeArmor"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="SCBW_LifeArmor_Conc_Fraction"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorSwitch id="SCBW_LifeArmor_Expl_Fraction">
+  <CaseArray Validator="UnitIsArmored" Accumulator="SCBW_LifeArmor_Expl_Fraction_Armored"/>
+  <CaseArray Validator="UnitIsLight" Accumulator="SCBW_LifeArmor_Expl_Fraction_Light"/>
+  <CaseDefault value="SCBW_LifeArmor_Expl_Fraction_Default"/>
+  <ApplicationRule value="Multiply"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="SCBW_LifeArmor_Conc_Fraction_Armored">
+  <Amount value="3"/>
+  <Amount value="1.6667"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_LifeArmor_Expl_Fraction_Default">
+  <Amount value="0.3334"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_LifeArmor_Expl_Fraction_Armored"/>
+<CAccumulatorConstant id="SCBW_LifeArmor_Expl_Fraction_Light">
+  <Amount value="1"/>
+  <Amount value="0.6"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="CorsairSCBWWeapon@Damage">
+  <Amount value="5"/>
+  <Amount value="6"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="DragoonSCBWWeapon@Damage">
+  <Amount value="20"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="ScoutSCBWWeaponAir@Damage">
+  <Amount value="14"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="ArbiterSCBWWeapon@Damage">
+  <Amount value="10"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="CorsairSCBWDisruptionWeb@DisruptedBatch">
+  <MinAccumulation value="0"/>
+  <MaxAccumulation value="15"/>
+  <CaseArray Validator="IsGoliathSCBW" Accumulator="4"/>
+  <CaseArray Validator="IsSiegeTankSCBW" Accumulator="4"/>
+  <CaseArray Validator="SCBW_IsThorAlias" Accumulator="12"/>
+  <CaseArray Validator="IsCyclone" Accumulator="3"/>
+  <CaseArray Validator="IsColossus" Accumulator="4"/>
+  <CaseArray Validator="IsMissileTurret" Accumulator="6"/>
+  <CaseArray Validator="IsMissileTurretSCBW" Accumulator="6"/>
+  <CaseDefault value="2"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="ObserverSCBW@DetectRangeUpgraded">
+  <Amount value="11"/>
+  <Amount value="13"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="ObserverSCBWSieged@DetectRangeUpgraded">
+  <Amount value="13.75"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="ObserverSCBWSieged@DetectRange">
+  <Amount value="11.75"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="ObserverSCBW@DetectRange">
+  <Amount value="9"/>
+  <Amount value="11"/>
+</CAccumulatorConstant>
+<CAccumulatorArithmetic id="GhostSCBWNuclearStrike@DamageParam2">
+  <Parameters value="0">
+    <AccumulatorArray value="UnitVital_LifeShieldsCombine_Target"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="2"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorConstant id="BattlecruiserSCBWYamato@Damage">
+  <Amount value="260"/>
+  <Amount value="240"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="MissileTurretSCBWWeapon@Damage">
+  <Amount value="20"/>
+  <Amount value="25"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="GhostSCBWWeapon@Damage">
+  <Amount value="10"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="WraithSCBWWeaponAir@Damage">
+  <Amount value="20"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="GoliathSCBWWeaponAir@Damage">
+  <Amount value="10"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="VultureSCBWWeapon@Damage">
+  <Amount value="20"/>
+</CAccumulatorConstant>
+<CAccumulatorEffectAmount id="ScienceVesselSCBWDefensiveMatrix@DamageInherited">
+  <AmountType value="DamageInherited"/>
+</CAccumulatorEffectAmount>
+<CAccumulatorConstant id="ScienceVesselSCBWDefensiveMatrix">
+  <MinAccumulation value="0"/>
+  <Amount value="250"/>
+  <Amount value="300"/>
+</CAccumulatorConstant>
+<CAccumulatorArithmetic id="ScienceVesselSCBWDefensiveMatrix@DamageRemainder">
+  <MinAccumulation value="0"/>
+  <Parameters value="0">
+    <AccumulatorArray value="ScienceVesselSCBWDefensiveMatrix@RemainingSource"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="ScienceVesselSCBWDefensiveMatrix@RemainingMultiply"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorUserData id="ScienceVesselSCBWDefensiveMatrix@RemainingSource">
+  <Key value="DefensiveMatrixShield"/>
+  <BehaviorScope Value="Source" Behavior="ScienceVesselSCBWDefensiveMatrix@Data"/>
+</CAccumulatorUserData>
+<CAccumulatorArithmetic id="ScienceVesselSCBWDefensiveMatrix@RemainingMultiply">
+  <MaxAccumulation value="0"/>
+  <Parameters value="0">
+    <AccumulatorArray value="ScienceVesselSCBWDefensiveMatrix@RemainingSource"/>
+  </Parameters>
+  <Parameters value="2"/>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="GhostSCBWNuclearStrike@DamageFormula">
+  <Parameters value="0">
+    <AccumulatorArray value="GhostSCBWNuclearStrike@DamageParam1"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="GhostSCBWNuclearStrike@Damage"/>
+  </Parameters>
+  <Operation value="Maximum"/>
+</CAccumulatorArithmetic>
+<CAccumulatorConstant id="GhostSCBWNuclearStrike@Damage">
+  <Amount value="500"/>
+</CAccumulatorConstant>
+<CAccumulatorArithmetic id="GhostSCBWNuclearStrike@DamageParam1">
+  <Parameters value="0">
+    <AccumulatorArray value="GhostSCBWNuclearStrike@DamageParam2"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="3"/>
+  </Parameters>
+  <Operation value="Divide"/>
+</CAccumulatorArithmetic>
+<CAccumulatorConstant id="FirebatSCBWWeapon@Damage">
+  <Amount value="8"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="ValkyrieSCBWWeapon@Damage">
+  <Amount value="6"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SpiderMineSCBWWeapon@Damage">
+  <Amount value="125"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SiegeTankSCBWWeapon@Damage">
+  <Amount value="30"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SiegeTankSCBWSiegedWeapon@Damage">
+  <Amount value="70"/>
+</CAccumulatorConstant>
+<CAccumulatorUserData id="ScienceVesselSCBWDefensiveMatrix@Remaining">
+  <MinAccumulation value="0"/>
+  <Key value="DefensiveMatrixShield"/>
+  <BehaviorScope Value="Target" Behavior="ScienceVesselSCBWDefensiveMatrix@Data"/>
+</CAccumulatorUserData>
+<CAccumulatorSwitch id="QueenSCBWParasite@Detector">
+  <CaseArray Validator="HasDetector12" Accumulator="12"/>
+  <CaseArray Validator="HasDetector11" Accumulator="11"/>
+  <CaseArray Validator="HasDetector10" Accumulator="10"/>
+  <CaseArray Validator="ObserverSCBWSieged@DetectorUpgraded" Accumulator="ObserverSCBWSieged@DetectRangeUpgraded"/>
+  <CaseArray Validator="ObserverSCBWSieged@Detector" Accumulator="ObserverSCBWSieged@DetectRange"/>
+  <CaseArray Validator="ObserverSCBW@DetectorUpgraded" Accumulator="ObserverSCBW@DetectRangeUpgraded"/>
+  <CaseArray Validator="ObserverSCBW@Detector" Accumulator="ObserverSCBW@DetectRange"/>
+  <CaseArray Validator="OverlordSCBW@DetectorUpgraded" Accumulator="OverlordSCBW@DetectRangeUpgraded"/>
+  <CaseArray Validator="OverlordSCBW@Detector" Accumulator="OverlordSCBW@DetectRange"/>
+  <CaseArray Validator="SCBW_HasDetector9" Accumulator="9"/>
+  <CaseArray Validator="SCBW_HasDetector7" Accumulator="7"/>
+  <CaseArray Validator="SCBW_Detector13p75" Accumulator="SCBW_Detector13p75"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="MutaliskSCBWWeapon@BounceCount0">
+  <Amount value="1"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="MutaliskSCBWWeapon@BounceCount1">
+  <Amount value="0.3332"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="MutaliskSCBWWeapon@BounceCount2">
+  <Amount value="0.111"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="MutaliskSCBWWeapon@BounceFractionSwitch">
+  <MinAccumulation value="0"/>
+  <MaxAccumulation value="1"/>
+  <CaseArray Validator="MutaliskSCBWWeapon@BounceCount1" Accumulator="MutaliskSCBWWeapon@BounceCount1"/>
+  <CaseArray Validator="MutaliskSCBWWeapon@BounceCount2" Accumulator="MutaliskSCBWWeapon@BounceCount2"/>
+  <ApplicationRule value="Multiply"/>
+  <CaseDefault value="MutaliskSCBWWeapon@BounceCount0"/>
+</CAccumulatorSwitch>
+<CAccumulatorUserData id="MutaliskSCBWWeapon@BounceCount">
+  <MinAccumulation value="0"/>
+  <MaxAccumulation value="3"/>
+  <Key value="HitCount"/>
+</CAccumulatorUserData>
+<CAccumulatorSwitch id="QueenSCBWEnsnare@AttackAccum">
+  <CaseArray Validator="QueenSCBWEnsnare@AttackStimpackBW" Accumulator="QueenSCBWEnsnare@AttackStimpackBW"/>
+  <CaseArray Validator="QueenSCBWEnsnare@AttackAdrenalBWValidate" Accumulator="QueenSCBWEnsnare@AttackAdrenalBW"/>
+  <CaseArray Validator="IsMarineStimmed" Accumulator="QueenSCBWEnsnare@AttackStimpack"/>
+  <CaseArray Validator="IsMarauderStimmed" Accumulator="QueenSCBWEnsnare@AttackStimpackMarauder"/>
+  <CaseArray Validator="QueenSCBWEnsnare@AttackAdrenalValidate" Accumulator="QueenSCBWEnsnare@AttackAdrenal"/>
+  <CaseArray Validator="QueenSCBWEnsnare@AttackAdeptGlaives" Accumulator="QueenSCBWEnsnare@AttackAdeptGlaives"/>
+  <CaseDefault value="QueenSCBWEnsnare@AttackDefault"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="QueenSCBWEnsnare@AttackAdrenal">
+  <Amount value="-0.275"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="QueenSCBWEnsnare@AttackDefault">
+  <Amount value="-0.2"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="QueenSCBWEnsnare@AttackAdeptGlaives">
+  <Amount value="-0.31"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="QueenSCBWEnsnare@AttackStimpackMarauder">
+  <Amount value="-0.333"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="QueenSCBWEnsnare@AttackStimpackBW">
+  <Amount value="-0.5"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="QueenSCBWEnsnare@AttackStimpack">
+  <Amount value="-0.375"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="QueenSCBWEnsnare@AttackAdrenalBW">
+  <Amount value="-0.3"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SunkenColonySCBWWeapon@Damage">
+  <Amount value="40"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="DevourerSCBWWeapon@Damage">
+  <Amount value="25"/>
+  <Amount value="30"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="InfestedTerranSCBWWeapon@Damage">
+  <Amount value="500"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="MutaliskSCBWWeapon@MaxTargets">
+  <Amount value="3"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="HydraliskSCBWWeapon@Damage">
+  <Amount value="10"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="OverlordSCBW@DetectRange">
+  <Amount value="9"/>
+  <Amount value="10"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="OverlordSCBW@DetectRangeUpgraded">
+  <Amount value="11"/>
+  <Amount value="13"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="SCBW_Detector13p75">
+  <Amount value="13.75"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="AddDot5">
+  <Amount value="0.5"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="Add1">
+  <Amount value="1"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="EqualizerTargetDamageBonusSwitch">
+  <CaseArray Validator="TargetNotDead" Accumulator="EqualizerTargetDamageBonus"/>
+</CAccumulatorSwitch>
+<CAccumulatorSwitch id="LifeMaxTargetSwitch">
+  <CaseArray Validator="TargetNotDead" Accumulator="LifeMaxTarget"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="MultiplyBy0">
+  <ApplicationRule value="Multiply"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="MultiplyBy2">
+  <ApplicationRule value="Multiply"/>
+  <Amount value="2"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="MultiplyByNeg1">
+  <ApplicationRule value="Multiply"/>
+  <Amount value="-1"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="DivideBy2">
+  <ApplicationRule value="Multiply"/>
+  <Amount value="0.5"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="DivideBy4">
+  <ApplicationRule value="Multiply"/>
+  <Amount value="0.25"/>
+</CAccumulatorConstant>
+<CAccumulatorVitals id="LifeMaxCaster">
+  <Ratio value="1"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="LifeMaxTarget">
+  <Ratio value="1"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="LifeCurrentCaster">
+  <Ratio value="1"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="LifeCurrentTarget">
+  <Ratio value="1"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorArithmetic id="LifeFractionCaster">
+  <Parameters value="0">
+    <AccumulatorArray value="LifeCurrentCaster"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="LifeMaxCaster"/>
+  </Parameters>
+  <Operation value="Divide"/>
+</CAccumulatorArithmetic>
+<CAccumulatorVitals id="ShieldsMaxCaster">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="ShieldsMaxTarget">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorSwitch id="ShieldsMaxTargetSwitch">
+  <CaseArray Validator="CanHaveShields" Accumulator="ShieldsMaxTarget"/>
+</CAccumulatorSwitch>
+<CAccumulatorVitals id="ShieldsCurrentCaster">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="ShieldsCurrentTarget">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorSwitch id="ShieldsCurrentTargetSwitch">
+  <CaseArray Validator="hasShields" Accumulator="ShieldsCurrentTarget"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="ShieldsFractionCaster">
+  <Parameters value="0">
+    <AccumulatorArray value="ShieldsCurrentCaster"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="ShieldsMaxCaster"/>
+  </Parameters>
+  <Operation value="Divide"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="ShieldsFractionTarget">
+  <Parameters value="0">
+    <AccumulatorArray value="ShieldsCurrentTarget"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="ShieldsMaxTarget"/>
+  </Parameters>
+  <Operation value="Divide"/>
+</CAccumulatorArithmetic>
+<CAccumulatorVitals id="EnergyMaxCaster">
+  <Ratio value="1"/>
+  <VitalType value="Energy"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="EnergyMaxTarget">
+  <Ratio value="1"/>
+  <VitalType value="Energy"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="EnergyCurrentCaster">
+  <Ratio value="1"/>
+  <VitalType value="Energy"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="EnergyCurrentTarget">
+  <Ratio value="1"/>
+  <VitalType value="Energy"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorUserData id="DefaultDataAdd"/>
+<CAccumulatorUserData id="Scion_DisplayCooldown">
+  <MinAccumulation value="0"/>
+  <Key value="DisplayCooldown"/>
+</CAccumulatorUserData>
+<CAccumulatorUserData id="HeatSourceDataAdd">
+  <Key value="Heat"/>
+  <BehaviorScope Value="Source" Behavior="Heat"/>
+</CAccumulatorUserData>
+<CAccumulatorUserData id="CasterAttackCooldownBase">
+  <Key value="BeamWeaponCooldownBase"/>
+</CAccumulatorUserData>
+<CAccumulatorArithmetic id="CasterAttackCooldownFinal">
+  <MinAccumulation value="0.0625"/>
+  <Parameters value="-0.0625">
+    <AccumulatorArray value="CasterAttackRateReciprocal"/>
+  </Parameters>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="CasterAttackRateAdditiveFactor">
+  <Parameters value="-0.4">
+    <AccumulatorArray value="CasterStackCountMultiplyAdaptiveInjectionEnemy"/>
+  </Parameters>
+  <Parameters value="0.4">
+    <AccumulatorArray value="CasterStackCountMultiplyAdaptiveInjectionFriend"/>
+  </Parameters>
+  <Parameters value="-0.25">
+    <AccumulatorArray value="CasterStackCountMultiplyNaniteEmitterBuff"/>
+  </Parameters>
+  <Parameters value="1"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="CasterAttackRateMultipliers">
+  <Parameters value="0">
+    <AccumulatorArray value="CasterAttackRateAdditiveFactor"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="CasterAttackRatePowerInhibitorBeam"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="CasterAttackRatePowerTimeWarp"/>
+  </Parameters>
+  <MinAccumulation value="0.25"/>
+  <MaxAccumulation value="128"/>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="CasterAttackRateReciprocal">
+  <Parameters value="0">
+    <AccumulatorArray value="CasterAttackCooldownBase"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="CasterAttackRateMultipliers"/>
+  </Parameters>
+  <Operation value="Divide"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="CasterAttackRatePowerInhibitorBeam">
+  <Parameters value="0.4"/>
+  <Parameters value="0">
+    <AccumulatorArray value="CasterStackCountAddInhibitorBeam"/>
+  </Parameters>
+  <Operation value="Power"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="CasterAttackRatePowerTimeWarp">
+  <Parameters value="0.5"/>
+  <Parameters value="0">
+    <AccumulatorArray value="CasterStackCountAddTimeWarp"/>
+  </Parameters>
+  <Operation value="Power"/>
+</CAccumulatorArithmetic>
+<CAccumulatorBehavior id="CasterStackCountAddInhibitorBeam">
+  <Behavior value="TitanWeapon"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="CasterStackCountAddTimeWarp">
+  <Behavior value="TemporalField"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="CasterStackCountMultiplyAdaptiveInjectionFriend">
+  <ApplicationRule value="Multiply"/>
+  <Behavior value="FrenzyInjection"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="CasterStackCountMultiplyAdaptiveInjectionEnemy">
+  <ApplicationRule value="Multiply"/>
+  <Behavior value="FrenzySink"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="CasterStackCountMultiplyNaniteEmitterBuff">
+  <ApplicationRule value="Multiply"/>
+  <Behavior value="NaniteEmitterBuff"/>
+</CAccumulatorBehavior>
+<CAccumulatorUserData id="EnergyDataAdd">
+  <Key value="Energy"/>
+</CAccumulatorUserData>
+<CAccumulatorArithmetic id="EnergyDamage">
+  <Parameters value="0">
+    <AccumulatorArray value="EnergyCurrentCaster"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="EnergyDataAdd"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorBehavior id="MaximumPowerGeneratorStackCaster">
+  <Behavior value="MaximumPowerGenerator"/>
+</CAccumulatorBehavior>
+<CAccumulatorArithmetic id="MaximumPowerProcessingCoreArith">
+  <Parameters value="0">
+    <AccumulatorArray value="MaximumPowerProcessingCoreStackTarget"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="MaximumPowerProcessingCoreStackCaster"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="MaximumPowerRelayTowerArith">
+  <Parameters value="0">
+    <AccumulatorArray value="MaximumPowerRelayTowerStackTarget"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="MaximumPowerRelayTowerStackCaster"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorBehavior id="MaximumPowerProcessingCoreStackTarget">
+  <Behavior value="MaximumPowerProcessingCore"/>
+  <UnitSource Value="Target"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="MaximumPowerProcessingCoreStackCaster">
+  <Behavior value="MaximumPowerProcessingCore"/>
+</CAccumulatorBehavior>
+<CAccumulatorArithmetic id="MaximumPowerGeneratorArith">
+  <Parameters value="0">
+    <AccumulatorArray value="MaximumPowerGeneratorStackTarget"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="MaximumPowerGeneratorStackCaster"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorBehavior id="MaximumPowerRelayTowerStackTarget">
+  <Behavior value="MaximumPowerRelayTower"/>
+  <UnitSource Value="Target"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="MaximumPowerGeneratorStackTarget">
+  <Behavior value="MaximumPowerGenerator"/>
+  <UnitSource Value="Target"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="MaximumPowerRelayTowerStackCaster">
+  <Behavior value="MaximumPowerRelayTower"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="OverclockBehaviorDurationRemaining">
+  <Behavior value="Scion_Overclock"/>
+  <Type value="DurationRemaining"/>
+  <UnitSource Value="Target"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="MiningPriorityBehaviorDurationRemaining">
+  <Behavior value="ResourceTapSearch"/>
+  <Type value="DurationRemaining"/>
+  <UnitSource Value="Target"/>
+</CAccumulatorBehavior>
+<CAccumulatorArithmetic id="PowershellRemainingDamage">
+  <Parameters value="0"/>
+  <Parameters value="0">
+    <AccumulatorArray value="EnergyDataAdd"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorSwitch id="EnergyMaxTargetSwitch">
+  <CaseArray Validator="CanHaveEnergy" Accumulator="EnergyMaxTarget"/>
+</CAccumulatorSwitch>
+<CAccumulatorConstant id="SpitfireCounterStabilizationBurstPeriodCount">
+  <Amount value="3"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="SpitfireCounterStabilizationBursts">
+  <CaseArray Validator="SpitfireLifeBurst1" Accumulator="SpitfireCounterStabilizationBurstPeriodCount" FallThrough="1"/>
+  <CaseArray Validator="SpitfireLifeBurst2" Accumulator="SpitfireCounterStabilizationBurstPeriodCount"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="EqualizerTargetDamageBonus">
+  <MinAccumulation value="0"/>
+  <MaxAccumulation value="28"/>
+  <Parameters value="0">
+    <AccumulatorArray value="LifeMaxTarget"/>
+    <AccumulatorArray value="ShieldsMaxTargetSwitch"/>
+    <AccumulatorArray value="EnergyMaxTargetSwitch"/>
+  </Parameters>
+  <Parameters value="10"/>
+  <Operation value="Divide"/>
+</CAccumulatorArithmetic>
+<CAccumulatorConstant id="LunaMineDrainRateNormal">
+  <Amount value="-0.625"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="LunaMineDrainRateMovement">
+  <Amount value="-1.25"/>
+</CAccumulatorConstant>
+<CAccumulatorSwitch id="LunaMineEnergyDrain">
+  <CaseArray Validator="SourceIsMoving" Accumulator="LunaMineDrainRateMovement"/>
+  <CaseDefault value="LunaMineDrainRateNormal"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="LunaMineMissileOverkill">
+  <Parameters value="0">
+    <AccumulatorArray value="LunaMineMissileStackCount"/>
+    <AccumulatorArray value="LunaMineMissileDamageMult"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="LifeCurrentTarget"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="ShieldsCurrentTargetSwitch"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorBehavior id="LunaMineMissileStackCount">
+  <Behavior value="LunaMineMissileData"/>
+  <UnitSource Value="Target"/>
+</CAccumulatorBehavior>
+<CAccumulatorConstant id="LunaMineMissileDamageMult">
+  <ApplicationRule value="Multiply"/>
+  <Amount value="60"/>
+</CAccumulatorConstant>
+<CAccumulatorBehavior id="FuseFusionStacksOnCaster">
+  <Behavior value="FuseFused"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="FuseFusionStacksOnTarget">
+  <Behavior value="FuseFused"/>
+  <UnitSource Value="Target"/>
+</CAccumulatorBehavior>
+<CAccumulatorSwitch id="FuseUnfuseSwitch">
+  <CaseArray Validator="noShields" Accumulator="MultiplyBy0"/>
+  <CaseDefault value="ShieldsFractionTarget"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="FuseFusionShieldRegenerationBonus">
+  <Parameters value="1.5"/>
+  <Parameters value="0">
+    <AccumulatorArray value="FuseFusionStacksOnTarget"/>
+  </Parameters>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorSwitch id="FuseFusionShieldRegenerationBonusSwitch">
+  <CaseArray Validator="FuseRegenerationBonus" Accumulator="FuseFusionShieldRegenerationBonus"/>
+</CAccumulatorSwitch>
+<CAccumulatorDistance id="InciterWeaponTrackingDistance">
+  <StartLocation Effect="InciterHalifaxGrenadesInit" Value="TargetUnit"/>
+  <EndLocation Effect="InciterHalifaxGrenadesCUSet" Value="TargetUnit"/>
+  <Scale value="9"/>
+</CAccumulatorDistance>
+<CAccumulatorDistance id="SpitterWeaponTrackingDistanceTarget">
+  <StartLocation Effect="SpitterSpitterSpores" Value="TargetUnit"/>
+  <EndLocation Effect="SpitterSpitterSporesCUSet" Value="TargetUnit"/>
+  <Scale value="10"/>
+</CAccumulatorDistance>
+<CAccumulatorDistance id="SpitterWeaponTrackingDistanceCaster">
+  <ApplicationRule value="Multiply"/>
+  <EndLocation Effect="SpitterSpitterSporesCUSet" Value="TargetUnit"/>
+  <Scale value="0.01"/>
+</CAccumulatorDistance>
+<CAccumulatorArithmetic id="TeslaShockChargeOverloadMultiply">
+  <ApplicationRule value="Multiply"/>
+  <Parameters value="3"/>
+</CAccumulatorArithmetic>
+<CAccumulatorSwitch id="TeslaShockChargeOverloadSwitch">
+  <CaseArray Validator="ShockChargeOverloaded" Accumulator="TeslaShockChargeOverloadMultiply"/>
+</CAccumulatorSwitch>
+<CAccumulatorVitals id="TaDarimDeathStarReleasedDestroyerHealth">
+  <UnitSource Effect="TalDarimDeathStarReleaseCommandSet" Value="Target"/>
+  <Ratio value="1"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="TaDarimDeathStarReleasedDestroyerShield">
+  <VitalType value="Shields"/>
+  <UnitSource Effect="TalDarimDeathStarReleaseCommandSet" Value="Target"/>
+  <Ratio value="1"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattleTankFocalisedMaxHealthattack">
+  <Ratio value="0.1"/>
+  <UnitSource Effect="UmojanBattleTankFocalisedRailCannonSet" Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+  <MaxAccumulation value="100"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanTyphonFocalisedMaxHealthattack">
+  <Ratio value="0.1"/>
+  <UnitSource Effect="UmojanTyphonFocalisedRailCannonSet" Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanTyphonMaxHealthattack">
+  <Ratio value="0.1"/>
+  <UnitSource Effect="UmojanTyphonsClawsSet" Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanTyphonFocalisedMaxShieldattack">
+  <Ratio value="0.1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Effect="UmojanTyphonFocalisedRailCannonSet" Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattleTankMaxHealthattack">
+  <Ratio value="0.1"/>
+  <UnitSource Effect="UmojanBattleTankRailCannonSet" Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+  <MaxAccumulation value="100"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattleTankFocalisedMaxShieldattack">
+  <Ratio value="0.1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Effect="UmojanBattleTankFocalisedRailCannonSet" Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+  <MaxAccumulation value="100"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattleTankMaxShieldattack">
+  <Ratio value="0.1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Effect="UmojanBattleTankRailCannonSet" Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+  <MaxAccumulation value="100"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountHealthDismount">
+  <Ratio value="1"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountEnergyDismount">
+  <Ratio value="1"/>
+  <VitalType value="Energy"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountHealthShadowguard">
+  <Ratio value="1"/>
+  <UnitSource Effect="UmojanBattlecatLancerGetShadowguard" Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountEnergyShadowguard">
+  <Ratio value="1"/>
+  <VitalType value="Energy"/>
+  <UnitSource Effect="UmojanBattlecatLancerGetShadowguard" Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountShieldDismount">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountShieldPlasmabat">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Effect="UmojanBattlecatCuirassierGetPlasmabat" Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountHealthPretorian">
+  <Ratio value="1"/>
+  <UnitSource Effect="UmojanBattlecatSpahiGetPretorian" Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountHealthBattlecat">
+  <Ratio value="1"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountHealthPlasmabat">
+  <Ratio value="1"/>
+  <UnitSource Effect="UmojanBattlecatCuirassierGetPlasmabat" Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountShieldBattlecat">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountShieldPretorian">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Effect="UmojanBattlecatSpahiGetPretorian" Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanBattlecatMountShieldShadowguard">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Effect="UmojanBattlecatLancerGetShadowguard" Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="UmojanTyphonMaxShieldattack">
+  <Ratio value="0.1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Effect="UmojanTyphonsClawsSet" Value="Target"/>
+  <ModificationType value="PerUnitMaxVital"/>
+</CAccumulatorVitals>
+<CAccumulatorConstant id="0"/>
+<CAccumulatorConstant id="15">
+  <Amount value="15"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="16">
+  <Amount value="16"/>
+</CAccumulatorConstant>
+<CAccumulatorConstant id="21">
+  <Amount value="21"/>
+</CAccumulatorConstant>
+<CAccumulatorCargo id="CSVTransportCargoFree">
+  <MinAccumulation value="0"/>
+  <Type value="Free"/>
+</CAccumulatorCargo>
+<CAccumulatorSwitch id="InfantryOfficerChargeSwitch">
+  <CaseArray Validator="IsInfantryRocket" Accumulator="3"/>
+  <CaseArray Validator="IsInfantryMortar" Accumulator="5"/>
+  <CaseArray Validator="IsHeroic" Accumulator="5"/>
+  <CaseDefault value="1"/>
+</CAccumulatorSwitch>
+<CAccumulatorSwitch id="InfantryOfficerCharge">
+  <MinAccumulation value="0"/>
+  <MaxAccumulation value="1000"/>
+  <CaseArray Validator="HaveInfantryOfficerAuraUpgrade" Accumulator="WilliamGravesCharge"/>
+  <CaseDefault value="InfantryOfficerChargeSwitch"/>
+</CAccumulatorSwitch>
+<CAccumulatorSwitch id="UPLSolitairePersistentCount">
+  <CaseArray Validator="HaveCommStationBuff" Accumulator="21"/>
+  <CaseDefault value="15"/>
+</CAccumulatorSwitch>
+<CAccumulatorArithmetic id="LotC_EP01M08_QueenAura@Radius">
+  <Parameters value="0">
+    <AccumulatorArray value="LotC_EP01M08_QueenAura@TokenCountMultiplier"/>
+  </Parameters>
+  <Parameters value="10"/>
+</CAccumulatorArithmetic>
+<CAccumulatorArithmetic id="LotC_EP01M08_QueenAura@TokenCountMultiplier">
+  <Parameters value="0">
+    <AccumulatorArray value="LotC_EP01M08_QueenAura@TokenCount"/>
+  </Parameters>
+  <Parameters value="2"/>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorBehavior id="LotC_EP01M08_QueenAura@TokenCount">
+  <Behavior value="LotC_EP01M08_QueenAura@Token"/>
+</CAccumulatorBehavior>
+<CAccumulatorBehavior id="Z2LornaTokenCount">
+  <Behavior value="Z2LornaToken"/>
+</CAccumulatorBehavior>
+<CAccumulatorArithmetic id="Z2LornaRadius">
+  <Parameters value="0">
+    <AccumulatorArray value="Z2LornaTokenCount"/>
+  </Parameters>
+  <Parameters value="1"/>
+  <Operation value="Multiply"/>
+</CAccumulatorArithmetic>
+<CAccumulatorVitals id="GetTargetShields">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="GetTargetLife">
+  <Ratio value="1"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="GetTargetEnergy">
+  <Ratio value="1"/>
+  <VitalType value="Energy"/>
+  <UnitSource Value="Target"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="GetLifeMissing">
+  <Ratio value="1"/>
+  <Missing value="1"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="GetNetwork">
+  <Ratio value="-0.01"/>
+  <VitalType value="Energy"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="GetCasterEnergy">
+  <Ratio value="1"/>
+  <VitalType value="Energy"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="GetCasterShields">
+  <Ratio value="1"/>
+  <VitalType value="Shields"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorVitals id="GetCasterLife">
+  <Ratio value="1"/>
+  <ModificationType value="PerUnit"/>
+</CAccumulatorVitals>
+<CAccumulatorUserData id="ZHBRConsumeDNA@LifeToRestore">
+  <Key value="LifeToRestore"/>
+</CAccumulatorUserData>
+<CAccumulatorArithmetic id="ZHBRConsumeDNA@LifeToRestoreArithmetic">
+  <MinAccumulation value="0"/>
+  <Parameters value="0">
+    <AccumulatorArray value="ZHBRConsumeDNA@TotalVital"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="GetLifeMissing"/>
+  </Parameters>
+  <Operation value="Minimum"/>
+</CAccumulatorArithmetic>
+<CAccumulatorUserData id="ZHBRConsumeDNA@TotalVital">
+  <Key value="TotalVital"/>
+</CAccumulatorUserData>
+<CAccumulatorUserData id="ZHBRConsumeDNA@ShieldToRestore">
+  <Key value="ShieldToRestore"/>
+</CAccumulatorUserData>
+<CAccumulatorArithmetic id="ZHBRConsumeDNA@ShieldToRestoreArithmetic">
+  <MinAccumulation value="0"/>
+  <Parameters value="0">
+    <AccumulatorArray value="ZHBRConsumeDNA@TotalVital"/>
+  </Parameters>
+  <Parameters value="0">
+    <AccumulatorArray value="ZHBRConsumeDNA@LifeToRestore"/>
+  </Parameters>
+  <Operation value="Subtract"/>
+</CAccumulatorArithmetic>
+<CAccumulatorUserData id="ZHBREvaporator@EvaporatorUserData">
+  <Key value="EvaporatorDamage"/>
+  <ApplicationRule value="AdditiveMultiply"/>
+</CAccumulatorUserData>
+
+</Catalog>

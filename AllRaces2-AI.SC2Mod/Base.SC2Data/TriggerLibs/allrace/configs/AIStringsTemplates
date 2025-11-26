@@ -1,0 +1,196 @@
+
+## Build Core    
+
+Open Rush:     order Initial,                            stockFarms, order AfterFarms, defend, stockArmyScale 35, stockArmyScale 70, upgrades, stockArmyScale 100, stockWorkersLD 30, techUp, order AfterTechup
+Open Timing:   order Initial,                            stockFarms, order AfterFarms, defend, stockArmyScale 35, stockArmyScale 70, upgrades, stockArmyScale 100, stockWorkersLD 30, techUp, order AfterTechup
+Open Power:    order Initial,                            stockFarms, order AfterFarms, defend, stockArmyScale 35, stockArmyScale 70, upgrades, stockArmyScale 100, stockWorkersLD 30, techUp, order AfterTechup
+Open Macro:    order Initial, macroExpand, order AfterExpand, stockFarms, order AfterFarms, defend, stockArmyScale 35, stockArmyScale 70, upgrades, stockArmyScale 100, stockWorkersLD 30, techUp, order AfterTechup
+Open Air:      order Initial, macroExpand, order AfterExpand, stockFarms, order AfterFarms, defend, stockArmyScale 35, stockArmyScale 70, upgrades, stockArmyScale 100, stockWorkersLD 30, techUp, order AfterTechup
+Mid Rush:      defaultEconomy, order Initial, defaultExpansion 5500 1500, defend, stockArmyScale 35  order ArmyScale35,                            needsDetectionCheck,  stockArmyScale 70, stockWorkersLD 60, upgrades, stockArmyScale 100, order ArmyScale100, techUp
+Mid Timing:    defaultEconomy, order Initial, defaultExpansion 5500 1500, defend, stockArmyScale 35  order ArmyScale35,                            needsDetectionCheck,  stockArmyScale 70, stockWorkersLD 60, upgrades, stockArmyScale 100, order ArmyScale100, techUp
+Mid Power:     defaultEconomy, order Initial, defaultExpansion 5500 1500, defend, stockArmyScale 35, order ArmyScale35, macroExpand, order AfterExpand, needsDetectionCheck,  stockArmyScale 70, stockWorkersLD 60, upgrades, stockArmyScale 100, order ArmyScale100, techUp
+Mid Macro:     defaultEconomy, order Initial, defaultExpansion 5500 1500, defend, stockArmyScale 35, order ArmyScale35, macroExpand, order AfterExpand, needsDetectionCheck,  stockArmyScale 70, stockWorkersLD 60, upgrades, stockArmyScale 100, order ArmyScale100, techUp
+Mid Air:       defaultEconomy, order Initial, defaultExpansion 5500 1500, defend, stockArmyScale 35, order ArmyScale35, macroExpand, order AfterExpand, needsDetectionCheck,  stockArmyScale 70, stockWorkersLD 60, upgrades, stockArmyScale 100, order ArmyScale100, techUp
+Late Core:     defaultEconomy, order Initial, defaultExpansion 14000 4500, defend, stockArmyScale 35, detectionBeaconCheck, stockWorkersLD 30, order ArmyScale35, macroExpand, order AfterExpand, stockArmyScale 70, order ArmyScale70, stockArmyScale 100, stockWorkersLD 60, upgrades, techUp
+Late HighTech: defaultEconomy, order Initial, defaultExpansion 14000 4500, defend, stockArmyScale 35, detectionBeaconCheck, stockWorkersLD 30, order ArmyScale35, macroExpand, order AfterExpand, stockArmyScale 70, order ArmyScale70, stockArmyScale 100, stockWorkersLD 60, upgrades, techUp
+Late Special:  defaultEconomy, order Initial, defaultExpansion 14000 4500, defend, stockArmyScale 35, detectionBeaconCheck, stockWorkersLD 30, order ArmyScale35, macroExpand, order AfterExpand, stockArmyScale 70, order ArmyScale70, stockArmyScale 100, stockWorkersLD 60, upgrades, techUp
+Late Mixed:    defaultEconomy, order Initial, defaultExpansion 14000 4500, defend, stockArmyScale 35, detectionBeaconCheck, stockWorkersLD 30, order ArmyScale35, macroExpand, order AfterExpand, stockArmyScale 70, order ArmyScale70, stockArmyScale 100, stockWorkersLD 60, upgrades, techUp
+Late Air:      defaultEconomy, order Initial, defaultExpansion 14000 4500, defend, stockArmyScale 35, detectionBeaconCheck, stockWorkersLD 30, order ArmyScale35, macroExpand, order AfterExpand, stockArmyScale 70, order ArmyScale70, stockArmyScale 100, stockWorkersLD 60, upgrades, techUp
+Defense:       stockFarms, order DefenseInitial, stock 1 $Refinery, order DefenseLate, stockEmergency 20 $Worker
+
+## Build Order Parts 
+
+DefenseInitial:                                stock 1 $Guard, stockEmergencySkipCheck $Combat 600 
+DefenseLate:                                   stockEmergency $Combat 1600
+Detection:                                     1 $Detector, 1 $SpecialDetector, 2 $StaticDetector
+AtEachTown:                                    if $Power ExpanPower $Power, if $Power $Power, 2 $StaticDefense
+
+Open Rush Initial:                             $TownHall, 10 $Worker, $Supply, 12 $Worker, $Production, 14 $Worker, $Refinery, 16 $Worker, $Warrior, $Macro, 2 $Supply, $Warrior, stockNext 20 $Worker
+Open Power Initial:                            $TownHall, 10 $Worker, $Supply, 12 $Worker, $Production, 14 $Worker, $Refinery, 16 $Worker, $Warrior, $Macro, 2 $Supply, $Warrior, stockNext 20 $Worker
+Open Timing Initial:                           $TownHall, 10 $Worker, $Supply, 12 $Worker, $Production, 14 $Worker, $Refinery, 16 $Worker, $Warrior, $Macro, 2 $Supply, $Warrior, stockNext 20 $Worker
+Open Macro Initial:                            $TownHall, 10 $Worker, $Supply, 12 $Worker, $Production, 16 $Worker
+Open Air Initial:                              $TownHall, 10 $Worker, $Supply, 15 $Worker
+Open Macro AfterExpand:                        $Warrior, 17 $Worker, $Guard, $Macro, 2 $Supply, 2 $Warrior, $Refinery
+Open Air AfterExpand:                          16 $Worker, $Guard, $Refinery, 17 $Worker, $Production, 18 $Worker, 2 $Refinery, 19 $Worker, 2 $Supply, $ProductionAdvanced, $Macro, stockNext 30 $Worker
+Open Rush AfterFarms:      
+Open Timing AfterFarms:                        2 $Production, $Tech
+Open Power AfterFarms:                         2 $Production, $Tech
+Open Macro AfterFarms:                         stockNext 30 $Worker, 2 $Production, stockNext $Tech
+Open Air AfterFarms:                           2 $ProductionAir, 2 $TechAir
+Open Rush-Timing|Power|Macro|Air AfterTechup:  $Warrior
+Mid Rush Initial:                              stockNext 2 $Production,stockNext 2 $Tech,stockNext 2 $ProductionAdvanced,stockNext 2 $TechAdvanced
+Mid Timing|Power|Macro Initial:                stockNext $Production, stockNext $Tech, 2 $ProductionAdvanced, 2 $TechAdvanced, 2 $ProductionAir, 2 $Tech
+Mid Air Initial:                               2 $ProductionAir, 2 $TechAir, $Transport
+Mid Rush|Timing|Power|Macro|Air ArmyScale35:   $Guard
+Mid Power|Macro|Air AfterExpand:               -
+Mid Rush|Timing|Power|Macro|Air ArmyScale100:  2 $Detector, 1 $SpecialDetector
+Late Rush|Timing|Power|Macro Initial:          -
+Late Air    Initial:                           1 $Support
+Late Rush|Timing|Power|Macro|Air ArmyScale35:  $Guard
+Late Rush|Timing|Power|Macro|Air AfterExpand:  3 $Production, 2 $Tech, 3 $ProductionAdvanced, 3 $TechAdvanced, 3 $ProductionAir, 2 $TechAir, 2 $Detector, 1 $Macro
+Late Rush|Timing|Power|Macro|Air ArmyScale70:  3 $Support, 1 $Transport, 3 $Detector, 2 $StaticDetector
+TechupOpen:                                    $Production, $Tech
+TechupMid:                                     $ProductionAdvanced, $TechAdvanced, $Radar, $ProductionAir, $TechAir, 3 $Production
+TechupLate:                                    $Tech,2 $ProductionAdvanced, 2 $TechAir
+
+
+## Army Core
+
+VyEy Open Rush 1:       weight 1, duration 420, delay 42, cost 160
+VyEy Open Timing 1:     weight 1, duration 480, delay 48, cost 170
+VyEy Open Power 1:      weight 1, duration 600, delay 60, cost 240
+VyEy Open Macro 1:      weight 1, duration 240, delay 24, cost 160
+VyEy Open Air 1:        weight 1, duration 660, delay 66, cost 330
+VyEy Mid Rush 1:        weight 1, duration 380, delay 38, cost 260
+VyEy Mid Timing 1:      weight 1, duration 420, delay 42, cost 320
+VyEy Mid Power 1:       weight 1, duration 440, delay 44, cost 350
+VyEy Mid Macro 1:       weight 1, duration 660, delay 66, cost 480
+VyEy Mid Air 1:         weight 1, duration 420, delay 42, cost 600
+VyEy Late Core 1:       weight 1, duration 340, delay 34, cost 600
+VyEy Late HighTech 1:   weight 1, duration 360, delay 36, cost 640
+VyEy Late Special 1:    weight 1, duration 380, delay 38, cost 680
+VyEy Late Mixed 1:      weight 1, duration 400, delay 40, cost 720
+VyEy Late Air 1:        weight 1, duration 360, delay 36, cost 800
+VyEy Final Core 1:      weight 1, duration 300, delay 30, cost 900
+VyEy Final HighTech 1:  weight 1, duration 320, delay 32, cost 960
+VyEy Final Special 1:   weight 1, duration 340, delay 34, cost 1020
+VyEy Final Mixed 1:     weight 1, duration 360, delay 36, cost 1080
+VyEy Final Air 1:       weight 1, duration 320, delay 32, cost 1200
+
+Easy Open Rush 1:       weight 1, duration 400, delay 40, cost 300
+Easy Open Timing 1:     weight 1, duration 460, delay 46, cost 400
+Easy Open Power 1:      weight 1, duration 580, delay 58, cost 540
+Easy Open Macro 1:      weight 1, duration 240, delay 24, cost 300
+Easy Open Air 1:        weight 1, duration 620, delay 62, cost 600
+Easy Mid Rush 1:        weight 1, duration 340, delay 34, cost 600
+Easy Mid Timing 1:      weight 1, duration 380, delay 38, cost 760
+Easy Mid Power 1:       weight 1, duration 400, delay 40, cost 790
+Easy Mid Macro 1:       weight 1, duration 620, delay 62, cost 1080
+Easy Mid Air 1:         weight 1, duration 380, delay 38, cost 900
+Easy Late Core 1:       weight 1, duration 320, delay 32, cost 1000
+Easy Late HighTech 1:   weight 1, duration 340, delay 34, cost 1100
+Easy Late Special 1:    weight 1, duration 360, delay 36, cost 1200
+Easy Late Mixed 1:      weight 1, duration 380, delay 38, cost 1300
+Easy Late Air 1:        weight 1, duration 340, delay 34, cost 1300
+Easy Final Core 1:      weight 1, duration 290, delay 29, cost 1600
+Easy Final HighTech 1:  weight 1, duration 310, delay 31, cost 1700
+Easy Final Special 1:   weight 1, duration 330, delay 33, cost 1800
+Easy Final Mixed 1:     weight 1, duration 330, delay 33, cost 1900
+Easy Final Air 1:       weight 1, duration 310, delay 31, cost 1800
+
+Medi Open Rush 1:       weight 1, duration 380, delay 38, cost 440 
+Medi Open Timing 1:     weight 1, duration 440, delay 44, cost 660 
+Medi Open Power 1:      weight 1, duration 560, delay 56, cost 900 
+Medi Open Macro 1:      weight 1, duration 240, delay 24, cost 480 
+Medi Open Air 1:        weight 1, duration 580, delay 58, cost 900 
+Medi Mid Rush 1:        weight 1, duration 320, delay 32, cost 960 
+Medi Mid Timing 1:      weight 1, duration 350, delay 35, cost 1200 
+Medi Mid Power 1:       weight 1, duration 370, delay 37, cost 1260 
+Medi Mid Macro 1:       weight 1, duration 580, delay 58, cost 1740 
+Medi Mid Air 1:         weight 1, duration 350, delay 35, cost 1300 
+Medi Late Core 1:       weight 1, duration 300, delay 30, cost 1700 
+Medi Late HighTech 1:   weight 1, duration 320, delay 32, cost 1900 
+Medi Late Special 1:    weight 1, duration 340, delay 34, cost 2100 
+Medi Late Mixed 1:      weight 1, duration 360, delay 36, cost 2300 
+Medi Late Air 1:        weight 1, duration 320, delay 32, cost 2300 
+Medi Final Core 1:      weight 1, duration 280, delay 28, cost 2700 
+Medi Final HighTech 1:  weight 1, duration 300, delay 30, cost 2900 
+Medi Final Special 1:   weight 1, duration 320, delay 32, cost 3200 
+Medi Final Mixed 1:     weight 1, duration 340, delay 34, cost 3500 
+Medi Final Air 1:       weight 1, duration 300, delay 30, cost 3200 
+
+MdHd Open Rush 1:       weight 1, duration 360, delay 36, cost 560
+MdHd Open Timing 1:     weight 1, duration 420, delay 42, cost 880
+MdHd Open Power 1:      weight 1, duration 540, delay 54, cost 1200
+MdHd Open Macro 1:      weight 1, duration 240, delay 24, cost 620
+MdHd Open Air 1:        weight 1, duration 560, delay 56, cost 1200
+MdHd Mid Rush 1:        weight 1, duration 300, delay 30, cost 1200
+MdHd Mid Timing 1:      weight 1, duration 330, delay 33, cost 1500
+MdHd Mid Power 1:       weight 1, duration 350, delay 35, cost 1580
+MdHd Mid Macro 1:       weight 1, duration 560, delay 56, cost 2200
+MdHd Mid Air 1:         weight 1, duration 330, delay 33, cost 1800
+MdHd Late Core 1:       weight 1, duration 280, delay 28, cost 2200
+MdHd Late HighTech 1:   weight 1, duration 300, delay 30, cost 2400
+MdHd Late Special 1:    weight 1, duration 320, delay 32, cost 2600
+MdHd Late Mixed 1:      weight 1, duration 340, delay 34, cost 2800
+MdHd Late Air 1:        weight 1, duration 300, delay 30, cost 2800
+MdHd Final Core 1:      weight 1, duration 260, delay 26, cost 3200
+MdHd Final HighTech 1:  weight 1, duration 280, delay 28, cost 3500
+MdHd Final Special 1:   weight 1, duration 300, delay 30, cost 3800
+MdHd Final Mixed 1:     weight 1, duration 320, delay 32, cost 4100
+MdHd Final Air 1:       weight 1, duration 280, delay 28, cost 3800
+
+Hard Open Rush 1:       weight 1, duration 350, delay 35, cost 640
+Hard Open Timing 1:     weight 1, duration 400, delay 40, cost 1020
+Hard Open Power 1:      weight 1, duration 520, delay 52, cost 1400
+Hard Open Macro 1:      weight 1, duration 240, delay 24, cost 700
+Hard Open Air 1:        weight 1, duration 540, delay 54, cost 1400
+Hard Mid Rush 1:        weight 1, duration 300, delay 30, cost 1500
+Hard Mid Timing 1:      weight 1, duration 320, delay 32, cost 1800
+Hard Mid Power 1:       weight 1, duration 340, delay 34, cost 1920
+Hard Mid Macro 1:       weight 1, duration 540, delay 54, cost 2700
+Hard Mid Air 1:         weight 1, duration 320, delay 32, cost 2200
+Hard Late Core 1:       weight 1, duration 270, delay 27, cost 2600
+Hard Late HighTech 1:   weight 1, duration 290, delay 29, cost 2800
+Hard Late Special 1:    weight 1, duration 310, delay 31, cost 3000
+Hard Late Mixed 1:      weight 1, duration 330, delay 33, cost 3200
+Hard Late Air 1:        weight 1, duration 290, delay 29, cost 3200
+Hard Final Core 1:      weight 1, duration 250, delay 25, cost 3900
+Hard Final HighTech 1:  weight 1, duration 270, delay 27, cost 4200
+Hard Final Special 1:   weight 1, duration 290, delay 29, cost 4500
+Hard Final Mixed 1:     weight 1, duration 310, delay 31, cost 4800
+Hard Final Air 1:       weight 1, duration 270, delay 27, cost 4500
+
+VyHd Open Rush 1:       weight 1, duration 340, delay 35, cost 760
+VyHd Open Timing 1:     weight 1, duration 390, delay 40, cost 1200
+VyHd Open Power 1:      weight 1, duration 510, delay 52, cost 1680
+VyHd Open Macro 1:      weight 1, duration 230, delay 24, cost 840
+VyHd Open Air 1:        weight 1, duration 530, delay 54, cost 1680
+VyHd Mid Rush 1:        weight 1, duration 290, delay 30, cost 1800
+VyHd Mid Timing 1:      weight 1, duration 310, delay 32, cost 2000
+VyHd Mid Power 1:       weight 1, duration 330, delay 34, cost 2300
+VyHd Mid Macro 1:       weight 1, duration 530, delay 54, cost 3240
+VyHd Mid Air 1:         weight 1, duration 310, delay 32, cost 2640
+VyHd Late Core 1:       weight 1, duration 260, delay 27, cost 3120
+VyHd Late HighTech 1:   weight 1, duration 280, delay 29, cost 3360
+VyHd Late Special 1:    weight 1, duration 300, delay 31, cost 3600
+VyHd Late Mixed 1:      weight 1, duration 320, delay 33, cost 3840
+VyHd Late Air 1:        weight 1, duration 280, delay 29, cost 3840
+VyHd Final Core 1:      weight 1, duration 240, delay 25, cost 4680
+VyHd Final HighTech 1:  weight 1, duration 260, delay 27, cost 5040
+VyHd Final Special 1:   weight 1, duration 280, delay 29, cost 5400
+VyHd Final Mixed 1:     weight 1, duration 300, delay 31, cost 5760
+VyHd Final Air 1:       weight 1, duration 260, delay 27, cost 5400
+
+
+
+
+
+
+
+
+
+
+
+
+

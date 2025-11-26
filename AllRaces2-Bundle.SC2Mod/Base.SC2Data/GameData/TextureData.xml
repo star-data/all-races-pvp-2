@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Catalog>
+<CTexture id="DragonBrimstoneDemolisherDiffuse">
+  <File value="Assets\Textures\dragon_brimstonedemolisher_diffuse.dds"/>
+  <Slot value="main.diffuse"/>
+</CTexture>
+<CTexture id="DragonFlamespitterDiffuse">
+  <File value="Assets\Textures\primalzergling_diff_b.dds"/>
+  <Slot value="main.diffuse"/>
+  <Flags index="UnifyWithInnateModelTextures" value="0"/>
+</CTexture>
+<CTexture id="DragonHornedMagusDiffuse">
+  <File value="Assets\Textures\dragon_hornedmagus_diffuse.dds"/>
+  <Slot value="main.diffuse"/>
+  <Flags index="UnifyWithInnateModelTextures" value="0"/>
+</CTexture>
+<CTexture id="DragonHornedMagusInvigorateDiffuse">
+  <File value="Assets\Textures\dragon_hornedmagusinvigorate_diffuse.dds"/>
+  <Slot value="main.diffuse"/>
+  <Flags index="UnifyWithInnateModelTextures" value="0"/>
+</CTexture>
+<CTexture id="DragonHunterDiffuse">
+  <File value="Assets\Textures\primalzergling_diff_a.dds"/>
+  <Slot value="main.diffuse"/>
+  <Flags index="UnifyWithInnateModelTextures" value="0"/>
+</CTexture>
+<CTexture id="DragonBerserkerDiffuse">
+  <File value="Assets\Textures\primalzergling_diff_c.dds"/>
+  <Slot value="main.diffuse"/>
+  <Flags index="UnifyWithInnateModelTextures" value="0"/>
+</CTexture>
+<CTexture id="DragonPlodderDiffuse">
+  <File value="Assets\Textures\dragon_plodder_diffuse.dds"/>
+  <Slot value="main.diffuse"/>
+</CTexture>
+<CTexture id="DragonGrimGliderDiffuse">
+  <File value="Assets\Textures\dragon_grimglider_diffuse.dds"/>
+  <Slot value="main.diffuse"/>
+</CTexture>
+<CTexture id="DragonGrimGliderEmissive">
+  <File value="Assets\Textures\black.dds"/>
+  <Slot value="main.emissive"/>
+</CTexture>
+<CTexture id="DragonPhlogistonGuardianDiffuse">
+  <File value="Assets\Textures\dragon_plodder_diffuse.dds"/>
+  <Slot value="main.diffuse"/>
+</CTexture>
+<CTexture id="DragonUnseenBeastEmissive">
+  <File value="Assets\Textures\snowbeastmatriarch_emissive.dds"/>
+  <Slot value="main.emissive"/>
+</CTexture>
+<CTexture id="DragonRazorbackDiffuse">
+  <File value="Assets\Textures\dragon_razorback_diffuse.dds"/>
+  <Slot value="main.diffuse"/>
+</CTexture>
+<CTexture id="DragonRazorbackEmissive">
+  <File value="Assets\Textures\black.dds"/>
+  <Slot value="main.emissive"/>
+</CTexture>
+<CTexture id="plasmaburn2_orange">
+  <Slot value="generic01"/>
+</CTexture>
+<CTexture id="lightning_orange">
+  <Slot value="generic05"/>
+</CTexture>
+<CTexture id="flare1_orange4">
+  <Slot value="generic04"/>
+</CTexture>
+<CTexture id="glow_orange3">
+  <Slot value="generic03"/>
+</CTexture>
+<CTexture id="flare2borange">
+  <Slot value="generic02"/>
+</CTexture>
+<CTexture id="Decal_Dragon">
+  <File value="Assets\Textures\decal_terran_0037_01.dds"/>
+</CTexture>
+<CTexture id="Decal_DragonBackground">
+  <File value="Assets\Textures\white.dds"/>
+  <Slot value="background"/>
+</CTexture>
+<CTexture id="Decal_Spray_0059_01">
+  <File value="Assets\Textures\UnitedEarthDirectorate_SC1_Logo1.dds"/>
+</CTexture>
+<CTexture id="UEDGarmrDiffuse">
+  <File value="Assets\Textures\redstonelavacritterfatUED.dds"/>
+  <Slot value="main.diffuse"/>
+</CTexture>
+<CTexture id="InfantryCamo">
+  <File value="Assets\Textures\INF_DIFFUSE_death.dds"/>
+  <Slot value="main.diffuse"/>
+</CTexture>
+
+</Catalog>

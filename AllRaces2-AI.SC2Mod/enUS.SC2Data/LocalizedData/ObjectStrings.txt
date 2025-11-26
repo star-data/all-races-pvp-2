@@ -1,0 +1,8 @@
+﻿User/Name/AI=AI
+User/Name/AIArmyCore=AI Core Army
+User/Name/AIBuildArmy=AI Build Army
+User/Name/AIBuildCore=AI Core Build
+User/Name/AIBuildOrders=AI Build Base
+User/Name/AIBuildUpgrades=AI Build Upgrades
+User/Name/AICounter=AI Counter
+User/Name/AISpecialMaker=AI SpecialMaker

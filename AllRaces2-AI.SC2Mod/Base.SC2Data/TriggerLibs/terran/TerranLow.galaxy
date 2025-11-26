@@ -1,0 +1,160 @@
+
+
+//--------------------------------------------------------------------------------------------------
+//  TerranMacroExpand
+//--------------------------------------------------------------------------------------------------
+bool TerranMacroExpand (int player) {
+    fixed defenseEval = 0;
+
+    if (AITechCount(player, c_TU_SCV, c_techCountQueuedOrBetter) < 14) {
+        return false;
+    }
+    if (AITechCount(player, c_TB_CommandCenter_Alias, c_techCountQueuedOrBetter) >= 2) {
+        return false;
+    }
+    
+    defenseEval = AISelfDefenseThreatEval(c_dtRealSelfThreat, player);
+    if (defenseEval >= 120) {
+        // don't expand if currently under attack
+        return false;
+    }
+
+    if (!AIIsExpandingOrHasExpanded(player)) {
+        if (!AIHasNearbyOpenExpansion(player)) {
+            return false;
+        }
+        if (!AIHasRes(player,300,0)) {
+            AIEnableStock(player);
+            return true;
+        }
+
+        // we should try to expand
+        AIExpand(player, AIGetTownLocation(player, c_townMain), c_TB_CommandCenter);
+    }
+
+    // currently expanding see if we need to save minerals
+    if (!AIHasRes(player,500,0)) {
+        AIEnableStock(player);
+        return true;
+    }
+    return false; // already saved enough, we're allowed to continure the stock
+}
+
+//--------------------------------------------------------------------------------------------------
+//  TerranAtEachTown
+//--------------------------------------------------------------------------------------------------
+void TerranAtEachTown (int player, int tier) {
+    int i = 0;
+    int town;
+
+    while (i < c_townMax) {
+        town = i;
+        i = i + 1;
+
+        if (AIGetTownState(player, town) != c_townStateEstablished) {
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_TB_CommandCenter_Alias, c_techCountCompleteOnly) < 1) {
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_TB_MissileTurret, c_techCountCompleteOnly) < 2) {
+            AISetStockEx(player, town, 2, c_TB_MissileTurret, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+        if (AIGetBuildingCountInTown(player, town, c_TB_Bunker, c_techCountCompleteOnly) < 1) {
+            AISetStockEx(player, town, 1, c_TB_Bunker, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  TerranTechUp
+//--------------------------------------------------------------------------------------------------
+void TerranTechUp (int player, int tier) {
+    int diff = AIPlayerDifficulty(player);
+
+    if (diff < c_skirMedium) {
+        // don't build extra buildings below medium
+        return;
+    }
+
+    AISetStock( player, 2, c_TB_Refinery );
+    AISetStock( player, 1, c_TB_Barracks );
+    AISetStock( player, 1, c_TB_BarracksTechLab );
+    AISetStock( player, 1, c_TB_EngineeringBay );
+
+    if (tier >= c_ldPhaseMid) {
+        TerranAtEachTown(player, tier);
+        AISetStock( player, 1, c_TB_Factory );
+        AISetStock( player, 1, c_TB_FactoryTechLab );
+        AISetStock( player, 1, c_TB_SensorTower );
+        AISetStock( player, 1, c_TB_Armory );
+        AISetStock( player, 1, c_TB_Starport );
+        AISetStock( player, 1, c_TB_StarportTechLab );
+        AISetStock( player, 3, c_TB_Barracks );
+        AISetStock( player, 2, c_TB_BarracksTechLab );
+        AISetStock( player, 1, c_TB_BarracksReactor );
+
+        if (tier >= c_ldPhaseLate) {
+            AISetStock( player, 1, c_TB_GhostAcademy );
+            AISetStock( player, 1, c_TB_FusionCore );
+            AISetStock( player, 2, c_TB_EngineeringBay );
+            AISetStock( player, 2, c_TB_Armory );
+            AISetStock( player, 2, c_TB_Factory );
+            AISetStock( player, 1, c_TB_FactoryReactor );
+            AISetStock( player, 2, c_TB_Starport );
+            AISetStock( player, 1, c_TB_StarportReactor );
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  TerranBasicEconomy
+//--------------------------------------------------------------------------------------------------
+void TerranBasicEconomy (int player, int tier, int minWorkers) {
+    int econMin = AIGetMinPeonCount(player, c_townMax);
+    if (minWorkers > econMin) {
+        minWorkers = econMin;
+    }
+
+    AIDefaultEconomy(player, c_TB_CommandCenter_Alias, c_TB_Refinery, c_TB_SupplyDepot, c_TU_SCV, minWorkers, c_stockAlways);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  TerranBasicExpansion
+//--------------------------------------------------------------------------------------------------
+void TerranBasicExpansion (int player, int tier, int minerals, int gas) {
+    AIDefaultExpansion(player, c_TB_CommandCenter, minerals, gas, c_expandDefault);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  TerranGeneralBuild
+//--------------------------------------------------------------------------------------------------
+void TerranGeneralBuild (int player, int tier) {
+    if (tier >= c_ldPhaseMid) {
+        if (PlayerBeaconIsSet(player, c_beaconDetect)) {
+            AISetStock( player, 1, c_TU_Raven );
+        }
+    }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  TerranBasicDefenseStock
+//--------------------------------------------------------------------------------------------------
+void TerranBasicDefenseStock (int player) {
+    if (!AINeedsDefending(player)) {
+        return;
+    }
+
+    AISetStockFarms( player, c_TB_SupplyDepot, c_stockNormalFarms);
+    AIAddEmergencyDefenseStock(player, 8, c_TU_Marine, false);
+    AISetStock( player, 1, c_TB_Refinery );
+    AIAddEmergencyDefenseStock(player, 4, c_TU_Viking, true);
+    AIAddEmergencyDefenseStock(player, 4, c_TU_Hellion, true);
+    AIAddEmergencyDefenseStock(player, 4, c_TU_Marauder, true);
+    AIAddEmergencyDefenseStock(player, 20, c_TU_SCV, true);
+}

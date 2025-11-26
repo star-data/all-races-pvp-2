@@ -1,0 +1,8 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - Dragons
+//--------------------------------------------------------------------------------------------------
+// Trigger Declarations
+trigger libDRAG_gt_InitializeDragonsRace;
+

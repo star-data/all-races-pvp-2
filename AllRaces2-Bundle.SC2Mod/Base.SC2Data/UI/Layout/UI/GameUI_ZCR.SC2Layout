@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+  <Frame type="Frame" name="PortraitMaskFrameTemplate">
+    <Anchor relative="$PortraitPanel" offset="5"/>
+    <Visible val="{$PortraitPanel/@Visible}"/>
+    <AlphaMaskTexture val="Assets\Textures\ui_ingame_blackmask.dds"/>
+    <AlphaMaskSiblings val="true"/>
+    <RenderPriority val="1"/>
+    <Width val="1"/>
+    <Height val="1"/>
+  </Frame>
+
+  <Frame type="GameUI" name="GameUI" file="GameUI">
+    <ConsoleWorldTopOffset val="0"/>
+    <ConsoleWorldBottomOffset val="225"/>
+
+    <StateGroup name="PausedState">
+      <DefaultState val="Default"/>
+      <State name="Paused">
+        <When type="Property" frame="UIContainer/FullscreenLowerContainer/PausePanel" Visible="True" />
+      </State>
+      <State name="Default"/>
+    </StateGroup>
+    
+    <Frame type="WorldPanel" name="WorldPanel">
+
+      <!--Allow portrait be priority rendering over Health Bar Frames-->
+      <Frame type="Frame" name="PortraitMaskFrame" template="GameUI_ZCR/PortraitMaskFrameTemplate"/>
+
+    </Frame>
+
+    <Frame type="Frame" name="UIContainer">
+
+      <Frame type="ConsolePanel" name="ConsolePanel">
+        
+        <Frame type="PortraitPanel" name="PortraitPanel">
+          <Handle val="PortraitPanel"/>
+        </Frame>
+
+      </Frame>
+
+      <Frame type="Frame" name="ConsoleUIContainer">
+          
+        <Frame type="Button" name="RaceControlButton" template="StandardTemplates/HelperButtonTemplate">
+          <Anchor side="Bottom" relative="$parent/ArmyButton" pos="Max" offset="0"/>
+          <Anchor side="Left" relative="$parent/ArmyButton" pos="Max" offset="-5"/>
+          <Handle val="RaceControlButton"/>
+          <Visible val="False"/>
+          <Tooltip val="@UI/HelpControl_RaceControl"/>
+          <Frame type="Image" name="Icon">
+            <Texture val="@@@UI/RaceButtonIcon"/>
+          </Frame>
+          <Frame type="CommandHotkeyFrame" name="HotkeyFrame">
+            <Hotkey val="WarpIn"/>
+          </Frame>
+          <Frame type="Image" name="CountBackground">
+            <DescFlags val="CreationDeferred"/>
+          </Frame>
+          <Frame type="Label" name="CountLabel">
+            <DescFlags val="CreationDeferred"/>
+          </Frame>
+        </Frame>
+        
+      </Frame>
+
+    </Frame>
+  </Frame>
+</Desc>

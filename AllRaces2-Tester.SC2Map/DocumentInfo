@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocInfo>
+    <Icon>
+        <Value>logo-small.png</Value>
+    </Icon>
+    <Dependencies>
+        <Value>bnet:[AR2] Data/0.0/466163,file:Mods\all-races-pvp-2\AllRaces2-Data.SC2Mod</Value>
+    </Dependencies>
+</DocInfo>

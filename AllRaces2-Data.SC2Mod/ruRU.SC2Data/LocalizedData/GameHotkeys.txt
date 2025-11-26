@@ -1,0 +1,4 @@
+﻿Button/Hotkey/CloakingField=C
+Button/Hotkey/EnergyRecharge=B
+Button/Hotkey/HydraliskFrenzy=F
+Button/Hotkey/ResearchFrenzy=F

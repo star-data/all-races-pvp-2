@@ -1,0 +1,11 @@
+<Catalog>
+    <CUnit id="ACR">
+        <Attributes index="Hover" value="1"/>
+    </CUnit>
+    <CUnit id="Equalizer">
+        <Attributes index="Hover" value="1"/>
+    </CUnit>
+    <CUnit id="Inciter">
+        <Attributes index="Hover" value="1"/>
+    </CUnit>
+</Catalog>

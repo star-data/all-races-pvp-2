@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUnit id="$Null"/>
+    <CUnit id="$TownHall"/>
+    <CUnit id="$Radar"/>
+    <CUnit id="$DropOff"/>
+    <CUnit id="$Worker"/>
+    <CUnit id="$ScoutAir"/>
+    <CUnit id="$ScoutGround"/>
+    <CUnit id="$ScoutEarlyDefense"/>
+    <CUnit id="$StaticDetector"/>
+    <CUnit id="$SpecialDetector"/>
+    <CUnit id="$Detector"/>
+    <CUnit id="$Supply"/>
+    <CUnit id="$Refinery"/>
+    <CUnit id="$Creep"/>
+    <CUnit id="$Power"/>
+    <CUnit id="$Warrior"/>
+    <CUnit id="$Guard"/>
+    <CUnit id="$Support"/>
+    <CUnit id="$Macro"/>
+    <CUnit id="$Transport"/>
+    <CUnit id="$Defense"/>
+    <CUnit id="$Production"/>
+    <CUnit id="$Tech"/>
+    <CUnit id="$ProductionLight"/>
+    <CUnit id="$ProductionHeavy"/>
+    <CUnit id="$ProductionAir"/>
+    <CUnit id="$TechLight"/>
+    <CUnit id="$TechHeavy"/>
+    <CUnit id="$TechAir"/>
+    <CUnit id="$Builder"/>
+</Catalog>

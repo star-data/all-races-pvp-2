@@ -1,0 +1,1127 @@
+
+//--------------------------------------------------------------------------------------------------
+//  BW Zerg
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  *** QUEEN ***
+//--------------------------------------------------------------------------------------------------
+const int c_BWSpawnBroodlingsCooldown = c_tactTimerFirst;
+const int c_BWEnsnareCooldown = c_tactTimerSecond;
+const int c_BWParasiteCooldown = c_tactTimerThird;
+
+//--------------------------------------------------------------------------------------------------
+order BWQueenParasite (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    // Targetted shot that grants vision on target
+    // Cast Parasite on massive units and siege targets
+    order ord;
+    unitgroup filterGroup;
+    unit unitToCheck;
+    int scanCount;
+
+    ord = AICreateOrder(player, c_BWAB_QueenSCBWParasite, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    filterGroup = UnitGroupEmpty();
+
+    scanCount = UnitGroupCount(scanGroup, c_unitCountAll);
+    if(scanCount == 0) {
+        return null;
+    }
+
+    while (scanCount > 0) {
+        unitToCheck = UnitGroupUnit(scanGroup, scanCount);
+        scanCount = scanCount - 1;
+
+        if (UnitHasBehavior(unitToCheck, c_BWAB_QueenSCBWParasite)) {
+            return null; // Unit with parasite exists in the group
+        }
+
+        if (UnitMarkerCount(unitToCheck, mark) > 0) {
+            return null; // Already marked unit exists in group
+        }
+
+        if (UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeHeroic) == true) {
+            UnitGroupAdd(filterGroup, unitToCheck);
+        }
+        else if (UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeArmored) == true) {
+            UnitGroupAdd(filterGroup, unitToCheck);
+        }
+        else if (UnitGetType(unitToCheck) == c_TU_SiegeTank || UnitGetType(unitToCheck) == c_TU_SiegeTankSieged) {
+            UnitGroupAdd(filterGroup, unitToCheck);
+        }
+    }
+
+    return AIUnitGroupGetValidOrder(filterGroup, ord, aiUnit, c_forwards);
+}
+
+//--------------------------------------------------------------------------------------------------
+order BWQueenEnsnare (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    // AOE that slows units in an area for a duration
+    order ord;
+    point loc;
+    aifilter filter;
+    unitgroup enemyGroup;
+    //  vars related to nearby enemies.
+    aifilter groundAirFilter;
+    unitgroup threatGroup;
+    int enemyGroundCount;
+    int enemyAirCount;
+
+    if (!AITactCooldownAllow(aiUnit, c_BWEnsnareCooldown)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_BWAB_QueenSCBWEnsnare, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    //  Scan for enemy air and ground units
+    //
+    enemyGroundCount = 0;
+    enemyAirCount = 0;
+
+    groundAirFilter = AIFilter(player);
+    AISetFilterAlliance(groundAirFilter, c_playerGroupEnemy);
+    AISetFilterPlane(groundAirFilter, c_planeGround);
+    enemyGroundCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    AISetFilterPlane(groundAirFilter, c_planeAir);
+    enemyAirCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    // Ensnare units that have not been already marked or has existing behavior
+    filter = AIFilter(player);
+    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BWBF_QueenSCBWEnsnare_AB);
+    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BWBF_QueenSCBWEnsnareMovement_AB);
+    //AISetFilterBits(filter, UnitFilterStr(AIAbilityStr(player, c_BWAB_QueenSCBWEnsnare, c_fieldTargetFilters)));
+    AISetFilterBits(filter, UnitFilterStr(AIEffectStr(player, c_BWEF_QueenSCBWEnsnare_Search, c_fieldFilters)));
+    //AISetFilterLifePerMarker(filter, damage, mark);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+    AISetFilterCanAttackEnemy(filter, enemyGroundCount, enemyAirCount);
+    AISetFilterAlliance(filter, c_playerGroupEnemy);
+
+    enemyGroup = AIGetFilterGroup(filter, scanGroup);
+    if (enemyGroup == null) {
+        return null;
+    }
+
+    loc = AIBestTargetPoint(
+        enemyGroup,
+        2, // min hits
+        20, // damage base
+        1.5, // min score 
+        AIEffectFixed(player, c_BWEF_QueenSCBWEnsnare_Search, c_fieldAreaRadius0),
+        UnitGetPosition(aiUnit),
+        AIAbilityFixed(player, c_BWAB_QueenSCBWEnsnare, c_fieldRange0)+3,
+        c_unitAttributeNone
+    );
+    if (loc == null) {
+        return null;
+    }
+
+    OrderSetTargetPoint(ord, loc);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+order BWQueenSpawnBroodlings (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    // Targetted shot that kills the target and spawns to Broodlings at that location
+    // Spawn Broodlings on massive units and siege targets
+    order ord;
+    unitgroup filterGroup;
+    unit unitToCheck;
+    int scanCount;
+
+
+    if (!AITactCooldownAllow(aiUnit, c_BWSpawnBroodlingsCooldown)) {
+        return null;
+    }
+    
+    ord = AICreateOrder(player, c_BWAB_QueenSCBWSpawnBroodlings, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    filterGroup = UnitGroupEmpty();
+
+    scanCount = UnitGroupCount(scanGroup, c_unitCountAll);
+    if(scanCount == 0) {
+        return null;
+    }
+
+    while (scanCount > 0) {
+        unitToCheck = UnitGroupUnit(scanGroup, scanCount);
+        scanCount = scanCount - 1;
+
+        if (UnitHasBehavior(unitToCheck, c_BWAB_QueenSCBWParasite)) {
+            continue; // Ignore unit with parasite
+        }
+
+        if (UnitMarkerCount(unitToCheck, mark) > 0) {
+            continue; // Ignore unit marked for SpawnBroodling
+        }
+
+        if (UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeHeroic) == true) {
+            UnitGroupAdd(filterGroup, unitToCheck);
+        }
+        else if (UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeMassive) == true) {
+            UnitGroupAdd(filterGroup, unitToCheck);
+        }
+        else if (UnitTypeTestAttribute(UnitGetType(unitToCheck), c_unitAttributeBiological) == true) {
+            UnitGroupAdd(filterGroup, unitToCheck);
+        }
+        //else if (UnitGetType(unitToCheck) == c_BWPU_DarkArchon || UnitGetType(unitToCheck) == c_BWPU_DarkArchon) {
+        //    UnitGroupRemove(filterGroup, unitToCheck);
+        //}
+        //else if (UnitGetType(unitToCheck) == c_BWPU_Archon || UnitGetType(unitToCheck) == c_BWPU_Archon) {
+        //    UnitGroupRemove(filterGroup, unitToCheck);
+        //}
+    }
+
+    return AIUnitGroupGetValidOrder(filterGroup, ord, aiUnit, c_forwards);
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkQueenSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    marker mark;
+    fixed cooldown;
+
+    mark = AIMarker(aiUnit, c_BWMK_QueenSCBWSpawnBroodlings);
+    ord = BWQueenSpawnBroodlings(player, aiUnit, scanGroup, mark);
+    if (ord != null) {
+        if (AIIsCampaign(player) && AIPlayerDifficulty(player) < c_campAdvanced) {
+            cooldown = 15.0;
+        }
+        else {
+            cooldown = 1.0;
+        }
+        AICastCooldown(aiUnit, ord, mark, c_castRetreat, c_BWSpawnBroodlingsCooldown, cooldown);
+        return;
+    }
+
+    mark = AIMarker(aiUnit, c_BWMK_QueenSCBWEnsnare);
+    ord = BWQueenEnsnare(player, aiUnit, scanGroup, mark);
+    if (ord != null) {
+        if (AIIsCampaign(player) && AIPlayerDifficulty(player) < c_campAdvanced) {
+            cooldown = 15.0;
+        }
+        else {
+            cooldown = 5.0;
+        }
+        AICastCooldown(aiUnit, ord, mark, c_castRetreat, c_BWEnsnareCooldown, cooldown);
+        return;
+    }
+
+    mark = AIMarker(aiUnit, c_BWMK_QueenSCBWParasite);
+    ord = BWQueenParasite(player, aiUnit, scanGroup, mark);
+    if (ord != null) {
+        if (AIIsCampaign(player) && AIPlayerDifficulty(player) < c_campAdvanced) {
+            cooldown = 20.0;
+        }
+        else {
+            cooldown = 10.0;
+        }
+        AICastCooldown(aiUnit, ord, mark, c_castRetreat, c_BWParasiteCooldown, cooldown);
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** Defiler ***
+//--------------------------------------------------------------------------------------------------
+
+const int c_BWDarkSwarmCooldown = c_tactTimerFirst;
+const int c_BWConsumeCooldown = c_tactTimerSecond;
+const int c_BWPlagueCooldown = c_tactTimerThird;
+
+order BWDarkSwarm (int player, unit aiUnit, unitgroup scanGroup) {
+    // target a clump of ranged ground units
+    order ord;
+    aifilter filter;
+    unitgroup nearbyAlliedUnits;
+    unitgroup rangedGroup;
+    point loc;
+
+    ord = AICreateOrder(player, c_BWAB_DefilerSCBWDarkSwarm, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+    
+    filter = AIFilter(player);
+    //AISetFilterMelee(filter, c_onlyRanged);
+    AISetFilterPlane(filter, c_planeGround);
+    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BWBF_DefilerSCBWDarkSwarm_AB);
+    AISetFilterAlliance(filter, c_playerGroupAlly);
+    //AISetFilterCanAttackAlly(filter, c_groundAlliesNearby, false);
+    rangedGroup = AIGetFilterGroup(filter, scanGroup);
+
+    loc = AIBestTargetPoint(
+        AIEffectGroup(player, c_BWEF_DefilerSCBWDarkSwarm_Search, rangedGroup),
+        5, // min hits
+        10, // damage base
+        4.5, // min score 
+        AIEffectFixed(player, c_BWEF_DefilerSCBWDarkSwarm_Search, c_fieldAreaRadius0),
+        UnitGetPosition(aiUnit),
+        AIAbilityFixed(player, c_BWAB_DefilerSCBWDarkSwarm, c_fieldRange0)+3,
+        c_unitAttributeNone
+    );
+    if (loc == null) {
+        return null;
+    }
+
+    OrderSetTargetPoint(ord, loc);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+order BWDefilerConsume (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+	unit target;
+    unitgroup nearbyAlliedUnits;
+    aifilter filter;
+    order ord;
+    fixed energy;
+    
+    if (!AITactCooldownAllow(aiUnit, c_BWConsumeCooldown)) {
+        return null;
+    }
+
+    // Only get enough energy for one or two spells Max
+    energy = UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent);
+    if (energy >= 175) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_BWAB_DefilerSCBWConsume, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+    
+    // Only try to eat Zerglings as they're the weakest unit
+    nearbyAlliedUnits = AIFindUnits(player, c_BWZU_Zergling, UnitGetPosition(aiUnit), 5, 10);
+    
+    if(UnitGroupCount(nearbyAlliedUnits, c_unitCountAlive) < 4){
+        return null;
+    }
+
+    filter = AIFilter(player);
+    AISetFilterPlane(filter, c_planeGround);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+	nearbyAlliedUnits = AIGetFilterGroup(filter, nearbyAlliedUnits);
+    target = AIGetClosestUnit(aiUnit, nearbyAlliedUnits, true);
+
+	if (target == null) {
+		return null;
+	}
+	
+	OrderSetTargetUnit(ord, target);
+	if (!UnitOrderIsValid(aiUnit,ord)) {
+		return null;
+	}
+	
+	return ord;
+}
+
+order BWDefilerPlague (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    // target a clump of air units
+    order ord;
+    aifilter filter;
+    unitgroup enemyGroup;
+    point loc;
+    unit target;
+    //  vars related to nearby enemies.
+    aifilter groundAirFilter;
+    unitgroup threatGroup;
+    int enemyGroundCount;
+    int enemyAirCount;
+    
+    // Check UnitAbilityExists to prevent warnings in liberty/swarm
+    if (!UnitAbilityExists(aiUnit, c_BWAB_DefilerSCBWPlague)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_BWAB_DefilerSCBWPlague, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    //  Scan for enemy air and ground units
+    //
+    enemyGroundCount = 0;
+    enemyAirCount = 0;
+
+    groundAirFilter = AIFilter(player);
+    AISetFilterAlliance(groundAirFilter, c_playerGroupEnemy);
+    AISetFilterPlane(groundAirFilter, c_planeGround);
+    enemyGroundCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    AISetFilterPlane(groundAirFilter, c_planeAir);
+    enemyAirCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    filter = AIFilter(player);
+    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BWBF_DefilerSCBWPlague_AB);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+    AISetFilterAlliance(filter, c_playerGroupEnemy);
+    AISetFilterCanAttackEnemy(filter, enemyGroundCount, enemyAirCount);
+    enemyGroup = AIGetFilterGroup(filter, scanGroup);
+    
+    loc = AIBestTargetPoint(
+        enemyGroup,
+        1, // min hits
+        50, // damage base
+        0.5, // min score 
+        AIEffectFixed(player, c_BWEF_DefilerSCBWPlague_Search, c_fieldAreaRadius0),
+        UnitGetPosition(aiUnit),
+        AIAbilityFixed(player, c_BWAB_DefilerSCBWPlague, c_fieldRange0)+0,
+        c_unitAttributeNone
+    );
+    if (loc == null) {
+        return null;
+    }
+
+    target = UnitGroupClosestToPoint(enemyGroup, loc);
+    OrderSetTargetUnit(ord, target);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+
+//
+//region[c_maxPlayers] g_BWDefilerDarkSwarmNoCast;
+//region[c_maxPlayers][11] g_BWDefilerDarkSwarmNoCastTemp;
+//int[c_maxPlayers] g_BWDefilerDarkSwarmNoCastCount;
+//
+//
+////--------------------------------------------------------------------------------------------------
+//// Trigger: DarkSwarmNoCastRegion
+////--------------------------------------------------------------------------------------------------
+//void gf_DeclareDarkSwarmNoCastRegion() {
+//    point pos;
+//    fixed radius;
+//    int player = EventPlayer();
+//    int index = -1;
+//    int i;
+//
+//    if(g_BWDefilerDarkSwarmNoCastCount[player] >= 11){ return;}
+//    if(g_BWDefilerDarkSwarmNoCast[player] == null){
+//        g_BWDefilerDarkSwarmNoCast[player] = RegionEmpty();
+//        g_BWDefilerDarkSwarmNoCastCount[player] = 1;
+//    } else{ g_BWDefilerDarkSwarmNoCastCount[player] += 1; }
+//    for (i = 0; i <= 10; i += 1) {
+//        if(g_BWDefilerDarkSwarmNoCastTemp[player][i] == null){
+//            index = i;
+//            break;
+//        }
+//    }
+//    if(index == -1){
+//        return;
+//    }
+//    pos = EventPlayerEffectUsedPoint(c_effectLocationTargetPoint);
+//    radius = AIEffectFixed(player, c_BWEF_DefilerSCBWDarkSwarm_Search, c_fieldAreaRadius0);
+//    g_BWDefilerDarkSwarmNoCastTemp[player][index] = RegionCircle(pos, radius);
+//    RegionAddCircle(g_BWDefilerDarkSwarmNoCast[player], true, pos, (radius + 0.5));
+//    Wait((AIEffectFixed(player, "DefilerSCBWDarkSwarm@CP", c_fieldPeriodCount) * AIEffectFixed(player, "DefilerSCBWDarkSwarm@CP", "PeriodicPeriodArray[0]")), c_timeGame);
+//    Wait(0.1, c_timeGame);
+//    RegionAddCircle(g_BWDefilerDarkSwarmNoCast[player], false, pos, radius);
+//    if(g_BWDefilerDarkSwarmNoCastCount[player] > 0){ g_BWDefilerDarkSwarmNoCastCount[player] -= 1; }
+//    if(g_BWDefilerDarkSwarmNoCastCount[player] <= 0){ g_BWDefilerDarkSwarmNoCast[player] = null; }
+//    if(index != -1){g_BWDefilerDarkSwarmNoCastTemp[player][index] = null;}
+//    return;
+//}
+//
+////--------------------------------------------------------------------------------------------------
+//static order BWDefilerPlague (int player, unit aiUnit, unitgroup scanGroup, bool lowVitality, bool recentlyAttacked, marker mark) {
+//	point loc;
+//    unitgroup plagueGroup;
+//    aifilter filter;
+//	order ord;
+//    fixed minScore;
+//    int minHits;
+//    int minDamage;
+//
+//    if (!AITactCooldownAllow(aiUnit, c_PlagueCooldown)) {
+//        return null;
+//    }
+//
+//    ord = AITacticalOrder(player, aiUnit, c_BWAB_DefilerSCBWPlague);
+//	if (ord == null) {
+//		return null;
+//	}
+//	
+//    filter = AIFilter(player);
+//    AISetFilterCanAttackAlly(filter, true, true);
+//    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BWBF_DefilerSCBWPlague_AB);
+//    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+//    plagueGroup = AIGetFilterGroup(filter, scanGroup);
+//
+//    if (lowVitality) {
+//        minScore = 0.5;
+//        minHits = 3;
+//        minDamage = 100;
+//        if(recentlyAttacked){
+//            minHits = 1;
+//            minDamage = 50;
+//        }
+//    }
+//    else {
+//        minScore = 4.0;
+//        minHits = 4;
+//        minDamage = 300;
+//    }
+//
+//	loc = AIBestTargetPoint(
+//		AIEffectGroup(player, c_BWEF_DefilerSCBWPlague_Search, plagueGroup),
+//		minHits,		// min hits
+//		minDamage,	// base damage
+//		minScore,	// score
+//		AIEffectFixed(player, c_BWEF_DefilerSCBWPlague_Search, c_fieldAreaRadius0) + 0.6,
+//		UnitGetPosition(aiUnit),
+//		AIAbilityFixed(player, c_BWAB_DefilerSCBWPlague, c_fieldRange0),
+//		c_unitAttributeNone
+//	);
+//	
+//	if (loc == null) {
+//		return null;
+//	}
+//	
+//	OrderSetTargetPoint(ord, loc);
+//	if (!UnitOrderIsValid(aiUnit,ord)) {
+//		return null;
+//	}
+//	
+//	return ord;
+//}
+//
+//
+//static bool BWPlagueCloakedAttacker (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+//    order ord;
+//    point attacker;
+//    point loc;
+//    point aiPos;
+//    string s;
+//    unitgroup group;
+//    aifilter filter;
+//    if (!AITactCooldownAllow(aiUnit, c_PlagueCooldown)) {
+//        return false;
+//    }
+//    ord = AICreateOrder(player, c_BWAB_DefilerSCBWPlague, 0);
+//    if (!UnitOrderIsValid(aiUnit, ord)) {
+//        return false;
+//    }
+//    aiPos = UnitGetPosition(aiUnit);
+//    attacker = AIGetCloakedAttacker(player);
+//    if(attacker != null){
+//        if (DistanceBetweenPoints(aiPos, attacker) < AIAbilityFixed(player, c_BWAB_DefilerSCBWPlague, c_fieldRange0) + 3){
+//            group = UnitGroupSearch(null, player, aiPos, AIAbilityFixed(player, c_BWAB_DefilerSCBWPlague, c_fieldRange0) + 3, UnitFilterStr("Enemy,Cloaked;Dead,Missile,Visible"), c_noMaxCount);
+//            filter = AIFilter(player);
+//            AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BWBF_DefilerSCBWPlague_AB);
+//            AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+//            group = AIGetFilterGroup(filter, group);
+//
+//            loc = AIBestTargetPoint(
+//                AIEffectGroup(player, c_BWEF_DefilerSCBWPlague_Search, group),
+//                1,		// min hits
+//                1,	// base damage
+//                1,	// score
+//                AIEffectFixed(player, c_BWEF_DefilerSCBWPlague_Search, c_fieldAreaRadius0),
+//                aiPos,
+//                AIAbilityFixed(player, c_BWAB_DefilerSCBWPlague, c_fieldRange0) + 3,
+//                c_unitAttributeNone
+//            );
+//            
+//
+//            if (loc == null) {
+//                return false;
+//            }
+//
+//            if(UnitGroupCount(group, c_unitCountAlive) > 0 && UnitGroupCount(AIFindUnits(player, c_ZU_Overlord, aiPos, 12, 1), c_unitCountAlive) == 0){
+//                OrderSetTargetPoint(ord, loc);
+//                if (UnitOrderIsValid(aiUnit, ord)) {
+//		            mark = AIMarker(aiUnit, c_BWMK_DefilerSCBWPlague);
+//                    AICastCooldown(aiUnit, ord, mark, c_castHold, c_PlagueCooldown, 4.5);
+//                    AIClearCloakedAttacker(player, loc);
+//                    return true;
+//                }
+//            }
+//        }
+//    }
+//
+//    return false;
+//}
+//
+//static order BWDefilerMoveToSafety (int player, unit aiUnit, unitgroup scanGroup, bool wasRecentlyAttacked) {
+//	order ord;
+//    fixed bestDistance = 13;
+//    int bestIndex = -1;
+//    int bestCount = 1;
+//    point loc;
+//    unitgroup enemyUnits;
+//    fixed dist;
+//    int count;
+//    int i;
+//    aifilter filter;
+//    point aiPos = UnitGetPosition(aiUnit);
+//    // int pathingCost;
+//
+//    if(wasRecentlyAttacked){
+//        bestCount = 10;
+//    }
+//
+//    if(g_BWDefilerDarkSwarmNoCastCount[player] > 0){
+//        filter = AIFilter(player);
+//        AISetFilterAlliance(filter, c_playerGroupEnemy);
+//        AISetFilterBits(filter, UnitFilterStr("Enemy,Visible;Dead,Hidden,Missile,Stasis,Passive"));
+//        AISetFilterRange(filter, aiUnit, 12);
+//        AISetFilterCanAttackAlly(filter, c_groundAlliesNearby, false);
+//        enemyUnits = AIGetFilterGroup(filter, scanGroup);
+//        if (UnitGroupCount(enemyUnits, c_unitCountAlive) > 0){
+//            for (i = g_BWDefilerDarkSwarmNoCastCount[player] - 1; i >= 0; i -= 1) {
+//                if(g_BWDefilerDarkSwarmNoCastTemp[player][i] != null){
+//                    count = UnitGroupCount(UnitGroupFilterRegion(enemyUnits, g_BWDefilerDarkSwarmNoCastTemp[player][i], 10), c_unitCountAlive);
+//                    loc = RegionGetCenter(g_BWDefilerDarkSwarmNoCastTemp[player][i]);
+//                    dist = DistanceBetweenPoints(aiPos, loc);
+//                    if(loc != null && PointPathingIsConnected(aiPos, loc) && dist < bestDistance){
+//                        if(count < bestCount){
+//                            bestCount = count;
+//                            bestDistance = dist;
+//                            bestIndex = i;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        if (bestIndex == -1){ return null; }
+//        loc = RegionGetCenter(g_BWDefilerDarkSwarmNoCastTemp[player][bestIndex]);
+//        if(loc != null){
+//            if(libNtve_gf_UnitInRegion(aiUnit, RegionCircle(loc, 1.0))){
+//                ord = AICreateOrder(player, "stop", 0);
+//            }else{
+//                ord = AICreateOrder(player, "move", 0);
+//                OrderSetTargetPoint(ord, loc);
+//            }
+//            return ord;
+//        }
+//    }
+//
+//    return null;
+//}
+//
+////--------------------------------------------------------------------------------------------------
+void AIThinkDefilerSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    marker mark;
+
+    //Burrow Down
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+    
+    ord = BWDefilerPlague(player, aiUnit, scanGroup, mark);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castRetreat);
+        return;
+    }
+
+    ord = BWDarkSwarm(player, aiUnit, scanGroup);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castRetreat);
+        return;
+    }
+
+    ord = BWDefilerConsume(player, aiUnit, scanGroup, mark);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castHold);
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** DRONE ***
+//--------------------------------------------------------------------------------------------------
+const int c_creepColonyBuildCooldown = c_tactTimerFirst;
+
+order AIOrderCreepColonyBuild (int player, unit aiUnit) {
+    order ord;
+    point p;
+    int difficultyColonyCount;
+    int colonyCount;
+
+
+    if (AIIsCampaign(player)) {
+        return null;
+    }
+
+    // Wait at least 5 minutes before expanding Creep
+    if (GameGetMissionTime() < 300) {
+        return null;
+    }
+
+    if (!AITactCooldownAllow(aiUnit, c_creepColonyBuildCooldown)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, "DroneSCBW@Build", 1);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+
+    //Wait(RandomFixed(0.0, 30.0), c_timeGame);
+
+    // If any queued or in progress exist break
+    if (AITechCount(player, c_BWZB_CreepColony, c_techCountQueuedOnly) > 0) {
+        return null;
+    }
+
+    if (AITechCount(player, c_BWZB_CreepColony, c_techCountInProgressOnly) > 0) {
+        return null;
+    }
+
+    // Do not allow more than
+    if (AIPlayerDifficulty(player) >= c_skirHard_VH) {
+        difficultyColonyCount = 2;
+    }
+    else if (AIPlayerDifficulty(player) <= c_skirHard) {
+        difficultyColonyCount = 1;
+    }
+    
+    colonyCount = difficultyColonyCount * AIGetNumEstablishedTowns(player);
+
+    if (AITechCount(player, c_BWZB_CreepColony_Alias, c_techCountInProgressOrBetter) > colonyCount) {
+        return null;
+    }
+
+    // Make sure the player can afford to build at least one and have enough for other units
+    if (!AIHasRes(player,200,0)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, "DroneSCBW@Build", 1);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    //  Don't cast if there is no creep point set for this player.
+    p = AIGetBestCreepSpot(player, aiUnit, 36);
+    if (p == null) {
+        return null;
+    }
+
+    OrderSetTargetPlacement(ord, p, aiUnit, c_BWZB_CreepColony);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkDroneSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    fixed cooldown;
+    marker mark;
+
+    //Burrow Down
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+
+    ord = AIOrderCreepColonyBuild(player, aiUnit);
+    if (ord != null) {
+        if (!AIIsCampaign(player) && AIPlayerDifficulty(player) < c_campAdvanced) {
+            cooldown = 180.0;
+        }
+        else {
+            cooldown = 120.0;
+        }
+        AICastCooldown(aiUnit, ord, c_noMarker, c_castHold, c_creepColonyBuildCooldown, cooldown);
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** HYDRALISK ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkHydraliskSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Burrow Down
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** INFESTED TERRAN ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+order BWToggleSuicideBuilding (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    order ord;
+    
+    // Check UnitAbilityExists to prevent warnings in liberty
+    if (!UnitAbilityExists(aiUnit, c_AB_VolatileBurstBuilding)) {
+        return null;
+    }
+
+    // Simple logic, if we can turn off attacking buildings, then do so
+    //
+    ord = AICreateOrder(player, c_AB_VolatileBurstBuilding, 1);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//---------------------------------------------------------------------------------------------
+void AIThinkInfestedTerranSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    marker mark;
+    order ord;
+    //Burrow
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+    
+    // turn off automatically exploding on buildings
+    ord = BWToggleSuicideBuilding(player, aiUnit, scanGroup, c_noMarker);
+    if (ord != null) {
+        AICast(aiUnit, ord, mark, c_castHold);
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** LURKER ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkLurkerSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Lurker Burrow/Unburrow
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** ULTRALISK ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkUltraliskSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Burrow Down
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** ZERGLING ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkZerglingSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Burrow Down
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** HATCHERY ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkHatcherySCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Rallies
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** LAIR ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkLairSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Rallies
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** HIVE ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkHiveSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Rallies
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** INFESTED COMMAND CENTER ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkInfestedCommandCenterSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Rally
+}
+
+//--------------------------------------------------------------------------------------------------
+//  BW Zerg Upgrade Buildings (Melee)
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  *** EVOLUTION CHAMBER ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkEvolutionChamberSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    int meleeUnitCount;
+    int rangedUnitCount;
+    int groundUnitCount;
+
+    if(AIIsCampaign(player)) {
+        return;
+    }
+
+    // Only counts Combat Melee Units
+    meleeUnitCount = 
+    TechTreeUnitCount(player, c_BWZU_Zergling, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWZU_Ultralisk, c_techCountQueuedOrBetter);
+
+    // Only counts Combat Ranged Units
+    rangedUnitCount = 
+    TechTreeUnitCount(player, c_BWZU_Hydralisk, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWZU_Lurker, c_techCountQueuedOrBetter);
+
+    groundUnitCount = meleeUnitCount + rangedUnitCount;
+
+    //Tier 1 Melee
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergMeleeAttacksSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergMeleeAttacksSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (meleeUnitCount >= 6) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 1 Missile
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergMissileAttacksSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergMissileAttacksSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (rangedUnitCount >= 4) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 1 Carapace
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergGroundCarapaceSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergGroundCarapaceSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (groundUnitCount >= 10) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 2 Melee
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergMeleeAttacksSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergMeleeAttacksSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (meleeUnitCount >= 8) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 2 Missile
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergMissileAttacksSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergMissileAttacksSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (rangedUnitCount >= 6) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 2 Carapace
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergGroundCarapaceSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergGroundCarapaceSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (groundUnitCount >= 10) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 3 Melee
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergMeleeAttacksSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergMeleeAttacksSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (meleeUnitCount >= 10) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 3 Missile
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergMissileAttacksSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergMissileAttacksSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (rangedUnitCount >= 6) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 3 Carapace
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergGroundCarapaceSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergGroundCarapaceSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (groundUnitCount >= 10) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** SPIRE ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkSpireSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    int airUnitCount;
+
+    if(AIIsCampaign(player)) {
+        return;
+    }
+
+    // Only counts Combat Infantry Units
+    airUnitCount = 
+    TechTreeUnitCount(player, c_BWZU_Mutalisk, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWZU_Scourge, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWZU_Guardian, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWZU_Devourer, c_techCountQueuedOrBetter);
+
+
+    //Tier 1
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergFlyerAttacksSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergFlyerAttacksSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 4) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergFlyerCarapaceSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergFlyerCarapaceSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 4) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 2
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergFlyerAttacksSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergFlyerAttacksSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 8) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergFlyerCarapaceSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergFlyerCarapaceSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 8) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 2
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergFlyerAttacksSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergFlyerAttacksSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 12) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWZR_ZergFlyerCarapaceSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWZR_ZergFlyerCarapaceSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 12) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+}

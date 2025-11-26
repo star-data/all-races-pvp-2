@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocInfo>
+    <Flags>
+        <Value>ExtensionMod</Value>
+    </Flags>
+    <Icon>
+        <Value>ScionLogoSmall.png</Value>
+    </Icon>
+    <Dependencies>
+        <Value>bnet:[ARX] CNC/0.0/330361,file:Mods\all-races-mods\factions\UED-Dagahan.SC2Mod</Value>
+        <Value>bnet:[ARX] CNC/0.0/330361,file:Mods\all-races-mods\factions\UED-Sawyer.SC2Mod</Value>
+        <Value>bnet:[ARX] CNC/0.0/330361,file:Mods\all-races-mods\factions\UED-Terrarn.SC2Mod</Value>
+        <Value>bnet:[ARX] CNC/0.0/330361,file:Mods\all-races-mods\factions\Alternate.SC2Mod</Value>
+    </Dependencies>
+</DocInfo>

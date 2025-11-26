@@ -1,0 +1,141 @@
+
+
+//--------------------------------------------------------------------------------------------------
+//  BroodWar Protoss Units
+//--------------------------------------------------------------------------------------------------
+const string c_BWPU_Arbiter                 = "ArbiterSCBW";
+const string c_BWPU_Archon                  = "ArchonSCBW";
+const string c_BWPU_Carrier                 = "CarrierSCBW";
+const string c_BWPU_Corsair                 = "CorsairSCBW";
+const string c_BWPU_DarkArchon              = "DarkArchonSCBW";
+const string c_BWPU_DarkTemplar             = "DarkTemplarSCBW";
+const string c_BWPU_Dragoon                 = "DragoonSCBW";
+const string c_BWPU_HighTemplar             = "HighTemplarSCBW";
+const string c_BWPU_Interceptor             = "InterceptorSCBW";
+const string c_BWPU_Observer                = "ObserverSCBW";
+const string c_BWPU_Probe                   = "ProbeSCBW";
+const string c_BWPU_Reaver                  = "ReaverSCBW";
+const string c_BWPU_Scout                   = "ScoutSCBW";
+const string c_BWPU_Shuttle                 = "ShuttleSCBW";
+const string c_BWPU_Zealot                  = "ZealotSCBW";
+
+//--------------------------------------------------------------------------------------------------
+//  BroodWar Protoss Buildings
+//--------------------------------------------------------------------------------------------------
+const string c_BWPB_ArbiterTribunal         = "ArbiterTribunalSCBW";
+const string c_BWPB_Assimilator             = "AssimilatorSCBW";
+const string c_BWPB_CitadelofAdun           = "CitadelofAdunSCBW";
+const string c_BWPB_CyberneticsCore         = "CyberneticsCoreSCBW";
+const string c_BWPB_FleetBeacon             = "FleetBeaconSCBW";
+const string c_BWPB_Forge                   = "ForgeSCBW";
+const string c_BWPB_Gateway                 = "GatewaySCBW";
+const string c_BWPB_Nexus                   = "NexusSCBW";
+const string c_BWPB_Observatory             = "ObservatorySCBW";
+const string c_BWPB_PhotonCannon            = "PhotonCannonSCBW";
+const string c_BWPB_Pylon                   = "PylonSCBW";
+const string c_BWPB_RoboticsFacility        = "RoboticsFacilitySCBW";
+const string c_BWPB_RoboticsSupportBay      = "RoboticsSupportBaySCBW";
+const string c_BWPB_ShieldBattery           = "ShieldBatterySCBW";
+const string c_BWPB_Stargate                = "StargateSCBW";
+const string c_BWPB_TemplarArchives         = "TemplarArchivesSCBW";
+
+//--------------------------------------------------------------------------------------------------
+//  BroodWar Protoss Research Upgrades
+//--------------------------------------------------------------------------------------------------
+const string c_BWPR_ArbiterSCBWEnergyUpgrade               = "ArbiterSCBWEnergyUpgrade";
+const string c_BWPR_ArbiterSCBWRecallResearch              = "ArbiterSCBWRecallResearch";
+const string c_BWPR_ArbiterSCBWStasisFieldResearch         = "ArbiterSCBWStasisFieldResearch";
+const string c_BWPR_CarrierSCBWHangarIncreaseUpgrade       = "CarrierSCBWHangarIncreaseUpgrade";
+const string c_BWPR_CorsairSCBWDisruptionWebResearch       = "CorsairSCBWDisruptionWebResearch";
+const string c_BWPR_CorsairSCBWEnergyUpgrade               = "CorsairSCBWEnergyUpgrade";
+const string c_BWPR_DarkArchonSCBWEnergyUpgrade            = "DarkArchonSCBWEnergyUpgrade";
+const string c_BWPR_DarkArchonSCBWFeedbackResearch         = "DarkArchonSCBWFeedbackResearch";
+const string c_BWPR_DarkArchonSCBWMaelstromResearch        = "DarkArchonSCBWMaelstromResearch";
+const string c_BWPR_DarkArchonSCBWMindControlResearch      = "DarkArchonSCBWMindControlResearch";
+const string c_BWPR_DragoonSCBWRangeUpgrade                = "DragoonSCBWRangeUpgrade";
+const string c_BWPR_HighTemplarSCBWEnergyUpgrade           = "HighTemplarSCBWEnergyUpgrade";
+const string c_BWPR_HighTemplarSCBWHallucinationResearch   = "HighTemplarSCBWHallucinationResearch";
+const string c_BWPR_HighTemplarSCBWPsiStormResearch        = "HighTemplarSCBWPsiStormResearch";
+const string c_BWPR_ObserverSCBWSightUpgrade               = "ObserverSCBWSightUpgrade";
+const string c_BWPR_ObserverSCBWSpeedUpgrade               = "ObserverSCBWSpeedUpgrade";
+const string c_BWPR_ProtossAirArmorsSCBW                   = "ProtossAirArmorsSCBW";
+const string c_BWPR_ProtossAirArmorsSCBW_Lvl1              = "ProtossAirArmorsSCBW@Lvl1";
+const string c_BWPR_ProtossAirArmorsSCBW_Lvl2              = "ProtossAirArmorsSCBW@Lvl2";
+const string c_BWPR_ProtossAirArmorsSCBW_Lvl3              = "ProtossAirArmorsSCBW@Lvl3";
+const string c_BWPR_ProtossAirWeaponsSCBW                  = "ProtossAirWeaponsSCBW";
+const string c_BWPR_ProtossAirWeaponsSCBW_Lvl1             = "ProtossAirWeaponsSCBW@Lvl1";
+const string c_BWPR_ProtossAirWeaponsSCBW_Lvl2             = "ProtossAirWeaponsSCBW@Lvl2";
+const string c_BWPR_ProtossAirWeaponsSCBW_Lvl3             = "ProtossAirWeaponsSCBW@Lvl3";
+const string c_BWPR_ProtossGroundArmorsSCBW                = "ProtossGroundArmorsSCBW";
+const string c_BWPR_ProtossGroundArmorsSCBW_Lvl1           = "ProtossGroundArmorsSCBW@Lvl1";
+const string c_BWPR_ProtossGroundArmorsSCBW_Lvl2           = "ProtossGroundArmorsSCBW@Lvl2";
+const string c_BWPR_ProtossGroundArmorsSCBW_Lvl3           = "ProtossGroundArmorsSCBW@Lvl3";
+const string c_BWPR_ProtossGroundWeaponsSCBW               = "ProtossGroundWeaponsSCBW";
+const string c_BWPR_ProtossGroundWeaponsSCBW_Lvl1          = "ProtossGroundWeaponsSCBW@Lvl1";
+const string c_BWPR_ProtossGroundWeaponsSCBW_Lvl2          = "ProtossGroundWeaponsSCBW@Lvl2";
+const string c_BWPR_ProtossGroundWeaponsSCBW_Lvl3          = "ProtossGroundWeaponsSCBW@Lvl3";
+const string c_BWPR_ProtossShieldsSCBW                     = "ProtossShieldsSCBW";
+const string c_BWPR_ProtossShieldsSCBW_Lvl1                = "ProtossShieldsSCBW@Lvl1";
+const string c_BWPR_ProtossShieldsSCBW_Lvl2                = "ProtossShieldsSCBW@Lvl2";
+const string c_BWPR_ProtossShieldsSCBW_Lvl3                = "ProtossShieldsSCBW@Lvl3";
+const string c_BWPR_ReaverSCBWHangarIncreaseUpgrade        = "ReaverSCBWHangarIncreaseUpgrade";
+const string c_BWPR_ScarabSCBWWeaponDamageUpgrade          = "ScarabSCBWWeaponDamageUpgrade";
+const string c_BWPR_ScoutSCBWSightUpgrade                  = "ScoutSCBWSightUpgrade";
+const string c_BWPR_ScoutSCBWSpeedUpgrade                  = "ScoutSCBWSpeedUpgrade";
+const string c_BWPR_ShuttleSCBWSpeedUpgrade                = "ShuttleSCBWSpeedUpgrade";
+const string c_BWPR_ZealotSCBWSpeedUpgrade                 = "ZealotSCBWSpeedUpgrade";
+
+//--------------------------------------------------------------------------------------------------
+//  Markers
+//--------------------------------------------------------------------------------------------------
+const string c_BWMK_ArbiterSCBWRecall                = "Abil/ArbiterSCBWRecall/AI";
+const string c_BWMK_ArbiterSCBWGameStasisField       = "Abil/ArbiterSCBWStasisField";
+const string c_BWMK_ArbiterSCBWStasisField           = "Abil/ArbiterSCBWStasisField/AI";
+const string c_BWMK_ArchonSCBWMerge                  = "Abil/ArchonSCBWMerge/AI";
+const string c_BWMK_CorsairSCBWDisruptionWeb         = "Abil/CorsairSCBWDisruptionWeb/AI";
+const string c_BWMK_DarkArchonSCBWFeedback           = "Abil/DarkArchonSCBWFeedback/AI";
+const string c_BWMK_DarkArchonSCBWMaelstrom          = "Abil/DarkArchonSCBWMaelstrom/AI";
+const string c_BWMK_DarkArchonSCBWMerge              = "Abil/DarkArchonSCBWMerge/AI";
+const string c_BWMK_DarkArchonSCBWMindControl        = "Abil/DarkArchonSCBWMindControl/AI";
+const string c_BWMK_HighTemplarSCBWHallucination     = "Abil/HighTemplarSCBWHallucination/AI";
+const string c_BWMK_HighTemplarSCBWPsiStorm          = "Abil/HighTemplarSCBWPsiStorm/AI";
+//--------------------------------------------------------------------------------------------------
+//  Buffs
+//--------------------------------------------------------------------------------------------------
+const string c_BWBF_ArbiterSCBWCloakField_AB                    = "ArbiterSCBWCloakField";
+const string c_BWBF_ArbiterSCBWRecall_ABRecalled                = "ArbiterSCBWRecall@ABRecalled";
+const string c_BWBF_ArbiterSCBWRecall_ABRecalling               = "ArbiterSCBWRecall@ABRecalling";
+const string c_BWBF_ArbiterSCBWStasisField_AB                   = "ArbiterSCBWStasisField";
+const string c_BWBF_ArbiterSCBWStasisField_ABTimedLife          = "ArbiterSCBWStasisField@ABTimedLife";
+const string c_BWBF_CorsairSCBWDisruptionWeb_AB                 = "CorsairSCBWDisruptionWeb";
+const string c_BWBF_DarkArchonSCBWMaelstrom_AB                  = "DarkArchonSCBWMaelstrom";
+const string c_BWBF_DarkArchonSCBWMindControl_AB                = "DarkArchonSCBWMindControl";
+const string c_BWBF_HighTemplarSCBWHallucination_AB             = "HighTemplarSCBWHallucination";
+const string c_BWBF_HighTemplarSCBWHallucination_ABTimedLife    = "HighTemplarSCBWHallucination@TimedLife";
+const string c_BWBF_HighTemplarSCBWPsiStorm_AB                  = "HighTemplarSCBWPsiStorm";
+const string c_BWBF_InterceptorSCBW_AB                          = "InterceptorSCBW@AB";
+const string c_BWBF_ReaverSCBWWeapon_ABReveal                   = "ReaverSCBWWeapon@ABReveal";
+const string c_BWBF_ReaverSCBWWeapon_ABTimedLife                = "ReaverSCBWWeapon@ABTimedLife";
+//--------------------------------------------------------------------------------------------------
+//  Effects
+//--------------------------------------------------------------------------------------------------
+const string c_BWEF_ArbiterSCBWCloakField_Search                = "ArbiterSCBWCloakField@Search";
+const string c_BWEF_ArbiterSCBWRecall_Search                    = "ArbiterSCBWRecall@Search";
+const string c_BWEF_ArbiterSCBWStasisField_Search               = "ArbiterSCBWStasisField@Search";
+const string c_BWEF_CorsairSCBWDisruptionWeb_Search             = "CorsairSCBWDisruptionWeb@Search";
+const string c_BWEF_DarkArchonSCBWMaelstrom_Search              = "DarkArchonSCBWMaelstrom@Search";
+const string c_BWEF_HighTemplarSCBWPsiStorm_Search              = "HighTemplarSCBWPsiStorm@Search";
+//--------------------------------------------------------------------------------------------------
+//  Weapons
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//  Abilities
+//--------------------------------------------------------------------------------------------------
+const string c_BWAB_ArbiterSCBWRecall                = "ArbiterSCBWRecall";
+const string c_BWAB_ArbiterSCBWStasisField           = "ArbiterSCBWStasisField";
+const string c_BWAB_ArchonSCBWMerge                  = "ArchonSCBWMerge";
+const string c_BWAB_CorsairSCBWDisruptionWeb         = "CorsairSCBWDisruptionWeb";
+const string c_BWAB_DarkArchonSCBWFeedback           = "DarkArchonSCBWFeedback";
+const string c_BWAB_DarkArchonSCBWMaelstrom          = "DarkArchonSCBWMaelstrom";
+const string c_BWAB_DarkArchonSCBWMerge              = "DarkArchonSCBWMerge";
+const string c_BWAB_DarkArchonSCBWMindControl        = "DarkArchonSCBWMindControl";

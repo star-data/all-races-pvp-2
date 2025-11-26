@@ -1,0 +1,1026 @@
+const int c_SU_Worker = 1;
+const int c_SU_DropOff = 2;
+const int c_SU_Creep = 3;
+const int c_SU_Power = 4;
+const int c_SU_Refinery = 5;
+const int c_SU_Supply = 6;
+const int c_SU_Detection = 7;
+const int c_SU_Radar = 8;
+const int c_SU_Transport = 9;
+const int c_SU_Support = 10;
+const int c_SU_Stealth = 11;
+const int c_SU_Healer = 12;
+const int c_SU_Ignored = 13;
+const int c_SU_Larva = 14;
+const int c_SU_Ground = 15;
+const int c_SU_Air = 16;
+const int c_SU_Production = 17;
+const int c_SU_Tech = 18;
+
+const int c_SS_Races = 19;
+const int c_SS_Abilities = 20;
+const int c_SA_Combat = 21;
+const int c_SA_Transport = 22;
+const int c_SA_Production = 23;
+const int c_SA_Detection = 24;
+const int c_SA_Healer = 25;
+const int c_SA_Research = 26;
+const int c_SA_Creep = 27;
+const int c_SA_Power = 28;
+const int c_SA_Stealth = 29;
+const int c_SS_Behaviors = 30;
+const int c_SB_Production = 31;
+const int c_SB_Detection = 32;
+const int c_SB_Combat = 33;
+const int c_SB_Healer = 34;
+const int c_SB_Creep = 35;
+const int c_SB_Power = 36;
+const int c_SB_Stealth = 37;
+const int c_SS_Effects = 38;
+const int c_SE_Combat = 39;
+const int c_SE_Production = 40;
+const int c_SE_Detection = 41;
+const int c_SE_Healer = 42;
+const int c_SE_Creep = 43;
+const int c_SE_Power = 44;
+const int c_SE_Stealth = 45;
+const int c_SS_Units = 46;
+const int c_SU_Morph = 47;
+const int c_SU_Combat = 48;
+const int c_SU_Research = 49;
+const int c_SU_Structure = 50;
+const int c_SS_Weapons = 51;
+const int c_SW_Combat = 52;
+const int c_SW_AA = 53;
+const int c_SW_AG = 54;
+const int c_SS_Upgrades = 55;
+const int c_SU_AA = 56;
+const int c_SU_AG = 57;
+
+const int c_SU_Guard = 58;
+const int c_SU_Temp = 59;
+const int c_SU_SpecialMakers = 60;
+const int c_SU_Builder= 61;
+
+
+
+const int c_STEMP_NextUnits = 0;
+
+string debugPath;
+//--------------------------------------------------------------------------------------------------
+//  Setup Custom Race AI
+//--------------------------------------------------------------------------------------------------
+int targetPlayer = 0;
+
+//--------------------------------------------------------------------------------------------------
+//  Shortcuts functions
+//--------------------------------------------------------------------------------------------------
+string S(int i){return IntToString(i);}
+string AVGet (string entry, string fieldPath){return CatalogFieldValueGet(c_gameCatalogAbil, entry, fieldPath, c_playerAny);}
+string EVGet (string entry, string fieldPath){return CatalogFieldValueGet(c_gameCatalogEffect, entry, fieldPath, c_playerAny);}
+string UVGet (string entry, string fieldPath){return CatalogFieldValueGet(c_gameCatalogUnit, entry, fieldPath, c_playerAny);}
+string BVGet (string entry, string fieldPath){return CatalogFieldValueGet(c_gameCatalogBehavior, entry, fieldPath, c_playerAny);}
+string RVGet (string entry, string fieldPath){return CatalogFieldValueGet(c_gameCatalogRace, entry, fieldPath, c_playerAny);}
+string WVGet (string entry, string fieldPath){return CatalogFieldValueGet(c_gameCatalogWeapon, entry, fieldPath, c_playerAny);}
+fixed AVGetReal (string entry, string fieldPath){return libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, entry, fieldPath, c_playerAny);}
+fixed EVGetReal (string entry, string fieldPath){return libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogEffect, entry, fieldPath, c_playerAny);}
+fixed BVGetReal (string entry, string fieldPath){return libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogBehavior, entry, fieldPath, c_playerAny);}
+fixed UVGetReal (string entry, string fieldPath){return libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogUnit, entry, fieldPath, c_playerAny);}
+int UVGetInt (string entry, string fieldPath){return CatalogFieldValueGetAsInt(c_gameCatalogUnit, entry, fieldPath, c_playerAny);}
+int AVCount (string entry, string fieldPath){return CatalogFieldValueCount(c_gameCatalogAbil, entry, fieldPath, c_playerAny);}
+int EVCount (string entry, string fieldPath){return CatalogFieldValueCount(c_gameCatalogEffect, entry, fieldPath, c_playerAny);}
+int UVCount (string entry, string fieldPath){return CatalogFieldValueCount(c_gameCatalogUnit, entry, fieldPath, c_playerAny);}
+int BVCount (string entry, string fieldPath){return CatalogFieldValueCount(c_gameCatalogBehavior, entry, fieldPath, c_playerAny);}
+int RVCount (string entry, string fieldPath){return CatalogFieldValueCount(c_gameCatalogRace, entry, fieldPath, c_playerAny);}
+
+//--------------------------------------------------------------------------------------------------
+//  String functions
+//--------------------------------------------------------------------------------------------------
+int StringWordCount(string target){
+    int i = 0;
+    string word;
+    if(target == ""){
+        return 0;
+    }
+    do{
+        i+= 1;
+        word = StringWord(target,i);
+    }
+    while(word);
+    return i - 1;
+}
+
+int StringWordFind(string target,string search){
+    int i = 0;
+    string word;
+
+
+    if(target == "" || search == ""){
+       return 0;
+    }
+    //middle
+    if(StringFind(target, " " + search + " ", c_stringCase) > 0){
+        return 1;
+    }
+    return 0;
+    //Debug("find " + target + " " + search);
+    //do{
+    //    i+= 1;
+    //    word = StringWord(target,i);
+    //    if(word == search){
+    //        return i;
+    //    }
+    //    if(i == 1000){
+    //        Debug("Reach 1000!");
+    //        break;
+    //    }
+    //}
+    //while(word);
+    //return 0;
+}
+//--------------------------------------------------------------------------------------------------
+//  AI Data functions
+//--------------------------------------------------------------------------------------------------
+string[70] lines;
+
+bool Has(int line , string value){
+    if(StringWordFind(lines[line],value) > 0){  return true; }
+    return false;
+}
+int Count(int line){
+    return StringWordCount(lines[line]);
+}
+void Add(int line , string value){
+    if(Has(line , value)){return;}
+    if(lines[line] == ""){lines[line] += " ";}
+    lines[line]  += value + " ";
+}
+void Del(int line , string value){
+    if(lines[line] == ""){ return;}
+    StringReplaceWord(lines[line] , " " + value + " "," ", 1, c_stringCase);
+}
+string Get(int line){
+    return lines[line];
+}
+string GetI(int line,int i){
+    return StringWord(lines[line],i);
+}
+void Clear(int line){
+    lines[line] = "";
+}
+void ClearAll(){
+    int i;
+    for(i =0; i < 70; i+=1){ lines[i] = ""; }
+}
+
+void DebugLines(){
+    Debug("LINES=============================================");
+   Debug("races: " + Get(c_SS_Races));
+   Debug("abilities: " + Get(c_SS_Abilities));
+   Debug("behaviors: " + Get(c_SS_Behaviors));
+   Debug("effects: " + Get(c_SS_Effects));
+   Debug("eStealth: " + Get(c_SE_Stealth));
+   Debug("units: " + Get(c_SS_Units));
+   Debug("weapons: " + Get(c_SS_Weapons));
+   Debug("aCombat: " + Get(c_SA_Combat));
+   Debug("aTransport: " + Get(c_SA_Transport));
+   Debug("aProduction: " + Get(c_SA_Production));
+   Debug("aDetection: " + Get(c_SA_Detection));
+   Debug("aHealer: " + Get(c_SA_Healer));
+   Debug("aStealth: " + Get(c_SA_Stealth));
+   Debug("aResearch: " + Get(c_SA_Research));
+   Debug("aCreep: " + Get(c_SA_Creep));
+   Debug("aPower: " + Get(c_SA_Power));
+   Debug("bProduction: " + Get(c_SB_Production));
+   Debug("bDetection: " + Get(c_SB_Detection));
+   Debug("bStealth: " + Get(c_SB_Stealth));
+   Debug("bCombat: " + Get(c_SB_Combat));
+   Debug("bHealer: " + Get(c_SB_Healer));
+   Debug("bCreep: " + Get(c_SB_Creep));
+   Debug("bPower: " + Get(c_SB_Power));
+   Debug("eCombat: " + Get(c_SE_Combat));
+   Debug("eProduction: " + Get(c_SE_Production));
+   Debug("eDetection: " + Get(c_SE_Detection));
+   Debug("eHealer: " + Get(c_SE_Healer));
+   Debug("eCreep: " + Get(c_SE_Creep));
+   Debug("ePower: " + Get(c_SE_Power));
+
+    Debug("upgrades: " + Get(c_SS_Upgrades));
+    Debug("uIgnored: " + Get(c_SU_Ignored));
+    Debug("uMorph: " + Get(c_SU_Morph));
+    Debug("uHealer: " + Get(c_SU_Healer));
+    Debug("uTech: " + Get(c_SU_Tech));
+    Debug("uTransport: " + Get(c_SU_Transport));
+    Debug("uProduction: " + Get(c_SU_Production));
+    Debug("uDetection: " + Get(c_SU_Detection));
+    Debug("uCombat: " + Get(c_SU_Combat));
+    Debug("uRefinery: " + Get(c_SU_Refinery));
+    Debug("uResearch: " + Get(c_SU_Research));
+    Debug("uWorker: " + Get(c_SU_Worker));
+    Debug("uStructure: " + Get(c_SU_Structure));
+    Debug("uAir: " + Get(c_SU_Air));
+    Debug("uGround: " + Get(c_SU_Ground));
+    Debug("uSupply: " + Get(c_SU_Supply));
+    Debug("uDropOff: " + Get(c_SU_DropOff));
+    Debug("uCreep: " + Get(c_SU_Creep));
+    Debug("uPower: " + Get(c_SU_Power));
+    Debug("uRadar: " + Get(c_SU_Radar));
+    Debug("uStealth: " + Get(c_SU_Stealth));
+    Debug("wCombat: " + Get(c_SW_Combat));
+    Debug("uSupport: " + Get(c_SU_Support));
+    Debug("LINES END=============================================");
+    //Debug("wAA: " + Get(c_SW_AA));
+    //Debug("wAG: " + Get(c_SW_AG));
+    //Debug("uAA: " + Get(c_SU_AA));
+    //Debug("uAG: " + Get(c_SU_AG));
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Utility functions
+//--------------------------------------------------------------------------------------------------
+bool UnitIsWorker (string u) {
+    return UnitTypeTestFlag(u, c_unitFlagWorker);
+}
+bool UnitIsSummoned (string u) {
+    return UnitTypeTestAttribute(u, c_unitAttributeSummoned);
+}
+
+bool UnitIsStructure (string u) {
+    return UnitTypeTestAttribute(u, c_unitAttributeStructure);
+}
+bool UnitIsDropOff (string u) {
+    if ((CatalogFieldValueGetAsInt(c_gameCatalogUnit, u, "ResourceDropOff[" + S(c_resourceTypeMinerals) + "]", c_playerAny) == 1)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+bool UnitIsAir (string u) {
+    if ((UVGet(u, "Mover") == "Fly")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool UnitIsStealth (string u) {
+    return UnitTypeTestFlag(u, c_unitFlagCloaked);
+}
+
+bool BehaviorIsStealth (string b) {
+    if ((CatalogFieldValueGetAsInt(c_gameCatalogBehavior, b, "Modification.StateFlags[" + S(c_unitStateCloaked) + "]", c_playerAny) == 1)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool BehaviorIsDetect (string b) {
+    if (BVGetReal(b, "Modification.Detect")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool UnitIsNotInteractive (string u) {
+    if (UnitTypeTestFlag(u, c_unitFlagUnselectable) ||
+        UnitTypeTestFlag(u, c_unitFlagUncommandable) || 
+        UnitTypeTestFlag(u, c_unitFlagMissile) || 
+        UnitTypeTestFlag(u, c_unitFlagNoDraw)) {
+        return true;
+    }
+    return false;
+}
+bool UnitIsFood(string u) {
+    if(UVGetReal( u, "Food") > 0){
+        return true;
+    }
+    return false;
+}
+bool UnitIsRefinery(string u) {
+    int i;
+    for(i = 0; i < UVCount( u, "BuiltOn"); i+= 1){
+        if (UVGet( u, "BuiltOn[" + S(i) + "]") == "VespeneGeyser") {
+            return true;
+        }
+    }
+    return false;
+}
+bool CanTargetEnemy (string filter) {
+    string filter2 = StringReplaceWord(filter, ";", " ", c_stringReplaceAll, c_stringCase);
+    string includeString = StringWord(filter2, 1);
+    string excludeString = StringWord(filter2, 2);
+    if ((StringFind(excludeString, "Enemy", c_stringCase) > 0)) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+bool CanTargetAir (string filter) {
+    string filter2 = StringReplaceWord(filter, ";", " ", c_stringReplaceAll, c_stringCase);
+    string includeString = StringWord(filter2, 1);
+    string excludedString = StringWord(filter2, 2);
+    if (StringFind(includeString, "Ground", c_stringCase) <= 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+bool CanTargetGround (string filter) {
+    string filter2 = StringReplaceWord(filter, ";", " ", c_stringReplaceAll, c_stringCase);
+    string includeString = StringWord(filter2, 1);
+    if (StringFind(includeString, "Air", c_stringCase) <= 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool IsMorphAbility(string a){
+    int abilClass = AbilityClass(a);
+    if (abilClass == c_classIdCAbilMorph || abilClass == c_classIdCAbilMorphPlacement) {
+        return true;
+    }
+    return false;
+}
+// returns null if is not phase morph ability
+string GetPhaseMorphAbilityUnit(string unit1, string abil1){
+    int j;
+    int k;
+    int l;
+    string unit2;
+    string unit3;
+    string abil2;
+    if (IsMorphAbility(abil1)) {
+        for(j = 0; j < AVCount( abil1, "InfoArray"); j+= 1){
+            unit2 = AVGet( abil1, "InfoArray[" + S(j) + "].Unit");
+            for(k = 0; k < UVCount( unit2, "AbilArray"); k+= 1){
+                abil2 = UVGet( unit2, "AbilArray[" + S(k) + "].Link");
+                if (IsMorphAbility(abil2)) {
+                    for(l = 0; l < AVCount( abil2, "InfoArray"); l+= 1){
+                        unit3 = AVGet(abil2, "InfoArray[" + S(l) + "].Unit");
+                        if (unit3 == unit1) {
+                            return unit2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return null;
+}
+
+string GetUnitActiveAbilities(string u){
+    string ac; // abilityCommand
+    string result = "";
+    string abils = "";
+    string a; // ability
+    int lb; // layoutbutton
+    int cl; // CardLayout
+    int i;
+    abilcmd acmd;
+
+    for(i = 0; i < UVCount( u, "AbilArray"); i+= 1){
+        a = UVGet( u, "AbilArray[" + S(i) + "].Link");
+        if(abils != ""){abils += " ";}
+        abils += a;
+    }
+
+    for(cl = 0; cl < UVCount( u, "CardLayouts"); cl+= 1){
+        for(lb = 0; lb < UVCount( u, "CardLayouts[" + S(cl) + "].LayoutButtons"); lb+= 1){
+            ac = UVGet( u, "CardLayouts[" + S(cl) + "].LayoutButtons[" + S(lb) + "].AbilCmd");
+            if (ac) {
+                acmd = StringToAbilCmd(ac);
+                a = AbilityCommandGetAbility(acmd);
+                if (!TechTreeAbilityIsAllowed(targetPlayer, acmd)) { continue;}
+                if (StringWordFind(abils,a) == 0 ){continue;}
+                if(result != ""){result += " ";}
+                result += ac;
+            }
+        }
+    }
+    //Debug("GetUnitActiveAbilities " + result);
+    return result;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Analyze functions with inherited properties
+//--------------------------------------------------------------------------------------------------
+void AnalyzeAbility ( string a);
+void AnalyzeEffect ( string e);
+void AnalyzeBehavior ( string b);
+void AnalyzeWeapon ( string w);
+void AnalyzeUnit ( string u);
+void AnalyzeRace(string r);
+
+void Analyze(string type,string entity){
+    ClearAll();
+    if(type == "Ability"){AnalyzeAbility(entity);}
+    if(type == "Effect"){AnalyzeEffect(entity);}
+    if(type == "Behavior"){AnalyzeBehavior(entity);}
+    if(type == "Weapon"){AnalyzeWeapon(entity);}
+    if(type == "Unit"){AnalyzeUnit(entity);}
+    if(type == "Race"){AnalyzeRace(entity);}
+    DebugLines();
+}
+
+void AnalyzeEffectE (string parentEffect, string e) {
+    if (!Has(c_SS_Effects,e)) {AnalyzeEffect( e );}
+    if(Has(c_SE_Combat, e)){ Add(c_SE_Combat, parentEffect); }
+    if(Has(c_SE_Production, e)){ Add(c_SE_Production, parentEffect) ;}
+    if(Has(c_SE_Detection, e)){Add(c_SE_Detection, parentEffect) ;}
+    if(Has(c_SE_Healer, e)){Add(c_SE_Healer, parentEffect) ;}
+    if(Has(c_SE_Creep, e)){Add(c_SE_Creep, parentEffect) ;}
+    if(Has(c_SE_Power, e)){Add(c_SE_Power, parentEffect) ;}
+    if(Has(c_SE_Stealth, e)){Add(c_SE_Stealth, parentEffect) ;}
+}
+void AnalyzeEffectB (string parentBehavior, string e) {
+    if (!Has(c_SS_Effects,e)) {AnalyzeEffect( e );}
+    if(Has(c_SE_Combat, e)){Add(c_SB_Combat, parentBehavior); }
+    if(Has(c_SE_Production, e)){ Add(c_SB_Production, parentBehavior) ;}
+    if(Has(c_SE_Detection, e)){Add(c_SB_Detection, parentBehavior) ;}
+    if(Has(c_SE_Healer, e)){Add(c_SB_Healer, parentBehavior) ;}
+    if(Has(c_SE_Creep, e)){Add(c_SB_Creep, parentBehavior) ;}
+    if(Has(c_SE_Power, e)){Add(c_SB_Power, parentBehavior) ;}
+    if(Has(c_SE_Stealth, e)){Add(c_SB_Stealth, parentBehavior) ;}
+}
+void AnalyzeEffectA (string parentAbility, string e) {
+    if (!Has(c_SS_Effects,e)) { AnalyzeEffect( e );}
+    if(Has(c_SE_Combat, e)){ Add(c_SA_Combat, parentAbility);  }
+    if(Has(c_SE_Production, e)){ Add(c_SA_Production, parentAbility) ;}
+    if(Has(c_SE_Detection, e)){Add(c_SA_Detection, parentAbility) ;}
+    if(Has(c_SE_Healer, e)){Add(c_SA_Healer, parentAbility) ;}
+    if(Has(c_SE_Creep, e)){Add(c_SA_Creep, parentAbility) ;}
+    if(Has(c_SE_Power, e)){Add(c_SA_Power, parentAbility) ;}
+    if(Has(c_SE_Stealth, e)){Add(c_SA_Stealth, parentAbility) ;}
+}
+void AnalyzeEffectW (string parentWeapon, string e) {
+    if (!Has(c_SS_Effects,e)) {AnalyzeEffect( e );}
+    if(Has(c_SE_Combat, e)){ Add(c_SW_Combat, parentWeapon);  }
+}
+void AnalyzeUnitE (string parentEffect, string u) {
+    if (!Has(c_SS_Units,u)) {AnalyzeUnit( u );}
+    if(Has(c_SU_Combat, u)){Add(c_SE_Combat, parentEffect); }
+    if(Has(c_SU_Healer, u)){Add(c_SE_Healer, parentEffect) ;}
+    if(Has(c_SU_Creep, u)){Add(c_SE_Creep, parentEffect) ;}
+    if(Has(c_SU_Power, u)){Add(c_SE_Power, parentEffect) ;}
+    if(Has(c_SU_Stealth, u)){Add(c_SE_Stealth, parentEffect) ;}
+}
+void AnalyzeUnitB (string parentBehavior, string u) {
+    if (!Has(c_SS_Units,u)) { AnalyzeUnit( u );}
+    if(Has(c_SU_Combat, u)){ Add(c_SB_Combat, parentBehavior);  }
+    if(Has(c_SU_Detection, u)){ Add(c_SB_Detection, parentBehavior);  }
+    if(Has(c_SU_Healer, u)){Add(c_SB_Healer, parentBehavior) ;}
+    if(Has(c_SU_Creep, u)){Add(c_SB_Creep, parentBehavior) ;}
+    if(Has(c_SU_Power, u)){Add(c_SB_Power, parentBehavior) ;}
+    if(Has(c_SU_Stealth, u)){Add(c_SB_Stealth, parentBehavior) ;}
+}
+
+void AnalyzeUnitU (string parentUnit, string u) {
+    if (!Has(c_SS_Units,u)) {AnalyzeUnit( u );}
+    if(Has(c_SU_Combat, u)){ Add(c_SU_Combat, parentUnit);  }
+    if(Has(c_SU_Detection, u)){ Add(c_SU_Detection, parentUnit);  }
+    if(Has(c_SU_Refinery, u)){ Add(c_SU_Refinery, parentUnit);  }
+    if(Has(c_SU_Supply, u)){ Add(c_SU_Supply, parentUnit);  }
+    if(Has(c_SU_Worker, u)){ Add(c_SU_Worker, parentUnit);  }
+    if(Has(c_SU_DropOff, u)){ Add(c_SU_DropOff, parentUnit);  }
+    if(Has(c_SU_Production, u)){ Add(c_SU_Production, parentUnit);  }
+    if(Has(c_SU_Tech, u)){ Add(c_SU_Tech, parentUnit);  }
+    if(Has(c_SU_Healer, u)){Add(c_SU_Healer, parentUnit) ;}
+    if(Has(c_SU_Creep, u)){Add(c_SU_Creep, parentUnit) ;}
+    if(Has(c_SU_Power, u)){Add(c_SU_Power, parentUnit) ;}
+    if(Has(c_SU_Stealth, u)){Add(c_SU_Stealth, parentUnit) ;}
+    if(Has(c_SU_Air, u)){Add(c_SU_Air, parentUnit) ;}
+    if(Has(c_SU_Ground, u)){Add(c_SU_Ground, parentUnit) ;}
+    if(Has(c_SU_AA, u)){Add(c_SU_AA, parentUnit) ;}
+    if(Has(c_SU_AG, u)){Add(c_SU_AG, parentUnit) ;}
+}
+void AnalyzeWeaponU(string parentUnit, string w) {
+    if (!Has(c_SS_Weapons,w)) {AnalyzeWeapon( w );}
+    if(Has(c_SW_Combat, w)){ Add(c_SU_Combat, parentUnit);  }
+    if(Has(c_SW_AA, w)){Add(c_SU_AA, parentUnit) ;}
+    if(Has(c_SW_AG, w)){Add(c_SU_AG, parentUnit) ;}
+}
+void AnalyzeAbilityU (string parentUnit, string a) {
+    if (!Has(c_SS_Abilities,a)) {AnalyzeAbility( a );}
+    if(Has(c_SA_Combat, a)){ Add(c_SU_Combat,parentUnit);}
+    // if(Has(c_SA_Production, a)){ Add(c_SU_Production,parentUnit);}
+    if(Has(c_SA_Detection, a)){ Add(c_SU_Detection,parentUnit);}
+    if(Has(c_SA_Healer, a)){Add(c_SU_Healer, parentUnit) ;}
+    if(Has(c_SA_Creep, a)){Add(c_SU_Creep, parentUnit) ;}
+    if(Has(c_SA_Power, a)){Add(c_SU_Power, parentUnit) ;}
+    if(Has(c_SA_Stealth, a)){Add(c_SU_Stealth, parentUnit) ;}
+    if(Has(c_SA_Transport, a)){Add(c_SU_Transport, parentUnit) ;}
+}
+void AnalyzeBehaviorE (string parentEffect, string b) {
+    if (!Has(c_SS_Behaviors,b)) {AnalyzeBehavior( b );}
+    if(Has(c_SB_Combat, b)){ Add(c_SE_Combat, parentEffect); }
+    if(Has(c_SB_Production, b)){ Add(c_SE_Production, parentEffect) ;}
+    if(Has(c_SB_Detection, b)){Add(c_SE_Detection, parentEffect) ;}
+    if(Has(c_SB_Healer, b)){Add(c_SE_Healer, parentEffect) ;}
+    if(Has(c_SB_Creep, b)){Add(c_SE_Creep, parentEffect) ;}
+    if(Has(c_SB_Power, b)){Add(c_SE_Power, parentEffect) ;}
+    if(Has(c_SB_Stealth, b)){Add(c_SE_Stealth, parentEffect) ;}
+}
+void AnalyzeBehaviorA (string parentAbility, string b) {
+    if (!Has(c_SS_Behaviors,b)) {AnalyzeBehavior( b );}
+    if(Has(c_SB_Combat, b)){ Add(c_SA_Combat, parentAbility);}
+    if(Has(c_SB_Production, b)){ Add(c_SA_Production, parentAbility) ;}
+    if(Has(c_SB_Detection, b)){Add(c_SA_Detection, parentAbility) ;}
+    if(Has(c_SB_Healer, b)){Add(c_SA_Healer, parentAbility) ;}
+    if(Has(c_SB_Creep, b)){Add(c_SA_Creep, parentAbility) ;}
+    if(Has(c_SB_Power, b)){Add(c_SA_Power, parentAbility) ;}
+    if(Has(c_SB_Stealth, b)){Add(c_SA_Stealth, parentAbility) ;}
+}
+void AnalyzeBehaviorU (string parentUnit, string b) {
+    if (!Has(c_SS_Behaviors,b)) {AnalyzeBehavior( b );}
+    if(Has(c_SB_Production, b)){ Add(c_SU_Production, parentUnit) ;}
+    if(Has(c_SB_Detection, b)){Add(c_SU_Detection, parentUnit) ;}
+    if(Has(c_SB_Combat, b)){Add(c_SU_Combat, parentUnit) ;}
+    if(Has(c_SB_Healer, b)){Add(c_SU_Healer, parentUnit) ;}
+    if(Has(c_SB_Creep, b)){Add(c_SU_Creep, parentUnit) ;}
+    if(Has(c_SB_Power, b)){Add(c_SU_Power, parentUnit) ;}
+    if(Has(c_SB_Stealth, b)){Add(c_SU_Stealth, parentUnit) ;}
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Analyze functions
+//--------------------------------------------------------------------------------------------------
+void AnalyzeAbility ( string a) {
+    string oldDebugPath = debugPath;
+    int i;
+    int abilClass;
+    int count;
+
+    if (Has(c_SS_Abilities,a)) {return;}
+    if (!CatalogEntryIsValid(c_gameCatalogAbil, a)) { return; }
+    Add(c_SS_Abilities,a);
+    debugPath += ".A" + a;
+    // Debug(debugPath);
+
+    abilClass = CatalogEntryClass(c_gameCatalogAbil, a);
+
+    if (abilClass == c_classIdCAbilTransport) {
+        if(AVGetReal(a, "MaxCargoSize") >= 8 && AVGetReal(a, "TotalCargoSpace") >= 8  ){
+            Add(c_SA_Transport, a);
+        }
+    }
+   // else {
+        //libARRA_gf_ClearCache();
+        //libARRA_gv_sEARCHMODE = libARRA_ge_SearchMode_Units;
+        //if ((AnalyzeAbility(lp_player, a))) {
+        //    auto9443E169_ae = libARRA_gf_ListSize(libARRA_gv_byPassUnits);
+        //    auto9443E169_var = 1;
+        //    for ( ; auto9443E169_var <= auto9443E169_ae; auto9443E169_var += 1 ) {
+        //        libARRA_gf_ListStringInclude(lv_aiunits, libARRA_gf_ListStringGet(libARRA_gv_byPassUnits, auto9443E169_var));
+        //    }
+        //}
+ //   }
+    else if (abilClass == c_classIdCAbilAugment) {
+        AnalyzeEffectA(a,AVGet(a, "Effect"));
+    }
+    else if (abilClass == c_classIdCAbilArmMagazine) {
+        AnalyzeEffectA(a, AVGet(a, "CalldownEffect"));
+        AnalyzeBehaviorA(a, AVGet(a, "StateBehavior"));
+        count = AVCount( a, "EffectArray");
+        for ( i = 0; i < count; i += 1 ) {
+            AnalyzeEffectA(a,( AVGet(a, "EffectArray[" + S(i) + "]")));
+        }
+    }
+    else if (abilClass == c_classIdCAbilBehavior) {
+        AnalyzeBehaviorA(a, AVGet(a, "StateBehavior"));
+        count = AVCount( a, "BehaviorArray");
+        for ( i = 0; i < count; i += 1 ) {
+            AnalyzeBehaviorA(a, AVGet(a, "BehaviorArray[" + S(i) + "]"));
+        }
+    }
+    else if (abilClass == c_classIdCAbilEffectInstant) {
+        AnalyzeEffectA(a,( AVGet(a, "CalldownEffect")));
+
+        count = AVCount( a, "CastOutroTimeEffect");
+        for ( i = 0; i < count; i += 1 ) {
+            AnalyzeEffectA(a,( AVGet(a, "CastOutroTimeEffect[" + S(i) + "]")));
+        }
+        count = AVCount( a, "Effect");
+        for ( i = 0; i < count; i += 1 ) {
+            AnalyzeEffectA(a,( AVGet(a, "Effect[" + S(i) + "]")));
+
+        }
+        count = AVCount( a, "PrepEffect");
+        for ( i = 0; i < count; i += 1 ) {
+            AnalyzeEffectA(a,( AVGet(a, "PrepEffect[" + S(i) + "]")));
+        }
+        AnalyzeBehaviorA(a, AVGet(a, "StateBehavior"));
+        AnalyzeBehaviorA(a, AVGet(a, "PreEffectBehavior.Behavior"));
+        AnalyzeBehaviorA(a, AVGet(a, "PostEffectBehavior.Behavior"));
+    }
+    else if (abilClass == c_classIdCAbilEffectTarget) {
+        if ((AVCount( a, "TargetFilters") > 0 ) && CanTargetEnemy(AVGet(a, "TargetFilters[0]"))) {
+            Add(c_SA_Combat, a);
+        }
+
+        AnalyzeEffectA(a,( AVGet(a, "CalldownEffect")));
+
+        count = AVCount( a, "CastOutroTimeEffect");
+        for ( i = 0; i < count; i += 1 ) {
+            AnalyzeEffectA(a, AVGet(a, "CastOutroTimeEffect[" + S(i) + "]"));
+        }
+        count = AVCount( a, "Effect");
+        for ( i = 0; i < count; i += 1 ) {
+            AnalyzeEffectA(a, AVGet(a, "Effect[" + S(i) + "]"));
+        }
+        count = AVCount(a, "PrepEffect");
+        for ( i = 0; i < count; i += 1 ) {
+            AnalyzeEffectA(a, AVGet(a, "PrepEffect[" + S(i) + "]"));
+        }
+        AnalyzeBehaviorA(a, AVGet(a, "StateBehavior"));
+        AnalyzeBehaviorA(a, AVGet(a, "PreEffectBehavior.Behavior"));
+    }
+    debugPath = oldDebugPath;
+}
+
+void AnalyzeEffect ( string e) {
+    string oldDebugPath = debugPath;
+    int i;
+    int effectClass;
+    string u;
+    string temp;
+
+    if (Has(c_SS_Effects,e)) {return;}
+    if (!CatalogEntryIsValid(c_gameCatalogEffect, e)) { return; }
+    Add(c_SS_Effects,e);
+    debugPath += ".E" + e;
+    // Debug(debugPath);
+    effectClass = CatalogEntryClass(c_gameCatalogEffect, e);
+
+    if (effectClass == c_classIdCEffectIssueOrder) {
+        AnalyzeAbility(EVGet(e, "Abil"));
+    }
+    else if (effectClass == c_classIdCEffectApplyBehavior) {
+        AnalyzeBehaviorE(e, EVGet(e, "Behavior"));
+    }
+    else if (effectClass == c_classIdCEffectCreateHealer) {
+        AnalyzeEffectE(e,EVGet(e, "ExpireEffect"));
+        AnalyzeEffectE(e,EVGet(e, "FinalEffect"));
+        AnalyzeEffectE(e,EVGet(e, "InitialEffect"));
+        AnalyzeEffectE(e,EVGet(e, "PeriodicEffect"));
+        Add(c_SE_Healer, e);
+    }
+    else if (effectClass == c_classIdCEffectCreep) {
+        Add(c_SE_Creep, e);
+    }
+    else if (effectClass == c_classIdCEffectRandomPointInCircle) {
+        AnalyzeEffectE(e, EVGet(e, "Effect"));
+    }
+    else if (effectClass == c_classIdCEffectCreatePersistent) {
+        for ( i = 0; i < EVCount( e, "PeriodicEffectArray"); i += 1 ) {
+            AnalyzeEffectE(e, EVGet(e, "PeriodicEffectArray[" + S(i) + "]"));
+        }
+        AnalyzeEffectE(e, EVGet(e, "ExpireEffect"));
+        AnalyzeEffectE(e, EVGet(e, "FinalEffect"));
+        AnalyzeEffectE(e, EVGet(e, "InitialEffect"));
+    }
+    else if (effectClass == c_classIdCEffectLaunchMissile) {
+        AnalyzeEffectE(e, EVGet(e, "FinishEffect"));
+        AnalyzeEffectE(e, EVGet(e, "ImpactEffect"));
+        AnalyzeEffectE(e, EVGet(e, "InterruptEffect"));
+        AnalyzeEffectE(e, EVGet(e, "LaunchEffect"));
+        AnalyzeEffectE(e, EVGet(e, "PeriodicEffect"));
+        AnalyzeEffectE(e, EVGet(e, "SearchEffect"));
+        AnalyzeEffectE(e, EVGet(e, "SearchHitArriveEffect"));
+        AnalyzeBehaviorE(e, EVGet(e, "TransferBehavior"));
+    }
+    else if (effectClass == c_classIdCEffectSet) {
+        for ( i = 0; i < EVCount( e, "EffectArray"); i += 1 ) {
+            AnalyzeEffectE(e, EVGet(e, "EffectArray[" + S(i) + "]"));
+        }
+    }
+    else if (effectClass == c_classIdCEffectTeleport) {
+        AnalyzeEffectE(e, EVGet(e, "TeleportEffect"));
+    }
+    else if (effectClass == c_classIdCEffectEnumArea) {
+        for ( i = 0; i < EVCount( e, "AreaArray"); i += 1 ) {
+            AnalyzeEffectE(e, EVGet(e, "AreaArray[" + S(i) + "].Effect"));
+        }
+        if (CanTargetEnemy(EVGet(e, "SearchFilters"))) {
+            Add(c_SE_Combat, e);
+        }
+    }
+    else if (effectClass == c_classIdCEffectSwitch) {
+        for ( i = 0; i < EVCount( e, "CaseArray"); i += 1 ) {
+            AnalyzeEffectE(e, EVGet(e, "CaseArray[" + S(i) + "].Effect"));
+        }
+        AnalyzeEffectE(e, EVGet(e, "CaseDefault"));
+    }
+    else if (effectClass == c_classIdCEffectModifyUnit) {
+        //if (libARRA_gv_sEARCHMODE == libARRA_ge_SearchMode_Ability) {
+        //    count = EVCount( e, "Cost");
+        //    for ( i = 0; i < count; i += 1 ) {
+        //        if ((StringToAbilCmd(EVGet(e, "Cost[" + S(i) + "].Abil") == libARRA_gv_bYPASS_SEARCH_ABILITY_COMMAND))) {
+        //            return true;
+        //        }
+        //    }
+        //}
+    }
+    else if (effectClass == c_classIdCEffectDamage) {
+        if (EVGetReal(e, "Amount") > 0 ||
+            EVGetReal(e, "VitalFractionCurrent[" + S(0) + "]") > 0 ||
+            EVGetReal(e, "VitalFractionCurrent[" + S(1) + "]") > 0 ||
+            EVGetReal(e, "VitalFractionCurrent[" + S(2) + "]") > 0 ||
+            EVGetReal(e, "VitalFractionCurrentRandom[" + S(0) + "]") > 0 ||
+            EVGetReal(e, "VitalFractionCurrentRandom[" + S(1) + "]") > 0 ||
+            EVGetReal(e, "VitalFractionCurrentRandom[" + S(2) + "]") > 0 ||
+            EVGetReal(e, "Random") > 0
+        ) {
+            Add(c_SE_Combat, e);
+        }
+    }
+    else if (effectClass == c_classIdCEffectCreateUnit) {
+        AnalyzeEffectE(e, EVGet(e, "SpawnEffect"));
+        for ( i = 0; i < EVCount( e, "SpawnUnit"); i += 1 ) {
+            u = EVGet(e, "SpawnUnit[" + S(i) + "]");
+
+            Add(c_SU_Temp, u) ;
+            if(UnitIsSummoned(u)){
+                temp = Get(c_SU_Temp);
+                AnalyzeUnitE(e, u);
+                lines[c_SU_Temp] = temp;
+            }
+            else{
+                Add(c_SE_Production, e) ;
+                Add(c_STEMP_NextUnits, u);
+            }
+        }
+    }
+    debugPath = oldDebugPath;
+}
+
+void AnalyzeBehavior ( string b) {
+    string oldDebugPath = debugPath;
+    int i;
+    int behClass;
+    string u;
+    string temp;
+    if (Has(c_SS_Behaviors,b)) {return;}
+    if (!CatalogEntryIsValid(c_gameCatalogBehavior, b)) { return;}
+    Add(c_SS_Behaviors,b);
+    debugPath += ".B" + b;
+    // Debug(debugPath);
+    behClass = CatalogEntryClass(c_gameCatalogBehavior, b);
+
+    if (behClass == c_classIdCBehaviorSpawn) {
+        for(i = 0; i < BVCount( b,  "InfoArray"); i+= 1){
+            u = BVGet( b, "InfoArray[" + S(i) + "].Unit");
+            Add(c_SU_Temp, u) ;
+            if(UnitIsSummoned(u)){
+                temp = Get(c_SU_Temp);
+                AnalyzeUnitB(b, u);
+                lines[c_SU_Temp] = temp;
+            }
+            else{
+                Add(c_SB_Production, b);
+                Add(c_STEMP_NextUnits, u);
+            }
+        }
+    }
+    else if (behClass == c_classIdCBehaviorBuff) {
+        if(BehaviorIsStealth(b)){
+            Add(c_SB_Stealth, b);
+        }
+        if (BehaviorIsDetect(b)) {
+            Add(c_SB_Detection, b);
+        }
+        AnalyzeEffectB(b, BVGet( b, "ExpireEffect"));
+        AnalyzeEffectB(b, BVGet( b, "InitialEffect"));
+        AnalyzeEffectB(b, BVGet( b, "PeriodicEffect"));
+        AnalyzeEffectB(b, BVGet( b, "PeriodicEffect"));
+    }
+    else if (behClass == c_classIdCBehaviorCreepSource) {
+        Add(c_SB_Creep,   b);
+    }
+    else if (behClass == c_classIdCBehaviorPowerSource) {
+        Add(c_SB_Power,   b);
+    }
+    debugPath = oldDebugPath;
+}
+
+void AnalyzeWeapon ( string w) {
+    string oldDebugPath = debugPath;
+    int i;
+    int behClass;
+    string filters;
+
+    if (Has(c_SS_Weapons,w)) {return;}
+    if (!CatalogEntryIsValid(c_gameCatalogWeapon,w)) { return;}
+    Add(c_SS_Weapons,w);
+    debugPath += ".W" + w;
+    // Debug(debugPath);
+
+    filters = WVGet(w, "TargetFilters");
+    AnalyzeEffectW(w, WVGet( w, "Effect"));
+    if(Has(c_SW_Combat, w)){
+        if (CanTargetAir(filters)) {
+            Add(c_SW_AA, w);
+        }
+        if (CanTargetGround(filters)) {
+            Add(c_SW_AG, w);
+        }
+    }
+    debugPath = oldDebugPath;
+}
+
+void AnalyzeUpgrade(string g){
+    string oldDebugPath = debugPath;
+    if (Has(c_SS_Upgrades,g)) {return;}
+    if (!CatalogEntryIsValid(c_gameCatalogUpgrade,g)) { return;}
+    Add(c_SS_Upgrades,g);
+    debugPath += ".G" + g;
+    // Debug(debugPath);
+    debugPath = oldDebugPath;
+}
+
+void AnalyzeUnit ( string u) {
+    string oldDebugPath = debugPath;
+    // abilcmd ac; //ability command
+    // int ai; //ability command index
+    // string abilCmds;
+    int abilClass;
+    bool structure;
+    int i; int j; int k;
+    string a;
+    int count;
+    string u2;
+    
+    if (Has(c_SS_Units,u)) {return;}
+    if (!CatalogEntryIsValid(c_gameCatalogUnit,u)) { return;}
+    Add(c_SS_Units,u);
+    debugPath = "U" + u;
+    // Debug(debugPath);
+
+    if (UnitIsNotInteractive(u)) {
+        Add(c_SU_Ignored, u);
+        return;
+    }
+    structure = UnitIsStructure(u);
+
+    if (!Has(c_SU_Morph,u)) {
+        if(UnitIsDropOff(u)){Add(c_SU_DropOff, u );}
+        else if(UnitIsFood(u)){Add(c_SU_Supply, u );}
+    }
+
+    if(UnitIsRefinery(u)){Add(c_SU_Refinery, u );}
+    if(UnitIsSummoned(u)){Add(c_SU_Ignored, u );}
+    if(UnitIsStealth(u)){Add(c_SU_Stealth, u );}
+    if(UnitIsStructure(u)){Add(c_SU_Structure, u );}
+    else if(UnitIsAir(u)){Add(c_SU_Air, u );}
+    else{ Add(c_SU_Ground, u ); }
+    
+    
+
+    //Morph abilities
+    for(i = 0; i < UVCount( u, "AbilArray"); i+= 1){
+        a = UVGet( u, "AbilArray[" + S(i) + "].Link");
+        abilClass = CatalogEntryClass(c_gameCatalogAbil, a);
+        if (IsMorphAbility(a)){
+            u2 = GetPhaseMorphAbilityUnit(u,a);
+            if (u2) {
+                Add(c_SU_Morph, u2);
+                AnalyzeUnitU(u,u2);
+            }
+            else{
+                //todo how o process morphed units? MCV? cannons?
+                for(j = 0; j < AVCount( a, "InfoArray"); j+= 1){
+                    AnalyzeUnit( AVGet( a, "InfoArray[" + S(j) + "].Unit"));
+                }
+            }
+        }
+        else if (abilClass == c_classIdCAbilMerge) {
+            //todo how o process morphed units? MCV? cannons?
+            for(j = 0; j < AVCount( a, "InfoArray"); j+= 1){
+                AnalyzeUnit( AVGet( a, "InfoArray[" + S(j) + "].Unit"));
+            }
+        }
+    }
+
+    //abilCmds = GetUnitActiveAbilities(u);
+    //count = StringWordCount( abilCmds);
+    //for(i = 1; i <= count; i+= 1){
+    //    ac = StringToAbilCmd(StringWord(abilCmds, i));
+    //    a = AbilityCommandGetAbility(ac);
+    //    u2 = GetPhaseMorphAbilityUnit(u,a);
+    //    if (u2) {
+    //        Add(c_SU_Morph, u2);
+    //        AnalyzeUnitU(u,u2);
+    //    }
+    //}
+    for(i = 0; i < UVCount( u, "AbilArray"); i+= 1){
+        a = UVGet( u, "AbilArray[" + S(i) + "].Link");
+    // for(i = 1; i <= count; i+= 1){
+    //     ac = StringToAbilCmd(StringWord(abilCmds, i));
+    //     a = AbilityCommandGetAbility(ac);
+    //     ai = AbilityCommandGetCommand(ac);
+        abilClass = CatalogEntryClass(c_gameCatalogAbil, a);
+
+        if (abilClass == c_classIdCAbilHarvest) {
+            if(UnitIsWorker(u)){
+                Add(c_SU_Worker, u );
+            }
+        }else if (abilClass == c_classIdCAbilBuild) {
+            Add(c_SA_Production, a);
+            if(!Has(c_SU_DropOff,u)){Add(c_SU_Production, u);};
+            // if (ai < 30) {
+            for(j = 0; j < AVCount( a, "InfoArray"); j+= 1){
+                u2 = AVGet( a, "InfoArray[" + S(j) + "].Unit");
+                Add(c_STEMP_NextUnits, u2);
+            }
+        }
+        else if (abilClass == c_classIdCAbilTrain) {
+            Add(c_SA_Production, a);
+            if(!Has(c_SU_DropOff,u)){Add(c_SU_Production, u);};
+            for(j = 0; j < AVCount( a, "InfoArray"); j+= 1){
+                for(k = 0; k < AVCount( a,  "InfoArray[" + S(j) + "].Unit"); k+= 1){
+                    u2 = AVGet( a, "InfoArray[" + S(j) + "].Unit[" + S(k) + "]");
+                    Add(c_STEMP_NextUnits, u2);
+                }
+            }
+        }
+        else if (abilClass == c_classIdCAbilWarpTrain) {
+            Add(c_SA_Production, a);
+            if(!Has(c_SU_DropOff,u)){Add(c_SU_Production, u);};
+            for(j = 0; j < AVCount( a, "InfoArray"); j+= 1){
+                u2 = AVGet( a, "InfoArray[" + S(j) + "].Unit");
+                Add(c_STEMP_NextUnits, u2);
+            }
+        }
+        else if (abilClass == c_classIdCAbilResearch) {
+            Add(c_SU_Research, u);
+            Add(c_SA_Research, a);
+            for(j = 0; j < AVCount( a, "InfoArray"); j+= 1){
+                u2 = AVGet( a, "InfoArray[" + S(j) + "].Upgrade");
+                AnalyzeUpgrade(u2);
+            }
+        }
+        else{
+            lines[c_SU_Temp] = "";
+            AnalyzeAbilityU(u, a);
+            if(Has(c_SA_Production, a)){ 
+                // if(!Has(c_SU_DropOff,u)){Add(c_SU_Production, u);};
+                for(j = 1; j <= Count( c_SU_Temp); j+= 1){
+                    u2 = GetI( c_SU_Temp,j);
+                    Add(c_SU_SpecialMakers,u2+"."+u+"." + a);
+                }
+            }
+        }
+    }
+
+    
+    for(i = 0; i < UVCount( u, "BehaviorArray"); i+= 1){
+        AnalyzeBehaviorU(u, UVGet( u, "BehaviorArray[" + S(i) + "].Link"));
+    }
+    
+    for(i = 0; i < UVCount( u, "WeaponArray"); i+= 1){
+        AnalyzeWeaponU(u, UVGet( u, "WeaponArray[" + S(i) + "].Link"));
+    }
+    if(UnitIsWorker(u) && !Has(c_SU_Worker, u)){
+        Add(c_SU_Builder, u );
+    }
+    debugPath = oldDebugPath;
+}
+
+void AnalyzeRace(string race){
+    string oldDebugPath = debugPath;
+    string u;
+    int i;
+    
+    ClearAll();
+    if (Has(c_SS_Races,race)) {return;}
+    if (!CatalogEntryIsValid(c_gameCatalogRace,race)) { return;}
+    Add(c_SS_Races,race);
+    //debugPath = u;
+    //Debug(">Race " + race);
+
+    for(i = 0; i < RVCount(race,"StartingUnitArray"); i+= 1){
+        u = RVGet(race,"StartingUnitArray[" + S(i) + "].Unit");
+        Add(c_STEMP_NextUnits, u);
+    }
+    
+    i = 1;
+    while(GetI(c_STEMP_NextUnits,i)){
+        AnalyzeUnit(GetI(c_STEMP_NextUnits,i));
+        i += 1;
+    }
+    //DebugLines();
+    //debugPath = oldDebugPath;
+}

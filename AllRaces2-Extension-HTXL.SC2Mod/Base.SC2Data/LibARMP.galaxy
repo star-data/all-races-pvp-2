@@ -1,0 +1,1245 @@
+include "TriggerLibs/NativeLib"
+include "LibB09742AC"
+
+include "LibARMP_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: All Races
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libARMP_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Variable Initialization
+bool libARMP_InitVariables_completed = false;
+
+void libARMP_InitVariables () {
+    int init_i;
+    int init_j;
+
+    if (libARMP_InitVariables_completed) {
+        return;
+    }
+
+    libARMP_InitVariables_completed = true;
+
+    libARMP_gv_startMinerals = 50;
+    libARMP_gv_resourceType = libARMP_ge_PreplacedResourceType_Default;
+    libARMP_gv_mineralWallsGlobalMineralWalls = UnitGroupEmpty();
+    libARMP_gv_mineralWallsTimer = TimerCreate();
+    for (init_i = 0; init_i <= libARMP_gv_mAX_PLAYERS; init_i += 1) {
+        for (init_j = 0; init_j <= libARMP_gv_mAX_PLAYERS; init_j += 1) {
+            libARMP_gv_minimapAllyViewPings[init_i][init_j] = c_invalidPingId;
+        }
+    }
+}
+
+// Presets
+// Functions
+string libARMP_gf_GetResourceUserData (string lp_unit) {
+    // Variable Declarations
+    string lv_instance;
+
+    // Automatic Variable Declarations
+    int autoEC5B4BC9_ae;
+    int autoEC5B4BC9_var;
+
+    // Variable Initialization
+
+    // Implementation
+    autoEC5B4BC9_ae = UserDataInstanceCount("ResourcesData");
+    autoEC5B4BC9_var = 1;
+    for ( ; autoEC5B4BC9_var <= autoEC5B4BC9_ae; autoEC5B4BC9_var += 1 ) {
+        lv_instance = UserDataInstance("ResourcesData", autoEC5B4BC9_var);
+        if ((UserDataGetUnit("ResourcesData", lv_instance, "Unit", 1) == lp_unit)) {
+            return lv_instance;
+        }
+
+    }
+    return null;
+}
+
+void libARMP_gf_ApplySupplyCap (int lp_value) {
+    // Automatic Variable Declarations
+    playergroup auto3DD72507_g;
+    int auto3DD72507_var;
+
+    // Implementation
+    auto3DD72507_g = PlayerGroupAll();
+    auto3DD72507_var = -1;
+    while (true) {
+        auto3DD72507_var = PlayerGroupNextPlayer(auto3DD72507_g, auto3DD72507_var);
+        if (auto3DD72507_var < 0) { break; }
+        PlayerModifyPropertyInt(auto3DD72507_var, c_playerPropSuppliesLimit, c_playerPropOperSetTo, lp_value);
+    }
+}
+
+void libARMP_gf_DisableClassicSkins (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerType(lp_player) == c_playerTypeUser)) {
+        if (((PlayerSkin(lp_player) == "CommandCenterRemastered") || (PlayerHasReward(lp_player, "SkinCommandCenterRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "CommandCenterRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "NexusRemastered") || (PlayerHasReward(lp_player, "SkinNexusRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "NexusRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "HatcheryRemastered") || (PlayerHasReward(lp_player, "SkinHatcheryRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "HatcheryRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "HydraliskRemastered") || (PlayerHasReward(lp_player, "SkinHydraliskRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "HydraliskRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "ZealotRemastered") || (PlayerHasReward(lp_player, "SkinZealotRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "ZealotRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "MarineRemastered") || (PlayerHasReward(lp_player, "SkinMarineRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "MarineRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "UltraliskRemastered") || (PlayerHasReward(lp_player, "SkinUltraliskRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "UltraliskRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "CarrierRemastered") || (PlayerHasReward(lp_player, "SkinCarrierRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "CarrierRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "BattlecruiserRemastered") || (PlayerHasReward(lp_player, "SkinBattlecruiserRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "BattlecruiserRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "ProbeRemastered") || (PlayerHasReward(lp_player, "SkinProbeRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "ProbeRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "SCVRemastered") || (PlayerHasReward(lp_player, "SkinSCVRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "SCVRemastered", false);
+        }
+
+        if (((PlayerSkin(lp_player) == "DroneRemastered") || (PlayerHasReward(lp_player, "SkinDroneRemastered") == true))) {
+            libNtve_gf_PlayerApplySkinReplacingExistingUnit(lp_player, "DroneRemastered", false);
+        }
+
+    }
+
+}
+
+void libARMP_gf_SCEvoEnableAIOption (bool lp_activateDeactivate, int lp_option) {
+    // Variable Declarations
+    bool lv_onOff;
+    bool lv_enabledisable;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((lp_activateDeactivate == true)) {
+        lv_onOff = true;
+        lv_enabledisable = true;
+    }
+
+    if ((lp_option == lp_option)) {
+        libARMP_gf_MineralWallsActivate(lv_onOff);
+    }
+}
+
+void libARMP_gf_MineralWallsActivate (bool lp_onOff) {
+    // Automatic Variable Declarations
+    unitgroup autoC076305A_g;
+    int autoC076305A_u;
+    unit autoC076305A_var;
+
+    // Implementation
+    if ((lp_onOff == true)) {
+        autoC076305A_g = UnitGroup(null, 0, RegionPlayableMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterRawResource) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        autoC076305A_u = UnitGroupCount(autoC076305A_g, c_unitCountAll);
+        for (;; autoC076305A_u -= 1) {
+            autoC076305A_var = UnitGroupUnitFromEnd(autoC076305A_g, autoC076305A_u);
+            if (autoC076305A_var == null) { break; }
+            if ((UnitGetPropertyFixed(autoC076305A_var, c_unitPropResources, c_unitPropCurrent) < 70.0)) {
+                UnitGroupAdd(libARMP_gv_mineralWallsGlobalMineralWalls, autoC076305A_var);
+            }
+
+        }
+        Wait((2.0 * 60.0), c_timeGame);
+        TriggerEnable(libARMP_gt_MineralWallsUpdate, true);
+    }
+    else {
+        TriggerEnable(libARMP_gt_MineralWallsUpdate, false);
+    }
+}
+
+playergroup libARMP_gf_HumanPlayers () {
+    // Variable Declarations
+    int lv_indexPlayer;
+    playergroup lv_result;
+
+    // Automatic Variable Declarations
+    playergroup autoE90D47FD_g;
+
+    // Variable Initialization
+    lv_result = PlayerGroupEmpty();
+
+    // Implementation
+    autoE90D47FD_g = PlayerGroupAll();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(autoE90D47FD_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        if ((PlayerType(lv_indexPlayer) == c_playerTypeUser) && (PlayerStatus(lv_indexPlayer) == c_playerStatusActive)) {
+            PlayerGroupAdd(lv_result, lv_indexPlayer);
+        }
+
+    }
+    return lv_result;
+}
+
+void libARMP_gf_MinimapAllyViewCameraSnapPointersListUpdate (int lp_p) {
+    // Variable Declarations
+    int lv_i;
+    playergroup lv_allies;
+
+    // Automatic Variable Declarations
+    int auto7E499222_ae;
+    const int auto7E499222_ai = 1;
+
+    // Variable Initialization
+    lv_allies = PlayerGroupEmpty();
+
+    // Implementation
+    lv_allies = libNtve_gf_IntersectionOfPlayerGroups(PlayerGroupAlliance(c_playerGroupAlly, lp_p), libARMP_gf_HumanPlayers());
+    PlayerGroupRemove(lv_allies, lp_p);
+    libARMP_gv_minimapAllyViewCameraSnapPointersListLength[lp_p] = PlayerGroupCount(lv_allies);
+    libARMP_gv_minimapAllyViewCameraSnapPointersListPosition[lp_p] = 0;
+    auto7E499222_ae = PlayerGroupCount(lv_allies);
+    lv_i = 0;
+    for ( ; ( (auto7E499222_ai >= 0 && lv_i <= auto7E499222_ae) || (auto7E499222_ai < 0 && lv_i >= auto7E499222_ae) ) ; lv_i += auto7E499222_ai ) {
+        libARMP_gv_minimapAllyViewCameraSnapPointersList[lp_p][lv_i] = PlayerGroupPlayer(lv_allies, lv_i);
+    }
+}
+
+trigger auto_libARMP_gf_MinimapAllyViewUpdateArea_Trigger = null;
+region auto_libARMP_gf_MinimapAllyViewUpdateArea_lp_region;
+
+void libARMP_gf_MinimapAllyViewUpdateArea (region lp_region) {
+    auto_libARMP_gf_MinimapAllyViewUpdateArea_lp_region = lp_region;
+
+    if (auto_libARMP_gf_MinimapAllyViewUpdateArea_Trigger == null) {
+        auto_libARMP_gf_MinimapAllyViewUpdateArea_Trigger = TriggerCreate("auto_libARMP_gf_MinimapAllyViewUpdateArea_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libARMP_gf_MinimapAllyViewUpdateArea_Trigger, false, false);
+}
+
+bool auto_libARMP_gf_MinimapAllyViewUpdateArea_TriggerFunc (bool testConds, bool runActions) {
+    region lp_region = auto_libARMP_gf_MinimapAllyViewUpdateArea_lp_region;
+
+    // Automatic Variable Declarations
+    // Implementation
+    RegionPlayableMapSet(lp_region);
+    Wait(0.0625, c_timeGame);
+    libARMP_gf_MinimapAllyViewRescale();
+    return true;
+}
+
+void libARMP_gf_MinimapAllyViewRescale () {
+    // Variable Declarations
+    const fixed lv_baseScale = 0.5;
+    const fixed lv_baseMapSize = 108.0;
+    fixed lv_mapScale;
+    int lv_indexPlayer;
+    int lv_jindexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto2FC02D9B_g;
+    playergroup autoE460F18B_g;
+
+    // Variable Initialization
+    lv_mapScale = 0.5;
+
+    // Implementation
+    lv_mapScale = (lv_baseMapSize / MaxF(libNtve_gf_WidthOfRegion(RegionPlayableMap()), libNtve_gf_HeightOfRegion(RegionPlayableMap())));
+    lv_mapScale = (lv_mapScale * lv_baseScale);
+    auto2FC02D9B_g = PlayerGroupAll();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto2FC02D9B_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        autoE460F18B_g = PlayerGroupAll();
+        lv_jindexPlayer = -1;
+        while (true) {
+            lv_jindexPlayer = PlayerGroupNextPlayer(autoE460F18B_g, lv_jindexPlayer);
+            if (lv_jindexPlayer < 0) { break; }
+            PingSetScale(libARMP_gv_minimapAllyViewPings[lv_indexPlayer][lv_jindexPlayer], lv_mapScale);
+        }
+    }
+}
+
+void libARMP_gf_MinimapAllyViewEnableDisable (bool lp_enableDisable) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_enableDisable == true)) {
+        if ((PlayerGroupCount(PlayerGroupActive()) <= 2) && (PlayerGroupCount(PlayerGroupActive()) > 8)) {
+            return ;
+        }
+
+        TriggerExecute(libARMP_gt_MinimapAllyViewInit, true, true);
+        libARMP_gf_MinimapAllyViewRescale();
+        TriggerEnable(libARMP_gt_MinimapAllyViewCameraUpdate, true);
+        TriggerEnable(libARMP_gt_MinimapAllyViewCameraSnap, true);
+        TriggerEnable(libARMP_gt_MinimapAllyViewAllianceUpdate, true);
+        TriggerExecute(libARMP_gt_MinimapAllyViewAllianceUpdate, true, false);
+        TriggerEnable(libARMP_gt_MinimapAllyViewCameraSnap, true);
+    }
+    else {
+        TriggerEnable(libARMP_gt_MinimapAllyViewCameraUpdate, false);
+        TriggerEnable(libARMP_gt_MinimapAllyViewCameraSnap, false);
+        TriggerEnable(libARMP_gt_MinimapAllyViewAllianceUpdate, false);
+        TriggerEnable(libARMP_gt_MinimapAllyViewCameraSnap, false);
+    }
+}
+
+void libARMP_gf_RegisterCameraMoveEvent (trigger lp_trigger, int lp_playerId, int lp_cameraMoveReason) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerAddEventCameraMove(lp_trigger, lp_playerId, lp_cameraMoveReason);
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Offline Game Attributes Initialisation
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_OfflineGameAttributesInitialisation_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_unit;
+
+    // Automatic Variable Declarations
+    playergroup autoE39754B4_g;
+    int autoE39754B4_var;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((GameIsTestMap(false) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerSetDifficulty(1, 7);
+    PlayerSetDifficulty(2, 7);
+    PlayerSetDifficulty(3, 7);
+    PlayerSetDifficulty(4, 7);
+    PlayerSetDifficulty(5, 7);
+    PlayerSetDifficulty(6, 7);
+    PlayerSetDifficulty(7, 7);
+    PlayerSetDifficulty(8, 7);
+    PlayerSetDifficulty(9, 7);
+    PlayerSetDifficulty(10, 7);
+    PlayerSetDifficulty(11, 7);
+    PlayerSetDifficulty(12, 7);
+    PlayerSetDifficulty(13, 7);
+    PlayerSetDifficulty(14, 7);
+    PlayerSetRace(1, "Terr");
+    PlayerSetRace(2, "TerU");
+    PlayerSetRace(3, "Dragon");
+    PlayerSetRace(4, "Synd");
+    PlayerSetRace(5, "PrTD");
+    PlayerSetRace(6, "UPLL");
+    PlayerSetRace(7, "ZHBR");
+    PlayerSetRace(8, "UED");
+    PlayerSetRace(9, "Gen");
+    PlayerSetRace(10, "Xayi");
+    PlayerSetRace(11, "Keir");
+    PlayerSetRace(12, "Terr");
+    PlayerSetRace(13, "Prot");
+    PlayerSetRace(14, "Zerg");
+    PlayerSetRace(1, "Terr");
+    PlayerSetRace(2, "Terr");
+    SetAIType(1, 3);
+    GameSetSpeedValue(c_gameSpeedFaster);
+    autoE39754B4_g = PlayerGroupAll();
+    autoE39754B4_var = -1;
+    while (true) {
+        autoE39754B4_var = PlayerGroupNextPlayer(autoE39754B4_g, autoE39754B4_var);
+        if (autoE39754B4_var < 0) { break; }
+        libNtve_gf_SetAlliance(autoE39754B4_var, 15, libNtve_ge_AllianceSetting_AllyWithSharedVisionControlAndSpending);
+        UISetResourceVisible(PlayerGroupSingle(autoE39754B4_var), c_resourceTypeCustom, false);
+        PlayerOptionOverride(autoE39754B4_var, "simplecommandcard", "0");
+    }
+    TriggerExecute(libARMP_gt_CommonTriggers, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_OfflineGameAttributesInitialisation_Init () {
+    libARMP_gt_OfflineGameAttributesInitialisation = TriggerCreate("libARMP_gt_OfflineGameAttributesInitialisation_Func");
+    TriggerAddEventMapInit(libARMP_gt_OfflineGameAttributesInitialisation);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Online Game Attributes Initialisation
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_OnlineGameAttributesInitialisation_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_aG_Supplies;
+    string lv_aG_Resources;
+    string lv_aG_Money;
+    int lv_player;
+    string lv_races;
+
+    // Automatic Variable Declarations
+    playergroup autoAC3DF856_g;
+    playergroup autoB6F80194_g;
+    string auto4D5F20F8_val;
+    int auto39EA3E3C_val;
+    string auto293EEC22_val;
+    string autoA37C9A18_val;
+    string auto89A30B7A_val;
+
+    // Variable Initialization
+    lv_aG_Supplies = GameAttributeGameValue("2");
+    lv_aG_Resources = GameAttributeGameValue("3");
+    lv_aG_Money = GameAttributeGameValue("5");
+    lv_races = " ";
+
+    // Conditions
+    if (testConds) {
+        if (!((GameIsTestMap(false) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/lib_ARMP_5940ACD0"));
+    autoAC3DF856_g = PlayerGroupAll();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(autoAC3DF856_g, lv_player);
+        if (lv_player < 0) { break; }
+        libARMP_gf_DisableClassicSkins(lv_player);
+        PlayerOptionOverride(lv_player, "simplecommandcard", "0");
+    }
+    autoB6F80194_g = PlayerGroupAll();
+    lv_player = -1;
+    while (true) {
+        lv_player = PlayerGroupNextPlayer(autoB6F80194_g, lv_player);
+        if (lv_player < 0) { break; }
+        auto4D5F20F8_val = GameAttributePlayerValue("16", lv_player);
+        if (auto4D5F20F8_val == "0013") {
+            PlayerSetRace(lv_player, "BWPr");
+        }
+        else if (auto4D5F20F8_val == "0011") {
+            PlayerSetRace(lv_player, "BWTe");
+        }
+        else if (auto4D5F20F8_val == "0012") {
+            PlayerSetRace(lv_player, "BWZe");
+        }
+        else if (auto4D5F20F8_val == "0018") {
+            PlayerSetRace(lv_player, "Dragon");
+        }
+        else if (auto4D5F20F8_val == "0002") {
+            PlayerSetRace(lv_player, "Gen");
+        }
+        else if (auto4D5F20F8_val == "0006") {
+            PlayerSetRace(lv_player, "ZHBR");
+        }
+        else if (auto4D5F20F8_val == "0004") {
+            PlayerSetRace(lv_player, "Keir");
+        }
+        else if (auto4D5F20F8_val == "0016") {
+            PlayerSetRace(lv_player, "Prot");
+        }
+        else if (auto4D5F20F8_val == "0008") {
+            PlayerSetRace(lv_player, "Synd");
+        }
+        else if (auto4D5F20F8_val == "0010") {
+            PlayerSetRace(lv_player, "PrTD");
+        }
+        else if (auto4D5F20F8_val == "0014") {
+            PlayerSetRace(lv_player, "Terr");
+        }
+        else if (auto4D5F20F8_val == "0005") {
+            PlayerSetRace(lv_player, "UED");
+        }
+        else if (auto4D5F20F8_val == "0009") {
+            PlayerSetRace(lv_player, "TerU");
+        }
+        else if (auto4D5F20F8_val == "0007") {
+            PlayerSetRace(lv_player, "UPLL");
+        }
+        else if (auto4D5F20F8_val == "0003") {
+            PlayerSetRace(lv_player, "Xayi");
+        }
+        else if (auto4D5F20F8_val == "0015") {
+            PlayerSetRace(lv_player, "Zerg");
+        }
+        else if (auto4D5F20F8_val == "0017") {
+            auto39EA3E3C_val = RandomInt(1, 16);
+            if (auto39EA3E3C_val == 1) {
+                PlayerSetRace(lv_player, "BWPr");
+            }
+            else if (auto39EA3E3C_val == 2) {
+                PlayerSetRace(lv_player, "BWTe");
+            }
+            else if (auto39EA3E3C_val == 3) {
+                PlayerSetRace(lv_player, "BWZe");
+            }
+            else if (auto39EA3E3C_val == 4) {
+                PlayerSetRace(lv_player, "Dragon");
+            }
+            else if (auto39EA3E3C_val == 5) {
+                PlayerSetRace(lv_player, "Gen");
+            }
+            else if (auto39EA3E3C_val == 6) {
+                PlayerSetRace(lv_player, "ZHBR");
+            }
+            else if (auto39EA3E3C_val == 7) {
+                PlayerSetRace(lv_player, "Keir");
+            }
+            else if (auto39EA3E3C_val == 8) {
+                PlayerSetRace(lv_player, "Prot");
+            }
+            else if (auto39EA3E3C_val == 9) {
+                PlayerSetRace(lv_player, "Synd");
+            }
+            else if (auto39EA3E3C_val == 10) {
+                PlayerSetRace(lv_player, "PrTD");
+            }
+            else if (auto39EA3E3C_val == 11) {
+                PlayerSetRace(lv_player, "Terr");
+            }
+            else if (auto39EA3E3C_val == 12) {
+                PlayerSetRace(lv_player, "UED");
+            }
+            else if (auto39EA3E3C_val == 13) {
+                PlayerSetRace(lv_player, "TerU");
+            }
+            else if (auto39EA3E3C_val == 14) {
+                PlayerSetRace(lv_player, "UPLL");
+            }
+            else if (auto39EA3E3C_val == 15) {
+                PlayerSetRace(lv_player, "Xayi");
+            }
+            else if (auto39EA3E3C_val == 16) {
+                PlayerSetRace(lv_player, "Zerg");
+            }
+            else {
+            }
+        }
+        else {
+        }
+    }
+    auto293EEC22_val = lv_aG_Money;
+    if (auto293EEC22_val == "0002") {
+        libARMP_gv_startMinerals = 5000;
+        libARMP_gv_startVespene = 2500;
+    }
+    else if (auto293EEC22_val == "0003") {
+        libARMP_gv_startMinerals = 9999;
+        libARMP_gv_startVespene = 9999;
+    }
+    else {
+    }
+    autoA37C9A18_val = lv_aG_Resources;
+    if (autoA37C9A18_val == "0003") {
+        libARMP_gv_resourceType = libARMP_ge_PreplacedResourceType_Rich;
+    }
+    else if (autoA37C9A18_val == "0002") {
+        libARMP_gv_resourceType = libARMP_ge_PreplacedResourceType_BGH;
+    }
+    else if (autoA37C9A18_val == "0004") {
+        libARMP_gv_resourceType = libARMP_ge_PreplacedResourceType_RichBGH;
+    }
+    else {
+    }
+    auto89A30B7A_val = lv_aG_Supplies;
+    if (auto89A30B7A_val == "0001") {
+        libARMP_gf_ApplySupplyCap(100);
+    }
+    else if (auto89A30B7A_val == "0003") {
+        libARMP_gf_ApplySupplyCap(300);
+    }
+    else if (auto89A30B7A_val == "0005") {
+        libARMP_gf_ApplySupplyCap(400);
+    }
+    else if (auto89A30B7A_val == "0004") {
+        libARMP_gf_ApplySupplyCap(500);
+    }
+    else if (auto89A30B7A_val == "0006") {
+        libARMP_gf_ApplySupplyCap(1000);
+    }
+    else {
+    }
+    TriggerExecute(libARMP_gt_ApplyInitialResources, true, false);
+    TriggerExecute(libARMP_gt_ApplyHarvestableResources, true, false);
+    TriggerExecute(libARMP_gt_CommonTriggers, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_OnlineGameAttributesInitialisation_Init () {
+    libARMP_gt_OnlineGameAttributesInitialisation = TriggerCreate("libARMP_gt_OnlineGameAttributesInitialisation_Func");
+    TriggerAddEventMapInit(libARMP_gt_OnlineGameAttributesInitialisation);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Common Triggers
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_CommonTriggers_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_races;
+
+    // Automatic Variable Declarations
+    playergroup autoCC589DF4_g;
+    int autoCC589DF4_var;
+
+    // Variable Initialization
+    lv_races = " ";
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(libARMP_gt_RunAI, true, false);
+    TriggerExecute(libARMP_gt_SupportWorkerOnlyPathsForSomeCustomMaps, true, false);
+    TriggerExecute(libARMP_gt_SprayUpgrades, true, false);
+    TriggerSendEvent("GAME START");
+    autoCC589DF4_g = PlayerGroupAll();
+    autoCC589DF4_var = -1;
+    while (true) {
+        autoCC589DF4_var = PlayerGroupNextPlayer(autoCC589DF4_g, autoCC589DF4_var);
+        if (autoCC589DF4_var < 0) { break; }
+        if ((StringFind(lv_races, (PlayerRace(autoCC589DF4_var)), c_stringCase) < 1)) {
+            lv_races = (lv_races + (PlayerRace(autoCC589DF4_var)) + " ");
+            TriggerSendEvent(("GAME START " + (PlayerRace(autoCC589DF4_var))));
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_CommonTriggers_Init () {
+    libARMP_gt_CommonTriggers = TriggerCreate("libARMP_gt_CommonTriggers_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Run AI
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_RunAI_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto3163F7A1_g;
+    int auto3163F7A1_var;
+    string autoEA9AF53E_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto3163F7A1_g = PlayerGroupAll();
+    auto3163F7A1_var = -1;
+    while (true) {
+        auto3163F7A1_var = PlayerGroupNextPlayer(auto3163F7A1_g, auto3163F7A1_var);
+        if (auto3163F7A1_var < 0) { break; }
+        if ((PlayerType(auto3163F7A1_var) != c_playerTypeComputer)) {
+            continue;
+        }
+
+        libARMP_gv_pickedAIPlayer = auto3163F7A1_var;
+        autoEA9AF53E_val = PlayerRace(libARMP_gv_pickedAIPlayer);
+        if (autoEA9AF53E_val == "UED") {
+            TriggerExecute(libARMP_gt_UEDAIController, true, false);
+        }
+        else {
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_RunAI_Init () {
+    libARMP_gt_RunAI = TriggerCreate("libARMP_gt_RunAI_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: UED AI Controller
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_UEDAIController_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unitgroup lv_headquarters;
+    unitgroup lv_beacons;
+    int lv_aIPlayer;
+
+    // Automatic Variable Declarations
+    unitgroup auto0C2ED70A_g;
+    int auto0C2ED70A_u;
+    unit auto0C2ED70A_var;
+
+    // Variable Initialization
+    lv_headquarters = UnitGroupEmpty();
+    lv_beacons = UnitGroupEmpty();
+    lv_aIPlayer = libARMP_gv_pickedAIPlayer;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(2.0, c_timeAI);
+    while ((UnitGroupCount(UnitGroup(null, lv_aIPlayer, RegionEntireMap(), UnitFilter((1 << c_targetFilterPreventDefeat), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1), c_unitCountAlive) > 0)) {
+        Wait(4.0, c_timeAI);
+        lv_headquarters = UnitGroup("OperationHeadquarters", lv_aIPlayer, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        auto0C2ED70A_g = lv_headquarters;
+        auto0C2ED70A_u = UnitGroupCount(auto0C2ED70A_g, c_unitCountAll);
+        for (;; auto0C2ED70A_u -= 1) {
+            auto0C2ED70A_var = UnitGroupUnitFromEnd(auto0C2ED70A_g, auto0C2ED70A_u);
+            if (auto0C2ED70A_var == null) { break; }
+            lv_beacons = UnitGroup("BeaconUED", lv_aIPlayer, RegionCircle(UnitGetPosition(auto0C2ED70A_var), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 1);
+            if ((UnitGroupCount(lv_beacons, c_unitCountAlive) == 0)) {
+                UnitIssueOrder(auto0C2ED70A_var, OrderTargetingPoint(AbilityCommand("WarpUEDBeacon", 0), RegionRandomPoint(RegionCircle(UnitGetPosition(auto0C2ED70A_var), 7.0))), c_orderQueueAddToFront);
+            }
+
+        }
+        AISetGroupScriptControlled(lv_headquarters, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_UEDAIController_Init () {
+    libARMP_gt_UEDAIController = TriggerCreate("libARMP_gt_UEDAIController_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Support Worker Only Paths For Some Custom Maps
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_SupportWorkerOnlyPathsForSomeCustomMaps_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_innerRadius;
+    string lv_unit;
+
+    // Automatic Variable Declarations
+    int auto6AE95095_ae;
+    int auto6AE95095_var;
+    playergroup autoDF96FEC5_g;
+    int autoDF96FEC5_var;
+
+    // Variable Initialization
+    lv_innerRadius = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogUnit, "SCV", "InnerRadius", c_playerAny);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto6AE95095_ae = CatalogEntryCount(c_gameCatalogUnit);
+    auto6AE95095_var = 1;
+    for ( ; auto6AE95095_var <= auto6AE95095_ae; auto6AE95095_var += 1 ) {
+        lv_unit = CatalogEntryGet(c_gameCatalogUnit, auto6AE95095_var);
+        if ((CatalogFieldValueGetAsInt(c_gameCatalogUnit, lv_unit, "FlagArray[" + IntToString(c_unitFlagWorker) + "]", c_playerAny) == 1)) {
+            autoDF96FEC5_g = PlayerGroupAll();
+            autoDF96FEC5_var = -1;
+            while (true) {
+                autoDF96FEC5_var = PlayerGroupNextPlayer(autoDF96FEC5_g, autoDF96FEC5_var);
+                if (autoDF96FEC5_var < 0) { break; }
+                libNtve_gf_CatalogFieldValueSetAsReal(c_gameCatalogUnit, lv_unit, "InnerRadius", autoDF96FEC5_var, lv_innerRadius);
+            }
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_SupportWorkerOnlyPathsForSomeCustomMaps_Init () {
+    libARMP_gt_SupportWorkerOnlyPathsForSomeCustomMaps = TriggerCreate("libARMP_gt_SupportWorkerOnlyPathsForSomeCustomMaps_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Spray Upgrades
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_SprayUpgrades_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_unit;
+
+    // Automatic Variable Declarations
+    playergroup auto7CB45438_g;
+    int auto7CB45438_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7CB45438_g = PlayerGroupAll();
+    auto7CB45438_var = -1;
+    while (true) {
+        auto7CB45438_var = PlayerGroupNextPlayer(auto7CB45438_g, auto7CB45438_var);
+        if (auto7CB45438_var < 0) { break; }
+        TechTreeUpgradeAddLevel(auto7CB45438_var, "SprayProtoss", 1);
+        TechTreeUpgradeAddLevel(auto7CB45438_var, "SprayTerran", 1);
+        TechTreeUpgradeAddLevel(auto7CB45438_var, "SprayZerg", 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_SprayUpgrades_Init () {
+    libARMP_gt_SprayUpgrades = TriggerCreate("libARMP_gt_SprayUpgrades_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Apply Initial Resources
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_ApplyInitialResources_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto0E030966_g;
+    int auto0E030966_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.1, c_timeGame);
+    auto0E030966_g = PlayerGroupAll();
+    auto0E030966_var = -1;
+    while (true) {
+        auto0E030966_var = PlayerGroupNextPlayer(auto0E030966_g, auto0E030966_var);
+        if (auto0E030966_var < 0) { break; }
+        PlayerModifyPropertyInt(auto0E030966_var, c_playerPropMinerals, c_playerPropOperSetTo, libARMP_gv_startMinerals);
+        PlayerModifyPropertyInt(auto0E030966_var, c_playerPropVespene, c_playerPropOperSetTo, libARMP_gv_startVespene);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_ApplyInitialResources_Init () {
+    libARMP_gt_ApplyInitialResources = TriggerCreate("libARMP_gt_ApplyInitialResources_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Apply Harvestable Resources
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_ApplyHarvestableResources_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_unitData;
+    string lv_replacementUnitType;
+
+    // Automatic Variable Declarations
+    unitgroup autoAF6B57F5_g;
+    int autoAF6B57F5_u;
+    unit autoAF6B57F5_var;
+    unitgroup auto0308609E_g;
+    int auto0308609E_u;
+    unit auto0308609E_var;
+    unitgroup auto6A446791_g;
+    int auto6A446791_u;
+    unit auto6A446791_var;
+    string auto6A2EC427_val;
+    unitgroup auto38B0BDBC_g;
+    int auto38B0BDBC_u;
+    unit auto38B0BDBC_var;
+    string autoA8BB282A_val;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((libARMP_gv_resourceType == libARMP_ge_PreplacedResourceType_Rich) || (libARMP_gv_resourceType == libARMP_ge_PreplacedResourceType_RichBGH))) {
+        autoAF6B57F5_g = UnitGroup(null, 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        autoAF6B57F5_u = UnitGroupCount(autoAF6B57F5_g, c_unitCountAll);
+        for (;; autoAF6B57F5_u -= 1) {
+            autoAF6B57F5_var = UnitGroupUnitFromEnd(autoAF6B57F5_g, autoAF6B57F5_u);
+            if (autoAF6B57F5_var == null) { break; }
+            lv_unitData = libARMP_gf_GetResourceUserData(UnitGetType(autoAF6B57F5_var));
+            if ((lv_unitData != null)) {
+                lv_replacementUnitType = UserDataGetGameLink("ResourcesData", lv_unitData, "RichUnit", 1);
+            }
+            else {
+                lv_replacementUnitType = null;
+            }
+            if ((lv_replacementUnitType != null)) {
+                libNtve_gf_ReplaceUnit(autoAF6B57F5_var, lv_replacementUnitType, libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
+            }
+            else {
+                libNtve_gf_ReplaceUnit(autoAF6B57F5_var, "RichMineralField", libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
+            }
+        }
+        auto0308609E_g = UnitGroup(null, 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterRawResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        auto0308609E_u = UnitGroupCount(auto0308609E_g, c_unitCountAll);
+        for (;; auto0308609E_u -= 1) {
+            auto0308609E_var = UnitGroupUnitFromEnd(auto0308609E_g, auto0308609E_u);
+            if (auto0308609E_var == null) { break; }
+            lv_unitData = libARMP_gf_GetResourceUserData(UnitGetType(auto0308609E_var));
+            if ((lv_unitData != null)) {
+                lv_replacementUnitType = UserDataGetGameLink("ResourcesData", lv_unitData, "RichUnit", 1);
+            }
+            else {
+                lv_replacementUnitType = null;
+            }
+            if ((lv_replacementUnitType != null)) {
+                libNtve_gf_ReplaceUnit(auto0308609E_var, lv_replacementUnitType, libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
+            }
+            else {
+                libNtve_gf_ReplaceUnit(auto0308609E_var, "RichVespeneGeyser", libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
+            }
+        }
+    }
+
+    if (((libARMP_gv_resourceType == libARMP_ge_PreplacedResourceType_BGH) || (libARMP_gv_resourceType == libARMP_ge_PreplacedResourceType_RichBGH))) {
+        auto6A446791_g = UnitGroup(null, 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        auto6A446791_u = UnitGroupCount(auto6A446791_g, c_unitCountAll);
+        for (;; auto6A446791_u -= 1) {
+            auto6A446791_var = UnitGroupUnitFromEnd(auto6A446791_g, auto6A446791_u);
+            if (auto6A446791_var == null) { break; }
+            auto6A2EC427_val = UnitBehaviorGet(auto6A446791_var, 1);
+            if (auto6A2EC427_val == "MineralFieldMinerals750") {
+                UnitBehaviorRemove(auto6A446791_var, UnitBehaviorGet(auto6A446791_var, 1), 1);
+                UnitBehaviorAdd(auto6A446791_var, "MineralFieldMineralsBGH", auto6A446791_var, 1);
+            }
+            else if (auto6A2EC427_val == "MineralFieldMinerals") {
+                UnitBehaviorRemove(auto6A446791_var, UnitBehaviorGet(auto6A446791_var, 1), 1);
+                UnitBehaviorAdd(auto6A446791_var, "MineralFieldMineralsBGH", auto6A446791_var, 1);
+            }
+            else if (auto6A2EC427_val == "HighYieldMineralFieldMinerals750") {
+                UnitBehaviorRemove(auto6A446791_var, UnitBehaviorGet(auto6A446791_var, 1), 1);
+                UnitBehaviorAdd(auto6A446791_var, "MineralsHighYieldBGH", auto6A446791_var, 1);
+            }
+            else if (auto6A2EC427_val == "HighYieldMineralFieldMinerals") {
+                UnitBehaviorRemove(auto6A446791_var, UnitBehaviorGet(auto6A446791_var, 1), 1);
+                UnitBehaviorAdd(auto6A446791_var, "MineralsHighYieldBGH", auto6A446791_var, 1);
+            }
+            else {
+            }
+        }
+        auto38B0BDBC_g = UnitGroup(null, 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterRawResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        auto38B0BDBC_u = UnitGroupCount(auto38B0BDBC_g, c_unitCountAll);
+        for (;; auto38B0BDBC_u -= 1) {
+            auto38B0BDBC_var = UnitGroupUnitFromEnd(auto38B0BDBC_g, auto38B0BDBC_u);
+            if (auto38B0BDBC_var == null) { break; }
+            autoA8BB282A_val = UnitBehaviorGet(auto38B0BDBC_var, 1);
+            if (autoA8BB282A_val == "RawRichVespeneGeyserGas") {
+                UnitBehaviorRemove(auto38B0BDBC_var, UnitBehaviorGet(auto38B0BDBC_var, 1), 1);
+                UnitBehaviorAdd(auto38B0BDBC_var, "GasRawRichVespeneGeyserBGH", auto38B0BDBC_var, 1);
+            }
+            else if (autoA8BB282A_val == "RawVespeneGeyserGas") {
+                UnitBehaviorRemove(auto38B0BDBC_var, UnitBehaviorGet(auto38B0BDBC_var, 1), 1);
+                UnitBehaviorAdd(auto38B0BDBC_var, "GasRawVespeneGeyserBGH", auto38B0BDBC_var, 1);
+            }
+            else {
+            }
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_ApplyHarvestableResources_Init () {
+    libARMP_gt_ApplyHarvestableResources = TriggerCreate("libARMP_gt_ApplyHarvestableResources_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MineralWalls:Update
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_MineralWallsUpdate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_closestVisibleMineralWall;
+
+    // Automatic Variable Declarations
+    playergroup auto5766E795_g;
+    int auto5766E795_var;
+    unitgroup auto47B84A54_g;
+    int auto47B84A54_u;
+    unit auto47B84A54_var;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGroupCount(libARMP_gv_mineralWallsGlobalMineralWalls, c_unitCountAlive) <= 0)) {
+        libARMP_gf_MineralWallsActivate(false);
+        return true;
+    }
+
+    auto5766E795_g = PlayerGroupActive();
+    auto5766E795_var = -1;
+    while (true) {
+        auto5766E795_var = PlayerGroupNextPlayer(auto5766E795_g, auto5766E795_var);
+        if (auto5766E795_var < 0) { break; }
+        if ((PlayerType(auto5766E795_var) == c_playerTypeComputer)) {
+            auto47B84A54_g = UnitGroup(null, auto5766E795_var, RegionPlayableMap(), UnitFilter((1 << c_targetFilterWorker), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterUnderConstruction - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterSilenced - 32))), 0);
+            auto47B84A54_u = UnitGroupCount(auto47B84A54_g, c_unitCountAll);
+            for (;; auto47B84A54_u -= 1) {
+                auto47B84A54_var = UnitGroupUnitFromEnd(auto47B84A54_g, auto47B84A54_u);
+                if (auto47B84A54_var == null) { break; }
+                lv_closestVisibleMineralWall = UnitGroupClosestToPoint(libARMP_gv_mineralWallsGlobalMineralWalls, UnitGetPosition(auto47B84A54_var));
+                if ((libNtve_gf_UnitIsVisibleToPlayer(lv_closestVisibleMineralWall, auto5766E795_var) == true) && (UnitCurrentWorkerCount(lv_closestVisibleMineralWall) <= 0) && (PointPathingCost(UnitGetPosition(auto47B84A54_var), UnitGetPosition(lv_closestVisibleMineralWall)) <= 200)) {
+                    libNtve_gf_AICast(auto47B84A54_var, OrderTargetingUnit(null, lv_closestVisibleMineralWall));
+                    break;
+                }
+
+            }
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_MineralWallsUpdate_Init () {
+    libARMP_gt_MineralWallsUpdate = TriggerCreate("libARMP_gt_MineralWallsUpdate_Func");
+    TriggerEnable(libARMP_gt_MineralWallsUpdate, false);
+    TriggerAddEventTimePeriodic(libARMP_gt_MineralWallsUpdate, RandomInt(30, 60), c_timeAI);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MinimapAllyView:CameraSnap
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_MinimapAllyViewCameraSnap_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_p;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_p = EventPlayer();
+
+    // Conditions
+    if (testConds) {
+        if (!((libARMP_gv_minimapAllyViewCameraSnapPointersListLength[lv_p] != 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    CameraPan(lv_p, CameraGetTarget(libARMP_gv_minimapAllyViewCameraSnapPointersList[lv_p][libARMP_gv_minimapAllyViewCameraSnapPointersListPosition[lv_p]]), 0.0, -1, 10.0, false);
+    if (libARMP_gv_minimapAllyViewCameraSnapPointersListPosition[lv_p] >= libARMP_gv_minimapAllyViewCameraSnapPointersListLength[lv_p]) {
+        libARMP_gv_minimapAllyViewCameraSnapPointersListPosition[lv_p] = 0;
+    }
+    else {
+        libARMP_gv_minimapAllyViewCameraSnapPointersListPosition[lv_p] = libARMP_gv_minimapAllyViewCameraSnapPointersListPosition[lv_p] + 1;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_MinimapAllyViewCameraSnap_Init () {
+    libARMP_gt_MinimapAllyViewCameraSnap = TriggerCreate("libARMP_gt_MinimapAllyViewCameraSnap_Func");
+    TriggerEnable(libARMP_gt_MinimapAllyViewCameraSnap, false);
+    TriggerAddEventKeyPressed(libARMP_gt_MinimapAllyViewCameraSnap, c_playerAny, c_keyV, true, c_keyModifierStateExclude, c_keyModifierStateExclude, c_keyModifierStateRequire);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MinimapAllyView:CameraUpdate
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_MinimapAllyViewCameraUpdate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_p;
+    int lv_jindexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto8501AC79_g;
+
+    // Variable Initialization
+    lv_p = EventPlayer();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libARMP_gv_minimapAllyViewCameraSnapPointersListPosition[lv_p] = 0;
+    auto8501AC79_g = libARMP_gf_HumanPlayers();
+    lv_jindexPlayer = -1;
+    while (true) {
+        lv_jindexPlayer = PlayerGroupNextPlayer(auto8501AC79_g, lv_jindexPlayer);
+        if (lv_jindexPlayer < 0) { break; }
+        PingSetPosition(libARMP_gv_minimapAllyViewPings[lv_p][lv_jindexPlayer], CameraGetTarget(lv_jindexPlayer));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_MinimapAllyViewCameraUpdate_Init () {
+    libARMP_gt_MinimapAllyViewCameraUpdate = TriggerCreate("libARMP_gt_MinimapAllyViewCameraUpdate_Func");
+    TriggerEnable(libARMP_gt_MinimapAllyViewCameraUpdate, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MinimapAllyView:AllianceUpdate
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_MinimapAllyViewAllianceUpdate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_indexPlayer;
+    int lv_jindexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup autoA3E948F1_g;
+    playergroup auto70F8688C_g;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoA3E948F1_g = libARMP_gf_HumanPlayers();
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(autoA3E948F1_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        libARMP_gf_MinimapAllyViewCameraSnapPointersListUpdate(lv_indexPlayer);
+        auto70F8688C_g = libARMP_gf_HumanPlayers();
+        lv_jindexPlayer = -1;
+        while (true) {
+            lv_jindexPlayer = PlayerGroupNextPlayer(auto70F8688C_g, lv_jindexPlayer);
+            if (lv_jindexPlayer < 0) { break; }
+            libARMP_gv_minimapAllyViewPings[lv_indexPlayer][lv_jindexPlayer] = PingLastCreated();
+            if ((PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupAlly, lv_indexPlayer), lv_jindexPlayer) == true) && (lv_jindexPlayer != lv_indexPlayer)) {
+                PingSetVisible(libARMP_gv_minimapAllyViewPings[lv_indexPlayer][lv_jindexPlayer], true);
+            }
+            else {
+                PingSetVisible(libARMP_gv_minimapAllyViewPings[lv_indexPlayer][lv_jindexPlayer], false);
+            }
+        }
+    }
+    libARMP_gf_MinimapAllyViewRescale();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_MinimapAllyViewAllianceUpdate_Init () {
+    libARMP_gt_MinimapAllyViewAllianceUpdate = TriggerCreate("libARMP_gt_MinimapAllyViewAllianceUpdate_Func");
+    TriggerEnable(libARMP_gt_MinimapAllyViewAllianceUpdate, false);
+    TriggerAddEventPlayerAllianceChange(libARMP_gt_MinimapAllyViewAllianceUpdate, c_playerAny);
+    TriggerAddEventPlayerLeft(libARMP_gt_MinimapAllyViewAllianceUpdate, c_playerAny, c_gameResultUndecided);
+    TriggerAddEventPlayerJoin(libARMP_gt_MinimapAllyViewAllianceUpdate, c_playerAny);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: MinimapAllyView:Init
+//--------------------------------------------------------------------------------------------------
+bool libARMP_gt_MinimapAllyViewInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    playergroup lv_players;
+    int lv_indexPlayer;
+    int lv_jindexPlayer;
+
+    // Automatic Variable Declarations
+    playergroup auto57A3A0F5_g;
+    playergroup auto663662F2_g;
+
+    // Variable Initialization
+    lv_players = PlayerGroupEmpty();
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    lv_players = libARMP_gf_HumanPlayers();
+    auto57A3A0F5_g = lv_players;
+    lv_indexPlayer = -1;
+    while (true) {
+        lv_indexPlayer = PlayerGroupNextPlayer(auto57A3A0F5_g, lv_indexPlayer);
+        if (lv_indexPlayer < 0) { break; }
+        libARMP_gf_RegisterCameraMoveEvent(libARMP_gt_MinimapAllyViewCameraUpdate, lv_indexPlayer, c_cameraMoveReasonAny);
+        auto663662F2_g = lv_players;
+        lv_jindexPlayer = -1;
+        while (true) {
+            lv_jindexPlayer = PlayerGroupNextPlayer(auto663662F2_g, lv_jindexPlayer);
+            if (lv_jindexPlayer < 0) { break; }
+            libNtve_gf_CreatePingFacingAngle(PlayerGroupSingle(lv_indexPlayer), "SCBW_PingViewArea", CameraGetTarget(lv_jindexPlayer), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_jindexPlayer, false)), 0.0, 270.0);
+            libARMP_gv_minimapAllyViewPings[lv_indexPlayer][lv_jindexPlayer] = PingLastCreated();
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libARMP_gt_MinimapAllyViewInit_Init () {
+    libARMP_gt_MinimapAllyViewInit = TriggerCreate("libARMP_gt_MinimapAllyViewInit_Func");
+}
+
+void libARMP_InitTriggers () {
+    libARMP_gt_OfflineGameAttributesInitialisation_Init();
+    libARMP_gt_OnlineGameAttributesInitialisation_Init();
+    libARMP_gt_CommonTriggers_Init();
+    libARMP_gt_RunAI_Init();
+    libARMP_gt_UEDAIController_Init();
+    libARMP_gt_SupportWorkerOnlyPathsForSomeCustomMaps_Init();
+    libARMP_gt_SprayUpgrades_Init();
+    libARMP_gt_ApplyInitialResources_Init();
+    libARMP_gt_ApplyHarvestableResources_Init();
+    libARMP_gt_MineralWallsUpdate_Init();
+    libARMP_gt_MinimapAllyViewCameraSnap_Init();
+    libARMP_gt_MinimapAllyViewCameraUpdate_Init();
+    libARMP_gt_MinimapAllyViewAllianceUpdate_Init();
+    libARMP_gt_MinimapAllyViewInit_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libARMP_InitLib_completed = false;
+
+void libARMP_InitLib () {
+    if (libARMP_InitLib_completed) {
+        return;
+    }
+
+    libARMP_InitLib_completed = true;
+
+    libARMP_InitLibraries();
+    libARMP_InitVariables();
+    libARMP_InitTriggers();
+}
+

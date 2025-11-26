@@ -1,0 +1,186 @@
+
+//--------------------------------------------------------------------------------------------------
+//  BroodWar Terran Units
+//--------------------------------------------------------------------------------------------------
+const string c_BWTU_Battlecruiser           = "BattlecruiserSCBW";
+const string c_BWTU_Dropship                = "DropshipSCBW";
+const string c_BWTU_Firebat                 = "FirebatSCBW";
+const string c_BWTU_Ghost                   = "GhostSCBW";
+const string c_BWTU_Goliath                 = "GoliathSCBW";
+const string c_BWTU_Kerrigan                = "KerriganSCBW";
+const string c_BWTU_Marine                  = "MarineSCBW";
+const string c_BWTU_Medic                   = "MedicSCBW";
+const string c_BWTU_Nuke                    = "NukeSCBW";
+const string c_BWTU_ScienceVessel           = "ScienceVesselSCBW";
+const string c_BWTU_SCV                     = "SCVSCBW";
+const string c_BWTU_SiegeTank               = "SiegeTankSCBW";
+const string c_BWTU_SiegeTankSieged         = "SiegeTankSiegedSCBW";
+const string c_BWTU_SiegeTank_Alias          = "Alias_SiegeTankSCBW";
+const string c_BWTU_SpiderMine              = "SpiderMineSCBW";
+const string c_BWTU_SpiderMine_Burrowed     = "SpiderMineSCBW@Burrowed";
+const string c_BWTU_SpiderMine_Alias        = "Alias_SpiderMineSCBW";
+const string c_BWTU_Valkyrie                = "ValkyrieSCBW";
+const string c_BWTU_Vulture                 = "VultureSCBW";
+const string c_BWTU_Wraith                  = "WraithSCBW";
+
+//--------------------------------------------------------------------------------------------------
+//  BroodWar Terran Buildings
+//--------------------------------------------------------------------------------------------------
+const string c_BWTB_Academy                 = "AcademySCBW";
+const string c_BWTB_Armory                  = "ArmorySCBW";
+const string c_BWTB_Barracks                = "BarracksSCBW";
+const string c_BWTB_Bunker                  = "BunkerSCBW";
+const string c_BWTB_CommandCenter           = "CommandCenterSCBW";
+const string c_BWTB_ComsatStation           = "ComsatStationSCBW";
+const string c_BWTB_ControlTower            = "ControlTowerSCBW";
+const string c_BWTB_CovertOps               = "CovertOpsSCBW";
+const string c_BWTB_EngineeringBay          = "EngineeringBaySCBW";
+const string c_BWTB_Factory                 = "FactorySCBW";
+const string c_BWTB_MachineShop             = "MachineShopSCBW";
+const string c_BWTB_MissileTurret           = "MissileTurretSCBW";
+const string c_BWTB_NuclearSilo             = "NuclearSiloSCBW";
+const string c_BWTB_PhysicsLab              = "PhysicsLabSCBW";
+const string c_BWTB_Refinery                = "RefinerySCBW";
+const string c_BWTB_Refinery_Rich           = "RefinerySCBW_Rich";
+const string c_BWTB_ScienceFacility         = "ScienceFacilitySCBW";
+const string c_BWTB_Starport                = "StarportSCBW";
+const string c_BWTB_SupplyDepot             = "SupplyDepotSCBW";
+
+//--------------------------------------------------------------------------------------------------
+//  BroodWar Terran Research Upgrades
+//--------------------------------------------------------------------------------------------------
+const string c_BWTR_BattlecruiserYamato     = "BattlecruiserSCBWYamato";
+
+const string c_BWTR_BattlecruiserSCBWEnergyUpgrade           = "BattlecruiserSCBWEnergyUpgrade";
+const string c_BWTR_BattlecruiserSCBWYamatoResearch          = "BattlecruiserSCBWYamatoResearch";
+const string c_BWTR_DropshipSCBWSpeedBoostResearch           = "DropshipSCBWSpeedBoostResearch";
+const string c_BWTR_GhostSCBWCloakResearch                   = "GhostSCBWCloakResearch";
+const string c_BWTR_GhostSCBWEnergyUpgrade                   = "GhostSCBWEnergyUpgrade";
+const string c_BWTR_GhostSCBWHoldFireResearch                = "GhostSCBWHoldFireResearch";
+const string c_BWTR_GhostSCBWLockdownResearch                = "GhostSCBWLockdownResearch";
+const string c_BWTR_GhostSCBWSightUpgrade                    = "GhostSCBWSightUpgrade";
+const string c_BWTR_GhostSCBWWeaponsFreeResearch             = "GhostSCBWWeaponsFreeResearch";
+const string c_BWTR_GoliathSCBWRangeUpgrade                  = "GoliathSCBWRangeUpgrade";
+const string c_BWTR_MarineSCBWRangeUpgrade                   = "MarineSCBWRangeUpgrade";
+const string c_BWTR_MedicSCBWEnergyUpgrade                   = "MedicSCBWEnergyUpgrade";
+const string c_BWTR_MedicSCBWHealResearch                    = "MedicSCBWHealResearch";
+const string c_BWTR_MedicSCBWOpticFlareResearch              = "MedicSCBWOpticFlareResearch";
+const string c_BWTR_MedicSCBWRestorationResearch             = "MedicSCBWRestorationResearch";
+const string c_BWTR_ScienceVesselSCBWDefensiveMatrixResearch = "ScienceVesselSCBWDefensiveMatrixResearch";
+const string c_BWTR_ScienceVesselSCBWEMPShockwaveResearch    = "ScienceVesselSCBWEMPShockwaveResearch";
+const string c_BWTR_ScienceVesselSCBWEnergyUpgrade           = "ScienceVesselSCBWEnergyUpgrade";
+const string c_BWTR_ScienceVesselSCBWIrradiateResearch       = "ScienceVesselSCBWIrradiateResearch";
+const string c_BWTR_SiegeModeSCBWResearch                    = "SiegeModeSCBWResearch";
+const string c_BWTR_StimpackSCBWResearch                     = "StimpackSCBWResearch";
+const string c_BWTR_TerranInfantryArmorsSCBW                 = "TerranInfantryArmorsSCBW";
+const string c_BWTR_TerranInfantryArmorsSCBW_Lvl1            = "TerranInfantryArmorsSCBW@Lvl1";
+const string c_BWTR_TerranInfantryArmorsSCBW_Lvl2            = "TerranInfantryArmorsSCBW@Lvl2";
+const string c_BWTR_TerranInfantryArmorsSCBW_Lvl3            = "TerranInfantryArmorsSCBW@Lvl3";
+const string c_BWTR_TerranInfantryWeapons                    = "TerranInfantryWeaponsSCBW";
+const string c_BWTR_TerranInfantryWeaponsSCBW_Lvl1           = "TerranInfantryWeaponsSCBW@Lvl1";
+const string c_BWTR_TerranInfantryWeaponsSCBW_Lvl2           = "TerranInfantryWeaponsSCBW@Lvl2";
+const string c_BWTR_TerranInfantryWeaponsSCBW_Lvl3           = "TerranInfantryWeaponsSCBW@Lvl3";
+const string c_BWTR_MechPlating                              = "MechPlating";
+const string c_BWTR_MechPlating_Lvl1                         = "MechPlating@Lvl1";
+const string c_BWTR_MechPlating_Lvl2                         = "MechPlating@Lvl2";
+const string c_BWTR_MechPlating_Lvl3                         = "MechPlating@Lvl3";
+const string c_BWTR_TerranShipPlatingSCBW                    = "TerranShipPlatingSCBW";
+const string c_BWTR_TerranShipPlatingSCBW_Lvl1               = "TerranShipPlatingSCBW@Lvl1";
+const string c_BWTR_TerranShipPlatingSCBW_Lvl2               = "TerranShipPlatingSCBW@Lvl2";
+const string c_BWTR_TerranShipPlatingSCBW_Lvl3               = "TerranShipPlatingSCBW@Lvl3";
+const string c_BWTR_TerranShipWeaponsSCBW                    = "TerranShipWeaponsSCBW";
+const string c_BWTR_TerranShipWeaponsSCBW_Lvl1               = "TerranShipWeaponsSCBW@Lvl1";
+const string c_BWTR_TerranShipWeaponsSCBW_Lvl2               = "TerranShipWeaponsSCBW@Lvl2";
+const string c_BWTR_TerranShipWeaponsSCBW_Lvl3               = "TerranShipWeaponsSCBW@Lvl3";
+const string c_BWTR_TerranVehiclePlatingSCBW                 = "TerranVehiclePlatingSCBW";
+const string c_BWTR_TerranVehiclePlatingSCBW_Lvl1            = "TerranVehiclePlatingSCBW@Lvl1";
+const string c_BWTR_TerranVehiclePlatingSCBW_Lvl2            = "TerranVehiclePlatingSCBW@Lvl2";
+const string c_BWTR_TerranVehiclePlatingSCBW_Lvl3            = "TerranVehiclePlatingSCBW@Lvl3";
+const string c_BWTR_TerranVehicleWeaponsSCBW                 = "TerranVehicleWeaponsSCBW";
+const string c_BWTR_TerranVehicleWeaponsSCBW_Lvl1            = "TerranVehicleWeaponsSCBW@Lvl1";
+const string c_BWTR_TerranVehicleWeaponsSCBW_Lvl2            = "TerranVehicleWeaponsSCBW@Lvl2";
+const string c_BWTR_TerranVehicleWeaponsSCBW_Lvl3            = "TerranVehicleWeaponsSCBW@Lvl3";
+const string c_BWTR_VulturePlaceSpiderMineSCBWResearch       = "VulturePlaceSpiderMineSCBWResearch";
+const string c_BWTR_VultureSCBWSpeedUpgrade                  = "VultureSCBWSpeedUpgrade";
+const string c_BWTR_WraithSCBWCloakResearch                  = "WraithSCBWCloakResearch";
+const string c_BWTR_WraithSCBWEnergyUpgrade                  = "WraithSCBWEnergyUpgrade";
+
+//--------------------------------------------------------------------------------------------------
+//  Markers
+//--------------------------------------------------------------------------------------------------
+const string c_BWMK_BattlecruiserSCBWYamato          = "Abil/BattlecruiserSCBWYamato/AI";
+const string c_BWMK_ComsatStationSCBWScannerSweep    = "Abil/ComsatStationSCBWScannerSweep/AI";
+const string c_BWMK_FirebatSCBWStimpack              = "Abil/FirebatSCBWStimpack/AI";
+const string c_BWMK_GhostSCBWCloak                   = "Abil/GhostSCBWCloak/AI";
+const string c_BWMK_GhostSCBWLockdown                = "Abil/GhostSCBWLockdown/AI";
+const string c_BWMK_GameGhostSCBWLockdown            = "Abil/GhostSCBWLockdown";
+const string c_BWMK_GhostSCBWNuclearStrike           = "Abil/GhostSCBWNuclearStrike/AI";
+const string c_BWMK_MarineSCBWStimpack               = "Abil/MarineSCBWStimpack/AI";
+const string c_BWMK_MedicSCBWHeal                    = "Abil/MedicSCBWHeal/AI";
+const string c_BWMK_MedicSCBWOpticFlare              = "Abil/MedicSCBWOpticFlare/AI";
+const string c_BWMK_GameMedicSCBWOpticFlare          = "Abil/MedicSCBWOpticFlare";
+const string c_BWMK_MedicSCBWRestoration             = "Abil/MedicSCBWRestoration/AI";
+const string c_BWMK_NukeSCBWArm                      = "Abil/NukeSCBWArm/AI";
+const string c_BWMK_QueenSCBWEnsnare                 = "Abil/QueenSCBWEnsnare/AI";
+const string c_BWMK_ScienceVesselSCBWDefensiveMatrix = "Abil/ScienceVesselSCBWDefensiveMatrix/AI";
+const string c_BWMK_ScienceVesselSCBWEMPShockwave    = "Abil/ScienceVesselSCBWEMPShockwave/AI";
+const string c_BWMK_ScienceVesselSCBWIrradiate       = "Abil/ScienceVesselSCBWIrradiate/AI";
+const string c_BWMK_SCVSCBW_Repair                   = "Abil/SCVSCBW@Repair/AI";
+const string c_BWMK_SiegeTankSCBW_Siege              = "Abil/SiegeTankSCBW@Siege/AI";
+const string c_BWMK_SiegeTankSCBWSieged_Unsiege      = "Abil/SiegeTankSCBWSieged@Unsiege/AI";
+const string c_BWMK_VulturePlaceSpiderMineSCBW       = "Abil/VulturePlaceSpiderMineSCBW/AI";
+const string c_BWMK_WraithSCBWCloak                  = "Abil/WraithSCBWCloak/AI";
+//--------------------------------------------------------------------------------------------------
+//  Buffs
+//--------------------------------------------------------------------------------------------------
+const string c_BWBF_FirebatSCBWStimpack_AB                      = "FirebatSCBWStimpack";
+const string c_BWBF_GhostSCBWCloak                              = "GhostSCBWCloak";
+const string c_BWBF_GhostSCBWHoldFire_AB                        = "GhostSCBWHoldFire@AB";
+const string c_BWBF_GhostSCBWHoldFire_ABSetup                   = "GhostSCBWHoldFire@ABSetup";
+const string c_BWBF_GhostSCBWLockdown_AB                        = "GhostSCBWLockdown";
+const string c_BWBF_MarineSCBWStimpack_AB                       = "MarineSCBWStimpack";
+const string c_BWBF_MedicSCBWOpticFlare_ABBlind                 = "MedicSCBWOpticFlare";
+const string c_BWBF_ScienceVesselSCBWDefensiveMatrix_AB         = "ScienceVesselSCBWDefensiveMatrix";
+const string c_BWBF_ScienceVesselSCBWDefensiveMatrix_ABDummy    = "ScienceVesselSCBWDefensiveMatrix@ABDummy";
+const string c_BWBF_ScienceVesselSCBWEMPShockwave_ABDecloak     = "ScienceVesselSCBWEMPShockwave@ABDecloak";
+const string c_BWBF_ScienceVesselSCBWIrradiate_AB               = "ScienceVesselSCBWIrradiate@Irradiated";
+const string c_BWBF_SpiderMineSCBW_ABInvulnerable               = "SpiderMineSCBW@ABInvulnerable";
+//--------------------------------------------------------------------------------------------------
+//  Effects
+//--------------------------------------------------------------------------------------------------
+const string c_BWEF_ScienceVesselSCBWEMPShockwave_Search        = "ScienceVesselSCBWEMPShockwave@Search";
+const string c_BWEF_ScienceVesselSCBWIrradiate_SearchInitial    = "ScienceVesselSCBWIrradiate@SearchInitial";
+const string c_BWEF_ScienceVesselSCBWIrradiate_SearchPeriodic   = "ScienceVesselSCBWIrradiate@SearchPeriodic";
+const string c_BWEF_BattlecruiserSCBWYamato_Damage              = "BattlecruiserSCBWYamato@Damage";
+const string c_BWEF_GhostSCBWNuclearStrike_Damage               = "GhostSCBWNuclearStrike@Damage";
+//--------------------------------------------------------------------------------------------------
+//  Weapons
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//  Abilities
+//--------------------------------------------------------------------------------------------------
+const string c_BWAB_InfantryWeapons                  = "TerranInfantryWeaponsSCBW";
+const string c_BWAB_InfantryArmors                   = "TerranInfantryArmorsSCBW";
+const string c_BWAB_BattlecruiserSCBWYamato          = "BattlecruiserSCBWYamato";
+const string c_BWAB_BunkerTransport                  = "BunkerSCBW@Transport";
+const string c_BWAB_ComsatStationSCBWScannerSweep    = "ComsatStationSCBWScannerSweep";
+const string c_BWAB_CommandCenterSCBW_AddOns         = "CommandCenterSCBW@AddOns";
+const string c_BWAB_DropshipSCBWSpeedBoost           = "DropshipSCBWSpeedBoost";
+const string c_BWAB_FirebatSCBWStimpack              = "FirebatSCBWStimpack";
+const string c_BWAB_GhostSCBWCloak                   = "GhostSCBWCloak";
+const string c_BWAB_GhostSCBWLockdown                = "GhostSCBWLockdown";
+const string c_BWAB_GhostSCBWNuclearStrike           = "GhostSCBWNuclearStrike";
+const string c_BWAB_MarineSCBWStimpack               = "MarineSCBWStimpack";
+const string c_BWAB_MedicSCBWHeal                    = "MedicSCBWHeal";
+const string c_BWAB_MedicSCBWOpticFlare              = "MedicSCBWOpticFlare";
+const string c_BWAB_MedicSCBWRestoration             = "MedicSCBWRestoration";
+const string c_BWAB_NukeSCBWArm                      = "NukeSCBWArm";
+const string c_BWAB_ScienceVesselSCBWDefensiveMatrix = "ScienceVesselSCBWDefensiveMatrix";
+const string c_BWAB_ScienceVesselSCBWEMPShockwave    = "ScienceVesselSCBWEMPShockwave";
+const string c_BWAB_ScienceVesselSCBWIrradiate       = "ScienceVesselSCBWIrradiate";
+const string c_BWAB_SCVSCBW_Repair                   = "SCVSCBW_Repair";
+const string c_BWAB_SiegeTankSCBW_Siege              = "SiegeTankSCBW_Siege";
+const string c_BWAB_SiegeTankSCBWSieged_Unsiege      = "SiegeTankSCBWSieged_Unsiege";
+const string c_BWAB_VulturePlaceSpiderMineSCBW       = "VulturePlaceSpiderMineSCBW";
+const string c_BWAB_WraithSCBWCloak                  = "WraithSCBWCloak";
+

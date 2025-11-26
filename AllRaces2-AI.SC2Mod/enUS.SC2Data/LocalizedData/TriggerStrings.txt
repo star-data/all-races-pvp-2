@@ -1,0 +1,5 @@
+﻿CustomScript/Name/lib_B09742AC_644D5488=Includes
+FunctionDef/Name/lib_B09742AC_EB7BF649=SetAIType
+Library/Name/B09742AC=Mods - AI
+ParamDef/Name/lib_B09742AC_3E3B7D2F=player
+ParamDef/Name/lib_B09742AC_F521534F=aiType

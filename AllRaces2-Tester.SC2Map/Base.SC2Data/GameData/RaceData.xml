@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRace id="BWPr">
+        <Flags index="Selectable" value="1"/>
+    </CRace>
+    <CRace id="BWTe">
+        <Flags index="Selectable" value="1"/>
+    </CRace>
+    <CRace id="BWZe">
+        <Flags index="Selectable" value="1"/>
+    </CRace>
+    <CRace id="Gen">
+        <Icon value="Assets\Icons\genetron-color.dds"/>
+    </CRace>
+    <CRace id="Keir">
+        <Icon value="Assets\Icons\keiron-color.dds"/>
+    </CRace>
+    <CRace id="Neut">
+        <Icon value="assets\textures\ui_battlenet_glues_multiplayer_racebutton_raceicon_selected_rand.dds"/>
+    </CRace>
+    <CRace id="PrTD">
+        <Icon value="Assets\Icons\taldarim-color.dds"/>
+    </CRace>
+    <CRace id="Prot">
+        <Icon value="assets\textures\ui_battlenet_glues_multiplayer_racebutton_raceicon_selected_prot.dds"/>
+    </CRace>
+    <CRace id="TerU">
+        <Icon value="Assets\Textures\decal_terran_0050_02.dds"/>
+    </CRace>
+    <CRace id="Terr">
+        <Icon value="assets\textures\ui_battlenet_glues_multiplayer_racebutton_raceicon_selected_terr.dds"/>
+    </CRace>
+    <CRace id="UED">
+        <Icon value="Assets\Icons\ueds.dds"/>
+    </CRace>
+    <CRace id="Xayi">
+        <Icon value="Assets\Icons\xayid-color.dds"/>
+    </CRace>
+    <CRace id="ZHBR">
+        <Icon value="Assets\Icons\hybrid-color.dds"/>
+    </CRace>
+    <CRace id="Zerg">
+        <Icon value="assets\textures\ui_battlenet_glues_multiplayer_racebutton_raceicon_selected_zerg.dds"/>
+    </CRace>
+</Catalog>

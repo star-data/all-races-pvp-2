@@ -1,0 +1,40 @@
+include "TriggerLibs/natives"
+
+include "LibB09742AC_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Mods - AI
+//--------------------------------------------------------------------------------------------------
+// Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Includes
+//--------------------------------------------------------------------------------------------------
+include "TriggerLibs/nativeLib"
+include "TriggerLibs/DebugAI"
+include "TriggerLibs/RequirementsAI"
+include "TriggerLibs/BuildAI"
+include "TriggerLibs/SharedAI"
+include "TriggerLibs/Tactical/TacticalAI"
+include "TriggerLibs/CampaignAI"
+include "TriggerLibs/MeleeAI"
+include "TriggerLibs/switchai"
+
+void libB09742AC_InitCustomScript () {
+}
+
+// Functions
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libB09742AC_InitLib_completed = false;
+
+void libB09742AC_InitLib () {
+    if (libB09742AC_InitLib_completed) {
+        return;
+    }
+
+    libB09742AC_InitLib_completed = true;
+
+    libB09742AC_InitCustomScript();
+}
+

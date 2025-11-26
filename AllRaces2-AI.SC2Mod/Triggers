@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TriggerData>
+    <Library Id="B09742AC">
+        <Root>
+            <Item Type="CustomScript" Library="B09742AC" Id="644D5488"/>
+            <Item Type="FunctionDef" Library="B09742AC" Id="EB7BF649"/>
+        </Root>
+        <Element Type="CustomScript" Id="644D5488">
+            <Identifier>Test</Identifier>
+            <ScriptCode>
+                include &quot;TriggerLibs/nativeLib&quot;
+                include &quot;TriggerLibs/DebugAI&quot;
+                include &quot;TriggerLibs/RequirementsAI&quot;
+                include &quot;TriggerLibs/BuildAI&quot;
+                include &quot;TriggerLibs/SharedAI&quot;
+                include &quot;TriggerLibs/Tactical/TacticalAI&quot;
+                include &quot;TriggerLibs/CampaignAI&quot;
+                include &quot;TriggerLibs/MeleeAI&quot;
+                include &quot;TriggerLibs/switchai&quot;
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="EB7BF649">
+            <FlagAction/>
+            <FlagNative/>
+            <Parameter Type="ParamDef" Library="B09742AC" Id="3E3B7D2F"/>
+            <Parameter Type="ParamDef" Library="B09742AC" Id="F521534F"/>
+        </Element>
+        <Element Type="ParamDef" Id="3E3B7D2F">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="B09742AC" Id="1C180294"/>
+        </Element>
+        <Element Type="Param" Id="1C180294">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="ParamDef" Id="F521534F">
+            <ParameterType>
+                <Type Value="int"/>
+            </ParameterType>
+            <Default Type="Param" Library="B09742AC" Id="DC008A3F"/>
+        </Element>
+        <Element Type="Param" Id="DC008A3F">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+    </Library>
+</TriggerData>

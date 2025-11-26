@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Includes>
+    <Catalog path="FixData/DummyData.xml"/>
+    <Catalog path="FixData/Protoss.xml"/>
+    <Catalog path="FixData/Terran.xml"/>
+    <Catalog path="FixData/Zerg.xml"/>
+</Includes>

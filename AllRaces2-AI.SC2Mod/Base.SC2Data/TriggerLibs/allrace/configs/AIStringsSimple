@@ -1,0 +1,85 @@
+# Terran
+
+## Counter
+    Zealot:              1 Marauder
+    Zealot:              0.5 Hellbat
+
+## Unit
+
+    Worker:                      SCV
+    Supply:                      SupplyDepot
+    Refinery:                    Refinery
+    Detector:                    Raven
+    TownHall:                    CommandCenter
+    DropOff:                     CommandCenter_Alias
+    Priority ClearObstacles:     Marine,Reaper,Marauder
+    Priority DiversionGround:    Reaper
+    Priority DiversionAir:       Banshee
+    Priority Healer:             Medivac
+    Combat Ground Tier1:         Marine,Marauder,Reaper,Hellion,WidowMine
+    Combat Ground Tier2:         Ghost,SiegeTank,Cyclone,Hellbat
+    Combat Ground Tier3:         Thor
+    Combat Air Tier2:            Viking,Raven,Banshee,Liberator
+    Combat Air Tier3:            Battlecruiser
+    StaticDefense:               Bunker, MissileTurret
+    StaticDetector:              MissileTurret
+    Production:                  Barracks, Factory, Starport,BarracksReactor,FactoryReactor,StarportReactor
+    Tech:                        FactoryTechLab,BarracksTechLab,StarportTechLab,EngineeringBay,Armory,GhostAcademy,FusionCore
+    Support:                     Medivac
+    EarlyDefenseScout:           Medivac
+
+## Upgrades
+    Open:       MarineStimPack
+    Mid:        MarineShield,MarauderSlow,BansheeCloak,InfantryWeapons1,InfantryArmor1,ShipWeapons1,ShipPlating1,MissileTurretRange
+    Late:       InfantryWeapons2,InfantryArmor2,HellionDamage,GhostCloak,VehicleWeapons1,VehiclePlating1, BattlecruiserYamato,ShipWeapons2,ShipPlating2
+    Final:      InfantryWeapons3,InfantryArmor3,VehicleWeapons3,VehiclePlating3,BuildingArmor,BunkerSpace,ShipWeapons3,ShipPlating3
+
+## Markers
+    Nuke: GhostAcademy ArmSiloWithNuke 0
+
+## Triggers
+    InitScript: AISetNukeConstants(player);
+
+## Build Hard
+
+    Defend Basic:                8 Marine
+    Defend Advanced:             4 Viking,4 Hellion,4 Marauder
+    Detection:                   1 Raven, 1 OrbitalCommand, 2 MissileTurret
+    AtEachTown:                  Bunker, 2 MissileTurret
+    Open Any Initial:            CommandCenter_Alias, 10 SCV, SupplyDepot, 12 SCV, Barracks, 14 SCV, Refinery, 16 SCV, Marine, OrbitalCommand, 2 SupplyDepot, 2 Marine
+    Open Any AfterFarms:         2 Barracks, BarracksTechLab
+    Open Any Techup:             1 Barracks,1 BarracksTechLab,1 EngineeringBay
+    Open Any Upgrades:           if 3 Banshee BansheeCloak
+    Mid Any Initial:             next Barracks, next BarracksTechLab, 2 Factory, 2 FactoryTechLab, 2 Starport, 2 StarportTechLab, Medivac
+    Mid Any ArmyScale100:        2 Raven, 1 OrbitalCommand
+    Mid Any Techup:              1 Factory,1 FactoryTechLab,1 SensorTower,1 Armory,1 Starport,1 StarportTechLab,3 Barracks,2 BarracksTechLab,1 BarracksReactor
+    Mid Any Upgrades:            MarineStimPack,MarineShield,if 3 Marauder MarauderSlow,InfantryWeapons1,InfantryArmor1,ShipWeapons1,ShipPlating1,if MissileTurret MissileTurretRange
+    Late Any Initial:            Medivac
+    Late Any AfterExpand:        3 Barracks, 2 BarracksTechLab, 1 BarracksReactor, 3 Factory, 3 FactoryTechLab, 3 Starport, 2 StarportTechLab, 1 StarportReactor, 2 Raven, 1 OrbitalCommand
+    Late Any ArmyScale70:        3 Medivac, 3 Raven, 2 MissileTurret
+    Late Any Techup:             1 GhostAcademy,1 FusionCore,2 EngineeringBay,2 Armory,2 Factory,1 FactoryReactor,2 Starport,1 StarportReactor
+    Late Any Upgrades:           InfantryWeapons2,InfantryArmor2,if 4 Reaper ReaperSpeed,if 4 Hellion HellionDamage ,if 3 Ghost GhostCloak,VehicleWeapons1,VehiclePlating1,if Battlecruiser BattlecruiserYamato,ShipWeapons2,ShipPlating2
+    Final Any Upgrades:          InfantryWeapons3,InfantryArmor3,VehicleWeapons3,VehiclePlating3,ShipWeapons3,ShipPlating3,BuildingArmor,BunkerSpace,MissileTurretRange
+
+## Army Hard
+
+    Open Rush:          duration 350  2 Barracks, 5 Marine, 2 Marauder, 2 Marine, 2 Marine
+    Open Timing:        duration 400  7 Marine, 4 Marauder, 2 Marine, 2 Marine
+    Open Power:         duration 520  8 Marine, 6 Marauder, 2 Marine, 2 Marine
+    Open Macro:         duration 240  5 Marine, 2 Marauder, 2 Marine, 2 Marine
+    Open Air:           duration 540  4 Banshee, 2 Viking
+    Mid Rush:           duration 300  10 Marine, 5 Marauder, 1 Marauder, 1 Marauder
+    Mid Timing:         duration 320  12 Marine, 6 Marauder, 1 Ghost, 1 Ghost
+    Mid Power:          duration 340  16 Marine, 6 Marauder, 1 Ghost, 1 Ghost
+    Mid Macro:          duration 540  12 Marine, 6 Marauder, 1 Marauder, 1 Marauder, 2 Ghost, 3 Medivac
+    Mid Air:            duration 320  3 Viking, 3 Banshee, 2 Viking, 1 Viking
+    Late Core:          duration 270  16 Marine, 8 Marauder, 1 Ghost, 3 Medivac
+    Late HighTech:      duration 290  12 Marine, 4 Hellion, 8 SiegeTank
+    Late Special:       duration 310  9 Marine, 4 Marauder, 4 Ghost, 1 Ghost, 1 Ghost, 1 Medivac, 2 Raven, 1 SiegeTank, 1 SiegeTank
+    Late Mixed:         duration 330  16 Marine, 8 Marauder, 2 Ghost, 3 Medivac, 2 SiegeTank, 1 SiegeTank
+    Late Air:           duration 290  4 Viking, 3 Banshee, 2 Viking, 2 Viking, 2 Viking, 1 Battlecruiser
+    Final Core:         duration 250  30 Marine, 10 Marauder, 2 Ghost, 3 Medivac
+    Final HighTech:     duration 270  16 Marine, 4 Hellion, 10 SiegeTank, 1 Thor
+    Final Special:      duration 290  16 Marine, 6 Marauder, 4 Ghost, 1 Ghost, 1 Ghost, 2 Medivac, 2 Raven, 2 SiegeTank, 2 SiegeTank
+    Final Mixed:        duration 310  20 Marine, 16 Marauder, 2 Ghost, 2 Viking, 2 SiegeTank, 2 SiegeTank
+    Final Air:          duration 270  4 Viking, 4 Banshee, 2 Viking, 2 Viking, 2 Viking, 2 Battlecruiser

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Catalog>
+<CSoundtrack id="Music_Observer_SCI" parent="Music">
+  <CueArray>
+    <MasterLayer Sound="GameMusicObserver_SCI"/>
+  </CueArray>
+  <Delay value="120,180"/>
+</CSoundtrack>
+<CSoundtrack id="Music_Observer_ALL" parent="Music">
+  <CueArray>
+    <MasterLayer Sound="GameMusicObserver_ALL"/>
+  </CueArray>
+  <Delay value="120,180"/>
+</CSoundtrack>
+<CSoundtrack id="Music_GenLow" parent="Music">
+  <CueArray>
+    <MasterLayer Sound="Music_Genetron"/>
+  </CueArray>
+  <Delay value="120,180"/>
+</CSoundtrack>
+<CSoundtrack id="Music_XayiLow" parent="Music">
+  <CueArray>
+    <MasterLayer Sound="GameMusicXayid"/>
+  </CueArray>
+  <Delay value="120,180"/>
+</CSoundtrack>
+<CSoundtrack id="Music_KeirLow" parent="Music">
+  <CueArray>
+    <MasterLayer Sound="GameMusicKeir"/>
+  </CueArray>
+  <Delay value="120,180"/>
+</CSoundtrack>
+<CSoundtrack id="Music_UPLLow" parent="Music">
+  <CueArray>
+    <MasterLayer Sound="GameMusicUPL"/>
+  </CueArray>
+  <Delay value="120,180"/>
+</CSoundtrack>
+
+</Catalog>

@@ -1,0 +1,8 @@
+
+//--------------------------------------------------------------------------------------------------
+//  AIBaseConfig
+//--------------------------------------------------------------------------------------------------
+void AIBaseConfigBWTerran (int player,bool campaign) {
+    AIAddHealer(player, "SCVSCBW", "SCVSCBW@Repair", 0);
+    AIAddHealer(player, "MedicSCBW", "MedicSCBWHeal", 0);
+}

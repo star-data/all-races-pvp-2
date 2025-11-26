@@ -1,0 +1,61 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: All Races
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libARMP_ge_PreplacedResourceType_Default = 0;
+const int libARMP_ge_PreplacedResourceType_Rich = 1;
+const int libARMP_ge_PreplacedResourceType_BGH = 2;
+const int libARMP_ge_PreplacedResourceType_RichBGH = 3;
+const int libARMP_ge_PreplacedResourceType_Tiberium = 4;
+const int libARMP_ge_SCEvoAIOption_MineralWallClearing = 0;
+
+// Constants
+const int libARMP_gv_mAX_PLAYERS = 15;
+
+// Variable Declarations
+int libARMP_gv_startMinerals;
+int libARMP_gv_startVespene;
+int libARMP_gv_resourceType;
+int libARMP_gv_pickedAIPlayer;
+int libARMP_gv_mineralWallsHarvesterAmount;
+unitgroup libARMP_gv_mineralWallsGlobalMineralWalls;
+timer libARMP_gv_mineralWallsTimer;
+int[libARMP_gv_mAX_PLAYERS + 1][libARMP_gv_mAX_PLAYERS + 1] libARMP_gv_minimapAllyViewCameraSnapPointersList;
+int[libARMP_gv_mAX_PLAYERS + 1] libARMP_gv_minimapAllyViewCameraSnapPointersListLength;
+int[libARMP_gv_mAX_PLAYERS + 1] libARMP_gv_minimapAllyViewCameraSnapPointersListPosition;
+int[libARMP_gv_mAX_PLAYERS + 1][libARMP_gv_mAX_PLAYERS + 1] libARMP_gv_minimapAllyViewPings;
+
+// Function Declarations
+string libARMP_gf_GetResourceUserData (string lp_unit);
+void libARMP_gf_ApplySupplyCap (int lp_value);
+void libARMP_gf_DisableClassicSkins (int lp_player);
+void libARMP_gf_SCEvoEnableAIOption (bool lp_activateDeactivate, int lp_option);
+void libARMP_gf_MineralWallsActivate (bool lp_onOff);
+playergroup libARMP_gf_HumanPlayers ();
+void libARMP_gf_MinimapAllyViewCameraSnapPointersListUpdate (int lp_p);
+void libARMP_gf_MinimapAllyViewUpdateArea (region lp_region);
+void libARMP_gf_MinimapAllyViewRescale ();
+void libARMP_gf_MinimapAllyViewEnableDisable (bool lp_enableDisable);
+void libARMP_gf_RegisterCameraMoveEvent (trigger lp_trigger, int lp_playerId, int lp_cameraMoveReason);
+
+// Trigger Declarations
+trigger libARMP_gt_OfflineGameAttributesInitialisation;
+trigger libARMP_gt_OnlineGameAttributesInitialisation;
+trigger libARMP_gt_CommonTriggers;
+trigger libARMP_gt_RunAI;
+trigger libARMP_gt_UEDAIController;
+trigger libARMP_gt_SupportWorkerOnlyPathsForSomeCustomMaps;
+trigger libARMP_gt_SprayUpgrades;
+trigger libARMP_gt_ApplyInitialResources;
+trigger libARMP_gt_ApplyHarvestableResources;
+trigger libARMP_gt_MineralWallsUpdate;
+trigger libARMP_gt_MinimapAllyViewCameraSnap;
+trigger libARMP_gt_MinimapAllyViewCameraUpdate;
+trigger libARMP_gt_MinimapAllyViewAllianceUpdate;
+trigger libARMP_gt_MinimapAllyViewInit;
+
+// Library Initialization
+void libARMP_InitVariables ();
+

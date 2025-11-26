@@ -1,0 +1,239 @@
+
+//--------------------------------------------------------------------------------------------------
+//  Zerg Units
+//--------------------------------------------------------------------------------------------------
+const string c_ZU_Baneling                = "Baneling";
+const string c_ZU_BanelingCocoon          = "BanelingCocoon";
+const string c_ZU_Broodling               = "Broodling";
+const string c_ZU_BroodLord               = "BroodLord";
+const string c_ZU_Changeling              = "Changeling";
+const string c_ZU_ChangelingMarine        = "ChangelingMarine";
+const string c_ZU_ChangelingMarineShield  = "ChangelingMarineShield";
+const string c_ZU_ChangelingSpitfire      = "ChangelingSpitfire";
+const string c_ZU_ChangelingXayidling     = "ChangelingXayidling";
+const string c_ZU_ChangelingZealot        = "ChangelingZealot";
+const string c_ZU_ChangelingZergling      = "ChangelingZergling";
+const string c_ZU_ChangelingZerglingWings = "ChangelingZerglingWings";
+const string c_ZU_Corruptor               = "Corruptor";
+const string c_ZU_Drone                   = "Drone";
+const string c_ZU_Hydralisk               = "Hydralisk";
+const string c_ZU_InfestedTerran          = "InfestorTerran";
+const string c_ZU_InfestedTerranEgg       = "InfestedTerransEgg";
+const string c_ZU_Infestor                = "Infestor";
+const string c_ZU_Larva                   = "Larva";
+const string c_ZU_Locust                  = "LocustMP";                       //  Swarm & Void
+const string c_ZU_Lurker                  = "LurkerMP";                       //  Void-Only
+const string c_ZU_LurkerBurrowed          = "LurkerMPBurrowed";               //  Void-Only
+const string c_ZU_LurkerCampaign          = "Lurker";                         //  Campaign-Only
+const string c_ZU_LurkerEgg               = "LurkerEgg";                      //  Campaign-Only
+const string c_ZU_Mantaling               = "SwarmGuardianSpawn";             //  Campaign-Only
+const string c_ZU_Mutalisk                = "Mutalisk";
+const string c_ZU_Overlord                = "Overlord";
+const string c_ZU_Overlord_Alias          = "Alias_Overlord";
+const string c_ZU_OverlordCocoon          = "OverlordCocoon";
+const string c_ZU_OverlordTransport       = "OverlordTransport";              //  Void-Only
+const string c_ZU_Overseer                = "Overseer";
+const string c_ZU_Queen                   = "Queen";
+const string c_ZU_Ravager                 = "Ravager";                        //  Void-Only
+const string c_ZU_Roach                   = "Roach";
+const string c_ZU_Viper                   = "Viper";                          //  Swarm & Void
+const string c_ZU_SwarmHost               = "SwarmHostMP";                    //  Swarm & Void
+const string c_ZU_SwarmHostBurrowed       = "SwarmHostBurrowedMP";            //  Swarm & Void
+const string c_ZU_SwarmHost_Alias         = "Alias_SwarmHost";                //  Swarm & Void
+const string c_ZU_Ultralisk               = "Ultralisk";
+const string c_ZU_Zergling                = "Zergling";
+
+//----------------------------------------------------------------------------------------------------
+//  Zerg Buildings
+//--------------------------------------------------------------------------------------------------
+const string c_ZB_BanelingNest            = "BanelingNest";
+const string c_ZB_CreepTumor              = "CreepTumor";
+const string c_ZB_CreepTumorBurrowed      = "CreepTumorBurrowed";
+const string c_ZB_EvolutionChamber        = "EvolutionChamber";
+const string c_ZB_Extractor               = "Extractor";
+const string c_ZB_GreaterSpire            = "GreaterSpire";
+const string c_ZB_Hatchery                = "Hatchery";
+const string c_ZB_Hatchery_Alias          = "Alias_Hatchery";
+const string c_ZB_Hive                    = "Hive";
+const string c_ZB_HydraliskDen            = "HydraliskDen";
+const string c_ZB_HydraliskDen_Alias      = "Alias_HydraliskDen";
+const string c_ZB_InfestationPit          = "InfestationPit";
+const string c_ZB_Lair                    = "Lair";
+const string c_ZB_Lair_Alias              = "Alias_Lair";
+const string c_ZB_LurkerDen               = "LurkerDenMP";                    //  Void
+const string c_ZB_LurkerDenCampaign       = "LurkerDen";                      //  Campaign-Only
+const string c_ZB_NydusNetwork            = "NydusNetwork";
+const string c_ZB_NydusWorm               = "NydusCanal";
+const string c_ZB_RoachWarren             = "RoachWarren";
+const string c_ZB_SpawningPool            = "SpawningPool";
+const string c_ZB_SpineCrawler            = "SpineCrawler";
+const string c_ZB_SpineCrawlerUp          = "SpineCrawlerUprooted";
+const string c_ZB_Spire                   = "Spire";
+const string c_ZB_Spire_Alias             = "Alias_Spire";
+const string c_ZB_SporeCrawler            = "SporeCrawler";
+const string c_ZB_SporeCrawlerUp          = "SporeCrawlerUprooted";
+const string c_ZB_UltraliskCavern         = "UltraliskCavern";
+
+//--------------------------------------------------------------------------------------------------
+//  Zerg Research Upgrades
+//--------------------------------------------------------------------------------------------------
+const string c_ZR_BanelingSpeed           = "CentrificalHooks";             // CentrificalHooks
+const string c_ZR_Burrow                  = "Burrow";                       // Burrow
+const string c_ZR_BurrowMove              = "BurrowMove";                   // BurrowMove             //  Campaign-Only
+const string c_ZR_FlyerAttacks1           = "ZergFlyerWeaponsLevel1";
+const string c_ZR_FlyerAttacks2           = "ZergFlyerWeaponsLevel2";
+const string c_ZR_FlyerAttacks3           = "ZergFlyerWeaponsLevel3";
+const string c_ZR_FlyerCarapace1          = "ZergFlyerArmorsLevel1";
+const string c_ZR_FlyerCarapace2          = "ZergFlyerArmorsLevel2";
+const string c_ZR_FlyerCarapace3          = "ZergFlyerArmorsLevel3";
+const string c_ZR_GroundCarapace1         = "ZergGroundArmorsLevel1";
+const string c_ZR_GroundCarapace2         = "ZergGroundArmorsLevel2";
+const string c_ZR_GroundCarapace3         = "ZergGroundArmorsLevel3";
+const string c_ZR_HydraliskRange          = "hydraliskspeed";               // GroovedSpines          //  (speed built into this in void)
+const string c_ZR_HydraliskSpeed          = "HydraliskSpeedUpgrade";        // MuscularAugments       //  Swarm-Only
+const string c_ZR_InfestorEnergy          = "InfestorEnergyUpgrade";        // PathogenGlands
+const string c_ZR_InfestorParasite        = "NeuralParasite";               // NeuralParasite
+const string c_ZR_InfestorSpeedUnder      = "InfestorPeristalsis";          // Peristalsis            //  Obsolete
+const string C_ZR_LocustFlying            = "FlyingLocusts";                // FlyingLocusts          //  Swarm-Only (built in Void)
+const string C_ZR_LocustLifetime          = "LocustLifetimeIncrease";                                 //  Obsolete
+const string c_ZR_MeleeAttacks1           = "ZergMeleeWeaponsLevel1";
+const string c_ZR_MeleeAttacks2           = "ZergMeleeWeaponsLevel2";
+const string c_ZR_MeleeAttacks3           = "ZergMeleeWeaponsLevel3";
+const string c_ZR_MissileAttacks1         = "ZergMissileWeaponsLevel1";
+const string c_ZR_MissileAttacks2         = "ZergMissileWeaponsLevel2";
+const string c_ZR_MissileAttacks3         = "ZergMissileWeaponsLevel3";
+const string c_ZR_OverlordTransport       = "overlordtransport";            // VentralSacks           //  Liberty & Swarm
+const string c_ZR_OverseerSpeed           = "overlordspeed";                // PneumatizedCarapace
+const string c_ZR_RavagerBileRange        = "RavagerRange";                 // PressurizedGlands      //  Obsolete
+const string c_ZR_RoachRegen              = "OrganicCarapace";              // OrganicCarapace        //  Obsolete
+const string c_ZR_RoachUnderground        = "TunnelingClaws";               // TunnelingClaws
+const string c_ZR_RoachSpeed              = "GlialReconstitution";          // GlialReconstitution
+const string c_ZR_ZerglingHaste           = "zerglingattackspeed";          // AdrenalGlands
+const string c_ZR_ZerglingSpeed           = "zerglingmovementspeed";        // MetabolicBoost
+const string c_ZR_UltraliskSpeed          = "AnabolicSynthesis";            // AnabolicSynthesis      //  Obsolete
+const string c_ZR_UltraliskCharge         = "UltraliskBurrowChargeUpgrade"; // BurrowCharge           //  Obsolete
+const string c_ZR_UltraliskArmor          = "ChitinousPlating";             // ChitinousPlating
+
+//--------------------------------------------------------------------------------------------------
+//  Markers
+//--------------------------------------------------------------------------------------------------
+const string c_MK_Frenzy                    = "Abil/Frenzy/AI";
+const string c_MK_FungalGrowth              = "Abil/FungalGrowth/AI";
+const string c_MK_GameFungalGrowth          = "Abil/FungalGrowth";
+const string c_MK_GameNeuralParasite        = "Abil/NeuralParasite";
+const string c_MK_SapStructure              = "Abil/SapStructure/AI";
+const string c_MK_Parasite                  = "Abil/Parasite/AI";
+const string c_MK_Ensnare                   = "Abil/Ensnare/AI";
+const string c_MK_SpawnBroodlings           = "Abil/SpawnBroodlings/AI";
+const string c_MK_ViperAbduct               = "Abil/Abduct/AI";
+const string c_MK_ViperParasiticBomb        = "Abil/ParasiticBomb/AI";
+const string c_MK_Transfusion               = "Abil/Transfusion/AI";
+const string c_MK_UnstableMutation          = "Abil/UnstableMutation/AI";
+const string c_MK_InfestorDisease           = "Abil/InfestorDisease/AI";
+const string c_MK_NeuralParasite            = "Abil/NeuralParsite/AI";
+const string c_MK_Contaminate               = "Abil/Contaminate/AI";
+const string c_MK_Corruption                = "Abil/Corruption/AI";
+const string c_MK_BioPlasmidDischarge       = "Abil/BioPlasmidDischarge/AI";
+//--------------------------------------------------------------------------------------------------
+//  Weapons
+//--------------------------------------------------------------------------------------------------
+const string c_WE_SpineCrawler              = "ImpalerTentacle";
+const string c_WE_InfestedTerran            = "InfestedGuassRifle";
+//--------------------------------------------------------------------------------------------------
+//  Effects
+//--------------------------------------------------------------------------------------------------
+const string c_EF_BioStatis                 = "BioStasisSearchArea";
+const string c_EF_AcidSporesArea            = "AcidSporesSearch";
+const string c_EF_BaneBuilding              = "VolatileBurstU2";
+const string c_EF_BaneUnit                  = "VolatileBurstU";
+const string c_EF_BioPlasmidDischargeDamage = "BioPlasmidDischargeDamage";
+const string c_EF_OmegaStormArea            = "OmegaStormSearchArea";
+const string c_EF_ConsumeDNADamage          = "ConsumeDNADamage";
+const string c_EF_ConsumeDNAPersistent      = "ConsumeDNACP";
+const string c_EF_FungalGrowthSearch        = "FungalGrowthSearch";
+const string c_EF_InfestorDiseaseArea       = "InfestorDiseaseSearch";
+const string c_EF_Transfusion               = "Transfusion";
+const string c_EF_ParasticBombArea          = "ParasiticBombSearchEffect";
+const string c_EF_ViperCloudSearch          = "BlindingCloudSearch";
+const string c_EF_ZergVortexArea            = "ZergVortexSearchArea";
+const string c_EF_QueenMPEnsnareArea        = "QueenMPEnsnareSearch";
+//--------------------------------------------------------------------------------------------------
+//  Buffs
+//--------------------------------------------------------------------------------------------------
+const string c_BF_Contaminate               = "Contaminated";
+const string c_BF_Corruption                = "Corruption";
+const string c_BF_Frenzy                    = "Frenzy";
+const string c_BF_FungalGrowth              = "FungalGrowth";
+const string c_BF_NeuralParasite            = "NeuralParasite";
+const string c_BF_MutantLarvaTimer          = "QueenSpawnLarvaTimer";
+const string c_BF_SwarmInfestation          = "SwarmInfestation";
+const string c_BF_UnstableMutation          = "UnstableMutation";
+const string c_BF_ViperCloudBuff            = "BlindingCloud";
+const string c_BF_ViperParasiticBomb        = "ParasiticBomb";
+
+//--------------------------------------------------------------------------------------------------
+//  Abilities
+//--------------------------------------------------------------------------------------------------
+const string c_AB_AcidSpores                = "AcidSpores";
+const string c_AB_BioPlasmidDischarge       = "BioPlasmidDischarge";
+const string c_AB_BioStasis                 = "BioStasis";
+const string c_AB_BurrowBanelingDown        = "BurrowBanelingDown";
+const string c_AB_BurrowBanelingUp          = "BurrowBanelingUp";
+const string c_AB_BurrowDroneDown           = "BurrowDroneDown";
+const string c_AB_BurrowDroneUp             = "BurrowDroneUp";
+const string c_AB_BurrowHydraliskDown       = "BurrowHydraliskDown";
+const string c_AB_BurrowHydraliskUp         = "BurrowHydraliskUp";
+const string c_AB_BurrowInfestorDown        = "BurrowInfestorDown";
+const string c_AB_BurrowInfestorUp          = "BurrowInfestorUp";
+const string c_AB_BurrowLurkerDown          = "BurrowLurkerDown";
+const string c_AB_BurrowLurkerUp            = "BurrowLurkerUp";
+const string c_AB_BurrowQoBDown             = "Val03QueenOfBladesBurrow";
+const string c_AB_BurrowQoBUp               = "Val03QueenOfBladesUnburrow";
+const string c_AB_BurrowQueenDown           = "BurrowQueenDown";
+const string c_AB_BurrowQueenUp             = "BurrowQueenUp";
+const string c_AB_BurrowRoachDown           = "BurrowRoachDown";
+const string c_AB_BurrowRoachUp             = "BurrowRoachUp";
+const string c_AB_BurrowUltraliskDown       = "BurrowUltraliskDown";
+const string c_AB_BurrowUltraliskUp         = "BurrowUltraliskUp";
+const string c_AB_BurrowZerglingDown        = "BurrowZerglingDown";
+const string c_AB_BurrowZerglingUp          = "BurrowZerglingUp";
+const string c_AB_CausticSpray              = "CausticSpray";
+const string c_AB_Changeling                = "SpawnChangeling";
+const string c_AB_ConsumeDNA                = "ConsumeDNA";
+const string c_AB_Contaminate               = "Contaminate";
+const string c_AB_CorrosiveBile             = "RavagerCorrosiveBile";
+const string c_AB_Corruption                = "Corruption";
+const string c_AB_CreepTumorBuild           = "CreepTumorBuild";
+const string c_AB_QoBIndignation            = "Indignation";
+const string c_AB_QoBImplosion              = "Implosion";
+const string c_AB_Frenzy                    = "Frenzy";
+const string c_AB_FungalGrowth              = "FungalGrowth";
+const string c_AB_GenerateCreep             = "GenerateCreep";
+const string c_AB_InfestedTerrans           = "InfestedTerrans";
+const string c_AB_InfestedTerransLayEgg     = "InfestedTerransLayEgg";
+const string c_AB_InfestorDisease           = "InfestorDisease";
+const string c_AB_LeechResources            = "LeechResources";
+const string c_AB_LeviathanCharge           = "LeviathanCharge";
+const string c_AB_NeuralParasite            = "NeuralParasite";
+const string c_AB_ParasiticBomb             = "ParasiticBomb";
+const string c_AB_QoBOmegaStorm             = "OmegaStorm";
+const string c_AB_QueenBuild                = "QueenBuild";
+const string c_AB_SapStructure              = "SapStructure";
+const string c_AB_SiphonLife                = "Siphon";
+const string c_AB_SpawnMutantLarva          = "SpawnLarva";
+const string c_AB_SpineCrawlerRoot          = "SpineCrawlerRoot";
+const string c_AB_SpineCrawlerUproot        = "SpineCrawlerUproot";
+const string c_AB_SporeCrawlerRoot          = "SporeCrawlerRoot";
+const string c_AB_SporeCrawlerUproot        = "SporeCrawlerUproot";
+const string c_AB_SwarmInfestation          = "SwarmInfestation";
+const string c_AB_SpawnLocustsTargeted      = "SpawnLocustsTargeted";
+const string c_AB_Transfusion               = "Transfusion";
+const string c_AB_TransportOverlord         = "MorphToTransportOverlord";
+const string c_AB_UltraliskBurrowCharge     = "BurrowChargeMP";
+const string c_AB_UnstableMutation          = "UnstableMutation";
+const string c_AB_ViperOcularParasite       = "EyeStalk";
+const string c_AB_ViperBlindingCloud        = "BlindingCloud";
+const string c_AB_ViperAbduct               = "Yoink";
+const string c_AB_VolatileBurstBuilding     = "VolatileBurstBuilding";
+const string c_AB_ZergVortex                = "ZergVortex";
+

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectSet id="InstantUnburrow">
+        <EffectArray index="0" value="InstantUnburrowLegacy"/>
+        <EffectArray index="1" value="InstantUnburrowMore"/>
+        <EffectArray index="2" value="HunterRegenesisRemoveBehavior"/>
+        <EffectArray index="3" value="MoleUnburrowSet"/>
+        <EffectArray index="4" removed="1"/>
+        <EffectArray index="5" removed="1"/>
+        <EffectArray index="6" removed="1"/>
+        <EffectArray index="7" removed="1"/>
+    </CEffectSet>
+    <CEffectSet id="InstantUnburrowLegacy">
+        <EffectArray value="LurkerMPUnburrow"/>
+        <EffectArray value="SwarmHostMPUnburrow"/>
+        <EffectArray value="InstantMorphUnburrowAB"/>
+        <EffectArray value="GravitonBeamUnburrowCancel"/>
+        <EffectArray value="GravitonBeamUnburrow"/>
+        <EffectArray value="GravitonBeamUnburrowTake2"/>
+    </CEffectSet>
+    <CAbilEffectTarget id="InfestorEnsnare">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CAbilEffectTarget>
+    <CAbilMorphPlacement id="SpineCrawlerRoot">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorphPlacement>
+    <CAbilMorphPlacement id="SporeCrawlerRoot">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorphPlacement>
+    <CAbilEffectTarget id="CausticSpray">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="CorruptionBomb">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="SwarmHostSpawnLocusts">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Transfusion">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="UltraliskWeaponCooldown">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="QueenMPInfestCommandCenter">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="QueenMPSpawnBroodlings">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="UpgradeToGreaterSpire">
+        <CmdButtonArray index="Execute" Requirements="CanMutateToGreaterSpire"/>
+    </CAbilMorph>
+    <CRequirement id="CanMutateToGreaterSpire">
+        <EditorCategories value="Race:Zerg,TechType:Unit"/>
+        <CanBeSuppressed index="Use" value="0"/>
+        <NodeArray index="Use" Link="CountUnitHiveCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="AllowUnitGreaterSpire"/>
+    </CRequirement>
+    <CRequirement id="HatcherySpawnLarva"/>
+    <CRequirementAllowUnit id="AllowUnitGreaterSpire">
+        <Link value="GreaterSpire"/>
+    </CRequirementAllowUnit>
+    <CBehaviorBuff default="1" id="SwarmHostEggAnimationDefault">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CorruptionBombDamage">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevourerMPAcidSpores">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorBuff>
+    <CBehaviorCreepSource id="DigesterCreep">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorCreepSource>
+    <CBehaviorBuff id="DigesterCreepSprayFinal">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DigesterCreepSprayVision">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LocustMPFlyingSwoopPrecursor">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LocustMPFlyingSwoopUncommandable">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NydusDestroyerInvulnerability">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NydusDetect">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ParasiticBombDelayTimedLife">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ParasiticBombSecondaryBuff">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PrecursorBurrowChargeImpact">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PrecursorCreepTumor">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PrecursorLocust">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PrecursorYoink">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="QueenSpawnLarvaHiddenStack">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SwarmHostEggAnimationMP">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="InfestedTerranEggOnCreepFasterMorph">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="InfestorEnsnareDelayedRemove">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="InfestorEnsnareMakePrecursorReheightSource">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="IsTransportOverlord">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CUnit id="Drone"/>
+</Catalog>

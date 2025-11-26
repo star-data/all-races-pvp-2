@@ -1,0 +1,98 @@
+include "TriggerLibs/Terran/baseai"
+include "TriggerLibs/Protoss/baseai"
+include "TriggerLibs/Zerg/baseai"
+include "TriggerLibs/Genetron/baseai"
+include "TriggerLibs/Xayid/baseai"
+include "TriggerLibs/Keiron/baseai"
+include "TriggerLibs/BWTerran/baseai"
+include "TriggerLibs/BWProtoss/baseai"
+include "TriggerLibs/BWZerg/baseai"
+include "TriggerLibs/allrace/baseai"
+
+
+//--------------------------------------------------------------------------------------------------
+//  Melee default startup routine
+//--------------------------------------------------------------------------------------------------
+
+
+void AIBaseConfigMain(int player, bool campaign){
+    string race = PlayerRace(player);
+    // if(!forceARCAI){
+    if (race == "Zerg"){AIBaseConfigZerg(player,campaign);return;}
+    if (race == "Terr"){AIBaseConfigTerran(player,campaign);return;}
+    if (race == "Prot"){AIBaseConfigProtoss(player,campaign);return;}
+    
+    if (race == "Gen" ){AIBaseConfigGenetron(player,campaign);return;}
+    if (race == "Xayi"){AIBaseConfigXayid(player,campaign);return;}
+    if (race == "Keir"){AIBaseConfigKeiron (player,campaign);return;}
+
+    if (race == "BWTe"){AIBaseConfigBWTerran(player,campaign);return;}
+    if (race == "BWZe"){AIBaseConfigBWZerg(player,campaign);return;}
+    if (race == "BWrP"){AIBaseConfigBWProtoss(player,campaign);return;}
+    
+    AIBaseConfigARC(player,campaign);
+}
+
+
+void AIBaseConfig(int player, bool campaign){
+    AIBaseConfigMain(player,campaign);
+    // }
+    //todo not working with ARC AI
+    AIAddHealer(player, "ACR", "MULERepair", 0);
+    AIAddHealer(player, "MULE", "MULERepair", 0);
+    AIAddHealer(player, "Medivac", "MedivacHeal", 0);
+    AIAddHealer(player, "Medic", "heal", 0);
+    AIAddHealer(player, "ScienceVessel", "NanoRepair", 0);
+    AIAddHealer(player, "SCVSCBW", "SCVSCBW@Repair", 0);
+    AIAddHealer(player, "MedicSCBW", "MedicSCBWHeal", 0);
+    
+//todo not working with ARC AI, not sorted
+    AITransportIgnore(player, "VikingAssault");
+    //BW
+    AITransportIgnore(player, "BroodlingSCBW");
+
+    AITechCountFixupSingle(player, "ToweringDeepOneNoFootprint", "ToweringDeepOne");
+    AITechCountFixupSingle(player, "DenizenoftheDeepNoFootprint", "DenizenoftheDeep");
+    AITechCountFixupSingle(player, "GreaterDeepOneNoFootprint", "GreaterDeepOne");
+    AITechCountFixupSingle(player, "LesserDeepOneNoFootprint", "LesserDeepOne");
+    AITechCountFixupSingle(player, "RazorbackNoFootprint", "Razorback");
+    // AITechCountFixupInOrder(player, "Hatchery", "Lair", "Hive");
+    // AITechCountFixupEither(player, "CommandCenter", "OrbitalCommand", "PlanetaryFortress");
+
+
+    if(campaign){
+        AITransportIgnore(player, "InfestedCivilian");
+        AITransportIgnore(player, "InfestedTerranCampaign");
+        AITransportIgnore(player, "InfestedAbomination");
+        //BW
+        AITransportIgnore(player, "BroodlingSCBW");
+        AIReqCountAsBuiltObject(player, "Larva");
+        AITechCountFixupSingle(player, "Overlord", "Overseer");
+        AITechCountFixupSingle(player, "Overlord", "OverlordTransport");
+        AITechCountFixupSingle(player, "Spire", "GreaterSpire");
+        AITechCountFixupSingle(player, "HydraliskDen", "LurkerDen");
+        AITechCountFixupSingle(player, "HydraliskDen", "LurkerDenMP");
+        AITechCountFixupInOrder(player, "Hatchery", "Lair", "Hive");
+        AITechCountFixupEither(player, "CommandCenter", "OrbitalCommand", "PlanetaryFortress");
+        AIReqAddSpecialMaker("Nuke", "GhostAcademy", "ArmSiloWithNuke", 0);
+        AIReqAddSpecialMaker("CreepTumorBurrowed", "CreepTumor", "BurrowCreepTumorDown", 0);
+        AIReqAddSpecialMaker("CreepTumorBurrowed", "Queen", "QueenBuild", 0);
+        AIReqAddSpecialMaker("CreepTumorBurrowed", "QueenClassic", "QueenBuild", 0);
+        //BW
+        AIReqCountAsBuiltObject(player, "LarvaSCBW");
+        AITechCountFixupSingle(player, "SpireSCBW", "GreaterSpireSCBW");
+        AITechCountFixupInOrder(player, "HatcherySCBW", "LairSCBW", "HiveSCBW");
+        //AITechCountFixupSingle(player, "CreepColonySCBW", "SporeColonySCBW");
+        //AITechCountFixupSingle(player, "CreepColonySCBW", "SunkenColonySCBW");
+        AITechCountFixupSingle(player, "MutaliskSCBW", "DevourerSCBW");
+        AITechCountFixupSingle(player, "MutaliskSCBW", "GuardianSCBW");
+        AITechCountFixupSingle(player, "HydraliskSCBW", "LurkerSCBW");
+        AITechCountFixupEither(player, "CreepColonySCBW", "SporeColonySCBW", "SunkenColonySCBW");
+        AIReqAddSpecialMaker("NukeSCBW", "NuclearSiloSCBW", "NukeSCBWArm", 0);
+        AIReqAddSpecialMaker("ComsatStationSCBW", "CommandCenterSCBW", "CommandCenterSCBW@AddOns", 0);
+        AIReqAddSpecialMaker("NuclearSiloSCBW", "CommandCenterSCBW", "CommandCenterSCBW@AddOns", 1);
+        //AIReqAddSpecialMaker("SunkenColonySCBW", "CreepColonySCBW", "SunkenColonySCBW@Morph", 0);
+        //AIReqAddSpecialMaker("SporeColonySCBW", "CreepColonySCBW", "SporeColonySCBW@Morph", 0);
+        AITechCountFixupEither(player, "CommandCenterSCBW", "ComsatStationSCBW", "NuclearSiloSCBW");
+    }
+}

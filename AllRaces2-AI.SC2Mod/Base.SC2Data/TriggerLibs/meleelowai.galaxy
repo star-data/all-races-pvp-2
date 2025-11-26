@@ -1,0 +1,396 @@
+//==================================================================================================
+//  Melee AI Functions only used by the lower difficulties.
+//==================================================================================================
+
+const int c_ldPhaseNone   = 0;
+const int c_ldPhaseOpen   = 1;
+const int c_ldPhaseMid    = 2;
+const int c_ldPhaseLate   = 3;
+const int c_ldPhaseFinal  = 4;
+
+const int c_ldMaxArmyStockSize = 32;
+const fixed c_ldArmyStockScale = 1000.0;
+const int c_ldArmyRoundUp = 500; //FixedToInt(c_ldArmyStockScale/2.0);
+
+
+//--------------------------------------------------------------------------------------------------
+//  AILowDifficultyInit
+//--------------------------------------------------------------------------------------------------
+void AILowDifficultyInit (int player) {
+    int diff = AIPlayerDifficulty(player);
+
+    if (diff < c_skirVeryEasy || diff > c_skirHard)  {
+        return;
+    }
+
+    AISetStockArmyDefaultScale(player, c_ldArmyStockScale);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AIClearStockArmy
+//--------------------------------------------------------------------------------------------------
+void AIClearStockArmy (int player) {
+    int index = 1;
+    while (index <= c_ldMaxArmyStockSize) {
+        AISetUserString(player, index, c_nullString);
+        AISetUserInt(player, index, 0);
+        index = index + 1;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AISetStockArmyScale
+//--------------------------------------------------------------------------------------------------
+void AISetStockArmyScale (int player, fixed scale) {
+    int index = 1;
+    int count;
+
+    scale /= c_ldArmyStockScale;
+
+    while (index < c_ldMaxArmyStockSize) {
+        count = AIGetUserInt(player, index);
+        if (count <= 0) {
+            break;
+        }
+        // add "0.5" so we'll round to the nearest value
+        count += c_ldArmyRoundUp;
+
+        count = FixedToInt(IntToFixed(count) * scale);
+
+        if (count > 0) {
+            AISetStock(player, count, AIGetUserString(player, index));
+        }
+        index = index + 1;
+    }
+    if (index >= c_ldMaxArmyStockSize) {
+        if (AIGetUserInt(player, index) > 0) {
+            ErrorMeleeScript(player, "AISetStockArmy too much data");
+        }
+    }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  AIGetStockArmyCount
+//--------------------------------------------------------------------------------------------------
+int AIGetStockArmyCount (int player) {
+    int index = 1;
+    int count;
+    int total;
+
+    while (index < c_ldMaxArmyStockSize) {
+        count = AIGetUserInt(player, index);
+        if (count <= 0) {
+            break;
+        }
+        // add "0.5" so we'll round to the nearest value
+        count += c_ldArmyRoundUp;
+
+        count = FixedToInt(IntToFixed(count) / c_ldArmyStockScale);
+
+        total += count;
+
+        index = index + 1;
+    }
+    if (index >= c_ldMaxArmyStockSize) {
+        if (AIGetUserInt(player, index) > 0) {
+            ErrorMeleeScript(player, "AISetStockArmy too much data");
+        }
+    }
+
+    return total;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AITestTimeout
+//--------------------------------------------------------------------------------------------------
+bool AITestTimeout (int player, int timeOut, int nextState, int nextSubState) {
+    bool sendAttack = true;
+    int waveCount;
+    int desiredArmyCount;
+    if (AIGetTime() < timeOut) {
+        return false;
+    }
+
+    if (AIState(player, e_mainState) == e_mainState_Open) {
+        if (AIGetUserInt(player, c_openingBuildType) == e_buildType_Macro) {
+            // macro build doesn't attack between open & mid
+            sendAttack = false;
+        }
+    }
+    if (sendAttack) {
+        waveCount = AIWaveUnitCount(AIWaveGet(player, c_waveMain)) + AIWaveUnitCount(AIWaveGet(player, c_waveAttack));
+        desiredArmyCount = AIGetStockArmyCount(player);
+
+        if (waveCount < desiredArmyCount/2) {
+            // army if less than half the size we wanted, don't bother to send it
+            sendAttack = false;
+        }
+    }
+
+    if (sendAttack) {
+        AIWaveMerge(player, c_waveMain, c_waveAttack);
+        AISetAttackState(player, e_attackState_Attack);
+    }
+
+    AISetMainState(player, nextState, nextSubState);
+    AIClearStockArmy(player);
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AILDGeneralSharedLogic (int player) {
+    bool activateNextWave;
+
+    //scouting logic
+    if (AIGetNumWorkers(player) >= 6) {
+        if (PlayerBeaconIsSet(player, c_beaconScout)) {
+            AISetFlag(player, e_flagsScouting, true);
+        }
+        else if (AIGetTime() > 300) {
+            AISetFlag(player, e_flagsScouting, true);
+        }
+        else if (AIGetTime() > 40 && AIHasHumanAlly(player)) {
+            AISetFlag(player, e_flagsScouting, true);
+        }
+    }
+
+    // coop attacker logic
+    if (AIGetCoopFlag(player, c_coopWaveAttacker)) {
+        if (AIGetTime() > 330) {
+            if (AIState(player, e_attackState) == e_attackState_Wait) {
+                AISetAttackState(player, e_attackState_Attack);
+            }
+        }
+
+        activateNextWave = true;
+        if (AIState(player, e_attackState) == e_attackState_Wait) {
+            activateNextWave = false; // wait for the AI to activate
+        }
+        if (AIWaveUnitCount(AIWaveGet(player, c_waveAttack)) > 0) {
+            activateNextWave = false;
+        }
+        else if (AIWaveUnitCount(AIWaveGet(player, c_waveMain)) < 8) {
+            activateNextWave = false;
+        }
+
+        if (activateNextWave) {
+            AIWaveMerge(player, c_waveMain, c_waveAttack);
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AIPickFrom2
+//--------------------------------------------------------------------------------------------------
+string AIPickFrom2 (string a, string b) {
+    int roll = RandomInt(1,2);
+    if (roll == 1) {
+        return a;
+    }
+    return b;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AIPickFrom3
+//--------------------------------------------------------------------------------------------------
+string AIPickFrom3 (string a, string b, string c) {
+    int roll = RandomInt(1,3);
+    if (roll == 1) {
+        return a;
+    }
+    if (roll == 2) {
+        return b;
+    }
+    return c;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  AIAddToStockArmyPickFrom2Count
+//--------------------------------------------------------------------------------------------------
+void AIAddToStockArmyPickFrom2Count (int player, string a, int anum, string b, int bnum) {
+    int roll = RandomInt(1,2);
+    if (roll == 1) {
+        AIAddToStockArmy(player, a, anum);
+    } else {
+        AIAddToStockArmy(player, b, bnum);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AIAddToStockArmyPickFrom3Count
+//--------------------------------------------------------------------------------------------------
+void AIAddToStockArmyPickFrom3Count (int player, string a, int anum, string b, int bnum, string c, int cnum) {
+    int roll = RandomInt(1,3);
+    if (roll == 1) {
+        AIAddToStockArmy(player, a, anum);
+    } else if (roll == 2) {
+        AIAddToStockArmy(player, b, bnum);
+    } else {
+        AIAddToStockArmy(player, c, cnum);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AIGetWorkerDelay
+//--------------------------------------------------------------------------------------------------
+int AIGetWorkerDelay (int player) {
+    int diff = AIPlayerDifficulty(player); 
+    if (diff == c_skirVeryEasy) {
+        return 10;
+    }
+    if (diff == c_skirEasy) {
+        return 6;
+    }
+    if (diff == c_skirMedium) {
+        return 4;
+    }
+    if (diff == c_skirMed_Hard) {
+        return 2;
+    }
+
+    return 0;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AIGetDefenseDelay
+//--------------------------------------------------------------------------------------------------
+int AIGetDefenseDelay (int player) {
+    int diff = AIPlayerDifficulty(player); 
+    if (diff == c_skirVeryEasy) {
+        return 40;
+    }
+    if (diff == c_skirEasy) {
+        return 20;
+    }
+    if (diff == c_skirMedium) {
+        return 10;
+    }
+    if (diff == c_skirMed_Hard) {
+        return 5;
+    }
+
+    return 0;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AIGetArmyDelay
+//--------------------------------------------------------------------------------------------------
+int AIGetArmyDelay (int player, int duration, int phase) {
+    int armyCount = AIGetStockArmyCount(player);
+    int buildType = AIGetUserInt(player, c_openingBuildType);
+    int timePerUnit;
+
+    //if (armyCount == 0) {
+    //    ErrorMeleeScript(player, "AIGetArmyDelay no army?");
+    //    return 0;
+    //}
+
+    // Subtract off 150 seconds from the duration. This gives us time to build the initial tech 
+    //   buildings we might need first and to ensure the last unit finishes in time.
+    duration -= 150;
+    if (phase == c_ldPhaseOpen) {
+        duration -= 150; // If this is the start of the game, subtract off 150 seconds for the initial ramp up.
+        if (buildType == e_buildType_Air) {
+            duration -= 180; // If this is an air build, subtract off another 180 seconds for additional ramp up.
+        }
+        else if (buildType == e_buildType_Macro) {
+            duration -= 60; // If this is a macro build, subtract off another 60 seconds for additional ramp up.
+        }
+    }
+
+    timePerUnit = duration / (armyCount + 1); // increase army count by one to ensure last unit is done in time 
+    if (timePerUnit < 3) {
+        return 0; // handles small and negative cases.
+    }
+
+    return timePerUnit;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AISetupNextArmyStock
+//--------------------------------------------------------------------------------------------------
+int TemplateArmySetup(int player, int buildType);  // set up the next army, return duration
+
+void AISetupNextArmy (int player, int buildType, int newPhase, funcref<TemplateArmySetup> armyFunc ) {
+    int origPhase = AIGetUserInt(player, c_ldNextArmyPhase);
+    int origDuration = AIGetUserInt(player, c_ldNextArmyDuration);
+    int origEndTime = AIGetUserInt(player, c_nextArmyTime);
+    int origStartTime = 0;
+    fixed origTimeElapsed = 0.0;
+    fixed percentElapsed = 0.0;
+    fixed percentRemaining = 0.0;
+    int newDuration;
+    int newEndTime;
+    int armyCount;
+
+    if (newPhase == origPhase) {
+        // switching due to player request
+        origStartTime = origEndTime - origDuration;
+        origTimeElapsed = AIGetTime() - IntToFixed(origStartTime);
+        if (origTimeElapsed > origDuration - 1) {
+            origTimeElapsed = origDuration - 1;
+        }
+        percentElapsed = origTimeElapsed / IntToFixed(origDuration);
+        percentRemaining = 1.0 - percentElapsed;
+        if (percentRemaining < 0.01) {
+            percentRemaining = 0.01;
+        }
+
+        AIScaleCurrentStockArmy(player, percentElapsed / percentRemaining, 0, c_ldMaxArmyStockSize-1);
+    } else {
+        // switching to next phase
+        AIClearStockArmy(player);
+    }
+
+    // add new army stock
+    newDuration = armyFunc(player, buildType);
+    if (newDuration < 60) {
+        ErrorMeleeScript(player, "AISetupNextArmy bogus duration?");
+        newDuration = 60;
+    }
+
+    if (newPhase == origPhase) {
+        // switching due to player request
+        if (newDuration < origDuration) {
+            newDuration = FixedToInt(IntToFixed(newDuration) * percentRemaining);
+            newDuration += FixedToInt(IntToFixed(origDuration) * percentElapsed);
+        }
+
+        newEndTime = origStartTime + newDuration;
+        
+        AIScaleCurrentStockArmy(player, percentRemaining, 0, c_ldMaxArmyStockSize-1);
+    } else {
+        // switching to next phase
+        newEndTime = FixedToInt(AIGetTime()) + newDuration;
+    }
+
+    // set wave values
+    AISetUserInt(player, c_ldNextArmyPhase, newPhase);
+    AISetUserInt(player, c_ldNextArmyDuration, newDuration);
+    AISetUserInt(player, c_nextArmyTime, newEndTime);
+
+    // set training delay values
+    AIForceTrainingDelay(player, AIGetWorkerDelay(player), AIGetArmyDelay(player, newDuration, newPhase), AIGetDefenseDelay(player));
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AILDStockWorkers
+//--------------------------------------------------------------------------------------------------
+void AILDStockWorkers (int player, int count, string worker) {
+    int econMin = AIGetMinPeonCount(player, c_townMax);
+    int econMax = AIGetMaxPeonCount(player, c_townMax);
+
+    if (econMin > count) {
+        count = econMin;
+    } 
+    else if (econMax < count) {
+        count = econMax;
+    }
+
+    AISetStockUnitNext( player, count, worker, c_stockAlways );
+}

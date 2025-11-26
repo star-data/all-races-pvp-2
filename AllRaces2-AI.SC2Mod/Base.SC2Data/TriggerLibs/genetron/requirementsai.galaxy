@@ -1,0 +1,119 @@
+//--------------------------------------------------------------------------------------------------
+//  Genetron Units
+//--------------------------------------------------------------------------------------------------
+const string c_GU_ACR                   = "ACR";
+const string c_GU_Aquila                = "Aquila";
+const string c_GU_Avenger               = "Scion_Avenger";
+const string c_GU_Badger                = "Badger";
+const string c_GU_Fixer                 = "Fixer";
+const string c_GU_Blitzer               = "Blitzer";
+const string c_GU_Boar                  = "Boar";
+const string c_GU_Courier               = "Courier";
+const string c_GU_Equalizer             = "Equalizer";
+const string c_GU_Inciter               = "Inciter";
+const string c_GU_Hornet                = "Hornet";
+const string c_GU_Jupiter               = "Jupiter";
+const string c_GU_Mole                  = "Mole";
+const string c_GU_MoleBurrowed          = "MoleBurrowed";
+const string c_GU_Mole_Alias            = "Alias_Mole";
+const string c_GU_Processor             = "Scion_Processor";
+const string c_GU_Spitfire              = "Spitfire";
+const string c_GU_Tesla                 = "Tesla";
+const string c_GU_Torrent               = "Torrent";
+const string c_GU_Virtus                = "Virtus";
+
+//--------------------------------------------------------------------------------------------------
+//  Genetron Buildings
+//--------------------------------------------------------------------------------------------------
+const string c_GB_AnalysisTerminal      = "AnalysisTerminal";
+const string c_GB_AssemblyArray         = "AssemblyArray";
+const string c_GB_Fabricator            = "Fabricator";
+const string c_GB_FilteringPlant        = "FilteringPlant";
+const string c_GB_Generator             = "Generator";
+const string c_GB_Interdictor           = "Interdictor";
+const string c_GB_InterdictorBurrowed   = "InterdictorBurrowed";
+const string c_GB_Interdictor_Alias     = "Alias_Interdictor";
+const string c_GB_Manufacturer          = "Manufacturer";
+const string c_GB_OutfittingStation     = "OutfittingStation";
+const string c_GB_ProcessingCore        = "ProcessingCore";
+const string c_GB_Node                  = "Node";
+const string c_GB_RelayTower            = "RelayTower";
+const string c_GB_Repulsor              = "Repulsor";
+const string c_GB_RepulsorBurrowed      = "RepulsorBurrowed";
+const string c_GB_Repulsor_Alias        = "Alias_Repulsor";
+const string c_GB_TechVault             = "TechVault";
+const string c_GB_Uploader              = "Uploader";
+
+//--------------------------------------------------------------------------------------------------
+//  Genetron Research Upgrades
+//--------------------------------------------------------------------------------------------------
+const string c_GR_AirArmor1             = "GenetronAircraftPlatingLevel1";
+const string c_GR_AirArmor2             = "GenetronAircraftPlatingLevel2";
+const string c_GR_AirArmor3             = "GenetronAircraftPlatingLevel3";
+const string c_GR_AirWeapons1           = "GenetronAircraftWeaponsLevel1";
+const string c_GR_AirWeapons2           = "GenetronAircraftWeaponsLevel2";
+const string c_GR_AirWeapons3           = "GenetronAircraftWeaponsLevel3";
+const string c_GR_GroundArmor1          = "GenetronGroundPlatingLevel1";
+const string c_GR_GroundArmor2          = "GenetronGroundPlatingLevel2";
+const string c_GR_GroundArmor3          = "GenetronGroundPlatingLevel3";
+const string c_GR_HeavyWeapons1         = "GenetronHeavyWeaponsLevel1";
+const string c_GR_HeavyWeapons2         = "GenetronHeavyWeaponsLevel2";
+const string c_GR_HeavyWeapons3         = "GenetronHeavyWeaponsLevel3";
+const string c_GR_LightWeapons1         = "GenetronLightWeaponsLevel1";
+const string c_GR_LightWeapons2         = "GenetronLightWeaponsLevel2";
+const string c_GR_LightWeapons3         = "GenetronLightWeaponsLevel3";
+const string c_GR_AAMDefenseTurret      = "AAMDefenseTurret";
+const string c_GR_BoreanReactor         = "BoreanReactor";
+const string c_GR_CalibratedEngines     = "CalibratedEngines";
+const string c_GR_CloakingGenerator     = "CloakingGenerator";
+const string c_GR_EnhancedTargeting     = "EnhancedTargeting";
+const string c_GR_IntegratedOptics      = "IntegratedOptics";
+const string c_GR_MadcapRounds          = "MadcapRounds";
+const string c_GR_ReactiveArmor         = "ReactiveArmor";
+const string c_GR_ShapedHull            = "ShapedHull";
+const string c_GR_SubterraneanSensors   = "SubterraneanSensors";
+
+//--------------------------------------------------------------------------------------------------
+//  Effects
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  Buffs
+//--------------------------------------------------------------------------------------------------
+const string c_BF_IgnitionBlast             = "IgnitionBlast";
+//--------------------------------------------------------------------------------------------------
+//  Markers
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  Weapons
+//--------------------------------------------------------------------------------------------------
+const string c_WE_ChargeCannon                = "ChargeCannon";
+const string c_WE_ChargeCannonTM              = "ChargeCannonTM";
+
+//--------------------------------------------------------------------------------------------------
+//  Abilities
+//--------------------------------------------------------------------------------------------------
+const string c_AB_AnalyzeWeakness           = "AnalyzeWeakness";
+const string c_AB_ConstructTeslaCharge      = "ConstructTeslaCharge";
+const string c_AB_InterdictorBurrow         = "InterdictorBurrow";
+const string c_AB_InterdictorUnburrow       = "InterdictorUnburrow";
+const string c_AB_LaunchCloakCharge         = "LaunchCloakCharge";
+const string c_AB_LaunchShockCharge         = "LaunchShockCharge";
+const string c_AB_MiningPriority            = "MiningPriority";
+const string c_AB_MoleActivate              = "MoleActivate";
+const string c_AB_MoleDeactivate            = "MoleDeactivate";
+const string c_AB_NaniteGrenade             = "NaniteGrenade";
+const string c_AB_RepulsorBurrow            = "RepulsorBurrow";
+const string c_AB_RepulsorUnburrow          = "RepulsorUnburrow";
+const string c_AB_RevenantBomb              = "RevenantBomb";
+const string c_AB_SchematicTransmit         = "SchematicTransmit";
+const string c_AB_SpeedCloak                = "SpeedCloak";
+const string c_AB_SuperCharge               = "SuperCharge";
+const string c_AB_SystemRecharge            = "ProcessorSystemRecharge";
+const string c_AB_VengeanceMissile          = "VengeanceMissile";
+const string c_AB_IgnitionBlast             = "IgnitionBlast";
+
+const int    c_AB_ConstructShockCharge      = 0;
+const int    c_AB_ConstructCloakCharge      = 1;
+

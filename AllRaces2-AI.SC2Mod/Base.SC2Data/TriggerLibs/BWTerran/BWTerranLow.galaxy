@@ -1,0 +1,157 @@
+
+//--------------------------------------------------------------------------------------------------
+//  BWTerranBasicEconomy
+//--------------------------------------------------------------------------------------------------
+void BWTerranBasicEconomy (int player, int tier, int minWorkers) {
+    int econMin = AIGetMinPeonCount(player, c_townMax);
+    if (minWorkers > econMin) {
+        minWorkers = econMin;
+    }
+
+    AIDefaultEconomy(player, c_BWTB_CommandCenter, c_BWTB_Refinery, c_BWTB_SupplyDepot, c_BWTU_SCV, minWorkers, c_stockAlways);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  BWTerranBasicExpansion
+//--------------------------------------------------------------------------------------------------
+void BWTerranBasicExpansion (int player, int tier, int minerals, int gas) {
+    AIDefaultExpansion(player, c_BWTB_CommandCenter, minerals, gas, c_expandDefault);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  BWTerranGeneralBuild
+//--------------------------------------------------------------------------------------------------
+void BWTerranGeneralBuild (int player, int tier) {
+    if (tier >= c_ldPhaseMid) {
+        if (PlayerBeaconIsSet(player, c_beaconDetect)) {
+            AISetStock( player, 1, c_BWTU_ScienceVessel );
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  BWTerranMacroExpand
+//--------------------------------------------------------------------------------------------------
+bool BWTerranMacroExpand (int player) {
+    fixed defenseEval = 0;
+
+    if (AITechCount(player, c_BWTU_SCV, c_techCountQueuedOrBetter) < 10) {
+        return false;
+    }
+    if (AITechCount(player, c_BWTB_CommandCenter, c_techCountQueuedOrBetter) >= 2) {
+        return false;
+    }
+
+    defenseEval = AISelfDefenseThreatEval(c_dtRealSelfThreat, player);
+    if (defenseEval >= 120) {
+        // don't expand if currently under attack
+        return false;
+    }
+
+    if (!AIIsExpandingOrHasExpanded(player)) {
+        if (!AIHasNearbyOpenExpansion(player)) {
+            return false;
+        }
+        if (!AIHasRes(player,300,0)) {
+            AIEnableStock(player);
+            return true;
+        }
+
+        // we should try to expand
+        AIExpand(player, AIGetTownLocation(player, c_townMain), c_BWTB_CommandCenter);
+    }
+
+    // currently expanding see if we need to save minerals
+    if (!AIHasRes(player,350,0)) {
+        AIEnableStock(player);
+        return true;
+    }
+    return false; // already saved enough, we're allowed to continure the stock
+}
+
+//--------------------------------------------------------------------------------------------------
+//  BWTerranAtEachTown
+//--------------------------------------------------------------------------------------------------
+void BWTerranAtEachTown (int player, int tier) {
+    int i = 0;
+    int town;
+
+    while (i < c_townMax) {
+        town = i;
+        i = i + 1;
+
+        if (AIGetTownState(player, town) != c_townStateEstablished) {
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_BWTB_CommandCenter, c_techCountCompleteOnly) < 1) {
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_BWTB_MissileTurret, c_techCountCompleteOnly) < 2) {
+            AISetStockEx(player, town, 2, c_BWTB_MissileTurret, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+        if (AIGetBuildingCountInTown(player, town, c_BWTB_Bunker, c_techCountCompleteOnly) < 1) {
+            AISetStockEx(player, town, 1, c_BWTB_Bunker, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  BWTerranTechUp
+//--------------------------------------------------------------------------------------------------
+void BWTerranTechUp (int player, int tier) {
+    int diff = AIPlayerDifficulty(player);
+
+    if (diff < c_skirMedium) {
+        // don't build extra buildings below medium
+        return;
+    }
+
+    AISetStock( player, 1, c_BWTB_Refinery );
+    AISetStock( player, 1, c_BWTB_Barracks );
+    AISetStock( player, 1, c_BWTB_Academy );
+    AISetStock( player, 1, c_BWTB_EngineeringBay );
+
+    if (tier >= c_ldPhaseMid) {
+        BWTerranAtEachTown(player, tier);
+        AISetStock( player, 1, c_BWTB_Factory );
+        AISetStock( player, 1, c_BWTB_MachineShop );
+        AISetStock( player, 1, c_BWTB_Armory );
+        AISetStock( player, 1, c_BWTB_Starport );
+        AISetStock( player, 1, c_BWTB_ControlTower );
+        AISetStock( player, 3, c_BWTB_Barracks );
+        AISetStock( player, 1, c_BWTB_ScienceFacility );
+
+        if (tier >= c_ldPhaseLate) {
+            AISetStock( player, 1, c_BWTB_CovertOps );
+            AISetStock( player, 2, c_BWTB_ScienceFacility );
+            AISetStock( player, 1, c_BWTB_NuclearSilo );
+            AISetStock( player, 1, c_BWTB_PhysicsLab );
+            AISetStock( player, 2, c_BWTB_EngineeringBay );
+            AISetStock( player, 2, c_BWTB_Armory );
+            AISetStock( player, 3, c_BWTB_Factory );
+            AISetStock( player, 3, c_BWTB_Starport );
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  BroodWarTerranBasicDefenseStock
+//--------------------------------------------------------------------------------------------------
+void BWTerranBasicDefenseStock (int player) {
+    if (!AINeedsDefending(player)) {
+        return;
+    }
+
+    AISetStockFarms( player, c_BWTB_SupplyDepot, c_stockNormalFarms);
+    AIAddEmergencyDefenseStock(player, 12, c_BWTU_Marine, false);
+    AISetStock( player, 1, c_BWTB_Refinery );
+    AIAddEmergencyDefenseStock(player, 4, c_BWTU_Wraith, true);
+    AIAddEmergencyDefenseStock(player, 4, c_BWTU_Vulture, true);
+    AIAddEmergencyDefenseStock(player, 4, c_BWTU_Medic, true);
+    AIAddEmergencyDefenseStock(player, 4, c_BWTU_Firebat, true);
+    AIAddEmergencyDefenseStock(player, 20, c_BWTU_SCV, true);
+}

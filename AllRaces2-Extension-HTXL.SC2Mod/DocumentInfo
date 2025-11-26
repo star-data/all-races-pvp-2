@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocInfo>
+    <Flags>
+        <Value>ExtensionMod</Value>
+    </Flags>
+    <Icon>
+        <Value>logo-small.png</Value>
+    </Icon>
+    <Dependencies>
+        <Value>bnet:[AR2] Data/0.0/466163,file:Mods\all-races-pvp-2\AllRaces2-Data.SC2Mod</Value>
+        <Value>bnet:[AR2] Data/0.0/466163,file:Mods\all-races-pvp-2\AllRaces2-AI.SC2Mod</Value>
+        <Value>file:Mods\all-races-factions-htxl\Webby.SC2Mod</Value>
+        <Value>file:Mods\all-races-factions-htxl\Umoya.SC2Mod</Value>
+        <Value>file:Mods\all-races-factions-htxl\Purifier.SC2Mod</Value>
+        <Value>file:Mods\all-races-factions-htxl\Moebius.SC2Mod</Value>
+        <Value>file:Mods\all-races-factions-htxl\Ihanrii.SC2Mod</Value>
+        <Value>file:Mods\all-races-factions-htxl\Taldarim.SC2Mod</Value>
+        <Value>file:Mods\all-races-factions-htxl\Umoya.SC2Mod</Value>
+        <Value>file:Mods\all-races-factions-htxl\Webby.SC2Mod</Value>
+    </Dependencies>
+</DocInfo>

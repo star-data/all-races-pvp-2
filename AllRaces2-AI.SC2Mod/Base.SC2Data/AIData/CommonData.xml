@@ -1,0 +1,1529 @@
+<Catalog>
+
+    <CUser id="AI">
+        <Fields>
+            <Id value="Race"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Race"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="Unit StaticDetector" Type="Unit" EditorColumn="1">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="Unit Worker" Type="Unit" EditorColumn="1">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="Unit Supply" Type="Unit" EditorColumn="1">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="Unit Refinery" Type="Unit" EditorColumn="1">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="Unit Detector" Type="Unit" EditorColumn="1">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="Unit Power" Type="Unit" EditorColumn="1">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="Unit TownHall" Type="Unit" EditorColumn="1">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="Unit DropOff" Type="Unit" EditorColumn="1">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit StayHome"/>
+            <Type value="Unit"/>
+            <Count value="5"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit ClearObstacles"/>
+            <Type value="Unit"/>
+            <Count value="5"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit Combat"/>
+            <Type value="Unit"/>
+            <Count value="20"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit Combat Tier"/>
+            <Type value="Int"/>
+            <Count value="20"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit StaticDefense"/>
+            <Type value="Unit"/>
+            <Count value="5"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit Production"/>
+            <Type value="Unit"/>
+            <Count value="10"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit Tech"/>
+            <Type value="Unit"/>
+            <Count value="10"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit Support"/>
+            <Type value="Unit"/>
+            <Count value="5"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="AI TransportSetPanic" Type="Fixed" EditorColumn="11"/>
+        <Fields>
+            <Id value="Unit DiversionGround"/>
+            <Type value="Unit"/>
+            <Count value="5"/>
+            <EditorColumn value="5"/>
+        </Fields>
+        <Fields>
+            <Id value="Unit DiversionAir"/>
+            <Type value="Unit"/>
+            <Count value="5"/>
+            <EditorColumn value="5"/>
+        </Fields>
+        <Fields Id="Unit EarlyDefenseScout" Type="Unit" EditorColumn="11"/>
+        <Fields Id="Unit GroundScout" Type="Unit" EditorColumn="11"/>
+        <Fields>
+            <Id value="Behavior NoCreep"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Behavior"/>
+            <EditorColumn value="12"/>
+        </Fields>
+        <Fields Id="Upgrade" Type="Upgrade" Count="30"/>
+        <Fields Id="Upgrade Tier" Type="Int" Count="30"/>
+        <Fields Id="Unit ExtraScout" Type="Unit" Count="5"/>
+        <Fields Id="Unit Ignored" Type="Unit" Count="5"/>
+        <Fields Id="Unit Healer" Type="Unit" Count="5"/>
+        <Fields Id="Unit Creep" Type="Unit"/>
+        <Fields Id="Unit AirScout" Type="Unit"/>
+        <Fields Id="Unit Larva" Type="Unit" Count="5"/>
+        <Fields Id="Nuke UnitCaster" Type="Unit"/>
+        <Fields Id="Nuke EffectCalldown" Type="GameLink" GameLinkType="Effect"/>
+        <Fields Id="Nuke EffectDamage" Type="GameLink" GameLinkType="Effect"/>
+        <Fields Id="Nuke AbilityNuke" Type="GameLink" GameLinkType="Abil"/>
+        <Fields Id="Nuke UpgradeCloak" Type="GameLink" GameLinkType="Upgrade"/>
+        <Fields Id="Nuke AbilityCloak" Type="GameLink" GameLinkType="Abil"/>
+        <Fields Id="Nuke BehaviorCloak" Type="GameLink" GameLinkType="Behavior"/>
+        <Fields Id="Nuke CastTime" Type="Fixed"/>
+        <Fields Id="Unit Transport" Type="Unit"/>
+        <Fields Id="Unit Guard" Type="Unit" EditorColumn="12"/>
+        <Fields Id="Unit Radar" Type="Unit"/>
+        <Fields Id="Unit Macro" Type="Unit" EditorColumn="11"/>
+
+        <Instances Id="[Default]">
+            <Unit Unit="$Null"><Field Id="Unit Worker"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Supply"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Refinery"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Detector"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Power"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit TownHall"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StayHome"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StayHome" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StayHome" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StayHome" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StayHome" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit ClearObstacles"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit ClearObstacles" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit ClearObstacles" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit ClearObstacles" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit ClearObstacles" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionAir"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionAir" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionAir" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionAir" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionAir" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionGround"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionGround" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionGround" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionGround" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit DiversionGround" Index="4"/></Unit>
+
+            <Unit Unit="$Null"><Field Id="Unit Combat"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="5"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="6"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="7"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="8"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="9"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="10"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="11"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="12"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="13"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="14"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="15"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="16"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="17"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="18"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Combat" Index="19"/></Unit>
+
+            <Int Int="0"><Field Id="Unit Combat Tier"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="1"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="2"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="3"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="4"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="5"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="6"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="7"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="8"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="9"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="10"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="11"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="12"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="13"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="14"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="15"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="16"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="17"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="18"/></Int>
+            <Int Int="0"><Field Id="Unit Combat Tier" Index="19"/></Int>
+
+            <Unit Unit="$Null"><Field Id="Unit StaticDefense"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StaticDefense" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StaticDefense" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StaticDefense" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StaticDefense" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="5"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="6"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="7"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="8"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Production" Index="9"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="5"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="6"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="7"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="8"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Tech" Index="9"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Support"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Support" Index="1"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Support" Index="2"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Support" Index="3"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Support" Index="4"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit GroundScout"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit EarlyDefenseScout"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit StaticDetector"/></Unit>
+            <Unit Unit="$Null"><Field Id="Unit Macro"/></Unit>
+            <Int Int="0"><Field Id="Upgrade Tier"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="1"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="2"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="3"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="4"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="5"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="6"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="7"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="8"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="9"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="10"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="11"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="12"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="13"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="14"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="15"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="16"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="17"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="18"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="19"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="20"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="21"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="22"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="23"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="24"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="25"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="26"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="27"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="28"/></Int>
+            <Int Int="0"><Field Id="Upgrade Tier" Index="29"/></Int>
+
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="8"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="9"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="10"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="11"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="12"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="13"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="14"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="15"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="16"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="17"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="18"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="19"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="20"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="21"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="22"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="23"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="24"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="25"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="26"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="27"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="28"/></Upgrade>
+            <Upgrade Upgrade="$Null"><Field Id="Upgrade" Index="29"/></Upgrade>
+        </Instances>
+        <Instances Id="Protoss">
+            <Fixed Fixed="0.2697"><Field Id="AI TransportSetPanic"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Nexus"><Field Id="Unit DropOff"/></Unit>
+            <Unit Unit="PhotonCannon"><Field Id="Unit StaticDetector"/></Unit>
+            <Unit Unit="Probe"><Field Id="Unit Worker"/></Unit>
+            <Unit Unit="Pylon"><Field Id="Unit Supply"/></Unit>
+            <Unit Unit="Assimilator"><Field Id="Unit Refinery"/></Unit>
+            <Unit Unit="Observer"><Field Id="Unit Detector"/></Unit>
+            <Unit Unit="Pylon"><Field Id="Unit Power"/></Unit>
+            <Unit Unit="Nexus"><Field Id="Unit TownHall"/></Unit>
+            <Unit Unit="WarpPrism"><Field Id="Unit StayHome"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Unit ClearObstacles"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Unit ClearObstacles" Index="1"/></Unit>
+            <Unit Unit="DarkTemplar"><Field Id="Unit ClearObstacles" Index="2"/></Unit>
+
+            <Unit Unit="Zealot"><Field Id="Unit Combat"/></Unit>
+            <Unit Unit="Adept"><Field Id="Unit Combat" Index="1"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Unit Combat" Index="2"/></Unit>
+            <Unit Unit="Sentry"><Field Id="Unit Combat" Index="3"/></Unit>
+            <Unit Unit="Immortal"><Field Id="Unit Combat" Index="4"/></Unit>
+            <Unit Unit="HighTemplar"><Field Id="Unit Combat" Index="5"/></Unit>
+            <Unit Unit="DarkTemplar"><Field Id="Unit Combat" Index="6"/></Unit>
+            <Unit Unit="Archon"><Field Id="Unit Combat" Index="7"/></Unit>
+            <Unit Unit="Disruptor"><Field Id="Unit Combat" Index="8"/></Unit>
+            <Unit Unit="Colossus"><Field Id="Unit Combat" Index="9"/></Unit>
+            <Unit Unit="Phoenix"><Field Id="Unit Combat" Index="10"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Unit Combat" Index="11"/></Unit>
+            <Unit Unit="Oracle"><Field Id="Unit Combat" Index="12"/></Unit>
+            <Unit Unit="Carrier"><Field Id="Unit Combat" Index="13"/></Unit>
+            <Unit Unit="Tempest"><Field Id="Unit Combat" Index="14"/></Unit>
+            <Unit Unit="Mothership"><Field Id="Unit Combat" Index="15"/></Unit>
+
+            <Int Int="1"><Field Id="Unit Combat Tier"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="1"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="2"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="3"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="4"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="5"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="6"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="7"/></Int>
+            <Int Int="3"><Field Id="Unit Combat Tier" Index="8"/></Int>
+            <Int Int="3"><Field Id="Unit Combat Tier" Index="9"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="10"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="11"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="12"/></Int>
+            <Int Int="3"><Field Id="Unit Combat Tier" Index="13"/></Int>
+            <Int Int="3"><Field Id="Unit Combat Tier" Index="14"/></Int>
+            <Int Int="4"><Field Id="Unit Combat Tier" Index="15"/></Int>
+
+
+            <Unit Unit="PhotonCannon"><Field Id="Unit StaticDefense"/></Unit>
+            <Unit Unit="ShieldBattery"><Field Id="Unit StaticDefense" Index="1"/></Unit>
+            <Unit Unit="Gateway"><Field Id="Unit Production"/></Unit>
+            <Unit Unit="RoboticsFacility"><Field Id="Unit Production" Index="1"/></Unit>
+            <Unit Unit="Stargate"><Field Id="Unit Production" Index="2"/></Unit>
+            <Unit Unit="CyberneticsCore"><Field Id="Unit Tech"/></Unit>
+            <Unit Unit="Forge"><Field Id="Unit Tech" Index="1"/></Unit>
+            <Unit Unit="TwilightCouncil"><Field Id="Unit Tech" Index="2"/></Unit>
+            <Unit Unit="TemplarArchive"><Field Id="Unit Tech" Index="3"/></Unit>
+            <Unit Unit="RoboticsBay"><Field Id="Unit Tech" Index="4"/></Unit>
+            <Unit Unit="DarkShrine"><Field Id="Unit Tech" Index="5"/></Unit>
+            <Unit Unit="WarpPrism"><Field Id="Unit Support"/></Unit>
+            <Unit Unit="Observer"><Field Id="Unit AirScout"/></Unit>
+            <Unit Unit="WarpPrism"><Field Id="Unit Transport"/></Unit>
+            <Unit Unit="FleetBeacon"><Field Id="Unit Tech" Index="6"/></Unit>
+
+            <Upgrade Upgrade="WarpGateResearch"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ProtossShieldsLevel1"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundWeaponsLevel1"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundArmorsLevel1"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="Charge"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="BlinkTech"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsLevel1"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsLevel1"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="ProtossShieldsLevel2"><Field Id="Upgrade" Index="8"/></Upgrade>
+            <Upgrade Upgrade="ObserverGraviticBooster"><Field Id="Upgrade" Index="9"/></Upgrade>
+            <Upgrade Upgrade="GraviticDrive"><Field Id="Upgrade" Index="10"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundWeaponsLevel2"><Field Id="Upgrade" Index="11"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundArmorsLevel2"><Field Id="Upgrade" Index="12"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsLevel2"><Field Id="Upgrade" Index="13"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsLevel2"><Field Id="Upgrade" Index="14"/></Upgrade>
+            <Upgrade Upgrade="PhoenixRangeUpgrade"><Field Id="Upgrade" Index="15"/></Upgrade>
+            <Upgrade Upgrade="ProtossShieldsLevel3"><Field Id="Upgrade" Index="16"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundArmorsLevel3"><Field Id="Upgrade" Index="17"/></Upgrade>
+            <Upgrade Upgrade="ProtossGroundWeaponsLevel3"><Field Id="Upgrade" Index="18"/></Upgrade>
+            <Upgrade Upgrade="ExtendedThermalLance"><Field Id="Upgrade" Index="19"/></Upgrade>
+            <Upgrade Upgrade="PsiStormTech"><Field Id="Upgrade" Index="20"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirWeaponsLevel3"><Field Id="Upgrade" Index="21"/></Upgrade>
+            <Upgrade Upgrade="ProtossAirArmorsLevel3"><Field Id="Upgrade" Index="22"/></Upgrade>
+            <Upgrade Upgrade="VoidRaySpeedUpgrade"><Field Id="Upgrade" Index="23"/></Upgrade>
+
+            <Int Int="0"><Field Id="Upgrade Tier"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="1"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="2"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="3"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="4"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="5"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="6"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="7"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="8"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="9"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="10"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="11"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="12"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="13"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="14"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="15"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="16"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="17"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="18"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="19"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="20"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="21"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="22"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="23"/></Int>
+
+        </Instances>
+        <Instances Id="Terran">
+            <Fixed Fixed="20"><Field Id="Nuke CastTime"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <GameLink GameLink="GhostCloak"><Field Id="Nuke AbilityCloak"/></GameLink>
+            <GameLink GameLink="TacNukeStrike"><Field Id="Nuke AbilityNuke"/></GameLink>
+            <GameLink GameLink="GhostCloak"><Field Id="Nuke BehaviorCloak"/></GameLink>
+            <GameLink GameLink="NukeDamage"><Field Id="Nuke EffectDamage"/></GameLink>
+            <GameLink GameLink="Nuke"><Field Id="Nuke EffectCalldown"/></GameLink>
+            <GameLink GameLink="PersonalCloaking"><Field Id="Nuke UpgradeCloak"/></GameLink>
+            <Unit Unit="CommandCenter"><Field Id="Unit DropOff"/></Unit>
+            <Unit Unit="MissileTurret"><Field Id="Unit StaticDetector"/></Unit>
+            <Unit Unit="SCV"><Field Id="Unit Worker"/></Unit>
+            <Unit Unit="SupplyDepot"><Field Id="Unit Supply"/></Unit>
+            <Unit Unit="Refinery"><Field Id="Unit Refinery"/></Unit>
+            <Unit Unit="Raven"><Field Id="Unit Detector"/></Unit>
+            <Unit Unit="CommandCenter"><Field Id="Unit TownHall"/></Unit>
+            <Unit Unit="Marine"><Field Id="Unit ClearObstacles"/></Unit>
+            <Unit Unit="Reaper"><Field Id="Unit ClearObstacles" Index="1"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Unit ClearObstacles" Index="2"/></Unit>
+            <Unit Unit="Reaper"><Field Id="Unit DiversionGround"/></Unit>
+            <Unit Unit="Banshee"><Field Id="Unit DiversionAir"/></Unit>
+
+            <Unit Unit="Marine"><Field Id="Unit Combat"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Unit Combat" Index="1"/></Unit>
+            <Unit Unit="Reaper"><Field Id="Unit Combat" Index="2"/></Unit>
+            <Unit Unit="Hellion"><Field Id="Unit Combat" Index="3"/></Unit>
+            <Unit Unit="WidowMine"><Field Id="Unit Combat" Index="4"/></Unit>
+            <Unit Unit="Ghost"><Field Id="Unit Combat" Index="5"/></Unit>
+            <Unit Unit="SiegeTank"><Field Id="Unit Combat" Index="6"/></Unit>
+            <Unit Unit="Cyclone"><Field Id="Unit Combat" Index="7"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="Unit Combat" Index="8"/></Unit>
+            <Unit Unit="Raven"><Field Id="Unit Combat" Index="9"/></Unit>
+            <Unit Unit="Banshee"><Field Id="Unit Combat" Index="10"/></Unit>
+            <Unit Unit="Liberator"><Field Id="Unit Combat" Index="11"/></Unit>
+            <Unit Unit="Thor"><Field Id="Unit Combat" Index="12"/></Unit>
+            <Unit Unit="Battlecruiser"><Field Id="Unit Combat" Index="13"/></Unit>
+
+            <Int Int="1"><Field Id="Unit Combat Tier"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="1"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="2"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="3"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="4"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="5"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="6"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="7"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="8"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="9"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="10"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="11"/></Int>
+            <Int Int="3"><Field Id="Unit Combat Tier" Index="12"/></Int>
+            <Int Int="3"><Field Id="Unit Combat Tier" Index="13"/></Int>
+
+            <Unit Unit="Bunker"><Field Id="Unit StaticDefense"/></Unit>
+            <Unit Unit="MissileTurret"><Field Id="Unit StaticDefense" Index="1"/></Unit>
+            <Unit Unit="Barracks"><Field Id="Unit Production"/></Unit>
+            <Unit Unit="Factory"><Field Id="Unit Production" Index="1"/></Unit>
+            <Unit Unit="Starport"><Field Id="Unit Production" Index="2"/></Unit>
+            <Unit Unit="BarracksReactor"><Field Id="Unit Production" Index="3"/></Unit>
+            <Unit Unit="FactoryReactor"><Field Id="Unit Production" Index="4"/></Unit>
+            <Unit Unit="FactoryTechLab"><Field Id="Unit Tech"/></Unit>
+            <Unit Unit="BarracksTechLab"><Field Id="Unit Tech" Index="1"/></Unit>
+            <Unit Unit="StarportTechLab"><Field Id="Unit Tech" Index="2"/></Unit>
+            <Unit Unit="EngineeringBay"><Field Id="Unit Tech" Index="3"/></Unit>
+            <Unit Unit="Armory"><Field Id="Unit Tech" Index="4"/></Unit>
+            <Unit Unit="GhostAcademy"><Field Id="Unit Tech" Index="5"/></Unit>
+            <Unit Unit="FusionCore"><Field Id="Unit Tech" Index="6"/></Unit>
+            <Unit Unit="Medivac"><Field Id="Unit Support"/></Unit>
+            <Unit Unit="Medivac"><Field Id="Unit EarlyDefenseScout"/></Unit>
+            <Unit Unit="Medivac"><Field Id="Unit Healer"/></Unit>
+            <Unit Unit="Medivac"><Field Id="Unit AirScout"/></Unit>
+            <Unit Unit="Ghost"><Field Id="Nuke UnitCaster"/></Unit>
+            <Unit Unit="Medivac"><Field Id="Unit Transport"/></Unit>
+            <Unit Unit="SensorTower"><Field Id="Unit Radar"/></Unit>
+            <Unit Unit="OrbitalCommand"><Field Id="Unit Macro"/></Unit>
+
+            <Upgrade Upgrade="Stimpack"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ShieldWall"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="PunisherGrenades"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="BansheeCloak"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryWeaponsLevel1"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryArmorsLevel1"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleAndShipArmorsLevel1"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="HiSecAutoTracking"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryWeaponsLevel2"><Field Id="Upgrade" Index="8"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryArmorsLevel2"><Field Id="Upgrade" Index="9"/></Upgrade>
+            <Upgrade Upgrade="HighCapacityBarrels"><Field Id="Upgrade" Index="10"/></Upgrade>
+            <Upgrade Upgrade="PersonalCloaking"><Field Id="Upgrade" Index="11"/></Upgrade>
+            <Upgrade Upgrade="BattlecruiserEnableSpecializations"><Field Id="Upgrade" Index="12"/></Upgrade>
+            <Upgrade Upgrade="UmojanVehicleandShipPlatingLevel2"><Field Id="Upgrade" Index="13"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleWeaponsLevel2"><Field Id="Upgrade" Index="14"/></Upgrade>
+            <Upgrade Upgrade="TerranShipWeaponsLevel2"><Field Id="Upgrade" Index="15"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryWeaponsLevel3"><Field Id="Upgrade" Index="16"/></Upgrade>
+            <Upgrade Upgrade="TerranInfantryArmorsLevel3"><Field Id="Upgrade" Index="17"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleWeaponsLevel3"><Field Id="Upgrade" Index="18"/></Upgrade>
+            <Upgrade Upgrade="TerranShipWeaponsLevel3"><Field Id="Upgrade" Index="19"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleAndShipArmorsLevel3"><Field Id="Upgrade" Index="20"/></Upgrade>
+            <Upgrade Upgrade="TerranBuildingArmor"><Field Id="Upgrade" Index="21"/></Upgrade>
+            <Upgrade Upgrade="TerranVehicleWeaponsLevel1"><Field Id="Upgrade" Index="22"/></Upgrade>
+            <Upgrade Upgrade="TerranShipWeaponsLevel1"><Field Id="Upgrade" Index="23"/></Upgrade>
+
+            <Int Int="0"><Field Id="Upgrade Tier"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="1"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="2"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="3"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="4"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="5"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="6"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="7"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="8"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="9"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="10"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="11"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="12"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="13"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="14"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="15"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="16"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="17"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="18"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="19"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="20"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="21"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="22"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="23"/></Int>
+
+        </Instances>
+        <Instances Id="Zerg">
+            <GameLink GameLink="ZergBuildingNotOnCreep"><Field Id="Behavior NoCreep"/></GameLink>
+            <Unit Unit="Hatchery"><Field Id="Unit DropOff"/></Unit>
+            <Unit Unit="SporeCrawler"><Field Id="Unit StaticDetector"/></Unit>
+            <Unit Unit="Drone"><Field Id="Unit Worker"/></Unit>
+            <Unit Unit="Overlord"><Field Id="Unit Supply"/></Unit>
+            <Unit Unit="Extractor"><Field Id="Unit Refinery"/></Unit>
+            <Unit Unit="Overseer"><Field Id="Unit Detector"/></Unit>
+            <Unit Unit="Hatchery"><Field Id="Unit TownHall"/></Unit>
+            <Unit Unit="SpineCrawler"><Field Id="Unit StayHome"/></Unit>
+            <Unit Unit="SporeCrawler"><Field Id="Unit StayHome" Index="1"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Unit ClearObstacles"/></Unit>
+            <Unit Unit="Roach"><Field Id="Unit ClearObstacles" Index="1"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="Unit ClearObstacles" Index="2"/></Unit>
+
+            <Unit Unit="Zergling"><Field Id="Unit Combat"/></Unit>
+            <Unit Unit="Baneling"><Field Id="Unit Combat" Index="1"/></Unit>
+            <Unit Unit="Roach"><Field Id="Unit Combat" Index="2"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="Unit Combat" Index="3"/></Unit>
+            <Unit Unit="Infestor"><Field Id="Unit Combat" Index="4"/></Unit>
+            <Unit Unit="SwarmHostMP"><Field Id="Unit Combat" Index="5"/></Unit>
+            <Unit Unit="Ravager"><Field Id="Unit Combat" Index="6"/></Unit>
+            <Unit Unit="LurkerMP"><Field Id="Unit Combat" Index="7"/></Unit>
+            <Unit Unit="Ultralisk"><Field Id="Unit Combat" Index="8"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Unit Combat" Index="9"/></Unit>
+            <Unit Unit="Corruptor"><Field Id="Unit Combat" Index="10"/></Unit>
+            <Unit Unit="Viper"><Field Id="Unit Combat" Index="11"/></Unit>
+            <Unit Unit="BroodLord"><Field Id="Unit Combat" Index="12"/></Unit>
+
+            <Int Int="1"><Field Id="Unit Combat Tier"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="1"/></Int>
+            <Int Int="1"><Field Id="Unit Combat Tier" Index="2"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="3"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="4"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="5"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="6"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="7"/></Int>
+            <Int Int="3"><Field Id="Unit Combat Tier" Index="8"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="9"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="10"/></Int>
+            <Int Int="2"><Field Id="Unit Combat Tier" Index="11"/></Int>
+            <Int Int="3"><Field Id="Unit Combat Tier" Index="12"/></Int>
+
+            <Unit Unit="SporeCrawler"><Field Id="Unit StaticDefense"/></Unit>
+            <Unit Unit="SpineCrawler"><Field Id="Unit StaticDefense" Index="1"/></Unit>
+            <Unit Unit="Hatchery"><Field Id="Unit Production"/></Unit>
+            <Unit Unit="SpawningPool"><Field Id="Unit Tech"/></Unit>
+            <Unit Unit="RoachWarren"><Field Id="Unit Tech" Index="1"/></Unit>
+            <Unit Unit="BanelingNest"><Field Id="Unit Tech" Index="2"/></Unit>
+            <Unit Unit="EvolutionChamber"><Field Id="Unit Tech" Index="3"/></Unit>
+            <Unit Unit="HydraliskDen"><Field Id="Unit Tech" Index="4"/></Unit>
+            <Unit Unit="InfestationPit"><Field Id="Unit Tech" Index="5"/></Unit>
+            <Unit Unit="Spire"><Field Id="Unit Tech" Index="6"/></Unit>
+            <Unit Unit="UltraliskCavern"><Field Id="Unit Tech" Index="7"/></Unit>
+            <Unit Unit="GreaterSpire"><Field Id="Unit Tech" Index="8"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Unit GroundScout"/></Unit>
+            <Unit Unit="CreepTumor"><Field Id="Unit Creep"/></Unit>
+            <Unit Unit="Overlord"><Field Id="Unit ExtraScout"/></Unit>
+            <Unit Unit="TransportOverlordCocoon"><Field Id="Unit ExtraScout" Index="1"/></Unit>
+            <Unit Unit="Larva"><Field Id="Unit Ignored"/></Unit>
+            <Unit Unit="Broodling"><Field Id="Unit Ignored" Index="1"/></Unit>
+            <Unit Unit="LocustMP"><Field Id="Unit Ignored" Index="2"/></Unit>
+            <Unit Unit="Overseer"><Field Id="Unit AirScout"/></Unit>
+            <Unit Unit="Larva"><Field Id="Unit Larva"/></Unit>
+            <Unit Unit="OverlordTransport"><Field Id="Unit Transport"/></Unit>
+            <Unit Unit="Queen"><Field Id="Unit Guard"/></Unit>
+
+            <Upgrade Upgrade="zerglingmovementspeed"><Field Id="Upgrade"/></Upgrade>
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel1"><Field Id="Upgrade" Index="1"/></Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsLevel1"><Field Id="Upgrade" Index="2"/></Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsLevel1"><Field Id="Upgrade" Index="3"/></Upgrade>
+            <Upgrade Upgrade="CentrificalHooks"><Field Id="Upgrade" Index="4"/></Upgrade>
+            <Upgrade Upgrade="Burrow"><Field Id="Upgrade" Index="5"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerWeaponsLevel1"><Field Id="Upgrade" Index="6"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsLevel1"><Field Id="Upgrade" Index="7"/></Upgrade>
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel2"><Field Id="Upgrade" Index="8"/></Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsLevel2"><Field Id="Upgrade" Index="9"/></Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsLevel2"><Field Id="Upgrade" Index="10"/></Upgrade>
+            <Upgrade Upgrade="MicrobialShroud"><Field Id="Upgrade" Index="11"/></Upgrade>
+            <Upgrade Upgrade="GlialReconstitution"><Field Id="Upgrade" Index="12"/></Upgrade>
+            <Upgrade Upgrade="EvolveGroovedSpines"><Field Id="Upgrade" Index="13"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerWeaponsLevel2"><Field Id="Upgrade" Index="14"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsLevel2"><Field Id="Upgrade" Index="15"/></Upgrade>
+            <Upgrade Upgrade="zerglingattackspeed"><Field Id="Upgrade" Index="16"/></Upgrade>
+            <Upgrade Upgrade="NeuralParasite"><Field Id="Upgrade" Index="17"/></Upgrade>
+            <Upgrade Upgrade="ZergMeleeWeaponsLevel3"><Field Id="Upgrade" Index="18"/></Upgrade>
+            <Upgrade Upgrade="ZergGroundArmorsLevel3"><Field Id="Upgrade" Index="19"/></Upgrade>
+            <Upgrade Upgrade="ZergMissileWeaponsLevel3"><Field Id="Upgrade" Index="20"/></Upgrade>
+            <Upgrade Upgrade="ChitinousPlating"><Field Id="Upgrade" Index="21"/></Upgrade>
+            <Upgrade Upgrade="TunnelingClaws"><Field Id="Upgrade" Index="22"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerWeaponsLevel3"><Field Id="Upgrade" Index="23"/></Upgrade>
+            <Upgrade Upgrade="ZergFlyerArmorsLevel3"><Field Id="Upgrade" Index="24"/></Upgrade>
+            <Upgrade Upgrade="Frenzy"><Field Id="Upgrade" Index="25"/></Upgrade>
+
+
+            <Int Int="0"><Field Id="Upgrade Tier"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="1"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="2"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="3"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="4"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="5"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="6"/></Int>
+            <Int Int="1"><Field Id="Upgrade Tier" Index="7"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="8"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="9"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="10"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="11"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="12"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="13"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="14"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="15"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="16"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="17"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="18"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="19"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="20"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="21"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="22"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="23"/></Int>
+            <Int Int="3"><Field Id="Upgrade Tier" Index="24"/></Int>
+            <Int Int="2"><Field Id="Upgrade Tier" Index="25"/></Int>
+
+        </Instances>
+    </CUser>
+    <CUser id="AISpecialMaker">
+        <Fields Id="Target" Type="Unit" EditorColumn="1"/>
+        <Fields Id="Source" Type="Unit" EditorColumn="1"/>
+        <Fields Id="SourceAbility" Type="AbilCmd" EditorColumn="2"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Terran Nuke">
+            <AbilCmd Abil="ArmSiloWithNuke"><Field Id="SourceAbility"/>
+            </AbilCmd>
+            <Unit Unit="Nuke"><Field Id="Target"/></Unit>
+            <Unit Unit="GhostAcademy"><Field Id="Source"/></Unit>
+        </Instances>
+        <Instances Id="CreepTumorBurrowed">
+            <AbilCmd Abil="QueenBuild"><Field Id="SourceAbility"/>
+            </AbilCmd>
+            <Unit Unit="CreepTumorBurrowed"><Field Id="Target"/></Unit>
+            <Unit Unit="CreepTumor"><Field Id="Source"/></Unit>
+        </Instances>
+    </CUser>
+    <CUser id="AICounter">
+        <Fields Id="Unit" Type="Unit" EditorColumn="2"/>
+        <Fields Id="Counter" Type="Unit" EditorColumn="3"/>
+        <Fields Id="Count" Type="Fixed" EditorColumn="3"/>
+        <Fields Id="CounterAlt" Type="Unit" EditorColumn="6"/>
+        <Fields Id="CountAlt" Type="Fixed" EditorColumn="5"/>
+        <Fields>
+            <Id value="Race"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Race"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Instances Id="[Default]">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed><Field Id="CountAlt"/></Fixed>
+            <Unit Unit="$Null"><Field Id="Counter"/></Unit>
+            <Unit Unit="$Null"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Zealot">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Zealot"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Stalker">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.33"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Stalker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+            <Unit Unit="Immortal"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Sentry">
+            <Fixed Fixed="0.7"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Sentry"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss HighTemplar">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="HighTemplar"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss DarkTemplar">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="DarkTemplar"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Archon">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Archon"><Field Id="Unit"/></Unit>
+            <Unit Unit="Immortal"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Immortal">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Immortal"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Colossus">
+            <Fixed Fixed="1.2"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Colossus"><Field Id="Unit"/></Unit>
+            <Unit Unit="Immortal"><Field Id="Counter"/></Unit>
+            <Unit Unit="Colossus"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Phoenix">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Phoenix"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss VoidRay">
+            <Fixed Fixed="1.1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="VoidRay"><Field Id="Unit"/></Unit>
+            <Unit Unit="Phoenix"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Carrier">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Carrier"><Field Id="Unit"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss PhotonCannon">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.4"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="PhotonCannon"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+            <Unit Unit="Colossus"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Mothership">
+            <Fixed Fixed="4"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Mothership"><Field Id="Unit"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss MothershipCore">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="MothershipCore"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+            <Unit Unit="Phoenix"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Oracle">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Oracle"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+            <Unit Unit="Phoenix"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Tempest">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Tempest"><Field Id="Unit"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Adept">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Adept"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Disruptor">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Disruptor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Immortal"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Marine">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Marine"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+            <Unit Unit="Colossus"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Marauder">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.4"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Marauder"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+            <Unit Unit="Immortal"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Reaper">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Reaper"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Ghost">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Ghost"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Hellion">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Hellion"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss SiegeTank">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="SiegeTank"><Field Id="Unit"/></Unit>
+            <Unit Unit="Immortal"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Thor">
+            <Fixed Fixed="5"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1.2"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Thor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+            <Unit Unit="Immortal"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Viking">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="VikingFighter"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Medivac">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Medivac"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Raven">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Raven"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Banshee">
+            <Fixed Fixed="1.5"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.5"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Banshee"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+            <Unit Unit="Phoenix"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Battlecruiser">
+            <Fixed Fixed="1.75"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Battlecruiser"><Field Id="Unit"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Bunker">
+            <Fixed Fixed="4"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.4"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Bunker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+            <Unit Unit="Colossus"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss WidowMine">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="WidowMine"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Cyclone">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Cyclone"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Liberator">
+            <Fixed Fixed="1.5"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.5"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Liberator"><Field Id="Unit"/></Unit>
+            <Unit Unit="Phoenix"><Field Id="Counter"/></Unit>
+            <Unit Unit="Carrier"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Zergling">
+            <Fixed Fixed="0.3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Zergling"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Baneling">
+            <Fixed Fixed="0.4"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.2"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Baneling"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+            <Unit Unit="Immortal"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Roach">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.25"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Roach"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+            <Unit Unit="Immortal"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Hydralisk">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.25"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Hydralisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+            <Unit Unit="Colossus"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Infestor">
+            <Fixed Fixed="1.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Infestor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Mutalisk">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Mutalisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Corruptor">
+            <Fixed Fixed="0.8"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Corruptor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Ultralisk">
+            <Fixed Fixed="1.25"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Ultralisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Immortal"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss BroodLord">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="BroodLord"><Field Id="Unit"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss SpineCrawler">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="SpineCrawler"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss SpineCrawler">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="SpineCrawler"><Field Id="Unit"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss SwarmHost">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="SwarmHostMP"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss SwarmHost">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="SwarmHostMP"><Field Id="Unit"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Viper">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Viper"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Viper">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Viper"><Field Id="Unit"/></Unit>
+            <Unit Unit="VoidRay"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Ravager">
+            <Fixed Fixed="1.25"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Ravager"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zealot"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Ravager">
+            <Fixed Fixed="0.3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="Ravager"><Field Id="Unit"/></Unit>
+            <Unit Unit="Immortal"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Protoss Lurker">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.5"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Prot"><Field Id="Race"/></GameLink>
+            <Unit Unit="LurkerMP"><Field Id="Unit"/></Unit>
+            <Unit Unit="Stalker"><Field Id="Counter"/></Unit>
+            <Unit Unit="Disruptor"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Zealot">
+            <Fixed Fixed="1.1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Zealot"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Stalker">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.25"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Stalker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Counter"/></Unit>
+            <Unit Unit="Ultralisk"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Sentry">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Sentry"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg HighTemplar">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="HighTemplar"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg DarkTemplar">
+            <Fixed Fixed="1.3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="DarkTemplar"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Archon">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.9"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Archon"><Field Id="Unit"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="Counter"/></Unit>
+            <Unit Unit="Ultralisk"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Immortal">
+            <Fixed Fixed="6"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="2.2"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Immortal"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Counter"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Colossus">
+            <Fixed Fixed="4"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="3"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Colossus"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+            <Unit Unit="Corruptor"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Phoenix">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.8"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Phoenix"><Field Id="Unit"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="Counter"/></Unit>
+            <Unit Unit="Corruptor"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg VoidRay">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="VoidRay"><Field Id="Unit"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Carrier">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Carrier"><Field Id="Unit"/></Unit>
+            <Unit Unit="Corruptor"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg PhotonCannon">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="PhotonCannon"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+            <Unit Unit="BroodLord"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Mothership">
+            <Fixed Fixed="5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Mothership"><Field Id="Unit"/></Unit>
+            <Unit Unit="Corruptor"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Marine">
+            <Fixed Fixed="0.7"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Marine"><Field Id="Unit"/></Unit>
+            <Unit Unit="Baneling"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Marauder">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Marauder"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Reaper">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Reaper"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Ghost">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1.5"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Ghost"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Counter"/></Unit>
+            <Unit Unit="Roach"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Hellion">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Hellion"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg SiegeTank">
+            <Fixed Fixed="6"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.5"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="SiegeTank"><Field Id="Unit"/></Unit>
+            <Unit Unit="Zergling"><Field Id="Counter"/></Unit>
+            <Unit Unit="Ultralisk"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Thor">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Thor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Ultralisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Viking">
+            <Fixed Fixed="1.1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="VikingFighter"><Field Id="Unit"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Medivac">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Medivac"><Field Id="Unit"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Raven">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Raven"><Field Id="Unit"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Banshee">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Banshee"><Field Id="Unit"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Battlecruiser">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Battlecruiser"><Field Id="Unit"/></Unit>
+            <Unit Unit="Corruptor"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Bunker">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Bunker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Baneling"><Field Id="Counter"/></Unit>
+            <Unit Unit="BroodLord"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Zergling">
+            <Fixed Fixed="0.25"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Zergling"><Field Id="Unit"/></Unit>
+            <Unit Unit="Baneling"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Baneling">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Baneling"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Roach">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Roach"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Hydralisk">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Hydralisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Infestor">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Infestor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Mutalisk">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.8"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Mutalisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Counter"/></Unit>
+            <Unit Unit="Corruptor"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Corruptor">
+            <Fixed Fixed="0.8"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Corruptor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Hydralisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg Ultralisk">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="Ultralisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg BroodLord">
+            <Fixed Fixed="1.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="BroodLord"><Field Id="Unit"/></Unit>
+            <Unit Unit="Corruptor"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Zerg SpineCrawler">
+            <Fixed Fixed="2.5"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Zerg"><Field Id="Race"/></GameLink>
+            <Unit Unit="SpineCrawler"><Field Id="Unit"/></Unit>
+            <Unit Unit="Roach"><Field Id="Counter"/></Unit>
+            <Unit Unit="Mutalisk"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Zealot">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Zealot"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Stalker">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Stalker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Sentry">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Sentry"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran HighTemplar">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="HighTemplar"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+            <Unit Unit="Ghost"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran DarkTemplar">
+            <Fixed Fixed="1.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="DarkTemplar"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Archon">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Archon"><Field Id="Unit"/></Unit>
+            <Unit Unit="Ghost"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Immortal">
+            <Fixed Fixed="4"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Immortal"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+            <Unit Unit="Ghost"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Colossus">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="4"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Colossus"><Field Id="Unit"/></Unit>
+            <Unit Unit="SiegeTank"><Field Id="Counter"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Phoenix">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Phoenix"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran VoidRay">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="VoidRay"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Carrier">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Carrier"><Field Id="Unit"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran PhotonCannon">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="PhotonCannon"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+            <Unit Unit="Battlecruiser"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Mothership">
+            <Fixed Fixed="5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Mothership"><Field Id="Unit"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Marine">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.2"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Marine"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+            <Unit Unit="SiegeTank"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Marauder">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Marauder"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Reaper">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Reaper"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Ghost">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Ghost"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Hellion">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Hellion"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran SiegeTank">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.75"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="SiegeTank"><Field Id="Unit"/></Unit>
+            <Unit Unit="SiegeTank"><Field Id="Counter"/></Unit>
+            <Unit Unit="Thor"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Thor">
+            <Fixed Fixed="4"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.4"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Thor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+            <Unit Unit="Battlecruiser"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Viking">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="VikingFighter"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Medivac">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Medivac"><Field Id="Unit"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Raven">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Raven"><Field Id="Unit"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Banshee">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Banshee"><Field Id="Unit"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Battlecruiser">
+            <Fixed Fixed="2.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Battlecruiser"><Field Id="Unit"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Bunker">
+            <Fixed Fixed="3"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Bunker"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+            <Unit Unit="Battlecruiser"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Zergling">
+            <Fixed Fixed="0.6"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.3"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Zergling"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+            <Unit Unit="Hellion"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Baneling">
+            <Fixed Fixed="0.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Baneling"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Roach">
+            <Fixed Fixed="0.8"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Roach"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Hydralisk">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.4"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Hydralisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+            <Unit Unit="SiegeTank"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Infestor">
+            <Fixed Fixed="1.5"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Infestor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Mutalisk">
+            <Fixed Fixed="1.5"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.3"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Mutalisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+            <Unit Unit="Thor"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran Corruptor">
+            <Fixed Fixed="1"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Corruptor"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marine"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran Ultralisk">
+            <Fixed Fixed="1.2"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="1"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="Ultralisk"><Field Id="Unit"/></Unit>
+            <Unit Unit="Thor"><Field Id="Counter"/></Unit>
+            <Unit Unit="Battlecruiser"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+        <Instances Id="Terran BroodLord">
+            <Fixed Fixed="2"><Field Id="Count"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="BroodLord"><Field Id="Unit"/></Unit>
+            <Unit Unit="VikingFighter"><Field Id="Counter"/></Unit>
+        </Instances>
+        <Instances Id="Terran SpineCrawler">
+            <Fixed Fixed="2.5"><Field Id="Count"/></Fixed>
+            <Fixed Fixed="0.5"><Field Id="CountAlt"/></Fixed>
+            <GameLink GameLink="Terr"><Field Id="Race"/></GameLink>
+            <Unit Unit="SpineCrawler"><Field Id="Unit"/></Unit>
+            <Unit Unit="Marauder"><Field Id="Counter"/></Unit>
+            <Unit Unit="Battlecruiser"><Field Id="CounterAlt"/></Unit>
+        </Instances>
+    </CUser>
+</Catalog>

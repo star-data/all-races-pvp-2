@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUser id="AIBuildCore">
+        <Fields>
+            <Id value="Race"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Race"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="State" Type="String" EditorColumn="3"/>
+        <Fields Id="Build" Type="String" EditorColumn="4"/>
+        <Fields Id="Diff" Type="String" EditorColumn="2"/>
+        <Fields>
+            <Id value="Command"/>
+            <Type value="String"/>
+            <Count value="20"/>
+            <EditorColumn value="12"/>
+        </Fields>
+        <Fields Id="Stage" Type="String" EditorColumn="5"/>
+        <Instances Id="[Default]">
+            <GameLink GameLink="Neut"><Field Id="Race"/></GameLink>
+            <String String="Any"><Field Id="Build"/></String>
+            <String String="Any"><Field Id="State"/></String>
+            <String String="Any"><Field Id="Diff"/></String>
+            <String String="Build"><Field Id="Stage"/></String>
+        </Instances>
+        <Instances Id="Open Rush">
+            <String String="Rush"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="order Initial"><Field Id="Command"/></String>
+            <String String="stockFarms"><Field Id="Command" Index="1"/></String>
+            <String String="order AfterFarms"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="5"/></String>
+            <String String="upgrades"><Field Id="Command" Index="6"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="7"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="8"/></String>
+            <String String="techUp"><Field Id="Command" Index="9"/></String>
+            <String String="order AftertechUp"><Field Id="Command" Index="10"/></String>
+        </Instances>
+        <Instances Id="Open Timing">
+            <String String="Timing"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="order Initial"><Field Id="Command"/></String>
+            <String String="stockFarms"><Field Id="Command" Index="1"/></String>
+            <String String="order AfterFarms"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="5"/></String>
+            <String String="upgrades"><Field Id="Command" Index="6"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="7"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="8"/></String>
+            <String String="techUp"><Field Id="Command" Index="9"/></String>
+            <String String="order AftertechUp"><Field Id="Command" Index="10"/></String>
+        </Instances>
+        <Instances Id="Open Power">
+            <String String="Power"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="order Initial"><Field Id="Command"/></String>
+            <String String="stockFarms"><Field Id="Command" Index="1"/></String>
+            <String String="order AfterFarms"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="5"/></String>
+            <String String="upgrades"><Field Id="Command" Index="6"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="7"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="8"/></String>
+            <String String="techUp"><Field Id="Command" Index="9"/></String>
+            <String String="order AftertechUp"><Field Id="Command" Index="10"/></String>
+        </Instances>
+        <Instances Id="Open Macro">
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="order Initial"><Field Id="Command"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="1"/></String>
+            <String String="order AfterExpand"><Field Id="Command" Index="2"/></String>
+            <String String="stockFarms"><Field Id="Command" Index="3"/></String>
+            <String String="order AfterFarms"><Field Id="Command" Index="4"/></String>
+            <String String="defend"><Field Id="Command" Index="5"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="6"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="7"/></String>
+            <String String="upgrades"><Field Id="Command" Index="8"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="9"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="10"/></String>
+            <String String="techUp"><Field Id="Command" Index="11"/></String>
+            <String String="order AftertechUp"><Field Id="Command" Index="12"/></String>
+        </Instances>
+        <Instances Id="Open Air">
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Open"><Field Id="State"/></String>
+            <String String="order Initial"><Field Id="Command"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="1"/></String>
+            <String String="order AfterExpand"><Field Id="Command" Index="2"/></String>
+            <String String="stockFarms"><Field Id="Command" Index="3"/></String>
+            <String String="order AfterFarms"><Field Id="Command" Index="4"/></String>
+            <String String="defend"><Field Id="Command" Index="5"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="6"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="7"/></String>
+            <String String="upgrades"><Field Id="Command" Index="8"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="9"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="10"/></String>
+            <String String="techUp"><Field Id="Command" Index="11"/></String>
+            <String String="order AftertechUp"><Field Id="Command" Index="12"/></String>
+        </Instances>
+        <Instances Id="Mid Rush">
+            <String String="Rush"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 5500 1500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35  order ArmyScale35"><Field Id="Command" Index="4"/></String>
+            <String String="needsDetectionCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="6"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="7"/></String>
+            <String String="upgrades"><Field Id="Command" Index="8"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="9"/></String>
+            <String String="order ArmyScale100"><Field Id="Command" Index="10"/></String>
+            <String String="techUp"><Field Id="Command" Index="11"/></String>
+        </Instances>
+        <Instances Id="Mid Timing">
+            <String String="Timing"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 5500 1500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35  order ArmyScale35"><Field Id="Command" Index="4"/></String>
+            <String String="needsDetectionCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="6"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="7"/></String>
+            <String String="upgrades"><Field Id="Command" Index="8"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="9"/></String>
+            <String String="order ArmyScale100"><Field Id="Command" Index="10"/></String>
+            <String String="techUp"><Field Id="Command" Index="11"/></String>
+        </Instances>
+        <Instances Id="Mid Power">
+            <String String="Power"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 5500 1500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="order ArmyScale35"><Field Id="Command" Index="5"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="6"/></String>
+            <String String="order AfterExpand"><Field Id="Command" Index="7"/></String>
+            <String String="needsDetectionCheck"><Field Id="Command" Index="8"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="9"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="10"/></String>
+            <String String="upgrades"><Field Id="Command" Index="11"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="12"/></String>
+            <String String="order ArmyScale100"><Field Id="Command" Index="13"/></String>
+            <String String="techUp"><Field Id="Command" Index="14"/></String>
+        </Instances>
+        <Instances Id="Mid Macro">
+            <String String="Macro"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 5500 1500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="order ArmyScale35"><Field Id="Command" Index="5"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="6"/></String>
+            <String String="order AfterExpand"><Field Id="Command" Index="7"/></String>
+            <String String="needsDetectionCheck"><Field Id="Command" Index="8"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="9"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="10"/></String>
+            <String String="upgrades"><Field Id="Command" Index="11"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="12"/></String>
+            <String String="order ArmyScale100"><Field Id="Command" Index="13"/></String>
+            <String String="techUp"><Field Id="Command" Index="14"/></String>
+        </Instances>
+        <Instances Id="Mid Air">
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 5500 1500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="order ArmyScale35"><Field Id="Command" Index="5"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="6"/></String>
+            <String String="order AfterExpand"><Field Id="Command" Index="7"/></String>
+            <String String="needsDetectionCheck"><Field Id="Command" Index="8"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="9"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="10"/></String>
+            <String String="upgrades"><Field Id="Command" Index="11"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="12"/></String>
+            <String String="order ArmyScale100"><Field Id="Command" Index="13"/></String>
+            <String String="techUp"><Field Id="Command" Index="14"/></String>
+        </Instances>
+        <Instances Id="Late Core">
+            <String String="Core"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 14000 4500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="detectionBeaconCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="6"/></String>
+            <String String="order ArmyScale35"><Field Id="Command" Index="7"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="8"/></String>
+            <String String="order AfterExpand stockArmyScale 70"><Field Id="Command" Index="9"/></String>
+            <String String="order ArmyScale70"><Field Id="Command" Index="10"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="11"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="12"/></String>
+            <String String="upgrades"><Field Id="Command" Index="13"/></String>
+            <String String="techUp"><Field Id="Command" Index="14"/></String>
+        </Instances>
+        <Instances Id="Late HighTech">
+            <String String="HighTech"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 14000 4500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="detectionBeaconCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="6"/></String>
+            <String String="order ArmyScale35"><Field Id="Command" Index="7"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="8"/></String>
+            <String String="order AfterExpand stockArmyScale 70"><Field Id="Command" Index="9"/></String>
+            <String String="order ArmyScale70"><Field Id="Command" Index="10"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="11"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="12"/></String>
+            <String String="upgrades"><Field Id="Command" Index="13"/></String>
+            <String String="techUp"><Field Id="Command" Index="14"/></String>
+        </Instances>
+        <Instances Id="Late Special">
+            <String String="Special"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 14000 4500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="detectionBeaconCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="6"/></String>
+            <String String="order ArmyScale35"><Field Id="Command" Index="7"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="8"/></String>
+            <String String="order AfterExpand"><Field Id="Command" Index="9"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="10"/></String>
+            <String String="order ArmyScale70"><Field Id="Command" Index="11"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="12"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="13"/></String>
+            <String String="upgrades"><Field Id="Command" Index="14"/></String>
+            <String String="techUp"><Field Id="Command" Index="15"/></String>
+        </Instances>
+        <Instances Id="Late Mixed">
+            <String String="Mixed"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 14000 4500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="detectionBeaconCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="6"/></String>
+            <String String="order ArmyScale35"><Field Id="Command" Index="7"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="8"/></String>
+            <String String="order AfterExpand"><Field Id="Command" Index="9"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="10"/></String>
+            <String String="order ArmyScale70"><Field Id="Command" Index="11"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="12"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="13"/></String>
+            <String String="upgrades"><Field Id="Command" Index="14"/></String>
+            <String String="techUp"><Field Id="Command" Index="15"/></String>
+        </Instances>
+        <Instances Id="Late Air">
+            <String String="Air"><Field Id="Build"/></String>
+            <String String="Late"><Field Id="State"/></String>
+            <String String="defaultEconomy"><Field Id="Command"/></String>
+            <String String="order Initial"><Field Id="Command" Index="1"/></String>
+            <String String="defaultExpansion 14000 4500"><Field Id="Command" Index="2"/></String>
+            <String String="defend"><Field Id="Command" Index="3"/></String>
+            <String String="stockArmyScale 35"><Field Id="Command" Index="4"/></String>
+            <String String="detectionBeaconCheck"><Field Id="Command" Index="5"/></String>
+            <String String="stockWorkersLD 30"><Field Id="Command" Index="6"/></String>
+            <String String="order ArmyScale35"><Field Id="Command" Index="7"/></String>
+            <String String="macroExpand"><Field Id="Command" Index="8"/></String>
+            <String String="order AfterExpand"><Field Id="Command" Index="9"/></String>
+            <String String="stockArmyScale 70"><Field Id="Command" Index="10"/></String>
+            <String String="order ArmyScale70"><Field Id="Command" Index="11"/></String>
+            <String String="stockArmyScale 100"><Field Id="Command" Index="12"/></String>
+            <String String="stockWorkersLD 60"><Field Id="Command" Index="13"/></String>
+            <String String="upgrades"><Field Id="Command" Index="14"/></String>
+            <String String="techUp"><Field Id="Command" Index="15"/></String>
+        </Instances>
+        <Instances Id="Defense">
+            <String String="Defense"><Field Id="Stage"/></String>
+            <String String="stockFarms"><Field Id="Command"/></String>
+            <String String="order DefenseInitial"><Field Id="Command" Index="1"/></String>
+            <String String="stock 1 $Refinery"><Field Id="Command" Index="2"/></String>
+            <String String="order DefenseLate"><Field Id="Command" Index="3"/></String>
+            <String String="stockEmergency 20 $Worker"><Field Id="Command" Index="4"/></String>
+        </Instances>
+        <Instances Id="Open Techup">
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="stock 2 $Refinery"><Field Id="Command"/></String>
+            <String String="order TechupOpen"><Field Id="Command" Index="1"/></String>
+            <String String="Open"><Field Id="State"/></String>
+        </Instances>
+        <Instances Id="Mid Techup">
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="stock 2 $Refinery"><Field Id="Command"/></String>
+            <String String="order TechupOpen"><Field Id="Command" Index="1"/></String>
+            <String String="order AtEachTown"><Field Id="Command" Index="2"/></String>
+            <String String="order TechupMid"><Field Id="Command" Index="3"/></String>
+            <String String="Mid"><Field Id="State"/></String>
+        </Instances>
+        <Instances Id="Late Techup">
+            <String String="Techup"><Field Id="Stage"/></String>
+            <String String="stock 2 $Refinery"><Field Id="Command"/></String>
+            <String String="order TechupOpen"><Field Id="Command" Index="1"/></String>
+            <String String="order AtEachTown"><Field Id="Command" Index="2"/></String>
+            <String String="order TechupMid"><Field Id="Command" Index="3"/></String>
+            <String String="order TechupLate"><Field Id="Command" Index="4"/></String>
+            <String String="Late"><Field Id="State"/></String>
+        </Instances>
+    </CUser>
+</Catalog>

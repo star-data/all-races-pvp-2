@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Includes>
+    <Catalog path="FactionData/Genetron.xml"/>
+    <Catalog path="FactionData/Keiron.xml"/>
+    <Catalog path="FactionData/Neutral.xml"/>
+    <Catalog path="FactionData/Protoss.xml"/>
+    <Catalog path="FactionData/Terran.xml"/>
+    <Catalog path="FactionData/UED.xml"/>
+    <Catalog path="FactionData/Umojan.xml"/>
+    <Catalog path="FactionData/VoidForces.xml"/>
+    <Catalog path="FactionData/Xayid.xml"/>
+    <Catalog path="FactionData/Zerg.xml"/>
+</Includes>

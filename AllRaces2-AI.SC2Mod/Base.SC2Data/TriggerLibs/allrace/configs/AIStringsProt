@@ -1,0 +1,189 @@
+# Protoss
+
+## Counter
+    Zealot:             1 Zealot
+    Stalker:            1 Stalker | 0.33 Immortal
+    Sentry:             0.7 Stalker
+    HighTemplar:        0.6 Stalker
+    DarkTemplar:        1 Zealot
+    Archon:             1 Immortal
+    Immortal:           2 Zealot
+    Colossus:           1.2 Immortal | 1 Colossus
+    Phoenix:            1 Stalker
+    VoidRay:            1.1 Phoenix
+    Carrier:            2 VoidRay
+    PhotonCannon:       3 Zealot | 0.4 Colossus
+    Mothership:         4 VoidRay
+    MothershipCore:     1 Stalker | 1 Phoenix
+    Oracle:             1 Stalker | 1 Phoenix
+    Tempest:            2 VoidRay
+    Adept:              1 Stalker
+    Disruptor:          1 Immortal
+    Marine:             0.5 Zealot | 0.1 Colossus
+    Marauder:           1 Zealot | 0.4 Immortal
+    Reaper:             0.5 Stalker
+    Ghost:              1 Stalker
+    Hellion:            0.5 Stalker
+    SiegeTank:          0.6 Immortal
+    Thor:               5 Zealot | 1.2 Immortal
+    VikingFighter:       1 Stalker
+    Medivac:            1 Stalker
+    Raven:              1 Stalker
+    Banshee:            1.5 Stalker | 0.5 Phoenix
+    Battlecruiser:      1.75 VoidRay
+    Bunker:             4 Zealot | 0.4 Colossus
+    WidowMine:          0.5 Stalker
+    Cyclone:            2 Zealot
+    Liberator:          1.5 Phoenix | 0.5 Carrier
+    Zergling:           0.3 Zealot
+    Baneling:           0.4 Stalker | 0.2 Immortal
+    Roach:              1 Zealot | 0.25 Immortal
+    Hydralisk:          1 Zealot | 0.25 Colossus
+    Infestor:           1.5 Stalker
+    Mutalisk:           1 Stalker
+    Corruptor:          0.8 Stalker
+    Ultralisk:          1.25 Immortal
+    BroodLord:          1 VoidRay
+    SpineCrawler:       3 Zealot 
+    SpineCrawler:       0.5 VoidRay
+    SwarmHostMP:          3 Zealot 
+    SwarmHostMP:          1 VoidRay
+    Viper:              2 Stalker 
+    Viper:              1 VoidRay
+    Ravager:            1.25 Zealot 
+    Ravager:            0.3 Immortal
+    LurkerMP:             2 Stalker | 0.5 Disruptor
+
+## Unit    
+
+    StaticDetector:              PhotonCannon
+    Worker:                      Probe
+    Supply:                      Pylon
+    Refinery:                    Assimilator
+    Detector:                    Observer
+    Power:                       Pylon
+    TownHall:                    Nexus
+    Priority StayHome:           WarpPrism
+    Priority ClearObstacles:     Zealot,Stalker,DarkTemplar
+    Combat Ground Tier1:         Zealot,Adept,Stalker,Sentry
+    Combat Ground Tier2:         Immortal,HighTemplar,DarkTemplar,Archon
+    Combat Ground Tier3:         Disruptor,Colossus
+    Combat Ground Tier4:         
+    Combat Air Tier1:            
+    Combat Air Tier2:            Phoenix,VoidRay,Oracle
+    Combat Air Tier3:            Carrier,Tempest
+    Combat Air Tier4:            Mothership
+    StaticDefense:               PhotonCannon, ShieldBattery
+    Production:                  Gateway, RoboticsFacility, Stargate
+    Tech:                        CyberneticsCore, Forge, TwilightCouncil, TemplarArchive, RoboticsBay, DarkShrine, FleetBeacon
+    Support:                     WarpPrism
+    AirScout:                    Observer
+    Transport :                  WarpPrism
+
+## Upgrades
+    Open:              WarpGateResearch
+    Mid:               ProtossShieldsLevel1,ProtossGroundWeaponsLevel1, ProtossGroundArmorsLevel1, Charge,BlinkTech,ProtossAirWeaponsLevel1,ProtossAirArmorsLevel1
+    Late:              ProtossShieldsLevel2,ObserverGraviticBooster, GraviticDrive, ProtossGroundWeaponsLevel2, ProtossGroundArmorsLevel2, ProtossAirWeaponsLevel2,ProtossAirArmorsLevel2, PhoenixRangeUpgrade
+    Final:             ProtossShieldsLevel3,ProtossGroundWeaponsLevel3, ProtossGroundArmorsLevel3, ExtendedThermalLance, PsiStormTech, PhoenixRangeUpgrade, ProtossAirWeaponsLevel3,ProtossAirArmorsLevel3
+
+## Values
+    TransportSetPanic:      0.27
+
+## Build Hard    
+    
+    Open Rush   Initial:         $TownHall, 9 $Worker, $Supply, 13 $Worker, Gateway, 14 $Worker, $Refinery, $Refinery, 16 $Worker, 2 $Supply, 18 $Worker, CyberneticsCore, Zealot, stockNext 20 $Worker
+    Open Rush   AfterFarms:      Stalker, Gateway
+    Open Timing Initial:         $TownHall, 9 $Worker, $Supply, 13 $Worker, Gateway, 14 $Worker, $Refinery, 16 $Worker, 2 $Supply, 18 $Worker, CyberneticsCore, Zealot, stockNext 20 $Worker
+    Open Timing AfterFarms:      Stalker, 2 Gateway, 2 $Refinery
+    Open Power  Initial:         $TownHall, 9 $Worker, $Supply, 13 $Worker, Gateway, 14 $Worker, $Refinery, 16 $Worker, 2 $Supply, 18 $Worker, CyberneticsCore, Zealot, stockNext 20 $Worker
+    Open Power  AfterFarms:      Stalker, 2 Gateway, 2 $Refinery
+    Open Macro  Initial:         $TownHall, 9 $Worker, $Supply, 13 $Worker, Gateway, 16 $Worker
+    Open Macro  AfterExpand:     Zealot, 2 $Supply, $Refinery, CyberneticsCore, 18 $Worker
+    Open Macro  AfterFarms:      stockNext 30 $Worker, Stalker, 2 Gateway, 2 $Refinery
+    Open Air    Initial:         $TownHall, 9 $Worker, $Supply, 15 $Worker
+    Open Air    AfterExpand:     $Refinery,WarpPrism, 16 $Worker, Gateway, 17 $Worker, 2 $Refinery, 18 $Worker, 2 $Supply, stockNext 30 $Worker
+    Open Air    AfterFarms:      CyberneticsCore, 2 Stargate, 3 $Supply
+    Open Air    AfterTechup:     1 WarpPrism
+    Mid Ground Initial:          3 $Supply
+    Mid Air    Initial:          3 $Supply, WarpPrism
+    Mid Ground AfterExpand:      stockNext 3 Gateway
+    Mid Air    AfterExpand:      stockNext 3 Stargate
+    Mid Any    ArmyScale100:     2 $Detector
+    Late Ground Initial:         3 $Supply
+    Late Air    Initial:         3 $Supply, WarpPrism
+    Late Ground AfterExpand:     stockNext 5 Gateway,stockNext 2 RoboticsFacility,stockNext 3 Stargate,2 $Detector
+    Late Air    AfterExpand:     stockNext 3 Gateway,stockNext 2 RoboticsFacility,stockNext 5 Stargate,2 $Detector
+    Late Any    ArmyScale70:     3 WarpPrism,3 $Detector,2 $StaticDetector
+    
+    TechupOpen:                  Gateway, CyberneticsCore, Forge
+    TechupMid:                   RoboticsFacility, Stargate, TwilightCouncil, 3 Gateway, 2 Forge
+    TechupLate:                  TemplarArchive, RoboticsBay, DarkShrine, FleetBeacon, 2 RoboticsFacility, 2 Stargate
+
+    DefenseInitial:              stockEmergencySkipCheck 6 Stalker, stockEmergencySkipCheck 4 Zealot
+    DefenseLate:                 stockEmergency 4 VoidRay, stockEmergency 4 Immortal
+    Detection:                   1 $Detector, 2 $StaticDetector
+    AtEachTown:                  ExpanPower $Power, $Power, 2 PhotonCannon
+    
+## Build Upgrades    
+    Open Ground Upgrades:        if CyberneticsCore WarpGateResearch
+    Open Air    Upgrades:            
+    Mid Ground Upgrades:         ProtossGroundWeaponsLevel1, ProtossGroundArmorsLevel1, if 8 Zealot Charge, if 6 Stalker BlinkTech
+    Mid Air    Upgrades:         ProtossAirWeaponsLevel1,ProtossAirArmorsLevel1
+    Late Ground Upgrades:        ProtossGroundWeaponsLevel2, ProtossGroundArmorsLevel2, ProtossShieldsLevel2, ObserverGraviticBooster, GraviticDrive, ProtossAirWeaponsLevel1, ProtossAirArmorsLevel1
+    Late Air    Upgrades:        ObserverGraviticBooster,GraviticDrive, if 4 Phoenix PhoenixRangeUpgrade,ProtossAirWeaponsLevel2,ProtossAirArmorsLevel2,ProtossShieldsLevel2
+    Final Ground Upgrades:       if 2 Colossus ExtendedThermalLance, if HighTemplar PsiStormTech, ProtossGroundWeaponsLevel3, ProtossGroundArmorsLevel3, ProtossShieldsLevel3, if 4 Phoenix PhoenixRangeUpgrade, ProtossAirWeaponsLevel3, ProtossAirArmorsLevel3
+    Final Air    Upgrades:       ProtossAirWeaponsLevel3,ProtossAirArmorsLevel3,ProtossShieldsLevel3,WarpGateResearch,if 6 Zealot Charge,if 6 Stalker BlinkTech,if 2 Colossus ExtendedThermalLance,if 2 HighTemplar PsiStormTech,ProtossGroundWeaponsLevel3,ProtossGroundArmorsLevel3
+
+## Army Hard
+
+    Open Rush 1:          weight 2, duration 356, delay 30, 2 Zealot,3 Stalker,Stalker|Zealot  
+    Open Rush 2:          weight 2, duration 364, delay 30, 2 Zealot,4 Stalker
+    Open Rush 3:          weight 1, duration 361, delay 30, 5 Zealot,2 Stalker
+    Open Timing 1:        weight 2, duration 391, delay 33, 3 Zealot,3 Stalker,Stalker|Zealot,2 Stalker|2 Zealot
+    Open Timing 2:        weight 2, duration 406, delay 35, 2 Zealot,5 Stalker,2 Stalker|2 Zealot
+    Open Timing 3:        weight 1, duration 411, delay 35, 5 Zealot,3 Stalker,2 Stalker|2 Zealot
+    Open Power 1:         weight 2, duration 526, delay 45, 4 Zealot,5 Stalker,2 Stalker|2 Zealot,2 Stalker|2 Zealot
+    Open Power 2:         weight 2, duration 513, delay 43, 3 Zealot,7 Stalker,2 Stalker|2 Zealot
+    Open Power 3:         weight 1, duration 536, delay 45, 7 Zealot,4 Stalker,Stalker|Zealot,2 Stalker|2 Zealot
+    Open Macro 1:         weight 3, duration 231, delay 18, 2 Zealot,2 Stalker,2 Stalker|2 Zealot
+    Open Macro 2:         weight 1, duration 243, delay 20, Zealot,4 Stalker,Stalker|Zealot
+    Open Air 1:           weight 2, duration 565, delay 48, 2 VoidRay,Phoenix,2 VoidRay|3 Phoenix
+    Open Air 2:           weight 1, duration 561, delay 48, 4 VoidRay,Phoenix
+    Mid Rush 1:           weight 3, duration 297, delay 25, 3 Zealot,4 Stalker,2 Sentry,2 Zealot|2 Stalker,2 Sentry|2 Stalker
+    Mid Rush 2:           weight 1, duration 287, delay 23, 2 Zealot,6 Stalker,2 Sentry,2 Zealot|2 Stalker
+    Mid Timing 1:         weight 3, duration 310, delay 26, 2 Zealot,3 Stalker,2 Sentry,2 Zealot|2 Stalker,2 Zealot|2 Stalker,2 Sentry|2 Stalker,2 Sentry|2 Stalker
+    Mid Timing 2:         weight 1, duration 316, delay 26, 3 Zealot,8 Stalker,2 Sentry,2 Sentry|2 Stalker
+    Mid Power 1:          weight 3, duration 332, delay 28, 2 Zealot,5 Stalker,2 Sentry,2 Zealot|2 Stalker,2 Zealot|2 Stalker,2 Sentry|2 Stalker,Sentry|Stalker
+    Mid Power 2:          weight 1, duration 334, delay 28, 3 Zealot,9 Stalker,2 Sentry,2 Zealot|2 Stalker
+    Mid Macro 1:          weight 2, duration 549, delay 67, 5 Zealot,7 Stalker,2 Sentry,2 Sentry|2 Stalker,Sentry|Stalker,3 VoidRay|3 Immortal
+    Mid Macro 2:          weight 1, duration 542, delay 66, 3 Zealot,9 Stalker,2 Sentry,2 VoidRay|2 Immortal,2 VoidRay|2 Immortal
+    Mid Macro 3:          weight 1, duration 551, delay 67, 3 Zealot,5 Stalker,2 Sentry,3 Immortal,2 VoidRay|2 Immortal,Archon
+    Mid Air 1:            weight 4, duration 304, delay 25, 3 VoidRay, 2 Phoenix, 2 VoidRay|3 Phoenix
+    Mid Air 2:            weight 1, duration 326, delay 27, 5 Stalker,2 VoidRay,2 Phoenix,VoidRay
+    Late Core 1:          weight 3, duration 254, delay 21, 5 Stalker,2 Sentry,2 Phoenix|2 Stalker,2 VoidRay|2 Immortal
+    Late Core 2:          weight 1, duration 253, delay 23, 4 Zealot,10 Stalker,2 Sentry,2 Immortal|2 VoidRay
+    Late HighTech 1:      weight 3, duration 311, delay 26, Zealot,3 Stalker,Sentry,Sentry|Stalker,3 VoidRay|3 Immortal,2 Colossus|2 Carrier,Colossus|Carrier
+    Late HighTech 2:      weight 1, duration 296, delay 25, 2 Zealot,2 Stalker,Sentry,3 Archon,Archon,Colossus|Carrier,Colossus|Carrier
+    Late Special 1:       weight 2, duration 321, delay 27, 2 Zealot,6 Stalker,6 Sentry,2 HighTemplar,Archon,2 VoidRay|2 Immortal
+    Late Special 2:       weight 2, duration 330, delay 28, 4 Zealot,4 Stalker,2 Sentry,4 HighTemplar,3 Archon,Archon
+    Late Special 3:       weight 1, duration 290, delay 23, Zealot,2 Stalker,2 Sentry,2 HighTemplar,Archon,2 VoidRay|2 Immortal,4 DarkTemplar
+    Late Mixed 1:         weight 3, duration 353, delay 30, 3 Zealot,5 Stalker,2 Sentry,Archon,VoidRay|Immortal,VoidRay|Immortal,2 Phoenix|2 Stalker,Colossus|Carrier,Colossus|Carrier
+    Late Mixed 2:         weight 1, duration 319, delay 27, Zealot,2 Stalker,Sentry,2 Archon,2 VoidRay|2 Immortal,Colossus|Carrier,Colossus|Carrier,Archon
+    Late Air 1:           weight 3, duration 305, delay 25, 3 VoidRay,Phoenix,4 Carrier
+    Late Air 2:           weight 1, duration 290, delay 23, 3 VoidRay,Phoenix,3 Carrier,VoidRay
+    Final Core 1:         weight 2, duration 229, delay 18, 6 Zealot,8 Stalker,2 Sentry,2 Sentry|2 Stalker,2 VoidRay|2 Immortal,2 Phoenix|2 Stalker
+    Final Core 2:         weight 1, duration 255, delay 21, 6 Zealot,8 Stalker,2 Sentry,2 VoidRay|2 Immortal,Colossus|Carrier,Colossus|Carrier,Archon
+    Final HighTech 1:     weight 2, duration 279, delay 23, 4 Zealot,6 Stalker,2 Sentry,2 Sentry|2 Stalker,2 VoidRay|2 Immortal,2 Colossus|2 Carrier,2 Colossus|2 Carrier
+    Final HighTech 2:     weight 1, duration 278, delay 23, 4 Zealot,3 Stalker,2 Sentry,4 Archon,2 HighTemplar,2 VoidRay|2 Immortal,Colossus|Carrier,Colossus|Carrier
+    Final Special 1:      weight 2, duration 316, delay 26, 4 Zealot,6 Stalker,6 Sentry,2 HighTemplar,2 Archon,2 VoidRay|2 Immortal,Colossus|Carrier,Colossus|Carrier,Archon
+    Final Special 2:      weight 2, duration 313, delay 26, 2 Zealot,4 Stalker,2 Sentry,4 HighTemplar,4 Archon,2 VoidRay|2 Immortal,Colossus|Carrier,Colossus|Carrier,Archon
+    Final Special 3:      weight 1, duration 273, delay 23, 4 Zealot,6 Stalker,2 Sentry,2 HighTemplar,Archon,2 VoidRay|2 Immortal,6 DarkTemplar
+    Final Mixed 1:        weight 2, duration 300, delay 25, 4 Zealot,7 Stalker,2 Sentry,2 Archon,Sentry|Stalker,2 VoidRay|2 Immortal,2 Phoenix|2 Stalker,Colossus|Carrier,Colossus|Carrier
+    Final Mixed 2:        weight 1, duration 292, delay 25, 2 Zealot,2 Stalker,2 Sentry,4 HighTemplar,2 Archon,VoidRay|Immortal,VoidRay|Immortal,VoidRay|Immortal,Colossus|Carrier,Colossus|Carrier,Archon
+    Final Air 1:          weight 2, duration 277, delay 23, 8 VoidRay,2 Phoenix,3 Carrier
+    Final Air 2:          weight 2, duration 274, delay 23, 3 VoidRay,Phoenix,6 Carrier
+    Final Air 3:          weight 1, duration 258, delay 21, 12 Stalker,3 VoidRay,Phoenix,Carrier,VoidRay
+    
+
+
+    

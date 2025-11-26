@@ -1,0 +1,161 @@
+
+//--------------------------------------------------------------------------------------------------
+//  ZergBasicEconomy
+//--------------------------------------------------------------------------------------------------
+void ZergBasicEconomy (int player, int tier, int minWorkers) {
+    int econMin = AIGetMinPeonCount(player, c_townMax);
+    if (minWorkers > econMin) {
+        minWorkers = econMin;
+    }
+
+    AIDefaultEconomy(player, c_ZB_Hatchery_Alias, c_ZB_Extractor, c_ZU_Overlord, c_ZU_Drone, minWorkers, c_stockAlways);
+    AISetStock( player, 1, c_ZU_Queen );
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ZergBasicExpansion
+//--------------------------------------------------------------------------------------------------
+void ZergBasicExpansion (int player, int tier, int minerals, int gas) {
+    AIDefaultExpansion(player, c_ZB_Hatchery, minerals, gas, c_expandDefault);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ZergGeneralBuild
+//--------------------------------------------------------------------------------------------------
+void ZergGeneralBuild (int player, int tier) {
+    if (tier >= c_ldPhaseMid) {
+        if (PlayerBeaconIsSet(player, c_beaconDetect)) {
+            AISetStock( player, 1, c_ZU_Overseer );
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ZergMacroExpand
+//--------------------------------------------------------------------------------------------------
+bool ZergMacroExpand (int player) {
+    fixed defenseEval = 0;
+
+    if (AITechCount(player, c_ZU_Drone, c_techCountQueuedOrBetter) < 13) {
+        return false;
+    }
+    if (AITechCount(player, c_ZB_Hatchery_Alias, c_techCountQueuedOrBetter) >= 2) {
+        return false;
+    }
+    
+    defenseEval = AISelfDefenseThreatEval(c_dtRealSelfThreat, player);
+    if (defenseEval >= 120) {
+        // don't expand if currently under attack
+        return false;
+    }
+
+    if (!AIIsExpandingOrHasExpanded(player)) {
+        if (!AIHasNearbyOpenExpansion(player)) {
+            return false;
+        }
+        if (!AIHasRes(player,200,0)) {
+            AIEnableStock(player);
+            return true;
+        }
+
+        // we should try to expand
+        AIExpand(player, AIGetTownLocation(player, c_townMain), c_ZB_Hatchery);
+    }
+
+    // currently expanding see if we need to save minerals
+    if (!AIHasRes(player,400,0)) {
+        AIEnableStock(player);
+        return true;
+    }
+    return false; // already saved enough, we're allowed to continure the stock
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ZergAtEachTown
+//--------------------------------------------------------------------------------------------------
+void ZergAtEachTown (int player, int tier) {
+    int i = 0;
+    int town;
+    int numTowns = 0;
+
+    while (i < c_townMax) {
+        town = i;
+        i = i + 1;
+
+        if (AIGetTownState(player, town) != c_townStateEstablished) {
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_ZB_Hatchery_Alias, c_techCountCompleteOnly) < 1) {
+            continue;
+        }
+
+        numTowns += 1;
+
+        if (AIGetBuildingCountInTown(player, town, c_ZB_SporeCrawler, c_techCountCompleteOnly) < 2) {
+            AISetStockEx(player, town, 2, c_ZB_SporeCrawler, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+        if (AIGetBuildingCountInTown(player, town, c_ZB_SpineCrawler, c_techCountCompleteOnly) < 2) {
+            AISetStockEx(player, town, 2, c_ZB_SpineCrawler, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+    }
+
+    AISetStockUnitNext( player, numTowns+1, c_ZU_Queen, c_stockAlways );
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ZergTechUp
+//--------------------------------------------------------------------------------------------------
+void ZergTechUp (int player, int tier) {
+    int diff = AIPlayerDifficulty(player);
+
+    if (diff < c_skirMedium) {
+        // don't build extra buildings below medium
+        return;
+    }
+
+    AISetStock( player, 2, c_ZB_Extractor );
+    AISetStock( player, 1, c_ZB_SpawningPool );
+    AISetStock( player, 1, c_ZB_RoachWarren );
+    AISetStock( player, 1, c_ZB_BanelingNest );
+    AISetStock( player, 1, c_ZB_EvolutionChamber );
+
+    if (tier >= c_ldPhaseMid) {
+        ZergAtEachTown(player, tier);
+        AISetStock( player, 1, c_ZB_HydraliskDen );
+        AISetStock( player, 1, c_ZB_InfestationPit );
+        AISetStock( player, 1, c_ZB_Spire_Alias );
+        AISetStock( player, 2, c_ZB_EvolutionChamber );
+
+        if (tier >= c_ldPhaseLate) {
+            AISetStock( player, 1, c_ZB_UltraliskCavern );
+            AISetStock( player, 1, c_ZB_GreaterSpire );
+            AISetStock( player, 2, c_ZB_Spire_Alias );
+            
+            if (diff > c_skirMedium) {
+                // only make a macro hatch above medium
+                AISetStock( player, 2, c_ZB_Hatchery_Alias );
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  ZergBasicDefenseStock
+//--------------------------------------------------------------------------------------------------
+void ZergBasicDefenseStock (int player) {
+    if (!AINeedsDefending(player)) {
+        return;
+    }
+    
+    AISetStockFarms( player, c_ZU_Overlord_Alias, c_stockNormalFarms);
+    AISetStock( player, 1, c_ZU_Queen );
+    AIAddEmergencyDefenseStock(player, 6, c_ZU_Hydralisk, true);
+    AIAddEmergencyDefenseStock(player, 12, c_ZU_Zergling, false);
+    AISetStock( player, 1, c_ZB_Extractor );
+    AIAddEmergencyDefenseStock(player, 6, c_ZU_Roach, true);
+    AIAddEmergencyDefenseStock(player, 6, c_ZU_Mutalisk, true);
+    AIAddEmergencyDefenseStock(player, 20, c_ZU_Drone, true);
+}

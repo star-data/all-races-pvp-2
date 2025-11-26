@@ -1,0 +1,3 @@
+﻿Unit/EditorSuffix/LiberatorSkinPreview=(Skin Preview)
+Unit/EditorSuffix/PylonOvercharged=(Photon Overcharged)
+Unit/EditorSuffix/SiegeTankSkinPreview=(Skin Preview)

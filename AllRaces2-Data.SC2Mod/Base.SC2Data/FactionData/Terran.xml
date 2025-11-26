@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CBehaviorBuff id="KD8PrecursorUnitKnockback">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RavenScramblerMissile">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RavenScramblerMissileCarrier">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RavenShredderMissileTint">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SeekerMissile">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TerranStructuresKnockbackBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WidowMineAnimationController">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WidowMineArmoryTracker">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WidowMineBurrowedCloakingBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WidowMineDelayRemoveAB">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WidowMineDrillingClawsTracker">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BypassArmorStun">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CCTransportDummy">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ArmorpiercingMode">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CycloneLockOnCooldown">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ExplosiveMode">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WidowMineArmed">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandCenterKnockbackBehavior">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LaserTargeting">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CAbilEffectTarget id="Hyperjump">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SeekerDummyChannel">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LiberatorAGTarget">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terr"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="WidowMineAttack">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="StarportTrain">
+        <InfoArray index="Train1">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button State="Available"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="FactoryTrain">
+        <InfoArray index="Train2">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button State="Available"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="BarracksTrain">
+        <InfoArray index="Train1">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button State="Available"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilRedirectInstant id="StimpackMarauderRedirect">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CAbilRedirectInstant>
+    <CAbilRedirectInstant id="StimpackRedirect">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CAbilRedirectInstant>
+    <CAbilResearch id="BarracksTechLabResearch">
+        <InfoArray index="Research1">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Research2">
+            <Button State="Available"/>
+        </InfoArray>
+        <InfoArray index="Research3">
+            <Button State="Available"/>
+        </InfoArray>
+    </CAbilResearch>
+    <CAbilAugment id="TornadoMissile">
+        <EditorCategories value="Race:Terr,AbilityorEffectType:Units"/>
+    </CAbilAugment>
+    <CValidatorUnitType id="NotSpiderMineBurrowed">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Value value="SpiderMineBurrowed"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotSpiderMine">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Value value="SpiderMine"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CRequirement id="LearnStimpack">
+        <NodeArray index="Show" Link="NotCountUpgradeStimpackQueuedOrBetter"/>
+    </CRequirement>
+    <CUnit id="MULE"/>
+    <CUnit id="Reaper"/>
+    <CUnit id="SCV"/>
+</Catalog>

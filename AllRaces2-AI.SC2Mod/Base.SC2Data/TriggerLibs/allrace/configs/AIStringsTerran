@@ -1,0 +1,186 @@
+# Terran
+
+## Counter
+    Zealot:              1 Marauder
+    Stalker:             1 Marauder
+    Sentry:              1 Marauder
+    HighTemplar:         1 Marauder | 1 Ghost
+    DarkTemplar:         1.5 Marauder
+    Archon:              1 Ghost
+    Immortal:            4 Marine | 1 Ghost
+    Colossus:            2 SiegeTank | 4 VikingFighter
+    Phoenix:             2 Marine
+    VoidRay:             3 Marine
+    Carrier:             3 VikingFighter
+    PhotonCannon:        3 Marauder | 1 Battlecruiser
+    Mothership:          5 VikingFighter
+    Marine:              1 Marine | 0.2 SiegeTank
+    Marauder:            1 Marauder
+    Reaper:              0.6 Marauder
+    Ghost:               0.6 Marauder
+    Hellion:             0.6 Marauder
+    SiegeTank:           1 SiegeTank | 0.75 Thor
+    Thor:                4 Marauder | 0.4 Battlecruiser
+    VikingFighter:       2 Marine | 1 VikingFighter
+    Medivac:             0.6 VikingFighter
+    Raven:               0.6 VikingFighter
+    Banshee:             0.6 VikingFighter
+    Battlecruiser:       2.5 VikingFighter
+    Bunker:              3 Marauder | 1 Battlecruiser
+    Zergling:            0.6 Marine | 0.3 Hellion
+    Baneling:            0.5 Marauder
+    Roach:               0.8 Marauder
+    Hydralisk:           2 Marine | 0.4 SiegeTank
+    Infestor:            1.5 Marauder
+    Mutalisk:            1.5 Marine | 0.3 Thor
+    Corruptor:           1 Marine
+    Ultralisk:           1.2 Thor | 1 Battlecruiser
+    BroodLord:           2 VikingFighter
+    SpineCrawler:        2.5 Marauder | 0.5 Battlecruiser
+
+
+## Unit    
+
+    StaticDetector:              MissileTurret
+    Worker:                      SCV
+    Supply:                      SupplyDepot
+    Refinery:                    Refinery
+    Detector:                    Raven
+    Power:                       
+    TownHall:                    CommandCenter
+    Priority StayHome:           
+    Priority ClearObstacles:     Marine,Reaper,Marauder
+    Priority DiversionGround:    Reaper
+    Priority DiversionAir:       Banshee
+    Priority Healer:             Medivac
+    Combat Ground Tier1:         Marine,Marauder,Reaper,Hellion,WidowMine
+    Combat Ground Tier2:         Ghost,SiegeTank,Cyclone,Hellbat
+    Combat Ground Tier3:         Thor
+    Combat Ground Tier4:         
+    Combat Air Tier1:            
+    Combat Air Tier2:            VikingFighter,Raven,Banshee,Liberator
+    Combat Air Tier3:            Battlecruiser
+    Combat Air Tier4:            
+    StaticDefense:               Bunker, MissileTurret
+    Production:                  Barracks, Factory, Starport,BarracksReactor,FactoryReactor,StarportReactor
+    Tech:                        FactoryTechLab,BarracksTechLab,StarportTechLab,EngineeringBay,Armory,GhostAcademy,FusionCore
+    Support:                     Medivac
+    EarlyDefenseScout:           Medivac
+    AirScout:                    Medivac
+    Radar : SensorTower
+    SpecialDetector : OrbitalCommand
+    MacroTech : OrbitalCommand
+    Transport : Medivac
+
+## Upgrades
+    Open:       Stimpack
+    Mid:        ShieldWall,PunisherGrenades,BansheeCloak,TerranInfantryWeaponsLevel1,TerranInfantryArmorsLevel1,TerranShipWeaponsLevel1,TerranShipArmorsLevel1,HiSecAutoTracking, TerranVehicleWeaponsLevel1,TerranVehicleAndShipArmorsLevel1
+    Late:       TerranInfantryWeaponsLevel2,TerranInfantryArmorsLevel2,TerranVehicleWeaponsLevel2,TerranVehicleAndShipArmorsLevel2, HighCapacityBarrels,PersonalCloaking, BattlecruiserEnableSpecializations,TerranShipWeaponsLevel2
+    Final:      TerranInfantryWeaponsLevel3,TerranInfantryArmorsLevel3,TerranVehicleWeaponsLevel3,TerranVehicleAndShipArmorsLevel3,NeosteelFrame,TerranShipWeaponsLevel3
+
+## Values
+    TransportSetPanic:      
+    
+## Nuke
+    UnitCaster: Ghost
+    EffectCalldown: Nuke
+    EffectDamage: NukeDamage
+    AbilityNuke: TacNukeStrike
+    CastTime: 20
+    UpgradeCloak: PersonalCloaking
+    AbilityCloak: PersonalCloaking
+    BehaviorCloak: PersonalCloaking
+
+## Markers
+    Nuke: GhostAcademy ArmSiloWithNuke 0
+
+## Build Hard    
+    Open Rush|Power|Timing Initial:   CommandCenter, 10 SCV, SupplyDepot, 12 SCV, Barracks, 14 SCV, Refinery, 16 SCV, Marine, OrbitalCommand, 2 SupplyDepot, 2 Marine, stockNext 20 $Worker
+    Open Macro  Initial:              CommandCenter, 10 SCV, SupplyDepot, 12 SCV, Barracks, 16 SCV
+    Open Macro  AfterExpand:          Marine, 17 SCV, OrbitalCommand, 2 SupplyDepot, 2 Marine, Refinery
+    Open Timing|Power AfterFarms:     2 Barracks, BarracksTechLab
+    Open Macro  AfterFarms:           stockNext 30 $Worker, 2 Barracks,stockNext BarracksTechLab
+    Open Air    Initial:              CommandCenter, 10 SCV, SupplyDepot, 15 SCV
+    Open Air    AfterExpand:          16 SCV, Refinery, 17 SCV, Barracks, 18 SCV, 2 Refinery, 19 SCV, 2 SupplyDepot, Factory, OrbitalCommand, stockNext 30 $Worker
+    Open Air    AfterFarms:           2 Starport, 2 StarportTechLab
+    Mid Rush Initial:                 stockNext 2 Barracks,stockNext 2 BarracksTechLab,stockNext 2 Factory,stockNext 2 FactoryTechLab
+    Mid Timing|Power|Macro Initial:   stockNext Barracks, stockNext BarracksTechLab, 2 Factory, 2 FactoryTechLab, 2 Starport, 2 StarportTechLab
+    Mid Air    Initial:               2 Starport, 2 StarportTechLab, Medivac
+    Mid Any    ArmyScale100:          2 Raven, 1 OrbitalCommand
+    Late Air    Initial:              Medivac
+    Late Any    AfterExpand:          3 Barracks, 2 BarracksTechLab, 1 BarracksReactor, 3 Factory, 3 FactoryTechLab, 3 Starport, 2 StarportTechLab, 1 StarportReactor, 2 Raven, 1 OrbitalCommand
+    Late Any    ArmyScale70:          3 Medivac, 3 Raven, 2 MissileTurret
+    TechupOpen:                       1 Barracks,1 BarracksTechLab,1 EngineeringBay
+    TechupMid:                        1 Factory,1 FactoryTechLab,1 SensorTower,1 Armory,1 Starport,1 StarportTechLab,3 Barracks,2 BarracksTechLab,1 BarracksReactor
+    TechupLate:                       1 GhostAcademy,1 FusionCore,2 EngineeringBay,2 Armory,2 Factory,1 FactoryReactor,2 Starport,1 StarportReactor
+
+    DefenseInitial:                   stockEmergencySkipCheck 8 Marine
+    DefenseLate:                      stockEmergency 4 VikingFighter,stockEmergency 4 Hellion,stockEmergency 4 Marauder
+    Detection:                        1 Raven, 1 OrbitalCommand, 2 MissileTurret
+    AtEachTown:                       Bunker, 2 MissileTurret
+
+## Build Upgrades    
+
+    Mid Ground Upgrades:            Stimpack,ShieldWall,if 3 Marauder PunisherGrenades,if 3 Banshee BansheeCloak,TerranInfantryWeaponsLevel1,TerranInfantryArmorsLevel1
+    Mid Air    Upgrades:            TerranShipWeaponsLevel1,TerranShipArmorsLevel1,if MissileTurret HiSecAutoTracking
+    Late Ground Upgrades:           TerranInfantryWeaponsLevel2,TerranInfantryArmorsLevel2,if 4 Hellion HighCapacityBarrels ,if 3 Ghost PersonalCloaking,TerranVehicleWeaponsLevel1,TerranVehicleAndShipArmorsLevel1,TerranShipWeaponsLevel1,TerranShipArmorsLevel1
+    Late Air    Upgrades:           if Battlecruiser BattlecruiserEnableSpecializations,TerranShipWeaponsLevel2,if 8 Marine Stimpack, if 8 Marine ShieldWall
+    Final Ground Upgrades:          if Battlecruiser BattlecruiserEnableSpecializations,TerranInfantryWeaponsLevel3,TerranInfantryArmorsLevel3,TerranVehicleWeaponsLevel3,TerranVehicleAndShipArmorsLevel3,TerranShipWeaponsLevel3,NeosteelFrame,HiSecAutoTracking
+    Final Air    Upgrades:          TerranShipWeaponsLevel3,if 3 Marauder PunisherGrenades,TerranInfantryWeaponsLevel3,TerranInfantryArmorsLevel3,TerranVehicleWeaponsLevel3,TerranVehicleAndShipArmorsLevel3,if Hellion HighCapacityBarrels,if Ghost PersonalCloaking,NeosteelFrame,HiSecAutoTracking
+
+
+## Army Hard
+    Open Rush 1:           weight 3, duration 364, delay 30,  2 Barracks, 5 Marine, 2 Marauder, 2 Marine | 1 Marauder, 2 Marine | 1 Marauder
+    Open Rush 2:           weight 1, duration 348, delay 28,  1 Factory, 5 Marine, 2 Hellion, 2 Marine | 1 Hellion, 2 Marine | 1 Hellion
+    Open Timing 1:         weight 4, duration 406, delay 35,  7 Marine, 4 Marauder, 2 Marine | 1 Marauder, 2 Marine | 1 Marauder
+    Open Timing 2:         weight 2, duration 414, delay 35,  7 Marine, 5 Hellion, 2 Marine | 1 Hellion, 2 Marine | 1 Hellion
+    Open Timing 3:         weight 1, duration 417, delay 35,  6 Marine, 3 Marauder, 2 Banshee
+    Open Power 1:          weight 4, duration 499, delay 42,  8 Marine, 6 Marauder, 2 Marine | 1 Marauder, 2 Marine | 1 Marauder
+    Open Power 2:          weight 2, duration 539, delay 45,  6 Marine, 4 Marauder, 5 Hellion, 2 Marine | 1 Hellion, 2 Marine | 1 Hellion
+    Open Power 3:          weight 1, duration 493, delay 42,  8 Marine, 4 Marauder, 2 Banshee
+    Open Macro 1:          weight 3, duration 240, delay 20,  5 Marine, 2 Marauder, 2 Marine | 1 Marauder, 2 Marine | 1 Marauder
+    Open Macro 2:          weight 1, duration 242, delay 20,  4 Marine, 3 Hellion, 2 Marine | 1 Hellion, 2 Marine | 1 Hellion
+    Open Air 1:            weight 1, duration 549, delay 46,  4 Banshee, 2 VikingFighter
+    Mid Rush 1:            weight 1, duration 284, delay 23,  10 Marine, 5 Marauder, 1 Marauder | 2 Reaper, 1 Marauder | 2 Reaper
+    Mid Rush 2:            weight 1, duration 292, delay 25,  8 Marine, 3 Marauder, 2 SiegeTank, 1 SiegeTank
+    Mid Timing 1:          weight 2, duration 309, delay 25,  12 Marine, 6 Marauder, 1 Ghost | 2 Reaper, 1 Ghost | 2 Reaper
+    Mid Timing 2:          weight 2, duration 319, delay 26,  8 Marine, 4 Marauder, 3 SiegeTank, 1 SiegeTank
+    Mid Timing 3:          weight 3, duration 323, delay 27,  6 Marine, 2 Marauder, 2 SiegeTank, 1 SiegeTank, 1 VikingFighter, 2 Banshee | 1 Thor
+    Mid Power 1:           weight 2, duration 338, delay 28,  16 Marine, 6 Marauder, 1 Ghost | 2 Reaper, 1 Ghost | 2 Reaper
+    Mid Power 2:           weight 2, duration 348, delay 30,  12 Marine, 4 Marauder, 3 SiegeTank, 1 SiegeTank
+    Mid Power 3:           weight 1, duration 349, delay 30,  6 Marine, 2 Marauder, 2 SiegeTank, 1 SiegeTank, 2 VikingFighter, 2 Banshee | 1 Thor
+    Mid Macro 1:           weight 2, duration 516, delay 65,  12 Marine, 6 Marauder, 1 Marauder | 2 Reaper, 1 Marauder | 2 Reaper, 2 Ghost, 3 Medivac
+    Mid Macro 2:           weight 2, duration 540, delay 66,  8 Marine, 3 Marauder, 1 Marauder | 2 Reaper, 1 Marauder | 2 Reaper, 1 VikingFighter, 3 Hellion, 3 SiegeTank, 4 Hellion | 2 SiegeTank
+    Mid Macro 3:           weight 1, duration 513, delay 63,  8 Marine, 3 Marauder, 1 Marauder | 2 Reaper, 1 Marauder | 2 Reaper, 2 SiegeTank, 1 SiegeTank, 2 VikingFighter, 2 Banshee | 1 Thor
+    Mid Air 1:             weight 4, duration 310, delay 26,  3 VikingFighter, 3 Banshee, 2 VikingFighter | 2 Banshee, 1 VikingFighter | 1 Banshee
+    Mid Air 2:             weight 1, duration 320, delay 27,  8 Marine, 1 Thor, 2 VikingFighter, 2 Banshee, 1 VikingFighter | 1 Banshee
+    Late Core 1:           weight 3, duration 263, delay 22,  16 Marine, 8 Marauder, 1 Ghost, 3 Medivac
+    Late Core 2:           weight 1, duration 280, delay 23,  16 Marine, 6 Marauder, 3 Medivac, 2 SiegeTank, 1 SiegeTank
+    Late Core 3:           weight 1, duration 277, delay 23,  16 Marine, 4 Marauder, 3 Medivac, 1 SiegeTank, 1 SiegeTank, 2 Banshee | 1 Thor
+    Late HighTech 1:       weight 3, duration 297, delay 25,  12 Marine, 4 Hellion, 8 SiegeTank
+    Late HighTech 2:       weight 1, duration 312, delay 26,  8 Marine, 5 SiegeTank, 1 SiegeTank, 3 Thor
+    Late HighTech 3:       weight 1, duration 299, delay 25,  8 Marine, 3 SiegeTank, 1 SiegeTank, 1 Thor, 4 VikingFighter, 2 Banshee
+    Late Special 1:        weight 2, duration 333, delay 28,  9 Marine, 4 Marauder, 4 Ghost, 1 Ghost | 2 Reaper, 1 Ghost | 2 Reaper, 1 Medivac, 2 Raven, 1 SiegeTank, 1 SiegeTank
+    Late Special 2:        weight 2, duration 305, delay 25,  8 Marine, 2 Ghost, 3 SiegeTank, 2 SiegeTank, 2 Raven, 1 Thor
+    Late Special 3:        weight 1, duration 319, delay 27,  8 Marine, 2 Ghost, 2 SiegeTank, 2 SiegeTank, 2 Raven, 1 Thor, 2 Banshee
+    Late Mixed 1:          weight 2, duration 348, delay 30,  16 Marine, 8 Marauder, 2 Ghost, 3 Medivac, 2 SiegeTank, 1 SiegeTank
+    Late Mixed 2:          weight 2, duration 354, delay 30,  10 Marine, 4 Marauder, 4 VikingFighter, 4 Banshee | 2 Thor, 3 SiegeTank, 1 SiegeTank
+    Late Mixed 3:          weight 1, duration 344, delay 28,  8 Marine, 4 Marauder, 2 SiegeTank, 1 SiegeTank, 2 VikingFighter, 2 Banshee | 1 Thor, 2 Battlecruiser | 2 Thor
+    Late Air 1:            weight 3, duration 315, delay 26,  4 VikingFighter, 3 Banshee, 2 VikingFighter | 2 Banshee, 2 VikingFighter | 2 Banshee, 2 VikingFighter | 2 Banshee, 1 Battlecruiser
+    Late Air 2:            weight 3, duration 305, delay 25,  2 VikingFighter, 2 Banshee, 4 Battlecruiser
+    Late Air 3:            weight 1, duration 295, delay 25,  8 Marine, 1 Thor, 2 VikingFighter, 2 Banshee, 3 VikingFighter | 3 Banshee, 1 Battlecruiser
+    Final Core 1:          weight 3, duration 246, delay 20,  30 Marine, 10 Marauder, 2 Ghost, 3 Medivac
+    Final Core 2:          weight 1, duration 233, delay 20,  24 Marine, 8 Marauder, 3 Medivac, 2 SiegeTank, 1 SiegeTank
+    Final Core 3:          weight 1, duration 269, delay 22,  20 Marine, 6 Marauder, 3 Medivac, 2 VikingFighter, 2 SiegeTank, 1 SiegeTank, 2 Banshee | 1 Thor, 1 Battlecruiser | 1 Thor
+    Final HighTech 1:      weight 3, duration 266, delay 22,  16 Marine, 4 Hellion, 10 SiegeTank, 1 Thor
+    Final HighTech 2:      weight 1, duration 275, delay 23,  12 Marine, 6 SiegeTank, 2 SiegeTank, 4 Thor
+    Final HighTech 3:      weight 1, duration 288, delay 23,  12 Marine, 6 SiegeTank, 2 SiegeTank, 2 Thor, 4 VikingFighter, 2 Banshee
+    Final Special 1:       weight 2, duration 298, delay 25,  16 Marine, 6 Marauder, 4 Ghost, 1 Ghost | 2 Reaper, 1 Ghost | 2 Reaper, 2 Medivac, 2 Raven, 2 SiegeTank, 2 SiegeTank
+    Final Special 2:       weight 2, duration 276, delay 23,  12 Marine, 4 Marauder, 2 Ghost, 3 SiegeTank, 2 SiegeTank, 2 Raven, 1 Thor, 1 Thor
+    Final Special 3:       weight 1, duration 284, delay 23,  12 Marine, 4 Marauder, 2 Ghost, 2 SiegeTank, 2 SiegeTank, 2 Raven, 2 Thor, 2 Banshee
+    Final Mixed 1:         weight 2, duration 315, delay 26,  20 Marine, 16 Marauder, 2 Ghost, 2 VikingFighter, 2 SiegeTank, 2 SiegeTank
+    Final Mixed 2:         weight 2, duration 324, delay 27,  10 Marine, 6 Marauder, 4 VikingFighter, 4 Hellion, 6 SiegeTank, 1 SiegeTank, 2 Banshee | 1 Thor, 1 Battlecruiser | 1 Thor
+    Final Mixed 3:         weight 1, duration 324, delay 27,  8 Marine, 4 Marauder, 2 SiegeTank, 1 SiegeTank, 2 VikingFighter | 2 Banshee, 2 Battlecruiser | 2 Thor, 2 Battlecruiser | 2 Thor, 2 Battlecruiser | 2 Thor
+    Final Air 1:           weight 3, duration 269, delay 22,  4 VikingFighter, 4 Banshee, 2 VikingFighter | 2 Banshee, 2 VikingFighter | 2 Banshee, 2 VikingFighter | 2 Banshee, 2 Battlecruiser
+    Final Air 2:           weight 2, duration 278, delay 23,  2 VikingFighter, 2 Banshee, 6 Battlecruiser
+    Final Air 3:           weight 1, duration 262, delay 22,  12 Marine, 4 Thor, 2 VikingFighter, 2 Banshee, 1 Battlecruiser | 1 Thor

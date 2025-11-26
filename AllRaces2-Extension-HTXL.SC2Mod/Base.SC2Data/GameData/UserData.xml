@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUser id="ResourcesData">
+        <Fields Id="Unit" Type="Unit" EditorColumn="2"/>
+        <Fields Id="WorkersRallyIndex" Type="Int" EditorColumn="3"/>
+        <Fields Id="RichUnit" Type="Unit" EditorColumn="2"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="VespeneGeyser">
+            <Unit Unit="VespeneGeyser"><Field Id="Unit"/></Unit>
+            <Unit Unit="RichVespeneGeyser"><Field Id="RichUnit"/></Unit>
+        </Instances>
+        <Instances Id="Mineral Field">
+            <Unit Unit="MineralField"><Field Id="Unit"/></Unit>
+            <Unit Unit="RichMineralField"><Field Id="RichUnit"/></Unit>
+        </Instances>
+        <Instances Id="Mineral Field 900">
+            <Unit Unit="MineralField750"><Field Id="Unit"/></Unit>
+            <Unit Unit="RichMineralField750"><Field Id="RichUnit"/></Unit>
+        </Instances>
+        <Instances Id="Purifier Mineral Field">
+            <Unit Unit="PurifierMineralField"><Field Id="Unit"/></Unit>
+            <Unit Unit="PurifierRichMineralField"><Field Id="RichUnit"/></Unit>
+        </Instances>
+        <Instances Id="Purifier Mineral Field 900">
+            <Unit Unit="PurifierMineralField750"><Field Id="Unit"/></Unit>
+            <Unit Unit="PurifierRichMineralField750"><Field Id="RichUnit"/></Unit>
+        </Instances>
+    </CUser>
+</Catalog>

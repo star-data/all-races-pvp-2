@@ -1,0 +1,26 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - Tal'Darim
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+unitgroup libEA49549C_gv_deathStarList;
+fixed libEA49549C_gv_energyPerStack;
+int[21][201] libEA49549C_gv_talDarimSoulLeechPriority;
+
+// Trigger Declarations
+trigger libEA49549C_gt_TalDarimIni;
+trigger libEA49549C_gt_TalDarimDeathStarLevel;
+trigger libEA49549C_gt_TalDarimDeathStarAddGroup;
+trigger libEA49549C_gt_TalDarimDeathStarRemGroup;
+trigger libEA49549C_gt_TalDarimLocustEnergy;
+trigger libEA49549C_gt_TalDarimSoulsCountingdown;
+trigger libEA49549C_gt_TalDarimNewunit;
+trigger libEA49549C_gt_TalDarimPriorityLow;
+trigger libEA49549C_gt_TalDarimPriorityMedium;
+trigger libEA49549C_gt_TalDarimPriorityHigh;
+trigger libEA49549C_gt_TalDarimMonitorHeightReset;
+
+// Library Initialization
+void libEA49549C_InitVariables ();
+

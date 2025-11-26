@@ -1,0 +1,181 @@
+# Protoss
+
+## Counter
+    Zealot:              1.1 Roach
+    Stalker:             3 Zergling | 0.25 Ultralisk
+    Sentry:              1 Roach | 1 Hydralisk
+    HighTemplar:         1 Roach
+    DarkTemplar:         1.3 Roach
+    Archon:              2 Hydralisk | 0.9 Ultralisk
+    Immortal:            6 Zergling | 2.2 Hydralisk
+    Colossus:            4 Roach | 3 Corruptor
+    Phoenix:             1 Hydralisk | 0.8 Corruptor
+    VoidRay:             2 Mutalisk
+    Carrier:             2 Corruptor
+    PhotonCannon:        3 Roach | 1 BroodLord
+    Mothership:          5 Corruptor
+    Marine:              0.7 Baneling
+    Marauder:            3 Zergling
+    Reaper:              0.5 Roach
+    Ghost:               3 Zergling | 1.5 Roach
+    Hellion:             0.5 Roach
+    SiegeTank:           6 Zergling | 0.5 Ultralisk
+    Thor:                1 Ultralisk
+    VikingFighter:       1.1 Mutalisk
+    Medivac:             0.6 Mutalisk
+    Raven:               0.6 Mutalisk
+    Banshee:             0.6 Mutalisk
+    Battlecruiser:       2 Corruptor
+    Bunker:              3 Baneling | 1 BroodLord
+    Zergling:            0.25 Baneling
+    Baneling:            0.5 Roach
+    Roach:               1 Roach
+    Hydralisk:           1 Hydralisk
+    Infestor:            1 Roach
+    Mutalisk:            1 Mutalisk | 0.8 Corruptor
+    Corruptor:           0.8 Hydralisk
+    Ultralisk:           3 Mutalisk
+    BroodLord:           1.5 Corruptor
+    SpineCrawler:        2.5 Roach | 1 Mutalisk
+
+
+
+## Unit
+
+    StaticDetector:              SporeCrawler
+    Worker:                      Drone
+    Supply:                      Overlord
+    Refinery:                    Extractor
+    Detector:                    Overseer
+    Power:                       
+    TownHall:                    Hatchery
+    Priority Ignored:            Larva,Broodling,Locust
+    Priority StayHome:           SpineCrawler,SporeCrawler
+    Priority Guard:              Queen
+    Priority ClearObstacles:     Zergling,Roach,Hydralisk
+    Priority DiversionGround:    
+    Priority DiversionAir:       
+    Priority Healer:             
+    Priority ExtraScout:         Overlord, OverlordCocoon
+    Creep:                       CreepTumor 
+    Larva:                       Larva 
+    Combat Ground Tier1:         Zergling,Baneling,Roach
+    Combat Ground Tier2:         Hydralisk,Infestor,SwarmHostMP,Ravager
+    Combat Ground Tier3:         LurkerMP,Ultralisk
+    Combat Ground Tier4:         
+    Combat Air Tier1:            
+    Combat Air Tier2:            Mutalisk,Corruptor,Viper
+    Combat Air Tier3:            BroodLord
+    Combat Air Tier4:            
+    StaticDefense:               SporeCrawler ,Spinerawler
+    Production:                  Hatchery
+    Tech:                        SpawningPool,RoachWarren,BanelingNest, EvolutionChamber ,HydraliskDen,InfestationPit,Spire ,UltraliskCavern,GreaterSpire
+    Support:                     
+    EarlyDefenseScout:           
+    GroundScout:                 Zergling
+    AirScout:                    Overseer
+    Transport :                  OverlordTransport
+## Behavior
+    NoCreepBehavior:             ZergBuildingNotOnCreep
+
+## Upgrades
+    Open:              zerglingmovementspeed, overlordspeed
+    Mid:               ZergMeleeWeaponsLevel1,ZergGroundArmorsLevel1,ZergMissileWeaponsLevel1, CentrificalHooks,Burrow,ZergFlyerWeaponsLevel1,ZergFlyerArmorsLevel1
+    Late:              ZergMeleeWeaponsLevel2,ZergGroundArmorsLevel2,ZergMissileWeaponsLevel2,InfestorEnergyUpgrade,GlialReconstitution,hydraliskspeed,ZergFlyerWeaponsLevel2,ZergFlyerArmorsLevel2
+    Final:             zerglingattackspeed,NeuralParasite,ZergMeleeWeaponsLevel3,ZergGroundArmorsLevel3,ZergMissileWeaponsLevel3,ChitinousPlating,TunnelingClaws,ZergFlyerWeaponsLevel3,ZergFlyerArmorsLevel3
+
+## Values
+    TransportSetPanic:      
+
+## Markers
+    CreepTumorBurrowed: CreepTumor BurrowCreepTumorDown 0
+    CreepTumorBurrowed: Queen QueenBuild 0
+
+## Triggers
+
+## Build Hard
+
+    Open Rush|Timing|Power Initial:   Hatchery, 2 Drone, Overlord, 9 Drone, 2 Overlord, 13 Drone, SpawningPool, 15 Drone, Extractor, 16 Drone, 3 Overlord, Queen, 4 Zergling, 18 Drone, RoachWarren, stockNext 20 $Worker
+    Open Macro|Air  Initial:          Hatchery, 2 Drone, Overlord, 9 Drone, 2 Overlord, 15 Drone
+    Open Macro  AfterExpand:          SpawningPool, 16 Drone, Extractor, 17 Drone, 3 Overlord, 18 Drone, Queen, 4 Zergling, RoachWarren
+    Open Macro  AfterFarms:           stockNext 30 $Worker
+    Open Air    AfterExpand:          SpawningPool, 16 Drone, 2 Extractor, 3 Overlord, 18 Drone, Queen, 20 Drone, Lair, 4 Overlord, Spire,  stockNext 30 $Worker
+    Mid Air    Initial:               OverlordTransport
+    Mid Any    ArmyScale35:           Queen
+    Mid Any    ArmyScale100:          2 $Detector
+    Late Any    ArmyScale35:          Queen,2 EvolutionChamber,2 Overseer
+    Late Any    ArmyScale70:          1 OverlordTransport, 3 Overseer, 2 SporeCrawler
+
+    TechupOpen:                       1 SpawningPool,1 RoachWarren,1 BanelingNest,1 EvolutionChamber
+    TechupMid:                        1 HydraliskDen,1 InfestationPit,1 Spire,2 EvolutionChamber
+    TechupLate:                       1 UltraliskCavern,1 GreaterSpire,2 Spire,2 Hatchery
+
+    DefenseInitial:                   stock 1 Queen,stockEmergencySkipCheck 6 Hydralisk,stockEmergencySkipCheck 12 Zergling
+    DefenseLate:                      stockEmergency 6 Roach,stockEmergency 6 Mutalisk
+    Detection:                        Overseer,2 SporeCrawler
+    AtEachTown:                       2 SpineCrawler, 2 SporeCrawler
+
+## Build Upgrades    
+    Open Ground Upgrades:             if Zergling zerglingmovementspeed
+    Mid Ground Upgrades:              ZergMeleeWeaponsLevel1,ZergGroundArmorsLevel1,ZergMissileWeaponsLevel1,if 4 Baneling CentrificalHooks,Burrow
+    Mid Air    Upgrades:              ZergFlyerWeaponsLevel1,ZergFlyerArmorsLevel1,overlordspeed
+    Late Ground Upgrades:             ZergMeleeWeaponsLevel2,ZergGroundArmorsLevel2,ZergMissileWeaponsLevel2,if 4 Infestor InfestorEnergyUpgrade,if 4 Roach GlialReconstitution,if 3 Hydralisk hydraliskspeed
+    Late Air    Upgrades:             ZergFlyerWeaponsLevel2,ZergFlyerArmorsLevel2,if 3 Hydralisk hydraliskspeed
+    Final Ground Upgrades:            if 8 Zergling zerglingattackspeed, if 4 Infestor NeuralParasite,ZergMeleeWeaponsLevel3,ZergGroundArmorsLevel3,ZergMissileWeaponsLevel3,if Ultralisk ChitinousPlating,if 4 Roach TunnelingClaws,ZergFlyerWeaponsLevel3,ZergFlyerArmorsLevel3
+    Final Air    Upgrades:            ZergFlyerWeaponsLevel3,ZergFlyerArmorsLevel3,if 8 Zergling zerglingmovementspeed,if 4 Baneling CentrificalHooks,Burrow,if 1 Infestor InfestorEnergyUpgrade,if 4 Roach GlialReconstitution,if 8 Zergling zerglingattackspeed,if 4 Infestor NeuralParasite,ZergMissileWeaponsLevel3,ZergGroundArmorsLevel3,ZergMeleeWeaponsLevel3,if Ultralisk ChitinousPlating,if 4 Roach TunnelingClaws
+
+## Army Hard
+
+    Open Rush 1:             weight 1, duration 339, delay 28,      1 BanelingNest, 16 Zergling, 4 Baneling
+    Open Rush 2:             weight 3, duration 348, delay 28,      1 RoachWarren, 2 Zergling, 6 Roach
+    Open Timing 1:           weight 2, duration 370, delay 31,      1 BanelingNest, 18 Zergling, 8 Baneling
+    Open Timing 2:           weight 3, duration 414, delay 35,      1 RoachWarren, 2 Zergling, 10 Roach
+    Open Timing 3:           weight 1, duration 401, delay 33,      1 InfestationPit, 10 Zergling, 4 Infestor
+    Open Power 1:            weight 2, duration 487, delay 41,      24 Zergling, 12 Baneling
+    Open Power 2:            weight 3, duration 536, delay 45,      2 Zergling, 14 Roach
+    Open Power 3:            weight 1, duration 516, delay 43,      2 Zergling, 8 Roach, 4 Hydralisk
+    Open Power 4:            weight 1, duration 502, delay 42,      12 Zergling, 4 Infestor, 2 Hydralisk
+    Open Macro 1:            weight 2, duration 231, delay 18,      15 Zergling, 5 Baneling
+    Open Macro 2:            weight 3, duration 231, delay 18,      2 Zergling, 6 Roach
+    Open Macro 3:            weight 1, duration 221, delay 18,      2 Zergling, 3 Roach, 2 Hydralisk
+    Open Macro 4:            weight 1, duration 226, delay 18,      10 Zergling, 2 Infestor
+    Open Air 1:              weight 1, duration 522, delay 45,      7 Mutalisk
+    Open Rush 1:             weight 2, duration 292, delay 25,      8 Zergling, 2 Baneling, 6 Mutalisk, 1 Mutalisk
+    Open Rush 2:             weight 3, duration 287, delay 23,      2 Zergling, 8 Roach, 4 Hydralisk
+    Open Rush 3:             weight 1, duration 300, delay 25,      2 Zergling, 6 Roach, 2 Hydralisk, 3 Infestor
+    Open Timing 1:           weight 2, duration 304, delay 25,      12 Zergling, 4 Baneling, 6 Mutalisk, 1 Mutalisk
+    Open Timing 2:           weight 3, duration 328, delay 27,      2 Zergling, 10 Roach, 6 Hydralisk
+    Open Timing 3:           weight 1, duration 313, delay 26,      2 Zergling, 7 Roach, 3 Hydralisk, 3 Infestor
+    Open Power 1:            weight 2, duration 335, delay 28,      8 Zergling, 4 Baneling, 8 Mutalisk, 1 Mutalisk
+    Open Power 2:            weight 3, duration 333, delay 28,      2 Zergling, 10 Roach, 6 Hydralisk
+    Open Power 3:            weight 1, duration 347, delay 28,      10 Zergling, 6 Roach, 4 Hydralisk, 3 Infestor
+    Open Macro 1:            weight 2, duration 502, delay 63,      26 Zergling, 6 Baneling, 8 Mutalisk, 1 Mutalisk
+    Open Macro 2:            weight 3, duration 563, delay 68,      2 Zergling, 16 Roach, 8 Hydralisk
+    Open Macro 3:            weight 1, duration 542, delay 66,      2 Zergling, 12 Roach, 6 Hydralisk, 3 Infestor
+    Open Air 1:              weight 4, duration 316, delay 26,      8 Mutalisk, 2 Corruptor, 1 Mutalisk
+    Open Air 2:              weight 1, duration 326, delay 27,      5 Mutalisk, 3 Mutalisk | 3 Hydralisk, 2 Mutalisk | 2 Hydralisk, 2 Corruptor
+    Late Core 1:             weight 2, duration 248, delay 20,      24 Zergling, 6 Baneling, 8 Mutalisk
+    Late Core 2:             weight 3, duration 272, delay 23,      2 Zergling, 12 Roach, 7 Hydralisk, 2 Infestor
+    Late Core 3:             weight 2, duration 277, delay 23,      2 Zergling, 12 Roach, 6 Hydralisk, 3 Infestor
+    Late HighTech 1:         weight 3, duration 306, delay 25,      2 Zergling, 5 Ultralisk, 6 Hydralisk
+    Late HighTech 2:         weight 2, duration 312, delay 26,      2 Zergling, 5 BroodLord, 3 Corruptor, 2 Infestor
+    Late HighTech 3:         weight 1, duration 272, delay 23,      2 Zergling, 3 Roach, 4 Hydralisk, 2 BroodLord | 2 Ultralisk, 4 Infestor
+    Late Special 1:          weight 1, duration 310, delay 26,      2 Zergling, 8 Roach, 8 Infestor, 4 Hydralisk
+    Late Special 2:          weight 1, duration 331, delay 28,      2 Zergling, 6 Roach, 6 Infestor, 2 Hydralisk, 6 Infestor
+    Late Mixed 1:            weight 2, duration 322, delay 27,      2 Zergling, 12 Roach, 6 Hydralisk, 4 Infestor, 1 Mutalisk
+    Late Mixed 2:            weight 1, duration 348, delay 28,      2 Zergling, 6 Roach, 4 Hydralisk, 2 Infestor, 2 BroodLord | 2 Ultralisk, 5 Infestor
+    Late Air 1:              weight 4, duration 288, delay 23,      10 Mutalisk, 4 Corruptor, 2 Mutalisk
+    Late Air 2:              weight 1, duration 294, delay 25,      6 Mutalisk, 6 Hydralisk, 2 Mutalisk | 2 Hydralisk, 2 Corruptor, 2 Mutalisk
+    Final Core 1:            weight 2, duration 229, delay 18,      30 Zergling, 10 Baneling, 12 Mutalisk
+    Final Core 2:            weight 3, duration 262, delay 22,      2 Zergling, 20 Roach, 10 Hydralisk, 3 Infestor
+    Final Core 3:            weight 2, duration 258, delay 21,      2 Zergling, 16 Roach, 8 Hydralisk, 3 Infestor, 3 Infestor
+    Final HighTech 1:        weight 3, duration 261, delay 22,      2 Zergling, 7 Ultralisk, 6 Hydralisk
+    Final HighTech 2:        weight 2, duration 290, delay 23,      2 Zergling, 8 BroodLord, 4 Corruptor, 2 Infestor
+    Final HighTech 3:        weight 1, duration 266, delay 22,      2 Zergling, 3 Roach, 4 Hydralisk, 6 BroodLord | 5 Ultralisk, 4 Infestor
+    Final Special 1:         weight 1, duration 310, delay 26,      2 Zergling, 16 Roach, 12 Infestor, 4 Hydralisk, 1 Infestor
+    Final Special 2:         weight 1, duration 299, delay 25,      2 Zergling, 12 Roach, 8 Infestor, 4 Hydralisk, 6 Infestor
+    Final Mixed 1:           weight 2, duration 281, delay 23,      2 Zergling, 12 Roach, 6 Hydralisk, 4 Infestor, 2 BroodLord | 2 Ultralisk, 1 Corruptor
+    Final Mixed 2:           weight 1, duration 330, delay 28,      2 Zergling, 6 Roach, 4 Hydralisk, 3 Infestor, 5 BroodLord | 4 Ultralisk, 2 Corruptor, 5 Infestor
+    Final Air 1:             weight 3, duration 271, delay 23,      16 Mutalisk, 5 Corruptor, 2 Mutalisk
+    Final Air 2:             weight 2, duration 252, delay 21,      7 Mutalisk, 2 Corruptor, 4 BroodLord, 2 Mutalisk
+    Final Air 3:             weight 1, duration 270, delay 22,      6 Mutalisk, 6 Hydralisk, 3 Mutalisk | 3 Hydralisk, 3 Mutalisk | 3 Hydralisk, 3 Mutalisk | 3 Hydralisk, 2 Corruptor, 2 Mutalisk

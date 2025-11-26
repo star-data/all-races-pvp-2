@@ -1,0 +1,47 @@
+include "TriggerLibs/NativeLib"
+
+include "LibSynd_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - Synoid
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libSynd_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Synoid init
+//--------------------------------------------------------------------------------------------------
+bool libSynd_gt_Synoidinit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libSynd_gt_Synoidinit_Init () {
+    libSynd_gt_Synoidinit = TriggerCreate("libSynd_gt_Synoidinit_Func");
+    TriggerAddEventGeneric(libSynd_gt_Synoidinit, "GAME START Synd");
+}
+
+void libSynd_InitTriggers () {
+    libSynd_gt_Synoidinit_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libSynd_InitLib_completed = false;
+
+void libSynd_InitLib () {
+    if (libSynd_InitLib_completed) {
+        return;
+    }
+
+    libSynd_InitLib_completed = true;
+
+    libSynd_InitLibraries();
+    libSynd_InitTriggers();
+}
+

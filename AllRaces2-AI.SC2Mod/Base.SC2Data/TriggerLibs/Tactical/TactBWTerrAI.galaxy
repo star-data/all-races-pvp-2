@@ -1,0 +1,1407 @@
+//--------------------------------------------------------------------------------------------------
+//  BW Terran
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  BWCargoDefend
+//--------------------------------------------------------------------------------------------------
+const fixed c_BWcampaignBunkerLoadRange = 4.0;
+const bool c_BWbunkerUnload = true;
+const bool c_BWbunkerLoad = false;
+
+//---------------------------------------------------------------------------------------------
+unit BWCampaignWantsToBeInBunker (int player, unit aiUnit, unitgroup bunkerGroup, bool unload) {
+    int bunkerCount;
+    unit unitToCheck;
+    bool wantsToBeInBunker;
+    order unitOrder;
+
+    //  When loading, check to see if there is space in the bunker at all.
+    //
+    if (!unload) {
+        if (UnitCargoValue(aiUnit, c_unitCargoSpaceFree) == 0) {
+            return null;
+        }
+    }
+
+    bunkerCount = UnitGroupCount(bunkerGroup, c_unitCountAll);
+    while (bunkerCount > 0) {
+        unitToCheck = UnitGroupUnit(bunkerGroup, bunkerCount);
+        bunkerCount = bunkerCount - 1;
+
+        //  Make sure the unit is alive.
+        //
+        if (!UnitIsAlive(unitToCheck)) {
+            continue;
+        }
+        if (AIIsScriptControlled(unitToCheck)) {
+            continue;
+        }
+        //  When loading, make sure the unit is not already in a transport.
+        //
+        if (!unload) {
+            if (UnitTestState(unitToCheck, c_unitStateInsideTransport)) {
+                continue;
+            }
+        }
+
+        //  The unit wants to be somewhere far away, do not load it.
+        //
+        wantsToBeInBunker = true;
+
+        if (AIControlForceToMove(unitToCheck)) {
+            // If the unit is forced to move, it shouldn't be in the bunker even in combat
+            wantsToBeInBunker = false;
+        }
+        else if (!AIUnitIsInCombat(unitToCheck) && !AIUnitIsInCombat(aiUnit)) {
+            // Otherwise the unit will only want to be out of the bunker if not combat is happening
+            
+            //  The unit wants to execute a non attack order.
+            unitOrder = UnitOrder(aiUnit, 0);
+            if (unitOrder != null && !AIIsAttackOrder(unitOrder)) {
+                wantsToBeInBunker = false;
+            }
+            //  The unit wants to move.
+            else if (AIControlWantsToMove(unitToCheck)) {
+                wantsToBeInBunker = false;
+            }
+            // Unit has no home point
+            else if (AIGetHomePosition(unitToCheck) == c_nullPoint) {
+                wantsToBeInBunker = false;
+            }
+            // Unit's home point is too far away
+            else if (!PointsInRange(UnitGetPosition(aiUnit), AIGetHomePosition(unitToCheck), c_campaignBunkerLoadRange)) {
+                wantsToBeInBunker = false;
+            }
+        }
+
+        //  Do not care about units that want to be in bunker when we want to unload.
+        //  Similarly, do not care about units that do not want to be in bunker when we want to load.
+        //
+        if (wantsToBeInBunker == unload) {
+            continue;
+        }
+
+        return unitToCheck;
+    }
+    return null;
+}
+
+//---------------------------------------------------------------------------------------------
+bool BWCargoDefend (int player, unit aiUnit, unitgroup scanGroup, int searchRange, int loadRange, string wanted, string command) {
+    aifilter filter;
+    unitgroup nearBunkerGroup;
+    int bunkerCount;
+    unit unitToCheck;    
+    order ord = null;
+    bool autoLoad = false;
+    bool wantsToBeInBunker;
+    unitgroup targetGroup;
+
+    targetGroup = UnitGroupFilterRegion(scanGroup, RegionCircle(UnitGetPosition(aiUnit), searchRange), 0);
+    if (UnitGroupCount(targetGroup, c_unitCountAlive) == 0) { // no nearby enemies.
+
+        //  Both checks are needed because auto loading bunkers is needed on campaign before the
+        //  AI is active.....
+        if (AIIsCampaign(player)) {
+            autoLoad = true;
+        }
+        else if (AIGetDifficulty(player, c_diffAutoLoadBunkers)) {
+            autoLoad = true;
+        }
+
+        if (autoLoad && (command == c_BWAB_BunkerTransport)) {
+            // handle bunkers on campaign differently.
+            unitToCheck = BWCampaignWantsToBeInBunker(player, aiUnit, UnitCargoGroup(aiUnit), c_bunkerUnload);
+            if (unitToCheck != null) {
+                ord = AICreateOrder(player, command, e_AB_TransportUnloadUnit); // unload the bunker.
+                OrderSetTargetPassenger(ord, unitToCheck);
+            }
+
+            if (ord == null) {
+                nearBunkerGroup = AIFindUnits(player, wanted, UnitGetPosition(aiUnit), c_campaignBunkerLoadRange, c_noMaxCount);
+                if (wanted == c_nullString) {
+                    filter = AIFilter(player);
+                    AISetFilterMelee(filter, c_onlyRanged);
+                    AISetFilterValidPassenger(filter, aiUnit);
+                    nearBunkerGroup = AIGetFilterGroup(filter, nearBunkerGroup);
+                }
+
+                unitToCheck = BWCampaignWantsToBeInBunker(player, aiUnit, nearBunkerGroup, c_bunkerLoad);
+                if (unitToCheck != null) {
+                    ord = AICreateOrder(player, command, e_AB_TransportLoadUnit); // load the bunker.
+                    OrderSetTargetUnit(ord, unitToCheck);
+                }
+            }
+        }
+        else { // not a campaign bunker
+            if (UnitCargoValue(aiUnit, c_unitCargoSpaceUsed) == 0) { // nothing to unload
+                return false;
+            }
+            ord = AICreateOrder(player, command, e_AB_TransportUnloadAll); // unload bunker
+        }
+    }
+    else { // nearby enemies found.
+        if (UnitCargoValue(aiUnit, c_unitCargoSpaceFree) == 0) { // check for space
+            return false;
+        }
+
+        if (command == c_AB_CommandCenterChange) {
+            if (!AIAnyWorkersFleeingNearby(player,UnitGetPosition(aiUnit),8.0)) {
+                return false;
+            }
+        }
+
+        nearBunkerGroup = AIFindUnits(player, wanted, UnitGetPosition(aiUnit), loadRange, c_noMaxCount);
+        if (wanted == c_nullString) {
+            filter = AIFilter(player);
+            AISetFilterMelee(filter, c_onlyRanged);
+            AISetFilterValidPassenger(filter, aiUnit);
+            nearBunkerGroup = AIGetFilterGroup(filter, nearBunkerGroup);
+        }
+
+        bunkerCount = UnitGroupCount(nearBunkerGroup, c_unitCountAll);
+        while (bunkerCount > 0) {
+            unitToCheck = UnitGroupUnit(nearBunkerGroup, bunkerCount);
+            bunkerCount = bunkerCount - 1;
+
+            if (!UnitIsAlive(unitToCheck)) {
+                continue;
+            }
+            if (AIIsScriptControlled(unitToCheck)) {
+                continue;
+            }
+            if (UnitTestState(unitToCheck, c_unitStateInsideTransport)) {
+                continue;
+            }
+            
+            if (command == c_AB_CommandCenterChange) {
+                ord = AICreateOrder(player, command, e_AB_TransportLoadAll);
+            }
+            else {
+                ord = AICreateOrder(player, command, e_AB_TransportLoadUnit);
+                OrderSetTargetUnit(ord, unitToCheck);
+            }
+            break;
+        }
+    }
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+    return true;
+}
+
+void AIBunkerSalvageSCBW(int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+   
+    //There is no salvage ability in Legacy Mod
+    //ord = AICreateOrder(player, c_BWAB_BunkerSalvage, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    if (UnitGroupCount(scanGroup, c_unitCountAlive) > 0) {
+        return;
+    }
+
+    if (UnitCargoValue(aiUnit, c_unitCargoSpaceUsed) != 0) {
+        return;
+    }
+    
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  *** BUNKER ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkBunkerSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    BWCargoDefend(player, aiUnit, scanGroup, 8, 10, c_nullString, c_BWAB_BunkerTransport);
+
+    //Implement Salvage?
+    //if (!AIIsCampaign(player)) {
+    //    if (AIPlayerDifficulty(player) >= c_skirHard_VH) {
+    //        if (AIGetTime() > 900.0) {
+    //            // bunkers aren't really useful after 15 minutes into a melee game
+    //            // just salvage them if they aren't currently in use
+    //            AIBunkerSalvageSCBW(player, aiUnit, scanGroup);
+    //        }
+    //    }
+    //}
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** MARINE ***
+//--------------------------------------------------------------------------------------------------
+const int c_stimpackCooldown = c_tactTimerFirst;
+
+void AIThinkMarineSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Stimpack
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** MEDIC ***
+//--------------------------------------------------------------------------------------------------
+const int c_opticFlareCooldown = c_tactTimerFirst;
+const int c_opticFlareMinHealth = 70;
+
+order AIOrderOpticFlare (int player, unit aiUnit, unitgroup scanGroup, marker mark, marker gameMark ) {
+    order ord;
+    fixed damage;
+    aifilter filterAI;
+    unitfilter filterUnit;
+    unitgroup targetGroup;
+    //  vars related to nearby enemies.
+    aifilter groundAirFilter;
+    unitgroup threatGroup;
+    int enemyGroundCount;
+    int enemyAirCount;
+    
+
+
+    if (!AITactCooldownAllow(aiUnit, c_opticFlareCooldown)) {
+        return null;
+    }
+    
+    // Check UnitAbilityExists to prevent warnings in void
+    if (!UnitAbilityExists(aiUnit, c_BWAB_MedicSCBWOpticFlare)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_BWAB_MedicSCBWOpticFlare, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    } 
+
+    //  Scan for enemy air and ground units
+    //
+    enemyGroundCount = 0;
+    enemyAirCount = 0;
+
+    groundAirFilter = AIFilter(player);
+    AISetFilterAlliance(groundAirFilter, c_playerGroupEnemy);
+    AISetFilterPlane(groundAirFilter, c_planeGround);
+    enemyGroundCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    AISetFilterPlane(groundAirFilter, c_planeAir);
+    enemyAirCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+
+    filterAI = AIFilter(player);
+    
+    AISetFilterLife(filterAI, c_opticFlareMinHealth, c_noMax);
+    AISetFilterMelee(filterAI, c_onlyRanged);
+    AISetFilterBehaviorCount(filterAI, c_noBehaviorMin, c_noBehaviorMax, c_BWBF_MedicSCBWOpticFlare_ABBlind);
+    AISetFilterBits(filterAI, UnitFilterStr(AIAbilityStr(player, c_BWAB_MedicSCBWOpticFlare, c_fieldTargetFiltersAB)));
+    AISetFilterRange(filterAI, aiUnit, AIAbilityFixed(player, c_BWAB_MedicSCBWOpticFlare, c_fieldRange0) + 1);
+    AISetFilterMarker(filterAI, c_noMarkersMin, c_noMarkersMax, mark);
+    //AISetFilterCanAttackEnemy(filterAI, enemyGroundCount, enemyAirCount);
+    targetGroup = AIGetFilterGroup(filterAI, scanGroup);
+    if (targetGroup == null) {
+        return null;
+    }
+
+    //  Since it's a missile, we also have to check the game-side marker
+    //
+    filterAI = AIFilter(player);
+    AISetFilterMarker(filterAI, c_noMarkersMin, c_noMarkersMax, gameMark);
+    targetGroup = AIGetFilterGroup(filterAI, targetGroup);
+    if (targetGroup == null) {
+        return null;
+    }
+
+    return AIUnitGroupGetValidOrder(targetGroup, ord, aiUnit, c_forwards);
+}
+
+const int c_BWMedicRestorationCooldown = c_tactTimerSecond;
+
+order AIOrderRestoration (int player, unit aiUnit, marker mark) {
+    order ord;
+    unitgroup group;
+    aifilter filter;
+    int i;
+    unit tmp_unit;
+
+    if (AIPlayerDifficulty(player) < c_campAdvanced) {
+        return null;
+    }
+	
+    if (!AITactCooldownAllow(aiUnit, c_BWMedicRestorationCooldown)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_BWAB_MedicSCBWRestoration, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    group = AIFindUnits(player, null, UnitGetPosition(aiUnit), 
+    AIAbilityFixed(player, c_BWAB_MedicSCBWRestoration, c_fieldRange0) + 1, c_noMaxCount);
+
+    filter = AIFilter(player);
+    AISetFilterAlliance(filter, c_playerGroupAlly);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+    group = AIGetFilterGroup(filter, group);
+    if (group == null) {
+        return null;
+    }
+
+    for (i = 1; i <= UnitGroupCount(group, c_unitCountAll); i += 1) {
+        tmp_unit = UnitGroupUnit(group, i);
+    }
+
+    return AIUnitGroupGetValidOrder(group, ord, aiUnit, c_forwards);
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkMedicSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    marker mark;
+    marker gameMark;
+    order ord;
+    int randomVal;
+    fixed cooldown = 0.0;
+
+    if (UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent) < 70) {
+        return; // save at least 20 energy for healing
+    }
+
+    mark = AIMarker(aiUnit, c_BWMK_MedicSCBWOpticFlare);
+    gameMark = AIMarker(aiUnit, c_BWMK_GameMedicSCBWOpticFlare);
+    ord = AIOrderOpticFlare(player, aiUnit, scanGroup, mark, gameMark);
+
+    if (ord != null) {
+        if (AIIsCampaign(player)) {
+            if (AIPlayerDifficulty(player) < c_campAdvanced) {
+                cooldown = 7.0;
+            }
+            else if (AIPlayerDifficulty(player) < c_campExpert) {
+                cooldown = 3.0;
+            }
+        }
+
+        if (!AITactCooldownAllow(aiUnit, c_opticFlareCooldown)) {
+            return;
+        }
+
+        AICastCooldown(aiUnit, ord, mark, c_castRetreat, c_opticFlareCooldown, cooldown);
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** GHOST ***
+//--------------------------------------------------------------------------------------------------
+
+const fixed c_LockdownMinVitality = 70;
+
+order Lockdown (int player, unit aiUnit, unitgroup scanGroup, marker mark, marker gameMark, bool lowVitality) {
+    order ord;
+    aifilter filter;
+    unit target;
+    unitgroup targetGroup;
+    //  vars related to nearby enemies.
+    aifilter groundAirFilter;
+    unitgroup threatGroup;
+    int enemyGroundCount;
+    int enemyAirCount;
+    
+    //  Create order and check validity
+    //
+    ord = AICreateOrder(player, c_BWAB_GhostSCBWLockdown, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    //  Scan for enemy air and ground units
+    //
+    enemyGroundCount = 0;
+    enemyAirCount = 0;
+
+    groundAirFilter = AIFilter(player);
+    AISetFilterAlliance(groundAirFilter, c_playerGroupEnemy);
+    AISetFilterPlane(groundAirFilter, c_planeGround);
+    enemyGroundCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    AISetFilterPlane(groundAirFilter, c_planeAir);
+    enemyAirCount = UnitGroupCount(AIGetFilterGroup(groundAirFilter, scanGroup), c_unitCountAlive);
+
+    //  Apply filters to enemies
+    //
+    filter = AIFilter(player);
+    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BWBF_GhostSCBWLockdown_AB);
+    AISetFilterAlliance(filter, c_playerGroupEnemy);
+    AISetFilterBits(filter, UnitFilterStr(AIAbilityStr(player, c_BWAB_GhostSCBWLockdown, c_fieldTargetFiltersAB)));
+    AISetFilterRange(filter, aiUnit, AIAbilityFixed(player, c_BWAB_GhostSCBWLockdown, c_fieldRange0) + 1);
+    AISetFilterLife(filter, c_LockdownMinVitality, c_noMax);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+    AISetFilterCanAttackEnemy(filter, enemyGroundCount, enemyAirCount);
+    targetGroup = AIGetFilterGroup(filter, scanGroup);
+    if (targetGroup == null) {
+        return null;
+    }
+
+    //  Since it's a missile, we also have to check the game-side marker
+    //
+    filter = AIFilter(player);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, gameMark);
+    targetGroup = AIGetFilterGroup(filter, targetGroup);
+    if (targetGroup == null) {
+        return null;
+    }
+
+    //  Return valid target
+    //
+    return AIUnitGroupGetValidOrder(targetGroup, ord, aiUnit, c_forwards);
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkGhostSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    marker mark;
+    marker gameMark;
+    order ord;
+    bool lowVitality;
+
+    if (AIPlayerDifficulty(player) >= c_campAdvanced) {
+        // cloaking will be disabled by xml on campaign
+        if (AIEvalTacticalData(aiUnit, null)) {
+            return;
+        }
+    }
+
+    // lockdown
+    gameMark = AIMarker(aiUnit, c_BWMK_GameGhostSCBWLockdown);
+    mark = AIMarker(aiUnit, c_BWMK_GhostSCBWLockdown);
+    ord = Lockdown(player, aiUnit, scanGroup, mark, gameMark, lowVitality);
+    if (ord != null) {
+        AICast(aiUnit, ord, mark, c_castHold);
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** Vulture ***
+//--------------------------------------------------------------------------------------------------
+const int c_secondsPerSpiderMine = 3;
+const int c_vultureMineMaxRandom = c_gameLoopsPerSecond * c_secondsPerSpiderMine / c_framesPerThink;
+const int c_VulturemineCooldown = c_tactTimerFirst;
+
+order BWVultureSpiderMine (int player, unit aiUnit, unitgroup scanGroup) {
+	order ord;
+	fixed energy;
+	point loc;
+	fixed distToEnemy;
+	unitgroup spiderMineGroup;
+	int spiderMineCount;
+    point target;
+	
+    if (AIPlayerDifficulty(player) < c_campAdvanced) {
+        return null;
+    }
+	
+    if (AIIsCampaign(player)) {
+        if (RandomInt(0, c_vultureMineMaxRandom) != 1) {
+            return null;
+        }
+    }
+
+    ord = AICreateOrder(player, c_BWAB_VulturePlaceSpiderMineSCBW, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+	
+	// If there are enemies nearby don't cast
+	//if (UnitGroupCount(scanGroup, c_unitCountAlive) > 0) {
+	//	return null;
+	//}
+	
+	distToEnemy = AIPathDistToNearestKnownEnemyStructure(player, UnitGetPosition(aiUnit), true);//DistanceBetweenPoints(UnitGetPosition(aiUnit), PlayerStartLocation(RandomInt(1,2)));
+	if (distToEnemy >= 50) {
+		return null;
+	}
+	
+	loc = UnitGetPosition(aiUnit);
+
+	// Don't create large clusters of traps
+    spiderMineGroup = UnitGroup(c_BWTU_SpiderMine_Burrowed, player, RegionCircle(loc, 10), 
+                            UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);							
+    spiderMineCount = UnitGroupCount(spiderMineGroup, c_unitCountAll);
+
+    
+    if (spiderMineCount != 0) {
+        return null;
+    }
+    target = RegionRandomPoint(RegionCircle(loc, 7));
+
+	OrderSetTargetPoint(ord, target);
+	if (!UnitOrderIsValid(aiUnit,ord)) {
+		return null;
+	}
+	
+	return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkVultureSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    fixed cooldown;
+
+    if (!AITactCooldownAllow(aiUnit, c_VulturemineCooldown)) {
+        return;
+    }
+
+    if (AIPlayerDifficulty(player) < c_campExpert) {
+        cooldown = 8.0;
+    }
+    else {
+        cooldown = 3.0;
+    }
+
+    ord = BWVultureSpiderMine(player, aiUnit, scanGroup);
+    if (ord != null) {
+        AICastCooldown(aiUnit, ord, c_noMarker, c_castHold, c_VulturemineCooldown, cooldown);
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** SCIENCE VESSEL ***
+//--------------------------------------------------------------------------------------------------
+const int c_BWScienceVesselIrradiateCooldown = c_tactTimerFirst;
+const int c_BWScienceVesselDMatrixCooldown = c_tactTimerSecond;
+const int c_BWScienceVesselEMPCooldown = c_tactTimerThird;
+const fixed c_EMPminShields = 50;
+const fixed c_EMPminEnergy = 40;
+
+//--------------------------------------------------------------------------------------------------
+
+order BWScienceVesselDefensiveMatrix (int player, unit aiUnit, marker mark) {
+    order ord;
+    unitgroup group;
+    aifilter filter;
+
+    if (AIPlayerDifficulty(player) < c_campAdvanced) {
+        return null;
+    }
+	
+    if (!AITactCooldownAllow(aiUnit, c_BWScienceVesselDMatrixCooldown)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_BWAB_ScienceVesselSCBWDefensiveMatrix, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    group = AIFindUnits(player, null, UnitGetPosition(aiUnit), 
+    AIAbilityFixed(player, c_BWAB_ScienceVesselSCBWDefensiveMatrix, c_fieldRange0) + 1, c_noMaxCount);
+
+    filter = AIFilter(player);
+    AISetFilterAlliance(filter, c_playerGroupAlly);
+    AISetFilterMarker(filter, c_noMarkersMin, c_noMarkersMax, mark);
+    AISetFilterLifeLost(filter, AIEffectFixed(player, c_EF_Transfusion, c_fieldEffectChange0) - 20, c_noMax);
+    AISetFilterInCombat(filter, c_onlyInCombat);
+    group = AIGetFilterGroup(filter, group);
+    if (group == null) {
+        return null;
+    }
+
+    return AIUnitGroupGetValidOrder(group, ord, aiUnit, c_forwards);
+}
+
+//--------------------------------------------------------------------------------------------------
+order BWScienceVesselIrradiate (int player, unit aiUnit, unitgroup scanGroup) {
+    // target a clump of ranged ground units
+    order ord;
+    aifilter filter;
+    unitgroup irradiateGroup;
+	int count;
+	
+    if (!AITactCooldownAllow(aiUnit, c_BWScienceVesselIrradiateCooldown)) {
+        return null;
+    }    
+	
+    ord = AICreateOrder(player, c_BWAB_ScienceVesselSCBWIrradiate, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+    
+    filter = AIFilter(player);
+    AISetFilterBehaviorCount(filter, c_noBehaviorMin, c_noBehaviorMax, c_BWAB_ScienceVesselSCBWIrradiate);
+    AISetFilterBits(filter, UnitFilterStr("Biological;Heroic,Structure,Missile,Stasis,Item,Dead,Hidden,Invulnerable"));	
+	irradiateGroup = AIGetFilterGroup(filter, scanGroup);
+
+	count = UnitGroupCount(irradiateGroup, c_unitCountAll);
+	if (count == 0) {
+		return null;
+	}
+	
+    OrderSetTargetUnit(ord, UnitGroupUnit(irradiateGroup, RandomInt(1, count)));
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        ord = AIUnitGroupGetValidOrder(irradiateGroup, ord, aiUnit, c_backwards);
+    }
+    	
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+order BWScienceVesselShieldedEMP (int player, unit aiUnit, unitgroup scanGroup) {
+    point loc;
+    aifilter filter;
+    unitgroup EMPGroup;
+
+    order ord = AITacticalOrder(player, aiUnit, c_BWAB_ScienceVesselSCBWEMPShockwave);
+    if (ord == null) {
+        return null;
+    }
+
+
+    filter = AIFilter(player);
+    AISetFilterShields(filter, c_EMPminShields, c_noMax);
+    EMPGroup = AIGetFilterGroup(filter, scanGroup);
+    
+
+    loc = AIBestTargetPoint(
+        AIEffectGroup(player, c_BWEF_ScienceVesselSCBWEMPShockwave_Search, EMPGroup),
+        5, // min hits
+        50, // damage base
+        2.0, // score
+        AIEffectFixed(player, c_BWEF_ScienceVesselSCBWEMPShockwave_Search, c_fieldAreaRadius0) + 1.0,
+        UnitGetPosition(aiUnit),
+        AIAbilityFixed(player, c_BWAB_ScienceVesselSCBWEMPShockwave, c_fieldRange0),
+        c_unitAttributeShielded
+    );
+
+    if (loc == null) {
+        return null;
+    }
+    
+    OrderSetTargetPoint(ord, loc);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+order BWScienceVesselEnergyEMP (int player, unit aiUnit, unitgroup scanGroup) {
+    point loc;
+    aifilter filter;
+    unitgroup EMPGroup;
+
+    order ord = AITacticalOrder(player, aiUnit, c_BWAB_ScienceVesselSCBWEMPShockwave);
+    if (ord == null) {
+        return null;
+    }
+
+
+    filter = AIFilter(player);
+    AISetFilterEnergy(filter, c_EMPminEnergy, c_noMax);
+    EMPGroup = AIGetFilterGroup(filter, scanGroup);
+    
+
+    loc = AIBestTargetPoint(
+        AIEffectGroup(player, c_BWEF_ScienceVesselSCBWEMPShockwave_Search, EMPGroup),
+        5, // min hits
+        50, // damage base
+        2.0, // score
+        AIEffectFixed(player, c_BWEF_ScienceVesselSCBWEMPShockwave_Search, c_fieldAreaRadius0) + 1.0,
+        UnitGetPosition(aiUnit),
+        AIAbilityFixed(player, c_BWAB_ScienceVesselSCBWEMPShockwave, c_fieldRange0),
+        c_unitAttributeNone
+    );
+
+    if (loc == null) {
+        return null;
+    }
+    
+    OrderSetTargetPoint(ord, loc);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkScienceVesselSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    unit heal;
+    marker mark;
+	fixed cooldown;
+
+    if(AIPlayerDifficulty(player) < c_campAdvanced) {
+		return;
+	}
+
+    ord = BWScienceVesselIrradiate(player, aiUnit, scanGroup);
+    if (ord != null) {
+        
+		if(AIPlayerDifficulty(player) == c_campAdvanced) {
+			cooldown = 22.5;
+		}
+		else {
+			cooldown = 4.0;
+		}
+		AICastCooldown(aiUnit, ord, c_noMarker, c_castRetreat, c_BWScienceVesselIrradiateCooldown, cooldown);
+        return;
+    }
+
+    ord = BWScienceVesselEnergyEMP(player, aiUnit, scanGroup);
+    if (ord != null) {
+		if(AIPlayerDifficulty(player) == c_campAdvanced) {
+			cooldown = 10.0;
+		}
+		else {
+			cooldown = 1.0;
+		}		
+
+        AICastCooldown(aiUnit, ord, c_noMarker, c_castRetreat, c_BWScienceVesselEMPCooldown, cooldown);
+        return;
+    }
+
+    mark = AIMarker(aiUnit, c_BWMK_ScienceVesselSCBWDefensiveMatrix);
+    ord = BWScienceVesselDefensiveMatrix(player, aiUnit, mark);
+    if (ord != null) {
+        
+		if(AIPlayerDifficulty(player) == c_campAdvanced) {
+			cooldown = 20.0;
+		}
+		else {
+			cooldown = 10.0;
+		}		
+		AICastCooldown(aiUnit, ord, mark, c_castRetreat, c_BWScienceVesselDMatrixCooldown, cooldown);
+        return;
+    }
+
+    ord = BWScienceVesselShieldedEMP(player, aiUnit, scanGroup);
+    if (ord != null) {
+		if(AIPlayerDifficulty(player) == c_campAdvanced) {
+			cooldown = 15.0;
+		}
+		else {
+			cooldown = 5.0;
+		}		
+
+        AICastCooldown(aiUnit, ord, c_noMarker, c_castRetreat, c_BWScienceVesselEMPCooldown, cooldown);
+        return;
+    }
+
+    //EMP Shockwave
+    //if (AIEvalTacticalData(aiUnit, null)) {
+    //    return;
+    //}
+
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** WRAITH ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkWraithSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord = AICreateOrder(player, c_BWAB_WraithSCBWCloak, 0);
+    bool isCloaking = true;
+
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        ord = AICreateOrder(player, c_BWAB_WraithSCBWCloak, 1);
+        if (!UnitOrderIsValid(aiUnit, ord)) {
+            return;
+        }
+        isCloaking = false;
+    }
+
+    if (isCloaking != AICloakEvaluate(aiUnit, 50, 50, 10)) {
+        return;
+    }
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** SIEGE TANK ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkSiegeTankSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Siege
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+//--------------------------------------------------------------------------------------------------
+//  *** SIEGE TANK SIEGED ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkSiegeTankSCBWSieged (int player, unit aiUnit, unitgroup scanGroup) {
+    //Unsiege
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** BATTLECRUISER ***
+//--------------------------------------------------------------------------------------------------
+const int c_BWYamatoCooldown = c_tactTimerFirst;
+
+order BWBattlecruiserYamato (int player, unit aiUnit, unitgroup scanGroup, marker mark) {
+    order ord;
+    aifilter filter;
+    fixed damage;
+    unitgroup targetGroup;
+
+    if (!AITactCooldownAllow(aiUnit, c_BWYamatoCooldown)) {
+        return null;
+    }
+    //TriggerDebugOutput(1, StringToText("CD Passed"), true);
+
+    //  If we already have a yamato order, ignore new orders so that we do not count
+    //  our own markers again.
+    if (UnitOrderHasAbil(aiUnit, c_BWAB_BattlecruiserSCBWYamato)) {
+        return null;
+    }
+
+    if (AIPlayerDifficulty(player) < c_campAdvanced) {
+        return null;
+    }
+
+    //  Only cast as part of an existing offensive.
+    
+    if (!AIIsAttackOrder(UnitOrder(aiUnit, 0))) {
+        return null;
+    }
+     
+    //  See if this spell can be cast at all.
+    //
+    ord = AICreateOrder(player, c_BWAB_BattlecruiserSCBWYamato, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    damage = AIEffectFixed(player, c_BWEF_BattlecruiserSCBWYamato_Damage, c_fieldAmount);
+
+    //  Search enemies for those with hit points closest to the damage yamato gun inflicts.
+    //
+    filter = AIFilter(player);
+    AISetFilterAlliance(filter, c_playerGroupEnemy);
+    AISetFilterBits(filter, UnitFilterStr("-;Missile,Self,Stasis,Dead,Hidden,Invulnerable"));
+    AISetFilterLifePerMarker(filter, damage, mark);
+    AISetFilterLifeSortReference(filter, damage, damage*c_distanceFromDamage); 
+    targetGroup = AIGetFilterGroup(filter, scanGroup);
+    if (targetGroup == null) {
+        return null;
+    }
+    
+    return AIUnitGroupGetValidOrder(targetGroup, ord, aiUnit, c_backwards);
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkBattlecruiserSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+
+    marker mark;
+    order ord;
+    fixed cooldown;
+
+    mark = AIMarker(aiUnit, c_BWMK_BattlecruiserSCBWYamato);
+    ord = BWBattlecruiserYamato(player, aiUnit, scanGroup, mark);
+
+    if (!AITactCooldownAllow(aiUnit, c_BWYamatoCooldown)) {
+        return;
+    }
+
+    if (ord != null) {
+        if (AIIsCampaign(player) && AIPlayerDifficulty(player) < c_campExpert) {
+            cooldown = 8.0;
+        }
+        else {
+            cooldown = 3.0;
+        }
+        AICastCooldown(aiUnit, ord, mark, c_castHold, c_BWYamatoCooldown, cooldown);
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** FIREBAT ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkFirebatSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //Stimpack
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** NUCLEAR SILO ***
+//--------------------------------------------------------------------------------------------------
+const int c_BWMinGhostCount = 1;
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkNuclearSiloSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    int ghostCount;
+    order ord;
+
+    ord = AICreateOrder(player, c_BWAB_NukeSCBWArm, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    ghostCount = TechTreeUnitCount(player, c_BWTU_Ghost, c_techCountQueuedOrBetter);
+    if (ghostCount >= c_BWMinGhostCount) {
+        if (ord != null) {
+            AICast(aiUnit, ord, c_noMarker, c_castHold);
+            return;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** COMMAND CENTER ***
+//--------------------------------------------------------------------------------------------------
+
+const int c_BWCommandCenterEarlyCount = 1;
+const int c_BWComsatMaxCount = 2;
+const int c_BWGhostMinCount = 1;
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkCommandCenterSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    int commandCenterCount;
+    int comsatStationCount;
+    int nuclearSiloCount;
+    int ghostCount;
+    order ord;
+
+    //Count Units
+    commandCenterCount = TechTreeUnitCount(player, c_BWTB_CommandCenter, c_techCountQueuedOrBetter);
+    comsatStationCount = TechTreeUnitCount(player, c_BWTB_ComsatStation, c_techCountQueuedOrBetter);
+    nuclearSiloCount = TechTreeUnitCount(player, c_BWTB_NuclearSilo, c_techCountQueuedOrBetter);
+    ghostCount = TechTreeUnitCount(player, c_BWTU_Ghost, c_techCountQueuedOrBetter);
+
+    ////rally
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+
+    ord = AICreateOrder(player, c_BWAB_CommandCenterSCBW_AddOns, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    //Only build one if there is Detection Danger
+    if (AISuspectDetectionDanger(player, 60 * 3)){
+        if (commandCenterCount < c_BWComsatMaxCount) {
+            if (comsatStationCount < c_BWComsatMaxCount) {
+                if (ord != null) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                    return;
+                }
+            }
+        }
+    }
+
+    // Build Additional Comsats if there is detection danger late in the game
+    if (AISuspectDetectionDanger(player, c_lateDetectionDangerTime)){
+        if (commandCenterCount <= c_BWComsatMaxCount) {
+            if (comsatStationCount < c_BWComsatMaxCount) {
+                if (ord != null) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                    return;
+                }
+            }
+        }
+    }
+
+    ord = AICreateOrder(player, c_BWAB_CommandCenterSCBW_AddOns, 1);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    if (commandCenterCount > c_BWComsatMaxCount && comsatStationCount >= c_BWComsatMaxCount) {
+        if (ghostCount >= c_BWGhostMinCount) {
+            if (ord != null) {
+                AICast(aiUnit, ord, c_noMarker, c_castHold);
+                return;
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//  *** COMSAT STATION ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  Scanner Sweep
+//--------------------------------------------------------------------------------------------------
+bool ComsatScannerSweep (int player, unit aiUnit) {
+    order ord;
+    point loc;
+    bool needsNearbyAttackers;
+
+    ord = AICreateOrder(player, c_BWAB_ComsatStationSCBWScannerSweep, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+
+    //  If something is attacking while cloaked and we can defend if we reveal it, cast sweep.
+    //
+    loc = AIGetCloakedAttacker(player);  // includes unscanned detect beacon
+    if (loc == null) {
+        return false;
+    }
+    OrderSetTargetPoint(ord, loc);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return false;
+    }
+    
+    needsNearbyAttackers = true;
+    if (PlayerBeaconIsSet(player, c_beaconDetect)) {
+        if (loc == PlayerBeaconGetTargetPoint(player, c_beaconDetect)) {
+            needsNearbyAttackers = false;
+        }
+    }
+
+    if (needsNearbyAttackers && !AIHasNearbyAlliedAttackers(player, loc, 10.0)) {
+        return false;
+    }
+
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+    AIClearCloakedAttacker(player, loc);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkComsatStationSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    if (ComsatScannerSweep(player, aiUnit)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** BARRACKS ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkBarracksSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //rally
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** FACTORY ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkFactorySCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //rally
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** STARPORT ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkStarportSCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    //rally
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  BW Terran Upgrade Buildings (Melee)
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  *** ENGINEERING BAY ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkEngineeringBaySCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    int infantryUnitCount;
+    
+    if(AIIsCampaign(player)) {
+        return;
+    }
+
+    // Only counts Combat Infantry Units
+    infantryUnitCount = 
+    TechTreeUnitCount(player, c_BWTU_Marine, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWTU_Firebat, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWTU_Ghost, c_techCountQueuedOrBetter);
+
+
+    //Tier 1
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranInfantryWeaponsSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranInfantryWeapons, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (infantryUnitCount >= 6) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranInfantryArmorsSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranInfantryArmorsSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (infantryUnitCount >= 6) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 2
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranInfantryWeaponsSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranInfantryWeapons, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (infantryUnitCount >= 8) {
+                if   (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranInfantryArmorsSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranInfantryArmorsSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (infantryUnitCount >= 8) {
+                if   (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 3
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranInfantryWeaponsSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranInfantryWeapons, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (infantryUnitCount >= 10) {
+                if   (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranInfantryArmorsSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranInfantryArmorsSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (infantryUnitCount >= 10) {
+                if   (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** ARMORY ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkArmorySCBW (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    int mechUnitCount;
+    int airUnitCount;
+
+    if(AIIsCampaign(player)) {
+        return;
+    }
+
+    // Only counts Combat Mech Units
+    mechUnitCount = 
+    TechTreeUnitCount(player, c_BWTU_Vulture, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWTU_Goliath, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWTU_SiegeTank, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWTU_SiegeTankSieged, c_techCountQueuedOrBetter);
+
+    // Only counts Combat Air Units
+    airUnitCount = 
+    TechTreeUnitCount(player, c_BWTU_Wraith, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWTU_Valkyrie, c_techCountQueuedOrBetter)+
+    TechTreeUnitCount(player, c_BWTU_Battlecruiser, c_techCountQueuedOrBetter);
+
+    //Tier 1 Mech
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranVehicleWeaponsSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranVehicleWeaponsSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (mechUnitCount >= 4) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranVehiclePlatingSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranVehiclePlatingSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (mechUnitCount >= 4) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 1 Ship
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranShipWeaponsSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranShipWeaponsSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 4) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranShipPlatingSCBW_Lvl1, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranShipPlatingSCBW, 0);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 4) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 2 Mech
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranVehicleWeaponsSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranVehicleWeaponsSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (mechUnitCount >= 5) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranVehiclePlatingSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranVehiclePlatingSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (mechUnitCount >= 5) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 2 Ship
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranShipWeaponsSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranShipWeaponsSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 5) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranShipPlatingSCBW_Lvl2, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranShipPlatingSCBW, 1);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 5) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 3 Mech
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranVehicleWeaponsSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranVehicleWeaponsSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (mechUnitCount >= 5) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranVehiclePlatingSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranVehiclePlatingSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (mechUnitCount >= 5) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    //Tier 3 Ship
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranShipWeaponsSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranShipWeaponsSCBW, 20);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 5) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+
+    if(TechTreeUpgradeCount(player, c_BWTR_TerranShipPlatingSCBW_Lvl3, c_techCountQueuedOrBetter) == 0) {
+        ord = AICreateOrder(player, c_BWTR_TerranShipPlatingSCBW, 2);
+
+        if (UnitOrderIsValid(aiUnit, ord)) {
+            Wait(1.0, c_timeAI);
+            if (airUnitCount >= 5) {
+                if (UnitQueueItemTime(aiUnit,c_unitQueueTimeRemaining, 1) <= 0) {
+                    AICast(aiUnit, ord, c_noMarker, c_castHold);
+                }
+            }
+        }
+    }
+}

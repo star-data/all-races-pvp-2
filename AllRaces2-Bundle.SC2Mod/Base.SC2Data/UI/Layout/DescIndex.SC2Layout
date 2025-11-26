@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Include path="UI/Layout/SCBW_StandardConstants.SC2Layout"/>
+    <Include path="UI/Layout/SCBW_TechTreeTemplates.SC2Layout"/>
+    <Include path="UI/Layout/SCBW_TechTree.SC2Layout"/>
+    <Include path="UI/Layout/SCBW_ClassicIconsPaths.SC2Layout"/>
+    <Include path="UI/Layout/SCBW_ClassicIcons.SC2Layout"/>
+    <Include path="UI/Layout/TechTreePanel_Scion.SC2Layout"/>
+    <Include path="UI/Layout/TechGlossaryPanel_Scion.SC2Layout"/>
+    <Include path="UI/Layout/ScionConstants.SC2Layout"/>
+    <Include path="UI/Layout/ScionInterface.SC2Layout"/>
+    <Include path="UI/Layout/LotC_Techtree.SC2Layout"/>
+    <Include path="UI/Layout/LotC_UnitStatus.SC2Layout"/>
+    <Include path="UI/Layout/UEDFL_TechGlossaryPanel.SC2Layout"/>
+    <Include path="UI/Layout/UI/UnitStatus.SC2Layout"/>
+    <Include path="UI/Layout/UI/GameUI_ZCR.SC2Layout"/>
+    <Include path="UI/Layout/ArmyButton2.SC2Layout"/>
+</Desc>

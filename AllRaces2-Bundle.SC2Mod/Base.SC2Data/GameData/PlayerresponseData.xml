@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Catalog>
+<CPlayerResponseUnitBirth id="SCBWUnitSwap">
+  <Handled value="SCBWUnitSwapDummy"/>
+  <TargetFilters value="-;Missile,Dead"/>
+  <Priority value="100"/>
+  <CasterFilters value="-;Ally,Neutral,Enemy,Missile,Destructible,Item"/>
+  <ValidatorArray value="SCBWUnitSwapValidator"/>
+</CPlayerResponseUnitBirth>
+<CPlayerResponseUnitDamage id="ZHBRVoid@DamageResponse">
+  <Handled value="ZHBRVoid@ApplySuppressedRegenerationCaster"/>
+  <ValidatorArray value="ZHBRCommon@CasterIsVoidForcesRace"/>
+  <ValidatorArray value="ZHBRPowerField@CasterNotInPowerField"/>
+</CPlayerResponseUnitDamage>
+
+</Catalog>

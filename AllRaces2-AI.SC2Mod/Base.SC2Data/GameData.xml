@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Includes>
+    <Catalog path="AIData/BuildArmy.xml"/>
+    <Catalog path="AIData/CommonData.xml"/>
+    <Catalog path="AIData/BuildCore.xml"/>
+    <Catalog path="AIData/BuildOrders.xml"/>
+</Includes>

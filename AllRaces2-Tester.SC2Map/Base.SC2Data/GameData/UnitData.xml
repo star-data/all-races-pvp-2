@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUnit id="DestructibleRock4x4">
+        <PlacementFootprint value="Footprint4x4ContourDestructibleRock"/>
+    </CUnit>
+    <CUnit id="RichMineralField">
+        <PlacementFootprint value="FootprintMineralsRounded"/>
+    </CUnit>
+    <CUnit id="RichVespeneGeyser">
+        <PlacementFootprint value="FootprintGeyserRounded"/>
+    </CUnit>
+    <CUnit id="MineralField">
+        <PlacementFootprint value="FootprintMineralsRounded"/>
+    </CUnit>
+    <CUnit id="SupplyDepotLowered">
+        <PlacementFootprint value="Footprint2x2Underground"/>
+    </CUnit>
+    <CUnit id="VespeneGeyser">
+        <PlacementFootprint value="FootprintGeyserRounded"/>
+    </CUnit>
+</Catalog>

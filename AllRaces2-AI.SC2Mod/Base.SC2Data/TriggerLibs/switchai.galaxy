@@ -1,0 +1,213 @@
+//--------------------------------------------------------------------------------------------------
+//  AI Switcher
+//--------------------------------------------------------------------------------------------------
+
+include "TriggerLibs/allrace/AllRaceAI"
+include "TriggerLibs/Terran/Terran"
+include "TriggerLibs/Protoss/Protoss"
+include "TriggerLibs/Zerg/Zerg"
+include "TriggerLibs/Genetron/Genetron"
+include "TriggerLibs/Xayid/Xayid"
+include "TriggerLibs/Keiron/Keiron"
+include "TriggerLibs/BWTerran/BWTerran"
+include "TriggerLibs/BWProtoss/BWProtoss"
+include "TriggerLibs/BWZerg/BWZerg"
+//include "TriggerLibs/ARC/dragon"
+//include "TriggerLibs/ARC/hybrid"
+//include "TriggerLibs/ARC/Synoid"
+//include "TriggerLibs/ARC/Taldarim"
+//include "TriggerLibs/ARC/ued"
+//include "TriggerLibs/ARC/Umojan"
+//include "TriggerLibs/ARC/upl"
+
+
+//--------------------------------------------------------------------------------------------------
+//  DebugCallback
+//--------------------------------------------------------------------------------------------------
+void DebugCallback (int player) {
+    DebugAI("=====????=====\n");
+    DebugMelee(player);
+    DebugAI("e_mainState = "        + MainStateName(AIState(player, e_mainState))           +
+            ", e_mainSubState = "   + "-" + IntToString(AIState(player, e_mainSubState)) + "-"     +
+            ", e_attackState = "    + AttackStateName(AIState(player, e_attackState))
+    );
+}
+void DebugCallbackTerr (int player) {DebugCallback(player);}
+void DebugCallbackProt (int player) {DebugCallback(player);}
+void DebugCallbackZerg (int player) { DebugCallback(player);}
+//--------------------------------------------------------------------------------------------------
+//  AINewUnit
+//--------------------------------------------------------------------------------------------------
+void AINewUnit (int player, unit u) {
+    string race = PlayerRace(player);
+    if(!forceARCAI){
+        if (PlayerRace(player) == "Zerg" ){ AINewUnitZergLegacy(player,u);return;}
+        if (PlayerRace(player) == "Terr" ){ AINewUnitTerrLegacy(player,u);return;}
+        if (PlayerRace(player) == "Prot" ){ AINewUnitProtLegacy(player,u);return;}
+        if (PlayerRace(player) == "Gen" ){ AINewUnitGen (player,u);return;}
+        if (PlayerRace(player) == "Xayi"){ AINewUnitXayi(player,u);return;}
+        if (PlayerRace(player) == "Keir"){ AINewUnitKeir(player,u);return;}
+        if (PlayerRace(player) == "BWTe"){ AINewUnitBWTe(player,u);return;}
+        if (PlayerRace(player) == "BWZe"){ AINewUnitBWZe(player,u);return;}
+        if (PlayerRace(player) == "BWPr"){ AINewUnitBWPr(player,u);return;}
+        //if (PlayerRace(player) == "TerU"){ AINewUnitTerU(player,u);return;}
+        //if (PlayerRace(player) == "PrTD"){ AINewUnitPrTD(player,u);return;}
+        //if (PlayerRace(player) == "Synd"){ AINewUnitSynd(player,u);return;}
+        //if (PlayerRace(player) == "UED") { AINewUnitUED (player,u);return;}
+        //if (PlayerRace(player) == "UPL") { AINewUnitUPL (player,u);return;}
+        //if (PlayerRace(player) == "Drag"){ AINewUnitDrag(player,u);return;}
+        //if (PlayerRace(player) == "ZHBR"){ AINewUnitZHBR(player,u);return;}
+    }
+    AINewUnitARC(player,u);
+}
+void AINewUnitZerg (int player, unit u) {AINewUnit(player, u);}
+void AINewUnitTerr (int player, unit u) {AINewUnit(player, u);}
+void AINewUnitProt (int player, unit u) {AINewUnit(player, u);}
+
+//--------------------------------------------------------------------------------------------------
+//  AIEarlyDefScout
+//--------------------------------------------------------------------------------------------------
+unit AIEarlyDefScout (int player, unit prev, bool allowWorkers) {
+    string race = PlayerRace(player);
+    if(!forceARCAI){
+        if (PlayerRace(player) == "Zerg"){ return AIEarlyDefScoutZergLegacy(player, prev, allowWorkers);}
+        if (PlayerRace(player) == "Terr"){ return AIEarlyDefScoutTerrLegacy(player, prev, allowWorkers);}
+        if (PlayerRace(player) == "Prot"){ return AIEarlyDefScoutProtLegacy(player, prev, allowWorkers);}
+        if (PlayerRace(player) == "Gen"){ return AIEarlyDefScoutGen(player, prev, allowWorkers);}
+        if (PlayerRace(player) == "Xayi"){ return AIEarlyDefScoutXayi(player, prev, allowWorkers);}
+        if (PlayerRace(player) == "Keir"){ return AIEarlyDefScoutKeir(player, prev, allowWorkers);}
+        if (PlayerRace(player) == "BWTe"){ return AIEarlyDefScoutBWTe(player, prev, allowWorkers);}
+        if (PlayerRace(player) == "BWZe"){ return AIEarlyDefScoutBWZe(player, prev, allowWorkers);}
+        if (PlayerRace(player) == "BWPr"){ return AIEarlyDefScoutBWPr(player, prev, allowWorkers);}
+        // if (PlayerRace(player) == "TerU"){ return AIEarlyDefScoutTerU(player, prev, allowWorkers);}
+        // if (PlayerRace(player) == "PrTD"){ return AIEarlyDefScoutPrTD(player, prev, allowWorkers);}
+        // if (PlayerRace(player) == "Synd"){ return AIEarlyDefScoutSynd(player, prev, allowWorkers);}
+        // if (PlayerRace(player) == "UED"){ return AIEarlyDefScoutUED(player, prev, allowWorkers);}
+        // if (PlayerRace(player) == "UPL"){ return AIEarlyDefScoutUPL(player, prev, allowWorkers);}
+        // if (PlayerRace(player) == "Drag"){ return AIEarlyDefScoutDrag(player, prev, allowWorkers);}
+        // if (PlayerRace(player) == "ZHBR"){ return AIEarlyDefScoutZHBR(player, prev, allowWorkers);}
+    }
+    return AIEarlyDefScoutARC(player, prev, allowWorkers);
+}
+unit AIEarlyDefScoutProt (int player, unit prev, bool allowWorkers) {return AIEarlyDefScout(player, prev, allowWorkers);}
+unit AIEarlyDefScoutTerr (int player, unit prev, bool allowWorkers) {return AIEarlyDefScout(player, prev, allowWorkers);}
+unit AIEarlyDefScoutZerg (int player, unit prev, bool allowWorkers) {return AIEarlyDefScout(player, prev, allowWorkers);}
+
+//--------------------------------------------------------------------------------------------------
+//  AIGetScout
+//--------------------------------------------------------------------------------------------------
+unit AIGetScout(int player, int index, unit prev, bool allowWorkers) {
+    string race = PlayerRace(player);
+    if(!forceARCAI){
+        if (race == "Zerg"){ return AIGetScoutZergLegacy(player, index, prev, allowWorkers);}
+        if (race == "Terr"){ return AIGetScoutTerrLegacy(player, index, prev, allowWorkers);}
+        if (race == "Prot"){ return AIGetScoutProtLegacy(player, index, prev, allowWorkers);}
+        if (race == "Gen"){ return AIGetScoutGen(player, index, prev, allowWorkers); }
+        if (race == "Xayi"){ return AIGetScoutXayi(player, index, prev, allowWorkers); }
+        if (race == "Keir"){ return AIGetScoutKeir(player, index, prev, allowWorkers); }
+        if (race == "BWTe"){ return AIGetScoutBWTe(player, index, prev, allowWorkers); }
+        if (race == "BWZe"){ return AIGetScoutBWZe(player, index, prev, allowWorkers); }
+        if (race == "BWPr"){ return AIGetScoutBWPr(player, index, prev, allowWorkers); }
+        // if (race == "TerU"){ return AIGetScoutTerU(player, index, prev, allowWorkers); }
+        // if (race == "PrTD"){ return AIGetScoutPrTD(player, index, prev, allowWorkers); }
+        // if (race == "Synd"){ return AIGetScoutSynd(player, index, prev, allowWorkers); }
+        // if (race == "UED") { return AIGetScoutUED(player, index, prev, allowWorkers); }
+        // if (race == "UPL") { return AIGetScoutUPL(player, index, prev, allowWorkers); }
+        // if (race == "Drag"){ return AIGetScoutDrag(player, index, prev, allowWorkers); }
+        // if (race == "ZHBR"){ return AIGetScoutZHBR(player, index, prev, allowWorkers); }
+    }
+   return  AIGetScoutARC(player, index, prev, allowWorkers);
+}
+unit AIGetScoutProt (int player, int index, unit prev, bool allowWorkers) { return AIGetScout(player, index, prev, allowWorkers);}
+unit AIGetScoutZerg (int player, int index, unit prev, bool allowWorkers) {  return AIGetScout(player, index, prev, allowWorkers);}
+unit AIGetScoutTerr (int player, int index, unit prev, bool allowWorkers) {return AIGetScout(player, index, prev, allowWorkers);}
+
+
+//--------------------------------------------------------------------------------------------------
+//  AIMelee
+//--------------------------------------------------------------------------------------------------
+void AIMelee (int player) {
+    string race = PlayerRace(player);
+    int diff = AIPlayerDifficulty(player);
+    if((aiType[player] == aiType_default)){
+        if((!forceARCAI) ){
+            if (race == "Zerg"){AIMeleeZergLegacy(player);return;}
+            if (race == "Terr"){AIMeleeTerrLegacy(player);return;}
+            if (race == "Prot"){AIMeleeProtLegacy(player);return;}
+            if (race == "BWTe"){AIMeleeBWTe(player);return;}
+            if (race == "BWZe"){AIMeleeBWZe(player);return;}
+            if (race == "BWPr"){AIMeleeBWPr(player);return;}
+    
+            //if(diff < c_skirHard){
+            if (race == "Gen"){AIMeleeGen(player);return;}
+            if (race == "Xayi"){AIMeleeXayi(player);return;}
+            if (race == "Keir"){AIMeleeKeir (player);return;}
+            //}
+            
+            // if (race == "TerU"){AIMeleeTerU(player);return;}
+            // if (race == "PrTD"){AIMeleePrTD(player);return;}
+            // if (race == "Synd"){AIMeleeSynd(player);return;}
+            // if (race == "UED"){AIMeleeUED(player);return;}
+            // if (race == "UPL"){AIMeleeUPL(player);return;}
+            // if (race == "Drag"){AIMeleeDrag(player);return;}
+            // if (race == "ZHBR"){AIMeleeZHBR(player);return;}
+        }
+    }
+    AIMeleeARC(player);
+}
+void AIMeleeProt (int player) {AIMelee(player);}
+void AIMeleeZerg (int player) {AIMelee(player);}
+void AIMeleeTerr (int player) {AIMelee(player);}
+
+//--------------------------------------------------------------------------------------------------
+//  AIWaveThink
+//--------------------------------------------------------------------------------------------------
+void AIWaveThink(int player, wave w, int type){
+    AIWaveThinkDefault(player, w, type);
+}
+void AIWaveThinkZerg (int player, wave w, int type) {AIWaveThink(player, w, type);}
+void AIWaveThinkProt (int player, wave w, int type) {AIWaveThink(player, w, type);}
+void AIWaveThinkTerr (int player, wave w, int type) {AIWaveThink(player, w, type);}
+
+//--------------------------------------------------------------------------------------------------
+//  AIGlobalConfig
+//--------------------------------------------------------------------------------------------------
+bool globalConfigInititalized = false;
+void AIGlobalConfig(){
+    //run once fro all players
+    if(globalConfigInititalized){return;}
+    globalConfigInititalized = true;
+    if(!forceARCAI){
+        AIGlobalConfigZerg();
+        AIGlobalConfigTerran();
+        AIGlobalConfigProtoss();
+        AIGlobalConfigBWTerran();
+        AIGlobalConfigBWZerg();
+        AIGlobalConfigBWProtoss();
+        AIGlobalConfigXayid () ;
+        AIGlobalConfigGenetron () ;
+        AIGlobalConfigKeiron () ;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AISharedConfig
+//--------------------------------------------------------------------------------------------------
+void AISharedConfig (int player) {
+    AIGlobalConfig();
+    if(!forceARCAI){
+        AISharedConfigZerg(player);
+        AISharedConfigTerran(player);
+        AISharedConfigProtoss(player);
+        AISharedConfigBWZerg(player);
+        AISharedConfigBWTerran(player);
+        AISharedConfigBWProtoss(player);
+        AISharedConfigKeiron(player);
+        AISharedConfigGenetron(player);
+        AISharedConfigXayid(player);
+    }
+    AISharedConfigARC(player);
+}
+
+
+

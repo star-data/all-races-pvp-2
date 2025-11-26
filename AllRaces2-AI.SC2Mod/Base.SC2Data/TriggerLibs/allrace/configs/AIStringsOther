@@ -1,0 +1,91 @@
+
+//based on terran AI
+<race> Build Open Hard Rush    : $dropoff, 10 $worker, $supply, 12 $worker, $barrack, 14 $worker, $refinery, 16 $worker, $defaultArmyUnit, 2 $supply, 2 $defaultArmyUnit;
+<race> Build Open Hard Timing  : $dropoff, 10 $worker, $supply, 12 $worker, $barrack, 14 $worker, $refinery, 16 $worker, $defaultArmyUnit, 2 $supply, 2 $defaultArmyUnit; 2 $barrack
+<race> Build Open Hard Power   : $dropoff, 10 $worker, $supply, 12 $worker, $barrack, 14 $worker, $refinery, 16 $worker, $defaultArmyUnit, 2 $supply, 2 $defaultArmyUnit; 2 $barrack
+<race> Build Open Hard Macro   : $dropoff, 10 $worker, $supply, 12 $worker, $barrack, 16 $worker; $defaultArmyUnit, 17 $worker, 2 $supply, 2 $defaultArmyUnit, $refinery; 2 $barrack
+<race> Build Open Hard Air     : $dropoff, 10 $worker, $supply, 15 $worker; 16 $worker, $refinery, 17 $worker, $barrack, 18 $worker, 2 $refinery, 19 $worker, 2 $supply, $factory; 2 $starport
+
+
+Keiron   Build Open Hard Rush    : Citadel_Alias, 16 Converter, Edifice, 17 Converter, Formulator, 19 Converter, Volt, CitadelCharged, Reliquary;
+Keiron   Build Open Hard Timing  : Citadel_Alias, 16 Converter, Edifice, 17 Converter, Formulator, 19 Converter, Volt, CitadelCharged, Reliquary;2 Formulator
+Keiron   Build Open Hard Power   : Citadel_Alias, 16 Converter, Edifice, 17 Converter, Formulator, 19 Converter, Volt, CitadelCharged, Reliquary, Sanctum;2 Formulator
+Keiron   Build Open Hard Macro   : Citadel_Alias, 16 Converter, Edifice, 17 Converter; Formulator, 19 Converter, Volt, CitadelCharged, Reliquary, Sanctum; 2 Formulator
+Keiron   Build Open Hard Air     : Citadel_Alias,16 Converter,Edifice,17 Converter;Formulator,19 Converter,Edifice,2 Formulator,Sanctum,CitadelCharged;Conduit,Outlet
+Genetron Build Open Hard Rush    : ProcessingCore,15 ACR,Node,16 ACR,Manufacturer,FilteringPlant,Spitfire,Uploader,2 Spitfire,2 Node,19 ACR;
+Genetron Build Open Hard Timing  : ProcessingCore,15 ACR,Node,16 ACR,Manufacturer,FilteringPlant,Spitfire,Uploader,2 Spitfire,2 Node,19 ACR;2 FilteringPlant,2 Manufacturer
+Genetron Build Open Hard Power   : ProcessingCore,15 ACR,Node,16 ACR,Manufacturer,FilteringPlant,Spitfire,Uploader,2 Node,19 ACR;2 FilteringPlant,2 Uploader
+Genetron Build Open Hard Macro   : ProcessingCore,15 ACR,Node,16 ACR,Manufacturer;Spitfire,3 Uploader,2 Spitfire,19 ACR,2 Node,Fabricator,FilteringPlant;2 FilteringPlant
+Genetron Build Open Hard Air     : ProcessingCore,15 ACR,Node,16 ACR;FilteringPlant,Manufacturer,2 FilteringPlant,19 ACR,2 Node,Fabricator;AssemblyArray,9 Uploader
+Xayid    Build Open Hard Rush    : ScavengerNest,14 Scavenger,FeedingPool,16 Scavenger,XayidDen,17 Scavenger,Siphoner,19 Scavenger,3 Xayidling,MutagenChamber,2 FeedingPool;
+Xayid    Build Open Hard Timing  : ScavengerNest,14 Scavenger,FeedingPool,16 Scavenger,XayidDen,17 Scavenger,Siphoner,19 Scavenger,3 Xayidling,MutagenChamber,2 FeedingPool;2 Siphoner
+Xayid    Build Open Hard Power   : ScavengerNest,14 Scavenger,FeedingPool,16 Scavenger,XayidDen,17 Scavenger,Siphoner,19 Scavenger,Xayidling,MutagenChamber,2 FeedingPool;2 Siphoner
+Xayid    Build Open Hard Macro   : ScavengerNest,14 Scavenger,FeedingPool,16 Scavenger,XayidDen,17 Scavenger;19 Scavenger,2 Xayidling,MutagenChamber,2 FeedingPool,BiomassHatchery,Siphoner;2 Siphoner
+Xayid    Build Open Hard Air     : ScavengerNest,14 Scavenger,FeedingPool,16 Scavenger;Siphoner,XayidDen,17 Scavenger,2 Siphoner,19 Scavenger,MutagenChamber,2 FeedingPool,BiomassHatchery;AvianNest
+
+BWTerran BasicDefense    : 12 Marine,4 Wraith,4 Vulture,4 Medic,4 Firebat
+BWZerg BasicDefense      : 18 Hydralisk,20 Zergling,9 Mutalisk
+BWProtoss BasicDefense : 8 Dragoon,8 Zealot,4 Scout,3 Corsair,4 Reaver, stock 1 Arbiter
+Genetron BasicDefense  : 4 Spitfire,4 Hornet,2 Torrent,4 Blitzer
+Xayid BasicDefense     : 6 Xayidling,2 Assailant,2 Reviler,4 Scorpalisk
+KeironBasicDefense     : 8 Volt,4 Aurora,4 Umbra,4 Cataract
+
+
+
+Zerg    Build Upgrades Open      : if Zergling ZerglingSpeed
+Zerg    Build Upgrades Mid       : MeleeAttacks1,GroundCarapace1,MissileAttacks1,if 4 Baneling BanelingSpeed,Burrow
+Zerg    Build Upgrades Late      : MeleeAttacks2,GroundCarapace2,MissileAttacks2,if 4 Infestor InfestorEnergy,if 4 Roach RoachSpeed,if 3 Hydralisk HydraliskRange
+Zerg    Build Upgrades Final     : if 8 Zergling ZerglingHaste, if 4 Infestor InfestorParasite,MeleeAttacks3,GroundCarapace3,MissileAttacks3,if Ultralisk UltraliskArmor,if 4 Roach RoachUnderground,FlyerAttacks3,FlyerCarapace3
+Zerg    Build Upgrades Open  Air :
+Zerg    Build Upgrades Mid   Air : FlyerAttacks1,FlyerCarapace1
+Zerg    Build Upgrades Late  Air : FlyerAttacks2,FlyerCarapace2,if 3 Hydralisk HydraliskRange
+Zerg    Build Upgrades Final Air : FlyerAttacks3,FlyerCarapace3,if 8 Zergling ZerglingSpeed,if 4 Baneling BanelingSpeed,Burrow,if 1 Infestor InfestorEnergy,if 4 Roach RoachSpeed,if 8 Zergling ZerglingHaste,if 4 Infestor InfestorParasite,MissileAttacks3,GroundCarapace3,MeleeAttacks3,if Ultralisk UltraliskArmor,if 4 Roach RoachUnderground
+
+Zerg    NeedsDetection: Overseer,2 SporeCrawler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Protoss ArmyOpen VyEy Rush          weight 1 duration 422-457      Stalker
+Protoss ArmyOpen Easy Rush          weight 1 duration 419-454      Zealot,Stalker,Stalker|Zealot
+Protoss ArmyOpen Medi Rush          weight 2 duration 393-426      Zealot,3 Stalker
+Protoss ArmyOpen Medi Rush          weight 1 duration 348-378      3 Zealot,Stalker
+Protoss ArmyOpen MdHd Rush          weight 2 duration 360-390      Zealot,3 Stalker,Stalker|Zealot
+Protoss ArmyOpen MdHd Rush          weight 1 duration 364-394      4 Zealot,Stalker,Stalker|Zealot
+Protoss ArmyOpen VyEy Timing        weight 1 duration 469-509      Stalker
+Protoss ArmyOpen Easy Timing        weight 1 duration 482-522      Zealot,Stalker,2 Stalker|2 Zealot
+Protoss ArmyOpen Medi Timing        weight 2 duration 460-498      2 Zealot,4 Stalker
+Protoss ArmyOpen Medi Timing        weight 1 duration 433-469      3 Zealot,2 Stalker,Stalker|Zealot
+Protoss ArmyOpen MdHd Timing        weight 2 duration 434-470      2 Zealot,5 Stalker,Stalker|Zealot
+Protoss ArmyOpen MdHd Timing        weight 1 duration 433-469      5 Zealot,2 Stalker,Stalker|Zealot,Stalker|Zealot
+Protoss ArmyOpen VyEy Power         weight 1 duration 615-667      Zealot,Stalker
+Protoss ArmyOpen Easy Power         weight 1 duration 602-653      Zealot,2 Stalker,2 Stalker|2 Zealot
+Protoss ArmyOpen Medi Power         weight 2 duration 573-621      2 Zealot,5 Stalker,Stalker|Zealot
+Protoss ArmyOpen Medi Power         weight 1 duration 572-620      5 Zealot,2 Stalker,2 Stalker|2 Zealot
+Protoss ArmyOpen MdHd Power         weight 2 duration 533-578      2 Zealot,6 Stalker,2 Stalker|2 Zealot
+Protoss ArmyOpen MdHd Power         weight 1 duration 554-601      6 Zealot,3 Stalker,Stalker|Zealot,2 Stalker|2 Zealot
+Protoss ArmyOpen VyEy Macro         weight 1 duration 241-261      Stalker
+Protoss ArmyOpen Easy Macro         weight 1 duration 241-261      2 Zealot,Stalker
+Protoss ArmyOpen Medi Macro         weight 3 duration 226-244      2 Zealot,2 Stalker
+Protoss ArmyOpen Medi Macro         weight 1 duration 244-264      4 Zealot,Stalker
+Protoss ArmyOpen MdHd Macro         weight 3 duration 220-238      2 Zealot,2 Stalker,Stalker|Zealot
+Protoss ArmyOpen MdHd Macro         weight 1 duration 230-248      Zealot,3 Stalker,Stalker|Zealot
+Protoss ArmyOpen VyEy Air           weight 1 duration 627-680      VoidRay
+Protoss ArmyOpen Easy Air           weight 1 duration 641-696      2 VoidRay
+Protoss ArmyOpen Medi Air           weight 1 duration 606-657      VoidRay,2 VoidRay|2 3 Phoenix
+Protoss ArmyOpen MdHd Air           weight 1 duration 553-600      VoidRay,Phoenix,2 VoidRay|2 3 Phoenix

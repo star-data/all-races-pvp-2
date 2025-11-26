@@ -1,0 +1,253 @@
+<Catalog>
+
+    <CBehaviorAttackModifier default="1">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorAttackModifier>
+    <CBehaviorBuff id="Angry">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Benign">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CapResource">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsiblePurifierTowerDiagonal">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleRockTower">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleRockTowerConjoinedSearch">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleRockTowerDiagonal">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleRockTowerRampDiagonalConjoinedSearch">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleRockTowerRampLeft">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleRockTowerRampLeftGreen">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleRockTowerRampRight">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleRockTowerRampRightGreen">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleTerranTower">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleTerranTowerConjoinedSearch">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleTerranTowerDiagonal">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleTerranTowerRampDiagonalConjoinedSearch">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleTerranTowerRampLeft">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CollapsibleTerranTowerRampRight">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CritterFlee">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DestructibleStatue4x4">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DestructibleStatueRubbleTimedLife">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Grabbed">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorResource id="HarvestableRichVespeneGeyserGas">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableRichVespeneGeyserGasProtoss">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableRichVespeneGeyserGasZerg">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableTerrazineGeyserGas">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableVespeneGeyserGas">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorResource>
+    <CBehaviorBuff id="Hidden">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MultiplayerLootSpawner">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Remove">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SuppressCollision">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SuppressMoving">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TargetFire">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CEffectApplyBehavior id="TargetFirePriority">
+        <EditorCategories value="Race:Neut"/>
+    </CEffectApplyBehavior>
+    <CBehaviorBuff id="WorkerVespeneWalking">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WorkerVespeneWalkingPreCast">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Neut"/>
+    </CBehaviorBuff>
+
+    <CAbilMorph default="1" id="Tarsonis_DoorDefaultLower">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph default="1" id="Tarsonis_DoorDefaultRaise">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph default="1" id="XelNaga_Caverns_DoorDefaultClose">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph default="1" id="XelNaga_Caverns_DoorDefaultOpen">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="CompoundMansion_DoorE">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="CompoundMansion_DoorELowered">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="CompoundMansion_DoorN">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="CompoundMansion_DoorNE">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="CompoundMansion_DoorNELowered">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="CompoundMansion_DoorNLowered">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="CompoundMansion_DoorNW">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="CompoundMansion_DoorNWLowered">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsiblePurifierTowerDebris">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsibleRockTowerDebris">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsibleRockTowerDebrisRampLeft">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsibleRockTowerDebrisRampLeftGreen">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsibleRockTowerDebrisRampRight">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsibleRockTowerDebrisRampRightGreen">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsibleTerranTowerDebris">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsibleTerranTowerDebrisRampLeft">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphToCollapsibleTerranTowerDebrisRampRight">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="Tarsonis_DoorE">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="Tarsonis_DoorELowered">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="Tarsonis_DoorN">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="Tarsonis_DoorNE">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="Tarsonis_DoorNELowered">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="Tarsonis_DoorNLowered">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="Tarsonis_DoorNW">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="Tarsonis_DoorNWLowered">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilEffectInstant id="XelNagaHealingShrine">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CAbilMorph id="XelNaga_Caverns_DoorE">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorEOpened">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorN">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorNE">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorNEOpened">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorNOpened">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorNW">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorNWOpened">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorS">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorSE">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorSEOpened">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorSOpened">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorSW">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorSWOpened">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorW">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+    <CAbilMorph id="XelNaga_Caverns_DoorWOpened">
+        <EditorCategories value="Race:Neut,AbilityorEffectType:MorphsandBurrows"/>
+    </CAbilMorph>
+</Catalog>

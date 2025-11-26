@@ -1,0 +1,147 @@
+
+
+//--------------------------------------------------------------------------------------------------
+//  XayidBasicEconomy
+//--------------------------------------------------------------------------------------------------
+void XayidBasicEconomy (int player, int tier, int minWorkers) {
+    int econMin = AIGetMinPeonCount(player, c_townMax);
+    if (minWorkers > econMin) {
+        minWorkers = econMin;
+    }
+
+    AIDefaultEconomy(player, c_XB_ScavengerNest, c_XB_Siphoner, c_XB_FeedingPool, c_XU_Scavenger, minWorkers, c_stockAlways);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  XayidBasicExpansion
+//--------------------------------------------------------------------------------------------------
+void XayidBasicExpansion (int player, int tier, int minerals, int gas) {
+    AIDefaultExpansion(player, c_XB_ScavengerNest, minerals, gas, c_expandDefault);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  XayidGeneralBuild
+//--------------------------------------------------------------------------------------------------
+void XayidGeneralBuild (int player, int tier) {
+    if (tier >= c_ldPhaseMid) {
+        if (PlayerBeaconIsSet(player, c_beaconDetect)) {
+            AISetStock( player, 1, c_XU_Ferrion );
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  XayidMacroExpand
+//--------------------------------------------------------------------------------------------------
+bool XayidMacroExpand (int player) {
+    fixed defenseEval = 0;
+
+    if (AITechCount(player, c_XU_Scavenger, c_techCountQueuedOrBetter) < 14) {
+        return false;
+    }
+    if (AITechCount(player, c_XB_ScavengerNest, c_techCountQueuedOrBetter) >= 2) {
+        return false;
+    }
+    
+    defenseEval = AISelfDefenseThreatEval(c_dtRealSelfThreat, player);
+    if (defenseEval >= 120) {
+        // don't expand if currently under attack
+        return false;
+    }
+
+    if (!AIIsExpandingOrHasExpanded(player)) {
+        if (!AIHasNearbyOpenExpansion(player)) {
+            return false;
+        }
+        if (!AIHasRes(player,300,0)) {
+            AIEnableStock(player);
+            return true;
+        }
+
+        // we should try to expand
+        AIExpand(player, AIGetTownLocation(player, c_townMain), c_XB_ScavengerNest);
+    }
+
+    // currently expanding see if we need to save minerals
+    if (!AIHasRes(player,500,0)) {
+        AIEnableStock(player);
+        return true;
+    }
+    return false; // already saved enough, we're allowed to continure the stock
+}
+
+//--------------------------------------------------------------------------------------------------
+//  XayidAtEachTown
+//--------------------------------------------------------------------------------------------------
+void XayidAtEachTown (int player, int tier) {
+    int i = 0;
+    int town;
+
+    while (i < c_townMax) {
+        town = i;
+        i = i + 1;
+
+        if (AIGetTownState(player, town) != c_townStateEstablished) {
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_XB_ScavengerNest, c_techCountCompleteOnly) < 1) {
+            continue;
+        }
+
+        if (AIGetBuildingCountInTown(player, town, c_XB_BilePit, c_techCountCompleteOnly) < 3) {
+            AISetStockEx(player, town, 3, c_XB_BilePit, c_makeResourceDefense | c_nearDropoff, 0);
+            continue;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  XayidTechUp
+//--------------------------------------------------------------------------------------------------
+void XayidTechUp (int player, int tier) {
+    int diff = AIPlayerDifficulty(player);
+
+    if (diff < c_skirMedium) {
+        // don't build extra buildings below medium
+        return;
+    }
+
+    AISetStock( player, 2, c_XB_Siphoner );
+    AISetStock( player, 1, c_XB_XayidDen );
+    AISetStock( player, 1, c_XB_MutagenChamber );
+
+    if (tier >= c_ldPhaseMid) {
+        XayidAtEachTown(player, tier);
+        AISetStock( player, 1, c_XB_BiomassHatchery );
+        AISetStock( player, 1, c_XB_BiomassCavern );
+        AISetStock( player, 1, c_XB_AvianNest );
+        AISetStock( player, 1, c_XB_CatalystPit );
+        AISetStock( player, 1, c_XB_CasnoliskDen );
+        AISetStock( player, 3, c_XB_XayidDen );
+
+        if (tier >= c_ldPhaseLate) {
+            AISetStock( player, 1, c_XB_SunkenWarren );
+            AISetStock( player, 2, c_XB_MutagenChamber );
+            AISetStock( player, 2, c_XB_CatalystPit );
+            AISetStock( player, 2, c_XB_AvianNest );
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  XayidBasicDefenseStock
+//--------------------------------------------------------------------------------------------------
+void XayidBasicDefenseStock (int player) {
+    if (!AINeedsDefending(player)) {
+        return;
+    }
+    
+    AISetStockFarms( player, c_XB_FeedingPool, c_stockNormalFarms);
+    AISetStock( player, 1, c_XB_Siphoner );
+    AIAddEmergencyDefenseStock(player, 6, c_XU_Xayidling, false);
+    AIAddEmergencyDefenseStock(player, 2, c_XU_Assailant, true);
+    AIAddEmergencyDefenseStock(player, 2, c_XU_Reviler, true);
+    AIAddEmergencyDefenseStock(player, 4, c_XU_Scorpalisk, true);
+    AIAddEmergencyDefenseStock(player, 20, c_XU_Scavenger, true);
+}

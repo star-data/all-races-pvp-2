@@ -1,0 +1,182 @@
+
+//--------------------------------------------------------------------------------------------------
+//  Protoss Units
+//--------------------------------------------------------------------------------------------------
+const string c_PU_Adept                 = "Adept";                        // Void-Only
+const string c_PU_Archon                = "Archon";
+const string c_PU_Carrier               = "Carrier";
+const string c_PU_Colossus              = "Colossus";
+const string c_PU_DarkTemplar           = "DarkTemplar";
+const string c_PU_Disruptor             = "Disruptor";                    // Void-Only
+const string c_PU_DisruptorPhased       = "DisruptorPhased";              // Void-Only
+const string c_PU_HighTemplar           = "HighTemplar";
+const string c_PU_Immortal              = "Immortal";
+const string c_PU_Mothership            = "Mothership";
+const string c_PU_MothershipCore        = "MothershipCore";               // Swarm & Void
+const string c_PU_Observer              = "Observer";
+const string c_PU_Oracle                = "Oracle";                       // Swarm & Void
+const string c_PU_Phoenix               = "Phoenix";
+const string c_PU_Probe                 = "Probe";
+const string c_PU_Sentry                = "Sentry";
+const string c_PU_Stalker               = "Stalker";
+const string c_PU_Tempest               = "Tempest";                      // Swarm & Void
+const string c_PU_VoidRay               = "VoidRay";
+const string c_PU_WarpPrism             = "WarpPrism";
+const string c_PU_WarpPrismPhasing      = "WarpPrismPhasing";
+const string c_PU_WarpPrism_Alias       = "Alias_WarpPrism";
+const string c_PU_Zealot                = "Zealot";
+
+//--------------------------------------------------------------------------------------------------
+//  Protoss Buildings
+//--------------------------------------------------------------------------------------------------
+const string c_PB_Assimilator           = "Assimilator";
+const string c_PB_CyberneticsCore       = "CyberneticsCore";
+const string c_PB_DarkShrine            = "DarkShrine";
+const string c_PB_FleetBeacon           = "FleetBeacon";
+const string c_PB_Forge                 = "Forge";
+const string c_PB_Gateway               = "Gateway";
+const string c_PB_Nexus                 = "Nexus";
+const string c_PB_Obelisk               = "Obelisk";                      // Campaign-Only
+const string c_PB_PhotonCannon          = "PhotonCannon";
+const string c_PB_Pylon                 = "Pylon";
+const string c_PB_RoboticsBay           = "RoboticsBay";
+const string c_PB_RoboticsFacility      = "RoboticsFacility";
+const string c_PB_Stargate              = "Stargate";
+const string c_PB_TemplarArchives       = "TemplarArchive";
+const string c_PB_TwilightCouncil       = "TwilightCouncil";
+const string c_PB_WarpGate              = "WarpGate";
+
+//--------------------------------------------------------------------------------------------------
+//  Protoss Research Upgrades
+//--------------------------------------------------------------------------------------------------
+const string c_PR_AirArmor1             = "ProtossAirArmorsLevel1";
+const string c_PR_AirArmor2             = "ProtossAirArmorsLevel2";
+const string c_PR_AirArmor3             = "ProtossAirArmorsLevel3";
+const string c_PR_AirWeapons1           = "ProtossAirWeaponsLevel1";
+const string c_PR_AirWeapons2           = "ProtossAirWeaponsLevel2";
+const string c_PR_AirWeapons3           = "ProtossAirWeaponsLevel3";
+const string c_PR_AdeptShield           = "AdeptShieldUpgrade";           // ShieldUpgrade        // Obsolete
+const string c_PR_AdeptDamage           = "AdeptPiercingAttack";          // ResonatingGlaives    // Void-Only
+const string c_PR_CarrierLaunch         = "CarrierLaunchSpeedUpgrade";    // GravitonCatapult
+const string c_PR_ColossusRange         = "ExtendedThermalLance";         // ExtendedThermalLance
+const string c_PR_SentryHallucination   = "haltech";                      // Hallucination        // Liberty-Only (built in after)
+const string c_PR_GroundArmor1          = "ProtossGroundArmorsLevel1";
+const string c_PR_GroundArmor2          = "ProtossGroundArmorsLevel2";
+const string c_PR_GroundArmor3          = "ProtossGroundArmorsLevel3";
+const string c_PR_GroundWeapons1        = "ProtossGroundWeaponsLevel1";
+const string c_PR_GroundWeapons2        = "ProtossGroundWeaponsLevel2";
+const string c_PR_GroundWeapons3        = "ProtossGroundWeaponsLevel3";
+const string c_PR_HighTemplarEnergy     = "HighTemplarKhaydarinAmulet";   // KhaydarinAmulet      // Obsolete
+const string c_PR_HighTemplarPsiStorm   = "PsiStormTech";                 // PsionicStorm
+const string c_PR_ObserverSpeed         = "ObserverGraviticBooster";      // GraviticBoosters
+const string c_PR_PhoenixRange          = "PhoenixRangeUpgrade";          // AnionPulseCrystals
+const string c_PR_Shields1              = "ProtossShieldsLevel1";
+const string c_PR_Shields2              = "ProtossShieldsLevel2";
+const string c_PR_Shields3              = "ProtossShieldsLevel3";
+const string c_PR_StalkerBlink          = "BlinkTech";                    // Blink
+const string c_PR_VoidRaySpeed          = "VoidRaySpeedUpgrade";          // FluxVanes            // Obsolete
+const string c_PR_WarpGateResearch      = "WarpGateResearch";             // WarpGateResearch
+const string c_PR_WarpPrismSpeed        = "GraviticDrive";                // GraviticDrive
+const string c_PR_ZealotCharge          = "Charge";                       // Charge
+
+//--------------------------------------------------------------------------------------------------
+//  Markers
+//--------------------------------------------------------------------------------------------------
+const string c_MK_Feedback                  = "Abil/Feedback/AI";
+const string c_MK_ForceField                = "Abil/ForceField/AI";
+const string c_MK_GravitonBeam              = "Abil/GravitonBeam/AI";
+const string c_MK_KD8Charge                 = "Abil/KD8Charge/AI";
+const string c_MK_KD8ChargeFlee             = "Abil/KD8ChargeFlee/AI";
+const string c_MK_Lockdown                  = "Abil/Lockdown/AI";
+const string c_MK_MissilePods               = "Abil/MissilePods/AI";
+const string c_MK_OracleRevelation          = "Abil/OracleRevelation/AI";
+const string c_MK_PhaseShift                = "Abil/PhaseShift/AI";
+const string c_MK_PsiStorm                  = "Abil/PsiStorm/AI";
+const string c_MK_Disintegration            = "Abil/Disintegration/AI";
+//--------------------------------------------------------------------------------------------------
+//  Effects
+//--------------------------------------------------------------------------------------------------
+const string c_EF_EntombSearch              = "ResourceStunInitialSearch";
+const string c_EF_PlasmaBlastDamage         = "HybridCPlasmaBlastDamage";
+const string c_EF_HybridStunArea            = "HybridFAoESearch";
+const string c_EF_VortexArea                = "VortexSearchArea";
+const string c_EF_TemporalRiftSearchArea    = "TemporalRiftUnitSearchArea";
+const string c_EF_ShockWavePersistent       = "PsionicShockwaveCreatePersistent";
+const string c_EF_ProbeBuffArea             = "ProbeBuffSearchArea";
+const string c_EF_ProtonChargeSearchArea    = "ProtonChargeSearchArea";
+const string c_EF_PsionicShockWaveArea      = "PsionicShockwaveSearchArea";
+const string c_EF_PsiStormArea              = "PsiStormSearch";
+const string c_EF_PurificationNovaArea      = "PurificationNovaSearch";
+//--------------------------------------------------------------------------------------------------
+//  Buffs
+//--------------------------------------------------------------------------------------------------
+const string c_BF_CorePhotonOvercharge      = "Purify";
+const string c_BF_Disintegration            = "LightningBomb";
+const string c_BF_GravitonBeam              = "GravitonPrison";
+const string c_BF_GuardianShield            = "GuardianShield";
+const string c_BF_OracleRevelation          = "OracleRevelation";
+const string c_BF_PhaseShift                = "BuildingStasis";
+const string c_BF_ProbeBuff                 = "ProtonCharge";
+const string c_BF_PsionicShockwave          = "PsionicShockwaveBehaviorController";
+const string c_BF_ResourceBlocked           = "ResourceStun";
+const string c_BF_TemporalField             = "TemporalField";
+const string c_BF_TemporalBuff              = "TemporalRiftUnit";
+const string c_BF_TimeWarp                  = "TimeWarpProduction";
+//--------------------------------------------------------------------------------------------------
+//  Abilities
+//--------------------------------------------------------------------------------------------------
+const string c_AB_AdeptPhaseShift           = "AdeptPhaseShift";
+const string c_AB_AdeptPhaseShiftCancel     = "AdeptPhaseShiftCancel";
+const string c_AB_ArchonWarp                = "ArchonWarp";
+const string c_AB_ArgusLink                 = "ArgusLink";
+const string c_AB_Blink                     = "Blink";
+const string c_AB_BuildFighter              = "CarrierHangar";
+const string c_AB_ChronoBoost               = "TimeWarp";
+const string c_AB_ChronoBoostVoidMulti      = "ChronoBoostEnergyCost";
+const string c_AB_CoreEnvision              = "LightofAiur";
+const string c_AB_CoreMassRecall            = "MothershipCoreMassRecall";
+const string c_AB_CorePhotonOvercharge      = "MothershipCorePurifyNexus";
+const string c_AB_Disintegration            = "LightningBomb";
+const string c_AB_Drill                     = "RestoreResources";
+const string c_AB_Feedback                  = "Feedback";
+const string c_AB_ForceField                = "ForceField";
+const string c_AB_GravitonBeam              = "GravitonBeam";
+const string c_AB_GravitonPrison            = "GravitonPrison";
+const string c_AB_GuardianShield            = "GuardianShield";
+const string c_AB_Hallucinate_Probe         = "HallucinationProbe";
+const string c_AB_Hallucinate_Zealot        = "HallucinationZealot";
+const string c_AB_Hallucinate_Stalker       = "HallucinationStalker";
+const string c_AB_Hallucinate_Immortal      = "HallucinationImmortal";
+const string c_AB_Hallucinate_HighTemplar   = "HallucinationHighTemplar";
+const string c_AB_Hallucinate_Archon        = "HallucinationArchon";
+const string c_AB_Hallucinate_VoidRay       = "HallucinationVoidRay";
+const string c_AB_Hallucinate_Phoenix       = "HallucinationPhoenix";
+const string c_AB_Hallucinate_WarpPrism     = "HallucinationWarpPrism";
+const string c_AB_Hallucinate_Colossus      = "HallucinationColossus";
+const string c_AB_HybridAoEStun             = "HybridFAoEStun";
+const string c_AB_HybridBlink               = "HybridBlink";
+const string c_AB_ImmortalBarrier           = "ImmortalOverload";
+const string c_AB_OracleEntomb              = "ResourceStun";
+const string c_AB_MothershipMassRecall      = "MothershipMassRecall";
+const string c_AB_OraclePulsarBeam          = "OracleWeapon";
+const string c_AB_OracleRevelation          = "OracleRevelation";
+const string c_AB_OracleStasisWard          = "OracleStasisTrapBuild";
+const string c_AB_Overload                  = "Overload";
+const string c_AB_PhaseShift                = "PhaseShift";
+const string c_AB_PlasmaBlast               = "HybridCPlasmaBlast";
+const string c_AB_ProbeBuff                 = "ProtonCharge";
+const string c_AB_PsionicShockwave          = "PsionicShockwave";
+const string c_AB_PsionicTransfer           = "AdeptPhaseShift";
+const string c_AB_PsiStorm                  = "PsiStorm";
+const string c_AB_PurificationNova          = "PurificationNovaTargeted";
+const string c_AB_ShieldBattery             = "ShieldBattery";
+const string c_AB_TemporalRift              = "TemporalRift";
+const string c_AB_TimeWarp                  = "TemporalField";
+const string c_AB_UpgradeToWarpGate         = "UpgradeToWarpGate";
+const string c_AB_VoidRayDamage             = "VoidRaySwarmDamageBoost";
+const string c_AB_Vortex                    = "Vortex";
+const string c_AB_WormholeTransit           = "WormholeTransit";
+const string c_AB_WPPhasingMode             = "PhasingMode";
+const string c_AB_Replicate                 = "Clone";
+const string c_AB_ReleaseInterceptors       = "ReleaseInterceptors";
+

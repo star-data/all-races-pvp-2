@@ -1,0 +1,74 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - Void Forces
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libZHBR_ge__UnitDataType_Actor = 0;
+const int libZHBR_ge__UnitDataType_Integer = 1;
+const int libZHBR_ge__UnitDataType_Ping = 2;
+const int libZHBR_ge__UnitDataType_Point = 3;
+const int libZHBR_ge__UnitDataType_Region = 4;
+const int libZHBR_ge__UnitDataType_TextTag = 5;
+const int libZHBR_ge__UnitDataType_Unit = 6;
+const int libZHBR_ge__UnitDataType_UnitGroup = 7;
+const int libZHBR_ge_HybridNavigatorCargoUI_Size1 = 0;
+const int libZHBR_ge_HybridNavigatorCargoUI_Size2 = 1;
+const int libZHBR_ge_HybridNavigatorCargoUI_Size4 = 2;
+const int libZHBR_ge_HybridNavigatorCargoUI_Size8 = 3;
+
+// Constants
+const int libZHBR_gv_hybridBuildControllerMaxOrderCount_C = 31;
+
+// Variable Declarations
+playergroup[16] libZHBR_gv_playerGroupFromPlayer;
+unit[16] libZHBR_gv_raceControlUnit;
+int libZHBR_gv_raceControlButton;
+fixed libZHBR_gv_hybridBuildControllerRange;
+order[libZHBR_gv_hybridBuildControllerMaxOrderCount_C + 1] libZHBR_gv_dEBUGOrderListBefore;
+order[libZHBR_gv_hybridBuildControllerMaxOrderCount_C + 1] libZHBR_gv_dEBUGOrderListAfter;
+order libZHBR_gv_dEBUGFirstOrder;
+int[16] libZHBR_gv_hybridTeleportTargetingUpdate;
+int[16] libZHBR_gv_hybridStasisCellConnection;
+int[16] libZHBR_gv_hybridKeystoneConnection;
+int[16] libZHBR_gv_hybridProjectorConnection;
+
+// Function Declarations
+string libZHBR_gf__UnitDataName (int lp_type, unit lp_unit, int lp_index);
+void libZHBR_gf_StorePingForUnit (unit lp_unit, int lp_index, int lp_ping);
+int libZHBR_gf_PingStoredForUnit (unit lp_unit, int lp_index);
+void libZHBR_gf_RaceControlCreateUnit (int lp_player);
+bool libZHBR_gf_HybridBuildControllerIsBuildOrder (order lp_order);
+bool libZHBR_gf_HybridBuildControllerIsBuildOrderMain (order lp_order);
+abilcmd libZHBR_gf_HybridBuildControllerReturnMainBuildAbilityCommand (order lp_order);
+abilcmd libZHBR_gf_HybridBuildControllerReturnDefaultBuildAbilityCommand (order lp_order);
+int libZHBR_gf_HybridBuildControllerClosestMainBuildAbilityCommandIndex (unit lp_minion);
+fixed libZHBR_gf_HybridBuildControllerReturnBuildUnitRadius (order lp_order);
+
+// Trigger Declarations
+trigger libZHBR_gt_OfflineInitialization;
+trigger libZHBR_gt_InitializeHybrids;
+trigger libZHBR_gt_RaceControlUnitSelection;
+trigger libZHBR_gt_RaceControlButtonInitialization;
+trigger libZHBR_gt_RaceControlButtonUsed;
+trigger libZHBR_gt_HybridSuppressingRegeneration;
+trigger libZHBR_gt_HybridBuildController;
+trigger libZHBR_gt_HybridTeleportStartSet;
+trigger libZHBR_gt_HybridTeleportFinishSet;
+trigger libZHBR_gt_HybridTeleportTargetingUpdate;
+trigger libZHBR_gt_HybridAmplifierConstruction;
+trigger libZHBR_gt_HybridAmplifierConstructionCompleted;
+trigger libZHBR_gt_VoidRiftPingHandler;
+trigger libZHBR_gt_HybridStasisCellConnection;
+trigger libZHBR_gt_HybridKeystoneConnection;
+trigger libZHBR_gt_HybridProjectorConnection;
+trigger libZHBR_gt_HybridVespeneConcentratorConstructionCompleted;
+trigger libZHBR_gt_HybridShapeshifterVoidChasm;
+trigger libZHBR_gt_HybridNemesisWeapon;
+trigger libZHBR_gt_HybridNavigatorCargoUI;
+trigger libZHBR_gt_HybridPsyonWeapon;
+trigger libZHBR_gt_HybridPsyonStopOrder;
+
+// Library Initialization
+void libZHBR_InitVariables ();
+

@@ -1,0 +1,10 @@
+
+//--------------------------------------------------------------------------------------------------
+//  AIBaseConfig
+//--------------------------------------------------------------------------------------------------
+void AIBaseConfigTerran (int player,bool campaign) {
+    AIAddHealer(player, "MULE", "MULERepair", 0);
+    AIAddHealer(player, "Medivac", "MedivacHeal", 0);
+    AIAddHealer(player, "Medic", "heal", 0);
+    AIAddHealer(player, "ScienceVessel", "NanoRepair", 0);
+}

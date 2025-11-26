@@ -1,0 +1,14 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - Scion
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+unit[17] libScio_gv_sCION_POWERDUMMIES;
+
+// Trigger Declarations
+trigger libScio_gt_GenetronInit;
+
+// Library Initialization
+void libScio_InitVariables ();
+

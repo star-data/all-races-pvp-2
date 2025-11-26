@@ -1,0 +1,115 @@
+include "TriggerLibs/NativeLib"
+
+include "LibAREX_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: PVP
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libAREX_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Initialize
+//--------------------------------------------------------------------------------------------------
+bool libAREX_gt_Initialize_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto246D2D84_g;
+    int auto246D2D84_var;
+    string auto2E5D6861_val;
+    int auto10E43014_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto246D2D84_g = PlayerGroupActive();
+    auto246D2D84_var = -1;
+    while (true) {
+        auto246D2D84_var = PlayerGroupNextPlayer(auto246D2D84_g, auto246D2D84_var);
+        if (auto246D2D84_var < 0) { break; }
+        auto2E5D6861_val = GameAttributePlayerValue("16", auto246D2D84_var);
+        if (auto2E5D6861_val == "0013") {
+            PlayerSetRace(auto246D2D84_var, "Prot");
+        }
+        else if (auto2E5D6861_val == "0011") {
+            PlayerSetRace(auto246D2D84_var, "Terr");
+        }
+        else if (auto2E5D6861_val == "0012") {
+            PlayerSetRace(auto246D2D84_var, "Zerg");
+        }
+        else if (auto2E5D6861_val == "0016") {
+            PlayerSetRace(auto246D2D84_var, "UT@UED");
+        }
+        else if (auto2E5D6861_val == "0003") {
+            PlayerSetRace(auto246D2D84_var, "UD@ued");
+        }
+        else if (auto2E5D6861_val == "0002") {
+            PlayerSetRace(auto246D2D84_var, "US@UED");
+        }
+        else if (auto2E5D6861_val == "0004") {
+            PlayerSetRace(auto246D2D84_var, "US@UED");
+        }
+        else if (auto2E5D6861_val == "0017") {
+            auto10E43014_val = RandomInt(1, 6);
+            if (auto10E43014_val == 1) {
+                PlayerSetRace(auto246D2D84_var, "Prot");
+            }
+            else if (auto10E43014_val == 2) {
+                PlayerSetRace(auto246D2D84_var, "Terr");
+            }
+            else if (auto10E43014_val == 3) {
+                PlayerSetRace(auto246D2D84_var, "Zerg");
+            }
+            else if (auto10E43014_val == 4) {
+                PlayerSetRace(auto246D2D84_var, "UT@UED");
+            }
+            else if (auto10E43014_val == 5) {
+                PlayerSetRace(auto246D2D84_var, "UD@ued");
+            }
+            else if (auto10E43014_val == 6) {
+                PlayerSetRace(auto246D2D84_var, "US@UED");
+            }
+            else if (auto10E43014_val == 6) {
+                PlayerSetRace(auto246D2D84_var, "ALT@ued");
+            }
+            else {
+            }
+        }
+        else if (auto2E5D6861_val == "0001") {
+        }
+        else {
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libAREX_gt_Initialize_Init () {
+    libAREX_gt_Initialize = TriggerCreate("libAREX_gt_Initialize_Func");
+    TriggerAddEventMapInit(libAREX_gt_Initialize);
+}
+
+void libAREX_InitTriggers () {
+    libAREX_gt_Initialize_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libAREX_InitLib_completed = false;
+
+void libAREX_InitLib () {
+    if (libAREX_InitLib_completed) {
+        return;
+    }
+
+    libAREX_InitLib_completed = true;
+
+    libAREX_InitLibraries();
+    libAREX_InitTriggers();
+}
+

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectInstant id="MothershipCloak">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ArbiterMPStasisField">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CAbilEffectTarget>
+    <CAbilArmMagazine id="CarrierHangar">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilArmMagazine>
+    <CAbilEffectTarget id="ChronoBoostEnergyCost">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="CorsairMPDisruptionWeb">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="EnergyRecharge">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="LaunchInterceptors">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="LightofAiur">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="NexusShieldOvercharge">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="NexusShieldOverchargeOff">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="OracleStasisTrapActivate">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CAbilBehavior id="OracleWeapon">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilBehavior>
+    <CAbilEffectInstant id="Overcharge">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="PurificationNova">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ShieldBatteryRechargeChanneled">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SprayProtoss">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="TimeWarp">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="VoidRaySwarmDamageBoostCancel">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CAbilEffectInstant>
+    <CRequirement id="LearnProtossAirArmor1">
+        <NodeArray index="Show" Link="AndEqCountUpgradeProtossAirArmorsLevel1QueuedOrBetter0AllowUnitStargate"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirArmor2">
+        <NodeArray index="Show" Link="AndEqCountUpgradeProtossAirArmorsLevel2QueuedOrBetter0AllowUnitStargate"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirArmor3">
+        <NodeArray index="Show" Link="AndEqCountUpgradeProtossAirArmorsLevel3QueuedOrBetter0AllowUnitStargate"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirWeapon1">
+        <NodeArray index="Show" Link="AndEqCountUpgradeProtossAirWeaponsLevel1QueuedOrBetter0AllowUnitStargate"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirWeapon2">
+        <NodeArray index="Show" Link="AndEqCountUpgradeProtossAirWeaponsLevel2QueuedOrBetter0AllowUnitStargate"/>
+    </CRequirement>
+    <CRequirement id="LearnProtossAirWeapon3">
+        <NodeArray index="Show" Link="AndEqCountUpgradeProtossAirWeaponsLevel3QueuedOrBetter0AllowUnitStargate"/>
+    </CRequirement>
+    <CRequirementAllowUnit id="AllowUnitStargate">
+        <Link value="Stargate"/>
+    </CRequirementAllowUnit>
+    <CRequirementAnd id="AndEqCountUpgradeProtossAirArmorsLevel1QueuedOrBetter0AllowUnitStargate">
+        <OperandArray value="EqCountUpgradeProtossAirArmorsLevel1QueuedOrBetter0"/>
+        <OperandArray value="AllowUnitStargate"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndEqCountUpgradeProtossAirArmorsLevel2QueuedOrBetter0AllowUnitStargate">
+        <OperandArray value="EqCountUpgradeProtossAirArmorsLevel2QueuedOrBetter0"/>
+        <OperandArray value="AllowUnitStargate"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndEqCountUpgradeProtossAirArmorsLevel3QueuedOrBetter0AllowUnitStargate">
+        <OperandArray value="EqCountUpgradeProtossAirArmorsLevel3QueuedOrBetter0"/>
+        <OperandArray value="AllowUnitStargate"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndEqCountUpgradeProtossAirWeaponsLevel1QueuedOrBetter0AllowUnitStargate">
+        <OperandArray value="EqCountUpgradeProtossAirWeaponsLevel1QueuedOrBetter0"/>
+        <OperandArray value="AllowUnitStargate"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndEqCountUpgradeProtossAirWeaponsLevel2QueuedOrBetter0AllowUnitStargate">
+        <OperandArray value="EqCountUpgradeProtossAirWeaponsLevel2QueuedOrBetter0"/>
+        <OperandArray value="AllowUnitStargate"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndEqCountUpgradeProtossAirWeaponsLevel3QueuedOrBetter0AllowUnitStargate">
+        <OperandArray value="EqCountUpgradeProtossAirWeaponsLevel3QueuedOrBetter0"/>
+        <OperandArray value="AllowUnitStargate"/>
+    </CRequirementAnd>
+    <CUnit id="DarkShrine">
+        <AbilArray index="1" Link="stopProtossBuilding"/>
+        <AbilArray index="2" Link="DarkShrineResearch"/>
+        <AbilArray Link="que5"/>
+    </CUnit>
+    <CUnit id="ProtossSnakeSegmentDemo">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="Sentry"/>
+    <CUnit id="OracleStasisTrap">
+        <Attributes index="Hover" value="1"/>
+    </CUnit>
+    <CUnit id="Probe"/>
+    <CUnit id="AdeptPhaseShift">
+        <Attributes index="Hover" value="1"/>
+    </CUnit>
+    <CUnit id="Archon"/>
+    <CUnit id="Disruptor"/>
+    <CUnit id="DisruptorPhased">
+        <Attributes index="Hover" value="1"/>
+    </CUnit>
+    <CUnit id="Replicant">
+        <Attributes index="Hover" value="1"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CBehaviorBuff id="InvulnerabilityShield">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MorphingintoWarpGate">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MorphingintoWarpGateBirth">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MothershipCoreDeath">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MothershipCoreDisableAttack">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MothershipCorePurifyNexus">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MothershipDeath">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusDeath">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusInvulnerability">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusPhaseShift">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusShieldOvercharge">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusShieldRechargeOnPylonBehaviorSecondaryOnTarget">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OracleStasisTrapCaster">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OracleStasisTrapTarget">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OracleWeapon">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Overcharge">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OverchargeDamage">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OverchargeSpeedBoost">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PurificationNova">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PurificationNovaPost">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PurificationNovaSpeedBoost">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Purify">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ReleaseInterceptorsTimedLifeWarning">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TempestDisruptionBlastStunBehavior">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TemporalFieldDecelerationBuff">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CorsairMPDisruptionWeb">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AdeptPhaseShift">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AdeptPhaseShiftCancelDummy">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AdeptPhaseShiftCaster">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AdeptPhaseShiftTimer">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AntiAirWeaponSwitch">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AntiAirWeaponSwitchCooldown">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ArbiterMPStasisField">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BatteryEnergy">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BatteryOvercharge">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BeamTargetCD">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DisableInterceptors">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DisablePhoenixWeapons">
+        <EditorCategories value="Race:Prot,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DisruptorPush">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Prot"/>
+    </CBehaviorBuff>
+</Catalog>

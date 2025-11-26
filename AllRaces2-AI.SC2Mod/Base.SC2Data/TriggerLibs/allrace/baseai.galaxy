@@ -1,0 +1,7 @@
+include "TriggerLibs/allrace/requirements"
+
+//--------------------------------------------------------------------------------------------------
+//  Melee default startup routine
+//--------------------------------------------------------------------------------------------------
+void AIBaseConfigARC(int player, bool campaign){
+}

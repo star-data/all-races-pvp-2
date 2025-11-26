@@ -1,0 +1,4 @@
+﻿DocInfo/DescLong=All Races PvP Custom Factions Assets Bundle<n/>mod By Visceroid
+DocInfo/DescShort= 
+DocInfo/Name=[AR3] AllRaces-Assets
+DocInfo/Website=https://discord.gg/2RbcjRkddw

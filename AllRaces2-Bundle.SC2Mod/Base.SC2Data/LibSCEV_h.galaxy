@@ -1,0 +1,28 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - BroodWar
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+fixed libSCEV_gv_reaverPathingRange;
+string libSCEV_gv_CURRENT_WORD;
+int libSCEV_gv_CURRENT_WORD_INDEX;
+
+// Function Declarations
+void libSCEV_gf_LegacyIconsActivate (bool lp_activateDeactivate, playergroup lp_players);
+string libSCEV_gf_CurrentWord ();
+string libSCEV_gf_MergeStatusEffectsMiscDataGet (string lp_buff, unit lp_unit);
+bool libSCEV_gf_MergeStatusEffectsBuffTransferrable (string lp_buff);
+void libSCEV_gf_MergeStatusEffectsMiscDataSet (string lp_buff, unit lp_unit, string lp_miscData);
+
+// Trigger Declarations
+trigger libSCEV_gt_BroodWarInit;
+trigger libSCEV_gt_MimicCheckStorePlayerIndex;
+trigger libSCEV_gt_MimicCheckSpiderMine;
+trigger libSCEV_gt_ReaverPathingCheck;
+trigger libSCEV_gt_MergeStatusEffectsTrack;
+trigger libSCEV_gt_MergeStatusEffectsBegin;
+
+// Library Initialization
+void libSCEV_InitVariables ();
+
