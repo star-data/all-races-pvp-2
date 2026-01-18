@@ -1,4 +1,4 @@
-﻿DocInfo/DescLong= 
+﻿DocInfo/DescLong=  
 DocInfo/HowToPlayBasic00=Standard melee play.
 DocInfo/HowToPlayBasic01=Includes custom races.
 DocInfo/Name=[AR2] Data

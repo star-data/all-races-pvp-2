@@ -4385,7 +4385,7 @@
 </CEffectCreateUnit>
 <CEffectSet id="InstantUnburrow">
   <EffectArray index="0" value="InstantUnburrowLegacy"/>
-  <EffectArray index="1" value="InstantUnburrowMore"/>
+  <EffectArray index="1" value="InstantUnburrowBW"/>
   <EffectArray index="2" value="HunterRegenesisRemoveBehavior"/>
   <EffectArray index="3" value="MoleUnburrowSet"/>
   <EffectArray index="4" removed="1"/>
@@ -4393,7 +4393,7 @@
   <EffectArray index="6" removed="1"/>
   <EffectArray index="7" removed="1"/>
 </CEffectSet>
-<CEffectSet id="InstantUnburrowMore" parent="DisguiseSetDefault">
+<CEffectSet id="InstantUnburrowBW" parent="DisguiseSetDefault">
   <EditorCategories value="Race:Neutral"/>
   <EffectArray index="0" value="LurkerSCBW@BurrowCancel"/>
   <EffectArray index="1" value="LurkerSCBW@Unburrow"/>
@@ -4402,7 +4402,7 @@
   <EffectArray value="SpiderMineSCBW@BurrowClearMorph"/>
 </CEffectSet>
 <CEffectSet id="GravitonBeamUnburrowTake2Set">
-  <EffectArray value="InstantUnburrowMore"/>
+  <EffectArray value="InstantUnburrowBW"/>
 </CEffectSet>
 <CEffectLaunchMissile id="ParasiticBombLM">
   <ValidatorArray value="IsNotInterceptor"/>

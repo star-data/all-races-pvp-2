@@ -2,9 +2,9 @@
 <Catalog>
     <CEffectSet id="InstantUnburrow">
         <EffectArray index="0" value="InstantUnburrowLegacy"/>
-        <EffectArray index="1" value="InstantUnburrowMore"/>
-        <EffectArray index="2" value="HunterRegenesisRemoveBehavior"/>
-        <EffectArray index="3" value="MoleUnburrowSet"/>
+        <EffectArray index="1" value="InstantUnburrowBW"/>
+        <EffectArray index="2" value="InstantUnburrowDragons"/>
+        <EffectArray index="3" value="InstantUnburrowScion"/>
         <EffectArray index="4" removed="1"/>
         <EffectArray index="5" removed="1"/>
         <EffectArray index="6" removed="1"/>
