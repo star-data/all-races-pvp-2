@@ -105,4 +105,61 @@ DocInfo/Screenshot02=
 DocInfo/Screenshot03=
 DocInfo/Screenshot04=
 Effect/Name/InstantUnburrow3=Instant Unburrow Copy
-UI/HelpMenuDialogTechLoomings=All RACES TECH
+Race/Name/BWPr=BWProtoss
+Race/Name/BWTe=BWTerran
+Race/Name/BWZe=BWZerg
+##UI/HelpMenuDialogTechLoomings=All RACES TECH
+UI/HelpMenuDialogTechTree_Control_Dragon=<img path="Assets/icons/factions/Dragon.dds" alignment="absolutemiddle" width="32" height="32"/> Dragon Tech
+UI/HelpMenuDialogTechTree_Control_Gen=<img path="Assets/icons/factions/Genetron.dds" alignment="absolutemiddle" width="32" height="32"/> Genetron Tech
+UI/HelpMenuDialogTechTree_Control_ZHBR=<img path="Assets/icons/factions/Hybrid.dds" alignment="absolutemiddle" width="32" height="32"/> Hybrids Tech
+UI/HelpMenuDialogTechTree_Control_Keir=<img path="Assets/icons/factions/Keiron.dds" alignment="absolutemiddle" width="32" height="32"/> Keiron Tech
+UI/HelpMenuDialogTechTree_Control_Prot=<img path="Assets/icons/factions/Protoss.dds" alignment="absolutemiddle" width="32" height="32"/> Protoss Tech
+UI/HelpMenuDialogTechTree_Control_Synd=<img path="Assets/icons/factions/Synoid.dds" alignment="absolutemiddle" width="32" height="32"/> Synoid Tech
+UI/HelpMenuDialogTechTree_Control_PrTD=<img path="Assets/icons/factions/Taldarim.dds" alignment="absolutemiddle" width="32" height="32"/> Taldarim Tech
+UI/HelpMenuDialogTechTree_Control_Terr=<img path="Assets/icons/factions/Terran.dds" alignment="absolutemiddle" width="32" height="32"/> Terran Tech
+UI/HelpMenuDialogTechTree_Control_UED=<img path="Assets/icons/factions/Ued.dds" alignment="absolutemiddle" width="32" height="32"/> UED Tech
+UI/HelpMenuDialogTechTree_Control_TerU=<img path="Assets/icons/factions/Umojan.dds" alignment="absolutemiddle" width="32" height="32"/> Umojan Tech
+UI/HelpMenuDialogTechTree_Control_UPLL=<img path="Assets/icons/factions/Upl.dds" alignment="absolutemiddle" width="32" height="32"/> UPL Tech
+UI/HelpMenuDialogTechTree_Control_Xayi=<img path="Assets/icons/factions/Xayid.dds" alignment="absolutemiddle" width="32" height="32"/> Xayid Tech
+UI/HelpMenuDialogTechTree_Control_Zerg=<img path="Assets/icons/factions/Zerg.dds" alignment="absolutemiddle" width="32" height="32"/> Zerg Tech
+UI/HelpMenuDialogTechTree_Control_BWPr=<img path="Assets/icons/factions/ProtossBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Protoss Tech
+UI/HelpMenuDialogTechTree_Control_BWTe=<img path="Assets/icons/factions/TerranBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Terran Tech
+UI/HelpMenuDialogTechTree_Control_BWZe=<img path="Assets/icons/factions/ZergBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Zerg Tech
+
+
+Unit/Category/DragonUnits=<img path="Assets/icons/factions/Dragon.dds" alignment="absolutemiddle" width="32" height="32"/> Dragon Units
+Unit/Category/GenetronUnits=<img path="Assets/icons/factions/Genetron.dds" alignment="absolutemiddle" width="32" height="32"/> Genetron Units
+Unit/Category/ZHBRUnits=<img path="Assets/icons/factions/Hybrid.dds" alignment="absolutemiddle" width="32" height="32"/> Hybrids Units
+Unit/Category/KeironUnits=<img path="Assets/icons/factions/Keiron.dds" alignment="absolutemiddle" width="32" height="32"/> Keiron Units
+Unit/Category/ProtossUnits=<img path="Assets/icons/factions/Protoss.dds" alignment="absolutemiddle" width="32" height="32"/> Protoss Units
+Unit/Category/SynoidUnits=<img path="Assets/icons/factions/Synoid.dds" alignment="absolutemiddle" width="32" height="32"/> Synoid Units
+Unit/Category/TalDarimUnits=<img path="Assets/icons/factions/Taldarim.dds" alignment="absolutemiddle" width="32" height="32"/> Taldarim Units
+Unit/Category/TerranUnits=<img path="Assets/icons/factions/Terran.dds" alignment="absolutemiddle" width="32" height="32"/> Terran Units
+Unit/Category/UEDUnits=<img path="Assets/icons/factions/Ued.dds" alignment="absolutemiddle" width="32" height="32"/> UED Units
+Unit/Category/UmojanUnits=<img path="Assets/icons/factions/Umojan.dds" alignment="absolutemiddle" width="32" height="32"/> Umojan Units
+Unit/Category/UPLUnits=<img path="Assets/icons/factions/Upl.dds" alignment="absolutemiddle" width="32" height="32"/> UPL Units
+Unit/Category/XayidUnits=<img path="Assets/icons/factions/Xayid.dds" alignment="absolutemiddle" width="32" height="32"/> Xayid Units
+Unit/Category/ZergUnits=<img path="Assets/icons/factions/Zerg.dds" alignment="absolutemiddle" width="32" height="32"/> Zerg Units
+Unit/Category/ProtossUnitsSCBW=<img path="Assets/icons/factions/ProtossBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Protoss Units
+Unit/Category/TerranUnitsSCBW=<img path="Assets/icons/factions/TerranBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Terran Units
+Unit/Category/ZergUnitsSCBW=<img path="Assets/icons/factions/ZergBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Zerg Units
+
+
+
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/DragonUnits=<img path="Assets/icons/factions/Dragon.dds" alignment="absolutemiddle" width="32" height="32"/> Dragon Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/GenetronUnits=<img path="Assets/icons/factions/Genetron.dds" alignment="absolutemiddle" width="32" height="32"/> Genetron Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ZHBRUnits=<img path="Assets/icons/factions/Hybrid.dds" alignment="absolutemiddle" width="32" height="32"/> Hybrids Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/KeironUnits=<img path="Assets/icons/factions/Keiron.dds" alignment="absolutemiddle" width="32" height="32"/> Keiron Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ProtossUnits=<img path="Assets/icons/factions/Protoss.dds" alignment="absolutemiddle" width="32" height="32"/> Protoss Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/SynoidUnits=<img path="Assets/icons/factions/Synoid.dds" alignment="absolutemiddle" width="32" height="32"/> Synoid Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/TalDarimUnits=<img path="Assets/icons/factions/Taldarim.dds" alignment="absolutemiddle" width="32" height="32"/> Taldarim Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/TerranUnits=<img path="Assets/icons/factions/Terran.dds" alignment="absolutemiddle" width="32" height="32"/> Terran Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/UEDUnits=<img path="Assets/icons/factions/Ued.dds" alignment="absolutemiddle" width="32" height="32"/> UED Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/UmojanUnits=<img path="Assets/icons/factions/Umojan.dds" alignment="absolutemiddle" width="32" height="32"/> Umojan Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/UPLUnits=<img path="Assets/icons/factions/Upl.dds" alignment="absolutemiddle" width="32" height="32"/> UPL Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/XayidUnits=<img path="Assets/icons/factions/Xayid.dds" alignment="absolutemiddle" width="32" height="32"/> Xayid Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ZergUnits=<img path="Assets/icons/factions/Zerg.dds" alignment="absolutemiddle" width="32" height="32"/> Zerg Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ProtossUnitsSCBW=<img path="Assets/icons/factions/ProtossBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Protoss Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/TerranUnitsSCBW=<img path="Assets/icons/factions/TerranBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Terran Units
+UI/HelpMenuDialogTechGlossary_Control_Unit/Category/ZergUnitsSCBW=<img path="Assets/icons/factions/ZergBW.dds" alignment="absolutemiddle" width="32" height="32"/>BW Zerg Units
+

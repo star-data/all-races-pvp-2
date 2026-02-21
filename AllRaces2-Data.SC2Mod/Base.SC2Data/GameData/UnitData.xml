@@ -9,6 +9,9 @@
     <CUnit default="1" id="ExtendingBridgeNoMinimap">
         <Race value="Neut"/>
     </CUnit>
+    <CUnit default="1" id="PhysicsPrimitiveParent">
+        <EditorCategories value="ObjectType:Shape"/>
+    </CUnit>
     <CUnit default="1" id="SMSET">
         <Race value="Neut"/>
     </CUnit>
@@ -140,15 +143,15 @@
     </CUnit>
     <CUnit id="AutoTestAttackTargetAir">
         <Race value="Neut"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <EditorCategories value="ObjectType:Unit"/>
     </CUnit>
     <CUnit id="AutoTestAttackTargetGround">
         <Race value="Neut"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <EditorCategories value="ObjectType:Unit"/>
     </CUnit>
     <CUnit id="AutoTestAttacker">
         <Race value="Neut"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <EditorCategories value="ObjectType:Unit"/>
     </CUnit>
     <CUnit id="BypassArmorDrone">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
@@ -179,6 +182,14 @@
     </CUnit>
     <CUnit id="DevourerMPWeaponMissile">
         <Race value="Zerg"/>
+    </CUnit>
+    <CUnit id="DigesterCreepSprayTargetUnit">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectFamily:Melee,ObjectType:Other"/>
+    </CUnit>
+    <CUnit id="DigesterCreepSprayUnit">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectFamily:Melee,ObjectType:Other"/>
     </CUnit>
     <CUnit id="Elsecaro_Colonist_Hut">
         <Race value="Neut"/>
@@ -231,6 +242,9 @@
     <CUnit id="HERCPlacement">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
+    <CUnit id="HelperEmitterSelectionArrow">
+        <EditorCategories value="ObjectType:Other"/>
+    </CUnit>
     <CUnit id="HighTemplarSkinPreview">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
@@ -249,6 +263,10 @@
     <CUnit id="InfestedTerransWeapon">
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
     </CUnit>
+    <CUnit id="InfestorEnsnareAttackMissile">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
     <CUnit id="InfestorTerran">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
@@ -258,15 +276,25 @@
     <CUnit id="InfestorTerransWeapon">
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
     </CUnit>
+    <CUnit id="InvisibleTargetDummy">
+        <EditorCategories value="ObjectType:Other"/>
+    </CUnit>
     <CUnit id="KD8Charge">
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="LiberatorSkinPreview">
         <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit"/>
+    </CUnit>
+    <CUnit id="Moopy">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
     <CUnit id="MothershipCore">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="NeedleSpinesWeapon">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="NydusCanalAttackerWeapon">
         <EditorCategories value="ObjectFamily:Campaign,ObjectType:Projectile"/>
@@ -279,6 +307,34 @@
     </CUnit>
     <CUnit id="ParasiticBombMissile">
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="ParasiticBombRelayDummy">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectFamily:Melee,ObjectType:Other"/>
+    </CUnit>
+    <CUnit id="PhysicsCapsule">
+        <EditorCategories value="ObjectType:Shape"/>
+    </CUnit>
+    <CUnit id="PhysicsCube">
+        <EditorCategories value="ObjectType:Shape"/>
+    </CUnit>
+    <CUnit id="PhysicsCylinder">
+        <EditorCategories value="ObjectType:Shape"/>
+    </CUnit>
+    <CUnit id="PhysicsKnot">
+        <EditorCategories value="ObjectType:Shape"/>
+    </CUnit>
+    <CUnit id="PhysicsL">
+        <EditorCategories value="ObjectType:Shape"/>
+    </CUnit>
+    <CUnit id="PhysicsPrimitives">
+        <EditorCategories value="ObjectType:Shape"/>
+    </CUnit>
+    <CUnit id="PhysicsSphere">
+        <EditorCategories value="ObjectType:Shape"/>
+    </CUnit>
+    <CUnit id="PhysicsStar">
+        <EditorCategories value="ObjectType:Shape"/>
     </CUnit>
     <CUnit id="PointDefenseDrone">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
@@ -436,7 +492,7 @@
     <CUnit id="PylonOvercharged">
         <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
     </CUnit>
-                <CUnit id="QueenMP">
+    <CUnit id="QueenMP">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
     <CUnit id="QueenMPEnsnareMissile">
@@ -444,6 +500,9 @@
     </CUnit>
     <CUnit id="QueenMPSpawnBroodlingsMissile">
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="QueenSCBWInfestCommandCenter@Missile">
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="ReaperPlaceholder">
         <EditorCategories value="ObjectType:Other,ObjectFamily:Melee"/>
@@ -454,17 +513,20 @@
     <CUnit id="RenegadeMissileTurret">
         <EditorCategories value="ObjectType:Structure,ObjectFamily:Campaign"/>
     </CUnit>
-                                                                                                                                                                                                                                                                                                            <CUnit id="ResourceBlocker">
+    <CUnit id="ResourceBlocker">
         <EditorCategories value="ObjectFamily:Campaign,ObjectType:Other"/>
-            </CUnit>
+    </CUnit>
+    <CUnit id="SCBW_InvulnerableDummy">
+        <EditorCategories value="ObjectType:Other"/>
+    </CUnit>
     <CUnit id="ScopeTest">
         <Race value="Neut"/>
+        <EditorCategories value="ObjectType:Unit"/>
+    </CUnit>
+    <CUnit id="ScourgeMP">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
-                <CUnit id="ScourgeMP">
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
-    </CUnit>
-                                                                                                                                                                                                                                                                                                            <CUnit id="SeekerMissile">
+    <CUnit id="SeekerMissile">
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="ShakurasLightBridgeNE10">
@@ -505,7 +567,7 @@
     </CUnit>
     <CUnit id="SiegeTankSkinPreview">
         <Race value="Neut"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <EditorCategories value="ObjectType:Unit"/>
     </CUnit>
     <CUnit id="SnowRefinery_Terran_ExtendingBridgeNEShort8">
         <Race value="Neut"/>
@@ -521,11 +583,11 @@
     </CUnit>
     <CUnit id="Viking">
         <Race value="Neut"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <EditorCategories value="ObjectType:Unit"/>
     </CUnit>
     <CUnit id="WarpPrismSkinPreview">
         <Race value="Neut"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <EditorCategories value="ObjectType:Unit"/>
     </CUnit>
     <CUnit id="WidowMine">
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
